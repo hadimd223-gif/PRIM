@@ -70,8 +70,8 @@ window.nxv = function (v) { return (typeof v === 'string' && v.indexOf('YOUR_') 
         .nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;flex:1;font-size:11px;font-weight:600;color:#8fa8c8;background:none;border:0;padding:6px 0;transition:.2s}
         .nav-item i{font-size:19px}.nav-item.active-tab{color:#0891b2!important}
         
-        .mhx-bolt{width:56px;height:56px;border-radius:50%;border:4px solid #070d1f;background:linear-gradient(135deg,#67e8f9,#06b6d4 55%,#0891b2);color:#fff;font-size:22px;margin:-26px 6px 0;box-shadow:0 12px 24px rgba(8,145,178,0.4);flex:none;transition:transform 0.2s}
-        .mhx-bolt:active{transform:scale(0.92)}
+        .nxg-bolt{width:56px;height:56px;border-radius:50%;border:4px solid #070d1f;background:linear-gradient(135deg,#67e8f9,#06b6d4 55%,#0891b2);color:#fff;font-size:22px;margin:-26px 6px 0;box-shadow:0 12px 24px rgba(8,145,178,0.4);flex:none;transition:transform 0.2s}
+        .nxg-bolt:active{transform:scale(0.92)}
         
         #fab-support{position:fixed;right:16px;bottom:92px;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;background:linear-gradient(135deg,#06b6d4,#0891b2);box-shadow:0 10px 24px rgba(6,182,212,0.35);z-index:45}
         
@@ -134,73 +134,73 @@ window.nxv = function (v) { return (typeof v === 'string' && v.indexOf('YOUR_') 
         .api-tab{padding:7px 12px;border-radius:12px;font-size:12px;font-weight:800;background:#122447;color:#8fa8c8;border:0;cursor:pointer}
         .api-tab.on{background:#0891b2;color:#fff}
         .api-code{background:#e6f1ff;color:#1c3557;border-radius:14px;padding:12px;font-size:11.5px;line-height:1.55;overflow-x:auto;white-space:pre;font-family:ui-monospace,Menlo,Consolas,monospace;user-select:text;-webkit-user-select:text}
-        /* ================= MHX PREMIUM POPUPS / TOASTS / LOADERS ================= */
+        /* ================= NEXORA PREMIUM POPUPS / TOASTS / LOADERS ================= */
         .swal2-container{font-family:'Sora','Hind Siliguri',sans-serif!important;padding:16px!important}
         .swal2-container.swal2-backdrop-show,.swal2-container.swal2-noanimation{background:radial-gradient(circle at 50% 28%,rgba(6,182,212,.38),rgba(2,30,22,.72) 72%)!important;backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
-        .swal2-popup.mhx-pop:not(.swal2-toast){position:relative;overflow:hidden;border-radius:30px;padding:34px 22px 22px;background:#0d1b38;border:1px solid rgba(167,243,208,.75);box-shadow:0 34px 90px rgba(6,78,59,.42),0 0 0 1px rgba(13,27,56,.7) inset;font-family:inherit}
-        .swal2-popup.mhx-pop:not(.swal2-toast)::before{content:"";position:absolute;left:0;right:0;top:0;height:150px;background:linear-gradient(165deg,#1e3a5f 0%,#f4fdf9 48%,rgba(255,255,255,0) 100%);pointer-events:none}
-        .swal2-popup.mhx-pop:not(.swal2-toast)::after{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,#06b6d4,#22d3ee,#fbbf24);pointer-events:none}
-        .mhx-pop:not(.swal2-toast)>*:not(.swal2-close):not(.swal2-timer-progress-bar-container){position:relative}
-        .mhx-pop:not(.swal2-toast) .swal2-title{font-family:inherit;font-size:1.32rem;font-weight:800;color:#e6f1ff;padding:0 .2em;margin:0 0 6px;letter-spacing:-.01em;line-height:1.3}
-        .mhx-pop:not(.swal2-toast) .swal2-html-container{margin:4px 2px 0;padding:0;font-size:.93rem;line-height:1.7;color:#44594f;font-weight:500}
-        .mhx-pop .swal2-html-container b,.mhx-pop .swal2-html-container strong{color:#0e7490;font-weight:800}
-        .mhx-pop .swal2-html-container small{color:#8fa8c8}
+        .swal2-popup.nxg-pop:not(.swal2-toast){position:relative;overflow:hidden;border-radius:30px;padding:34px 22px 22px;background:#0d1b38;border:1px solid rgba(167,243,208,.75);box-shadow:0 34px 90px rgba(6,78,59,.42),0 0 0 1px rgba(13,27,56,.7) inset;font-family:inherit}
+        .swal2-popup.nxg-pop:not(.swal2-toast)::before{content:"";position:absolute;left:0;right:0;top:0;height:150px;background:linear-gradient(165deg,#1e3a5f 0%,#f4fdf9 48%,rgba(255,255,255,0) 100%);pointer-events:none}
+        .swal2-popup.nxg-pop:not(.swal2-toast)::after{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,#06b6d4,#22d3ee,#fbbf24);pointer-events:none}
+        .nxg-pop:not(.swal2-toast)>*:not(.swal2-close):not(.swal2-timer-progress-bar-container){position:relative}
+        .nxg-pop:not(.swal2-toast) .swal2-title{font-family:inherit;font-size:1.32rem;font-weight:800;color:#e6f1ff;padding:0 .2em;margin:0 0 6px;letter-spacing:-.01em;line-height:1.3}
+        .nxg-pop:not(.swal2-toast) .swal2-html-container{margin:4px 2px 0;padding:0;font-size:.93rem;line-height:1.7;color:#44594f;font-weight:500}
+        .nxg-pop .swal2-html-container b,.nxg-pop .swal2-html-container strong{color:#0e7490;font-weight:800}
+        .nxg-pop .swal2-html-container small{color:#8fa8c8}
         /* icons */
-        .mhx-pop:not(.swal2-toast) .swal2-icon{font-size:.92em;margin:0 auto 16px;border-width:.2em;box-shadow:0 12px 30px rgba(6,182,212,.2)}
-        .mhx-pop .swal2-icon.swal2-success{border-color:#1e4a6e;color:#06b6d4;background:#0f2744}
-        .mhx-pop .swal2-icon.swal2-error{border-color:#fecdd3;color:#f43f5e;background:#fff1f2}
-        .mhx-pop .swal2-icon.swal2-warning{border-color:#fde68a;color:#f59e0b;background:#fffbeb}
-        .mhx-pop .swal2-icon.swal2-info{border-color:#1e4a6e;color:#06b6d4;background:#0f2744}
-        .mhx-pop .swal2-icon.swal2-question{border-color:#1e4a6e;color:#22d3ee;background:#f4fdf9}
-        .mhx-pop .swal2-icon.swal2-success [class^=swal2-success-line]{background:#06b6d4}
-        .mhx-pop .swal2-icon.swal2-success .swal2-success-ring{border:.2em solid rgba(6,182,212,.28)}
-        .mhx-pop .swal2-icon.swal2-success [class^=swal2-success-circular-line],.mhx-pop .swal2-icon.swal2-success .swal2-success-fix{display:none}
-        .mhx-pop .swal2-icon.swal2-error [class^=swal2-x-mark-line]{background:#f43f5e}
+        .nxg-pop:not(.swal2-toast) .swal2-icon{font-size:.92em;margin:0 auto 16px;border-width:.2em;box-shadow:0 12px 30px rgba(6,182,212,.2)}
+        .nxg-pop .swal2-icon.swal2-success{border-color:#1e4a6e;color:#06b6d4;background:#0f2744}
+        .nxg-pop .swal2-icon.swal2-error{border-color:#fecdd3;color:#f43f5e;background:#fff1f2}
+        .nxg-pop .swal2-icon.swal2-warning{border-color:#fde68a;color:#f59e0b;background:#fffbeb}
+        .nxg-pop .swal2-icon.swal2-info{border-color:#1e4a6e;color:#06b6d4;background:#0f2744}
+        .nxg-pop .swal2-icon.swal2-question{border-color:#1e4a6e;color:#22d3ee;background:#f4fdf9}
+        .nxg-pop .swal2-icon.swal2-success [class^=swal2-success-line]{background:#06b6d4}
+        .nxg-pop .swal2-icon.swal2-success .swal2-success-ring{border:.2em solid rgba(6,182,212,.28)}
+        .nxg-pop .swal2-icon.swal2-success [class^=swal2-success-circular-line],.nxg-pop .swal2-icon.swal2-success .swal2-success-fix{display:none}
+        .nxg-pop .swal2-icon.swal2-error [class^=swal2-x-mark-line]{background:#f43f5e}
         /* buttons */
-        .mhx-pop .swal2-actions{margin:22px 0 0;width:100%;gap:10px;flex-wrap:wrap}
-        .mhx-btn{border:0;border-radius:16px;padding:13px 20px;font-family:inherit;font-weight:800;font-size:.95rem;cursor:pointer;min-width:110px;flex:1 1 auto;transition:transform .15s ease,box-shadow .2s ease,filter .2s}
-        .mhx-btn:active{transform:scale(.96)}
-        .mhx-btn:focus-visible{outline:0;box-shadow:0 0 0 4px rgba(6,182,212,.28)}
-        .mhx-btn-primary{color:#fff;background:linear-gradient(135deg,#67e8f9,#06b6d4 55%,#0891b2);box-shadow:0 12px 26px rgba(8,145,178,.35)}
-        .mhx-btn-primary:hover{filter:brightness(1.07)}
-        .mhx-btn-ghost{color:#8fa8c8;background:#122447}
-        .mhx-btn-ghost:hover{background:#1c3557}
-        .mhx-btn-deny{color:#fff;background:linear-gradient(135deg,#fb7185,#e11d48);box-shadow:0 12px 26px rgba(225,29,72,.3)}
+        .nxg-pop .swal2-actions{margin:22px 0 0;width:100%;gap:10px;flex-wrap:wrap}
+        .nxg-btn{border:0;border-radius:16px;padding:13px 20px;font-family:inherit;font-weight:800;font-size:.95rem;cursor:pointer;min-width:110px;flex:1 1 auto;transition:transform .15s ease,box-shadow .2s ease,filter .2s}
+        .nxg-btn:active{transform:scale(.96)}
+        .nxg-btn:focus-visible{outline:0;box-shadow:0 0 0 4px rgba(6,182,212,.28)}
+        .nxg-btn-primary{color:#fff;background:linear-gradient(135deg,#67e8f9,#06b6d4 55%,#0891b2);box-shadow:0 12px 26px rgba(8,145,178,.35)}
+        .nxg-btn-primary:hover{filter:brightness(1.07)}
+        .nxg-btn-ghost{color:#8fa8c8;background:#122447}
+        .nxg-btn-ghost:hover{background:#1c3557}
+        .nxg-btn-deny{color:#fff;background:linear-gradient(135deg,#fb7185,#e11d48);box-shadow:0 12px 26px rgba(225,29,72,.3)}
         /* inputs */
-        .mhx-pop .swal2-input,.mhx-pop .swal2-select,.mhx-pop .swal2-textarea{font-family:inherit;border:1.5px solid #1c3557;border-radius:16px;background:#070d1f;font-weight:700;color:#e6f1ff;box-shadow:none;margin:10px 0 0;transition:.2s}
-        .mhx-pop .swal2-input:focus,.mhx-pop .swal2-select:focus,.mhx-pop .swal2-textarea:focus{border-color:#06b6d4;background:#0d1b38;box-shadow:0 0 0 4px rgba(6,182,212,.14)}
-        .mhx-pop .swal2-validation-message{border-radius:14px;background:#fff1f2;color:#e11d48;font-weight:700;margin:12px 0 0}
-        .mhx-pop .swal2-close{color:#8aa89b;border-radius:50%;width:34px;height:34px;margin:10px 10px 0 0}
-        .mhx-pop .swal2-close:hover{background:#0f2744;color:#0891b2}
+        .nxg-pop .swal2-input,.nxg-pop .swal2-select,.nxg-pop .swal2-textarea{font-family:inherit;border:1.5px solid #1c3557;border-radius:16px;background:#070d1f;font-weight:700;color:#e6f1ff;box-shadow:none;margin:10px 0 0;transition:.2s}
+        .nxg-pop .swal2-input:focus,.nxg-pop .swal2-select:focus,.nxg-pop .swal2-textarea:focus{border-color:#06b6d4;background:#0d1b38;box-shadow:0 0 0 4px rgba(6,182,212,.14)}
+        .nxg-pop .swal2-validation-message{border-radius:14px;background:#fff1f2;color:#e11d48;font-weight:700;margin:12px 0 0}
+        .nxg-pop .swal2-close{color:#8aa89b;border-radius:50%;width:34px;height:34px;margin:10px 10px 0 0}
+        .nxg-pop .swal2-close:hover{background:#0f2744;color:#0891b2}
         /* premium loader (link creating / checking / processing) */
-        .mhx-pop.mhx-loading .swal2-actions{order:-1;margin:4px 0 18px}
-        .mhx-pop .swal2-loader{width:66px;height:66px;margin:0 auto;border:0!important;border-radius:50%;background:conic-gradient(from 0deg,rgba(6,182,212,0) 0%,#06b6d4 48%,#14b8a6 100%);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 7px),#000 calc(100% - 6px));mask:radial-gradient(farthest-side,transparent calc(100% - 7px),#000 calc(100% - 6px));animation:mhxSpin .95s linear infinite;filter:drop-shadow(0 6px 14px rgba(6,182,212,.45))}
-        .mhx-sub{font-size:.9rem;color:#8fa8c8;font-weight:600;line-height:1.6}
-        .mhx-bar{position:relative;height:5px;width:68%;margin:18px auto 2px;border-radius:99px;background:#1e3a5f;overflow:hidden}
-        .mhx-bar i{position:absolute;top:0;bottom:0;left:0;width:40%;border-radius:99px;background:linear-gradient(90deg,#06b6d4,#14b8a6);animation:mhxBar 1.3s ease-in-out infinite}
-        .mhx-pop .swal2-timer-progress-bar{background:linear-gradient(90deg,#06b6d4,#14b8a6)!important;height:4px}
-        @keyframes mhxSpin{to{transform:rotate(360deg)}}
-        @keyframes mhxBar{0%{transform:translateX(-110%)}100%{transform:translateX(260%)}}
-        @keyframes mhxIn{0%{opacity:0;transform:translateY(30px) scale(.86)}60%{opacity:1;transform:translateY(-4px) scale(1.02)}100%{opacity:1;transform:none}}
-        @keyframes mhxOut{to{opacity:0;transform:translateY(14px) scale(.94)}}
-        @keyframes mhxTin{from{opacity:0;transform:translateY(-26px) scale(.9)}to{opacity:1;transform:none}}
-        @keyframes mhxTout{to{opacity:0;transform:translateY(-16px) scale(.94)}}
-        .mhx-in{animation:mhxIn .5s cubic-bezier(.22,1,.36,1)}
-        .mhx-out{animation:mhxOut .24s ease forwards}
-        .mhx-tin{animation:mhxTin .4s cubic-bezier(.22,1,.36,1)}
-        .mhx-tout{animation:mhxTout .22s ease forwards}
+        .nxg-pop.nxg-loading .swal2-actions{order:-1;margin:4px 0 18px}
+        .nxg-pop .swal2-loader{width:66px;height:66px;margin:0 auto;border:0!important;border-radius:50%;background:conic-gradient(from 0deg,rgba(6,182,212,0) 0%,#06b6d4 48%,#14b8a6 100%);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 7px),#000 calc(100% - 6px));mask:radial-gradient(farthest-side,transparent calc(100% - 7px),#000 calc(100% - 6px));animation:nxgSpin .95s linear infinite;filter:drop-shadow(0 6px 14px rgba(6,182,212,.45))}
+        .nxg-sub{font-size:.9rem;color:#8fa8c8;font-weight:600;line-height:1.6}
+        .nxg-bar{position:relative;height:5px;width:68%;margin:18px auto 2px;border-radius:99px;background:#1e3a5f;overflow:hidden}
+        .nxg-bar i{position:absolute;top:0;bottom:0;left:0;width:40%;border-radius:99px;background:linear-gradient(90deg,#06b6d4,#14b8a6);animation:nxgBar 1.3s ease-in-out infinite}
+        .nxg-pop .swal2-timer-progress-bar{background:linear-gradient(90deg,#06b6d4,#14b8a6)!important;height:4px}
+        @keyframes nxgSpin{to{transform:rotate(360deg)}}
+        @keyframes nxgBar{0%{transform:translateX(-110%)}100%{transform:translateX(260%)}}
+        @keyframes nxgIn{0%{opacity:0;transform:translateY(30px) scale(.86)}60%{opacity:1;transform:translateY(-4px) scale(1.02)}100%{opacity:1;transform:none}}
+        @keyframes nxgOut{to{opacity:0;transform:translateY(14px) scale(.94)}}
+        @keyframes nxgTin{from{opacity:0;transform:translateY(-26px) scale(.9)}to{opacity:1;transform:none}}
+        @keyframes nxgTout{to{opacity:0;transform:translateY(-16px) scale(.94)}}
+        .nxg-in{animation:nxgIn .5s cubic-bezier(.22,1,.36,1)}
+        .nxg-out{animation:nxgOut .24s ease forwards}
+        .nxg-tin{animation:nxgTin .4s cubic-bezier(.22,1,.36,1)}
+        .nxg-tout{animation:nxgTout .22s ease forwards}
         /* toasts / notification bars */
         .swal2-container.swal2-top{padding-top:14px!important}
-        .swal2-popup.swal2-toast.mhx-toast{width:auto;max-width:92vw;padding:10px 18px 10px 10px;border-radius:20px;background:rgba(13,27,56,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid #1e3a5f;box-shadow:0 16px 40px rgba(8,145,178,.28);font-family:inherit}
-        .mhx-toast .swal2-title{font-family:inherit;font-size:13.5px;font-weight:800;color:#e6f1ff;margin:0 4px;text-align:left}
-        .mhx-toast .swal2-html-container{font-size:12px;color:#8fa8c8;margin:2px 4px 0;padding:0;text-align:left}
-        .mhx-toast .swal2-icon{margin:0 8px 0 2px;border-width:.2em}
+        .swal2-popup.swal2-toast.nxg-toast{width:auto;max-width:92vw;padding:10px 18px 10px 10px;border-radius:20px;background:rgba(13,27,56,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid #1e3a5f;box-shadow:0 16px 40px rgba(8,145,178,.28);font-family:inherit}
+        .nxg-toast .swal2-title{font-family:inherit;font-size:13.5px;font-weight:800;color:#e6f1ff;margin:0 4px;text-align:left}
+        .nxg-toast .swal2-html-container{font-size:12px;color:#8fa8c8;margin:2px 4px 0;padding:0;text-align:left}
+        .nxg-toast .swal2-icon{margin:0 8px 0 2px;border-width:.2em}
         /* ===== UID check modal ===== */
         #ffm-ov{background:radial-gradient(circle at 50% 25%,rgba(6,182,212,.38),rgba(2,30,22,.74) 72%)!important}
         #ffm-ov .ffm-card{border-radius:32px;border:1px solid rgba(167,243,208,.6);box-shadow:0 36px 96px rgba(6,78,59,.55)}
         #ffm-ov .ffm-hero{background:linear-gradient(135deg,#0e7490 0%,#0891b2 45%,#06b6d4 80%,#fbbf24 125%)}
         #ffm-ov .ffm-load{padding:58px 24px 52px;font-size:14px;color:#8fa8c8}
-        #ffm-ov .ffm-load b.mhx-lt{display:block;font-size:17px;font-weight:800;color:#e6f1ff;margin-bottom:4px}
+        #ffm-ov .ffm-load b.nxg-lt{display:block;font-size:17px;font-weight:800;color:#e6f1ff;margin-bottom:4px}
         #ffm-ov .ffm-spin{width:66px;height:66px;border:0;margin:0 auto 18px;background:conic-gradient(from 0deg,rgba(6,182,212,0) 0%,#06b6d4 48%,#14b8a6 100%);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 7px),#000 calc(100% - 6px));mask:radial-gradient(farthest-side,transparent calc(100% - 7px),#000 calc(100% - 6px));filter:drop-shadow(0 6px 14px rgba(6,182,212,.45))}
         #ffm-ov .ffm-err{width:78px;height:78px;margin:0 auto 16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;background:#fffbeb;color:#f59e0b;box-shadow:0 12px 28px rgba(245,158,11,.25)}
         #ffm-ov .ffm-tile{border:1px solid #0f2744;border-radius:18px}
@@ -231,7 +231,7 @@ window.nxv = function (v) { return (typeof v === 'string' && v.indexOf('YOUR_') 
     </style>
     <style id="tw-static">*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(6 182 212 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(6 182 212 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#1c3557}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#8aa89b}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.-right-3{right:-0.75rem}.-top-3{top:-0.75rem}.bottom-0{bottom:0px}.bottom-3{bottom:0.75rem}.left-0{left:0px}.right-0{right:0px}.right-2{right:0.5rem}.right-3\.5{right:0.875rem}.right-4{right:1rem}.top-0{top:0px}.top-2{top:0.5rem}.top-3\.5{top:0.875rem}.top-4{top:1rem}.z-10{z-index:10}.z-40{z-index:40}.z-50{z-index:50}.col-span-2{grid-column:span 2 / span 2}.mx-auto{margin-left:auto;margin-right:auto}.mb-0\.5{margin-bottom:0.125rem}.mb-1{margin-bottom:0.25rem}.mb-1\.5{margin-bottom:0.375rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-1{margin-left:0.25rem}.mr-1{margin-right:0.25rem}.mr-1\.5{margin-right:0.375rem}.mr-2{margin-right:0.5rem}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-2{margin-top:0.5rem}.mt-2\.5{margin-top:0.625rem}.mt-3{margin-top:0.75rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.mb-2\.5{margin-bottom:0.625rem}.ml-2{margin-left:0.5rem}.mt-4{margin-top:1rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.inline-flex{display:inline-flex}.table{display:table}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-12{height:3rem}.h-14{height:3.5rem}.h-20{height:5rem}.h-3{height:0.75rem}.h-4{height:1rem}.h-40{height:10rem}.h-5{height:1.25rem}.h-7{height:1.75rem}.h-8{height:2rem}.h-9{height:2.25rem}.h-full{height:100%}.h-28{height:7rem}.h-2{height:0.5rem}.h-6{height:1.5rem}.min-h-screen{min-height:100vh}.w-0{width:0px}.w-10{width:2.5rem}.w-12{width:3rem}.w-14{width:3.5rem}.w-16{width:4rem}.w-20{width:5rem}.w-32{width:8rem}.w-5{width:1.25rem}.w-7{width:1.75rem}.w-8{width:2rem}.w-9{width:2.25rem}.w-full{width:100%}.w-6{width:1.5rem}.min-w-0{min-width:0px}.max-w-md{max-width:28rem}.flex-1{flex:1 1 0%}.flex-shrink-0{flex-shrink:0}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.cursor-pointer{cursor:pointer}.select-none{-webkit-user-select:none;user-select:none}.select-all{-webkit-user-select:all;user-select:all}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.flex-wrap{flex-wrap:wrap}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-2\.5{gap:0.625rem}.gap-3{gap:0.75rem}.space-y-2\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.625rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.625rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.whitespace-nowrap{white-space:nowrap}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-xl{border-radius:0.75rem}.rounded-lg{border-radius:0.5rem}.rounded-t-3xl{border-top-left-radius:1.5rem;border-top-right-radius:1.5rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-brand-100{--tw-border-opacity:1;border-color:rgb(30 58 95 / var(--tw-border-opacity, 1))}.border-brand-200\/80{border-color:rgb(30 74 110 / 0.8)}.border-brand-400\/20{border-color:rgb(34 211 238 / 0.2)}.border-brand-50\/60{border-color:rgb(15 39 68 / 0.6)}.border-brand-50\/80{border-color:rgb(15 39 68 / 0.8)}.border-red-200\/80{border-color:rgb(254 202 202 / 0.8)}.border-slate-100{--tw-border-opacity:1;border-color:rgb(233 248 241 / var(--tw-border-opacity, 1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(216 236 226 / var(--tw-border-opacity, 1))}.border-white{--tw-border-opacity:1;border-color:rgb(255 255 255 / var(--tw-border-opacity, 1))}.border-white\/30{border-color:rgb(255 255 255 / 0.3)}.border-white\/60{border-color:rgb(255 255 255 / 0.6)}.border-amber-200{--tw-border-opacity:1;border-color:rgb(253 230 138 / var(--tw-border-opacity, 1))}.border-emerald-200{--tw-border-opacity:1;border-color:rgb(30 74 110 / var(--tw-border-opacity, 1))}.border-rose-200{--tw-border-opacity:1;border-color:rgb(254 205 211 / var(--tw-border-opacity, 1))}.bg-\[\#070d1f\]{--tw-bg-opacity:1;background-color:rgb(247 253 250 / var(--tw-bg-opacity, 1))}.bg-emerald-50{--tw-bg-opacity:1;background-color:rgb(15 39 68 / var(--tw-bg-opacity, 1))}.bg-brand-100{--tw-bg-opacity:1;background-color:rgb(30 58 95 / var(--tw-bg-opacity, 1))}.bg-brand-50{--tw-bg-opacity:1;background-color:rgb(15 39 68 / var(--tw-bg-opacity, 1))}.bg-brand-50\/80{background-color:rgb(15 39 68 / 0.8)}.bg-brand-600{--tw-bg-opacity:1;background-color:rgb(8 145 178 / var(--tw-bg-opacity, 1))}.bg-sky-50{--tw-bg-opacity:1;background-color:rgb(240 249 255 / var(--tw-bg-opacity, 1))}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(233 248 241 / var(--tw-bg-opacity, 1))}.bg-slate-200{--tw-bg-opacity:1;background-color:rgb(216 236 226 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/20{background-color:rgb(255 255 255 / 0.2)}.bg-white\/80{background-color:rgb(255 255 255 / 0.8)}.bg-white\/85{background-color:rgb(255 255 255 / 0.85)}.bg-white\/90{background-color:rgb(255 255 255 / 0.9)}.bg-amber-50{--tw-bg-opacity:1;background-color:rgb(255 251 235 / var(--tw-bg-opacity, 1))}.bg-brand-50\/40{background-color:rgb(15 39 68 / 0.4)}.bg-rose-50{--tw-bg-opacity:1;background-color:rgb(255 241 242 / var(--tw-bg-opacity, 1))}.bg-rose-600{--tw-bg-opacity:1;background-color:rgb(225 29 72 / var(--tw-bg-opacity, 1))}.bg-slate-500{--tw-bg-opacity:1;background-color:rgb(95 122 110 / var(--tw-bg-opacity, 1))}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-brand-500{--tw-gradient-from:#22d3ee var(--tw-gradient-from-position);--tw-gradient-to:rgb(6 182 212 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-brand-600{--tw-gradient-from:#06b6d4 var(--tw-gradient-from-position);--tw-gradient-to:rgb(8 145 178 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-brand-700{--tw-gradient-to:#0891b2 var(--tw-gradient-to-position)}.to-brand-800{--tw-gradient-to:#0891b2 var(--tw-gradient-to-position)}.object-cover{object-fit:cover}.p-1{padding:0.25rem}.p-3{padding:0.75rem}.p-3\.5{padding:0.875rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-2\.5{padding:0.625rem}.px-1{padding-left:0.25rem;padding-right:0.25rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-3\.5{padding-top:0.875rem;padding-bottom:0.875rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.pb-10{padding-bottom:2.5rem}.pb-16{padding-bottom:4rem}.pb-20{padding-bottom:5rem}.pb-24{padding-bottom:6rem}.pb-3{padding-bottom:0.75rem}.pb-8{padding-bottom:2rem}.pr-6{padding-right:1.5rem}.pt-2{padding-top:0.5rem}.pt-4{padding-top:1rem}.text-center{text-align:center}.text-right{text-align:right}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-7xl{font-size:4.5rem;line-height:1}.text-\[10\.5px\]{font-size:10.5px}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[15px\]{font-size:15px}.text-\[17px\]{font-size:17px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-\[12px\]{font-size:12px}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-normal{font-weight:400}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.leading-snug{line-height:1.375}.leading-tight{line-height:1.25}.leading-none{line-height:1}.tracking-\[\.25em\]{letter-spacing:.25em}.tracking-tight{letter-spacing:-0.025em}.tracking-wide{letter-spacing:0.025em}.text-\[\#0088cc\]{--tw-text-opacity:1;color:rgb(0 136 204 / var(--tw-text-opacity, 1))}.text-\[\#25D366\]{--tw-text-opacity:1;color:rgb(37 211 102 / var(--tw-text-opacity, 1))}.text-emerald-600{--tw-text-opacity:1;color:rgb(8 145 178 / var(--tw-text-opacity, 1))}.text-emerald-700{--tw-text-opacity:1;color:rgb(14 116 144 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-brand-100{--tw-text-opacity:1;color:rgb(30 58 95 / var(--tw-text-opacity, 1))}.text-brand-500{--tw-text-opacity:1;color:rgb(6 182 212 / var(--tw-text-opacity, 1))}.text-brand-600{--tw-text-opacity:1;color:rgb(8 145 178 / var(--tw-text-opacity, 1))}.text-brand-700{--tw-text-opacity:1;color:rgb(14 116 144 / var(--tw-text-opacity, 1))}.text-brand-900{--tw-text-opacity:1;color:rgb(6 78 59 / var(--tw-text-opacity, 1))}.text-red-500{--tw-text-opacity:1;color:rgb(239 68 68 / var(--tw-text-opacity, 1))}.text-rose-500{--tw-text-opacity:1;color:rgb(244 63 94 / var(--tw-text-opacity, 1))}.text-rose-600{--tw-text-opacity:1;color:rgb(225 29 72 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(138 168 155 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(95 122 110 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(68 89 79 / var(--tw-text-opacity, 1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 68 60 / var(--tw-text-opacity, 1))}.text-slate-800{--tw-text-opacity:1;color:rgb(34 48 42 / var(--tw-text-opacity, 1))}.text-slate-900{--tw-text-opacity:1;color:rgb(16 32 26 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-white\/10{color:rgb(255 255 255 / 0.1)}.text-white\/70{color:rgb(255 255 255 / 0.7)}.text-amber-600{--tw-text-opacity:1;color:rgb(217 119 6 / var(--tw-text-opacity, 1))}.text-amber-500{--tw-text-opacity:1;color:rgb(245 158 11 / var(--tw-text-opacity, 1))}.text-amber-700{--tw-text-opacity:1;color:rgb(180 83 9 / var(--tw-text-opacity, 1))}.text-rose-700{--tw-text-opacity:1;color:rgb(190 18 60 / var(--tw-text-opacity, 1))}.no-underline{-webkit-text-decoration-line:none;text-decoration-line:none}.opacity-70{opacity:0.7}.opacity-80{opacity:0.8}.opacity-90{opacity:0.9}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-brand-500\/15{--tw-shadow-color:rgb(6 182 212 / 0.15);--tw-shadow:var(--tw-shadow-colored)}.shadow-brand-500\/20{--tw-shadow-color:rgb(6 182 212 / 0.2);--tw-shadow:var(--tw-shadow-colored)}.shadow-brand-500\/25{--tw-shadow-color:rgb(6 182 212 / 0.25);--tw-shadow:var(--tw-shadow-colored)}.shadow-rose-500\/25{--tw-shadow-color:rgb(244 63 94 / 0.25);--tw-shadow:var(--tw-shadow-colored)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-xl{--tw-backdrop-blur:blur(24px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-500{transition-duration:500ms}.ease-out{transition-timing-function:cubic-bezier(0, 0, 0.2, 1)}.ease-in-out{transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1)}.hover\:border-brand-400:hover{--tw-border-opacity:1;border-color:rgb(34 211 238 / var(--tw-border-opacity, 1))}.hover\:bg-brand-50:hover{--tw-bg-opacity:1;background-color:rgb(15 39 68 / var(--tw-bg-opacity, 1))}.hover\:bg-red-50:hover{--tw-bg-opacity:1;background-color:rgb(254 242 242 / var(--tw-bg-opacity, 1))}.hover\:text-brand-600:hover{--tw-text-opacity:1;color:rgb(8 145 178 / var(--tw-text-opacity, 1))}.hover\:text-red-500:hover{--tw-text-opacity:1;color:rgb(239 68 68 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.hover\:underline:hover{-webkit-text-decoration-line:underline;text-decoration-line:underline}.active\:scale-90:active{--tw-scale-x:.9;--tw-scale-y:.9;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.active\:scale-\[\.98\]:active{--tw-scale-x:.98;--tw-scale-y:.98;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.active\:scale-\[\.99\]:active{--tw-scale-x:.99;--tw-scale-y:.99;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}</style>
 <script>
-/* ===== MHX premium notification layer: restyles every SweetAlert popup / toast / loader in the app ===== */
+/* ===== NEXORA premium notification layer: restyles every SweetAlert popup / toast / loader in the app ===== */
 (function () {
     if (!window.Swal) return;
     const raw = Swal.fire.bind(Swal);
@@ -241,27 +241,27 @@ window.nxv = function (v) { return (typeof v === 'string' && v.indexOf('YOUR_') 
         else { o = {}; if (a !== undefined) o.title = a; if (b !== undefined) o.html = b; if (c !== undefined) o.icon = c; }
         const toast = !!o.toast, cc = Object.assign({}, o.customClass || {});
         const base = toast
-            ? { popup: 'mhx-pop mhx-toast' }
-            : { popup: 'mhx-pop', confirmButton: 'mhx-btn mhx-btn-primary', cancelButton: 'mhx-btn mhx-btn-ghost', denyButton: 'mhx-btn mhx-btn-deny' };
+            ? { popup: 'nxg-pop nxg-toast' }
+            : { popup: 'nxg-pop', confirmButton: 'nxg-btn nxg-btn-primary', cancelButton: 'nxg-btn nxg-btn-ghost', denyButton: 'nxg-btn nxg-btn-deny' };
         Object.keys(base).forEach(k => { cc[k] = base[k] + (cc[k] ? ' ' + cc[k] : ''); });
         o.customClass = cc;
         if (o.buttonsStyling === undefined) o.buttonsStyling = false;
         if (toast) {
             if (o.timerProgressBar === undefined) o.timerProgressBar = true;
-            o.showClass = Object.assign({ popup: 'mhx-tin' }, o.showClass);
-            o.hideClass = Object.assign({ popup: 'mhx-tout' }, o.hideClass);
+            o.showClass = Object.assign({ popup: 'nxg-tin' }, o.showClass);
+            o.hideClass = Object.assign({ popup: 'nxg-tout' }, o.hideClass);
         } else {
             if (o.width === undefined) o.width = 380;
             if (o.returnFocus === undefined) o.returnFocus = false;
-            o.showClass = Object.assign({ popup: 'mhx-in' }, o.showClass);
-            o.hideClass = Object.assign({ popup: 'mhx-out' }, o.hideClass);
+            o.showClass = Object.assign({ popup: 'nxg-in' }, o.showClass);
+            o.hideClass = Object.assign({ popup: 'nxg-out' }, o.hideClass);
         }
         return raw(o);
     };
     const rawLoad = Swal.showLoading.bind(Swal);
     Swal.showLoading = function (btn) {
         const r = rawLoad(btn), p = Swal.getPopup && Swal.getPopup();
-        if (p) { p.classList.add('mhx-pop', 'mhx-loading'); }
+        if (p) { p.classList.add('nxg-pop', 'nxg-loading'); }
         return r;
     };
 })();
@@ -270,13 +270,13 @@ window.nxv = function (v) { return (typeof v === 'string' && v.indexOf('YOUR_') 
 function setTxt(e, v) { v = String(v); if (e && e.textContent !== v) e.textContent = v; }
 
 /* branded "please wait" card (spinner + title + subtitle + shimmer bar) */
-function mhxBusy(title, sub) {
-    return Swal.fire({ title: title, html: '<div class="mhx-sub">' + (sub || 'Please wait a moment…') + '</div><div class="mhx-bar"><i></i></div>',
+function nxgBusy(title, sub) {
+    return Swal.fire({ title: title, html: '<div class="nxg-sub">' + (sub || 'Please wait a moment…') + '</div><div class="nxg-bar"><i></i></div>',
         allowOutsideClick: false, allowEscapeKey: false, showConfirmButton: false, didOpen: () => Swal.showLoading() });
 }
 /* branded "done" card that closes by itself */
-function mhxDone(title, sub, ms) {
-    return Swal.fire({ icon: 'success', title: title, html: sub ? '<div class="mhx-sub">' + sub + '</div>' : '', showConfirmButton: false, allowOutsideClick: false, timer: ms || 1400, timerProgressBar: true });
+function nxgDone(title, sub, ms) {
+    return Swal.fire({ icon: 'success', title: title, html: sub ? '<div class="nxg-sub">' + sub + '</div>' : '', showConfirmButton: false, allowOutsideClick: false, timer: ms || 1400, timerProgressBar: true });
 }
 /* friendly text for Firebase login / signup errors */
 function authMsg(e) {
@@ -287,7 +287,7 @@ function authMsg(e) {
 }
 </script>
 
-    <style id="mhx-fresh">
+    <style id="nxg-fresh">
         /* ===== Fresh orange + soft white theme ===== */
         :root{--o1:#22d3ee;--o2:#06b6d4;--o3:#0891b2;--o4:#0e7490;--cream:#070d1f;--peach:#122447;--line:#1c3557}
         html{background:var(--cream)}
@@ -299,18 +299,18 @@ function authMsg(e) {
         #fab-support{background:linear-gradient(135deg,#67e8f9,#0891b2)!important;box-shadow:0 10px 24px rgba(8,145,178,.38)!important}
 
         /* ===== Centre button (Leaderboard) ===== */
-        .mhx-bolt{position:relative;isolation:isolate;width:60px;height:60px;border-radius:50%;margin:-30px 6px 0;flex:none;
+        .nxg-bolt{position:relative;isolation:isolate;width:60px;height:60px;border-radius:50%;margin:-30px 6px 0;flex:none;
             border:4px solid #fff;color:#fff;font-size:23px;display:flex;align-items:center;justify-content:center;cursor:pointer;
             background:radial-gradient(circle at 32% 24%,#1e4a6e 0%,#67e8f9 30%,#06b6d4 68%,#0891b2 100%);
             box-shadow:0 14px 26px rgba(8,145,178,.36),0 0 0 7px rgba(52,211,153,.16),inset 0 2px 3px rgba(13,27,56,.65),inset 0 -5px 10px rgba(4,120,87,.28);
             transition:transform .2s ease,box-shadow .25s ease}
-        .mhx-bolt::before{content:"";position:absolute;left:13%;right:13%;top:7%;height:42%;border-radius:50% 50% 60% 60%/70% 70% 40% 40%;
+        .nxg-bolt::before{content:"";position:absolute;left:13%;right:13%;top:7%;height:42%;border-radius:50% 50% 60% 60%/70% 70% 40% 40%;
             background:linear-gradient(180deg,rgba(13,27,56,.62),rgba(255,255,255,0));z-index:-1;pointer-events:none}
-        .mhx-bolt::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:2px solid rgba(6,182,212,.35);z-index:-2;pointer-events:none;animation:mhxHalo 2.8s ease-out infinite}
-        .mhx-bolt i{filter:drop-shadow(0 2px 3px rgba(6,95,70,.45))}
-        .mhx-bolt:active{transform:scale(.92)}
-        .mhx-bolt.active-tab{box-shadow:0 16px 30px rgba(8,145,178,.5),0 0 0 8px rgba(52,211,153,.28),inset 0 2px 3px rgba(13,27,56,.7),inset 0 -5px 10px rgba(4,120,87,.3)}
-        @keyframes mhxHalo{0%{transform:scale(.92);opacity:.85}70%,100%{transform:scale(1.32);opacity:0}}
+        .nxg-bolt::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:2px solid rgba(6,182,212,.35);z-index:-2;pointer-events:none;animation:nxgHalo 2.8s ease-out infinite}
+        .nxg-bolt i{filter:drop-shadow(0 2px 3px rgba(6,95,70,.45))}
+        .nxg-bolt:active{transform:scale(.92)}
+        .nxg-bolt.active-tab{box-shadow:0 16px 30px rgba(8,145,178,.5),0 0 0 8px rgba(52,211,153,.28),inset 0 2px 3px rgba(13,27,56,.7),inset 0 -5px 10px rgba(4,120,87,.3)}
+        @keyframes nxgHalo{0%{transform:scale(.92);opacity:.85}70%,100%{transform:scale(1.32);opacity:0}}
 
         /* ===== Leaderboard ===== */
         .lb-hero{position:relative;overflow:hidden;border-radius:30px;padding:22px 20px 20px;color:#fff;
@@ -322,7 +322,7 @@ function authMsg(e) {
         .lb-title{font-size:34px;font-weight:800;line-height:1.1;margin:12px 0 6px;letter-spacing:-.02em}
         .lb-sub{font-size:13.5px;line-height:1.55;opacity:.95;max-width:92%}
         .lb-refresh{position:absolute!important;right:16px;bottom:16px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.25);color:#fff;font-size:15px;display:flex;align-items:center;justify-content:center;cursor:pointer}
-        .lb-refresh.spin i{animation:mhxSpin .8s linear infinite}
+        .lb-refresh.spin i{animation:nxgSpin .8s linear infinite}
 
         .lb-podium{display:grid;grid-template-columns:1fr 1.18fr 1fr;gap:10px;align-items:end;margin:30px 2px 16px}
         .lb-pc{position:relative;text-align:center;border-radius:26px;padding:16px 6px 14px;background:rgba(13,27,56,.92);border:1px solid #fff;box-shadow:0 12px 30px rgba(8,145,178,.1);min-width:0}
@@ -358,6 +358,7 @@ function authMsg(e) {
         .lb-me{margin:4px 2px 12px;padding:12px 16px;border-radius:20px;background:#0f2744;border:1px dashed #67e8f9;color:#155e75;font-size:12.5px;font-weight:700;text-align:center}
 
         /* Leaderboard: floating button stacked right above the Support button */
+        #nav-leaders.hidden{display:none!important}
         #nav-leaders{position:fixed;right:16px;bottom:150px;z-index:50;width:50px;height:50px;border-radius:50%;border:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;cursor:pointer;
             background:linear-gradient(135deg,#67e8f9,#0891b2);box-shadow:0 10px 24px rgba(8,145,178,.38);transition:transform .2s ease,box-shadow .2s ease}
         #nav-leaders:active{transform:scale(.92)}
@@ -389,10 +390,10 @@ function authMsg(e) {
         .av-edit{position:absolute;right:-2px;bottom:-2px;width:32px;height:32px;border-radius:50%;border:2px solid #fff;background:#0891b2;color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 14px rgba(8,145,178,.4)}
         .pf-edit-btn{display:inline-flex;align-items:center;gap:6px;margin-top:2px;padding:7px 14px;border-radius:99px;border:1px solid #1e4a6e;background:#0f2744;color:#0891b2;font-weight:800;font-size:12px;cursor:pointer}
         .hdr-av-img{width:100%;height:100%;object-fit:cover;border-radius:inherit}
-        @media (prefers-reduced-motion:reduce){.mhx-bolt::after,.lb-sk,.lb-refresh.spin i{animation:none}}
+        @media (prefers-reduced-motion:reduce){.nxg-bolt::after,.lb-sk,.lb-refresh.spin i{animation:none}}
     </style>
 
-    <style id="mhx-ids">
+    <style id="nxg-ids">
         /* ===== ID Sell / ID Code / Maintenance ===== */
         .ids-card{padding:12px!important;overflow:hidden}
         .ids-video{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:16/9;cursor:pointer;background:linear-gradient(135deg,#0e7490,#06b6d4 60%,#67e8f9);display:flex;align-items:center;justify-content:center}
@@ -423,15 +424,15 @@ function authMsg(e) {
         .idc-mini{flex:none;width:34px;height:34px;border-radius:12px;border:1px solid #1e3a5f;background:#0d1b38;color:#0891b2;display:flex;align-items:center;justify-content:center;cursor:pointer}
         .idc-mine{width:100%;text-align:left;padding:11px 13px;border-radius:16px;background:rgba(13,27,56,.9);border:1px solid #1c3557;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:8px;cursor:pointer}
         .idc-mine b{font-size:12.5px;color:#e6f1ff}.idc-mine span{font-size:11px;color:#8fa8c8}
-        #mhx-maint{position:fixed;inset:0;z-index:10001;display:flex;align-items:center;justify-content:center;padding:22px;background:radial-gradient(circle at 50% 30%,rgba(6,182,212,.4),rgba(2,30,22,.9) 75%);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-        #mhx-maint .mt-card{position:relative;width:100%;max-width:360px;background:#0d1b38;border-radius:30px;padding:76px 24px 26px;text-align:center;box-shadow:0 30px 80px rgba(2,30,22,.5);animation:tgpPop .55s cubic-bezier(.34,1.56,.64,1) both}
-        #mhx-maint .mt-card::before{content:"";position:absolute;left:0;right:0;top:0;height:120px;border-radius:30px 30px 0 0;background:linear-gradient(160deg,#1e3a5f,#fff)}
-        #mhx-maint .mt-ic{position:absolute;left:50%;top:-40px;margin-left:-48px;width:96px;height:96px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:40px;background:linear-gradient(135deg,#22d3ee,#0e7490);border:5px solid #fff;box-shadow:0 18px 40px rgba(8,145,178,.45);animation:tgpFloat 3s ease-in-out infinite}
-        #mhx-maint h2{position:relative;font-size:22px;font-weight:800;color:#e6f1ff;margin:0 0 10px}
-        #mhx-maint .mt-msg{position:relative;font-size:14px;line-height:1.7;color:#44594f;white-space:pre-wrap;word-break:break-word}
-        #mhx-maint .mt-bar{position:relative;height:5px;width:60%;margin:20px auto 0;border-radius:99px;background:#1e3a5f;overflow:hidden}
-        #mhx-maint .mt-bar i{position:absolute;top:0;bottom:0;left:0;width:40%;border-radius:99px;background:linear-gradient(90deg,#06b6d4,#14b8a6);animation:mhxBar 1.3s ease-in-out infinite}
-        #mhx-maint-admin{position:fixed;left:50%;transform:translateX(-50%);bottom:84px;z-index:9990;padding:7px 14px;border-radius:99px;background:#fffbeb;border:1px solid #fde68a;color:#b45309;font-size:11px;font-weight:800;box-shadow:0 8px 20px rgba(245,158,11,.25)}
+        #nxg-maint{position:fixed;inset:0;z-index:10001;display:flex;align-items:center;justify-content:center;padding:22px;background:radial-gradient(circle at 50% 30%,rgba(6,182,212,.4),rgba(2,30,22,.9) 75%);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+        #nxg-maint .mt-card{position:relative;width:100%;max-width:360px;background:#0d1b38;border-radius:30px;padding:76px 24px 26px;text-align:center;box-shadow:0 30px 80px rgba(2,30,22,.5);animation:tgpPop .55s cubic-bezier(.34,1.56,.64,1) both}
+        #nxg-maint .mt-card::before{content:"";position:absolute;left:0;right:0;top:0;height:120px;border-radius:30px 30px 0 0;background:linear-gradient(160deg,#1e3a5f,#fff)}
+        #nxg-maint .mt-ic{position:absolute;left:50%;top:-40px;margin-left:-48px;width:96px;height:96px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:40px;background:linear-gradient(135deg,#22d3ee,#0e7490);border:5px solid #fff;box-shadow:0 18px 40px rgba(8,145,178,.45);animation:tgpFloat 3s ease-in-out infinite}
+        #nxg-maint h2{position:relative;font-size:22px;font-weight:800;color:#e6f1ff;margin:0 0 10px}
+        #nxg-maint .mt-msg{position:relative;font-size:14px;line-height:1.7;color:#44594f;white-space:pre-wrap;word-break:break-word}
+        #nxg-maint .mt-bar{position:relative;height:5px;width:60%;margin:20px auto 0;border-radius:99px;background:#1e3a5f;overflow:hidden}
+        #nxg-maint .mt-bar i{position:absolute;top:0;bottom:0;left:0;width:40%;border-radius:99px;background:linear-gradient(90deg,#06b6d4,#14b8a6);animation:nxgBar 1.3s ease-in-out infinite}
+        #nxg-maint-admin{position:fixed;left:50%;transform:translateX(-50%);bottom:84px;z-index:9990;padding:7px 14px;border-radius:99px;background:#fffbeb;border:1px solid #fde68a;color:#b45309;font-size:11px;font-weight:800;box-shadow:0 8px 20px rgba(245,158,11,.25)}
         /* ----- ID detail sheet / closed state ----- */
         .ids-card{content-visibility:auto;contain-intrinsic-size:auto 340px}
         .ids-video.noimg{background:linear-gradient(135deg,#0e7490,#06b6d4 60%,#67e8f9)}
@@ -454,12 +455,12 @@ function authMsg(e) {
         .ids-buybar{position:sticky;bottom:0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:rgba(13,27,56,.97);border-top:1px solid #1e3a5f}
         /* ----- one smooth loader everywhere (replaces the old plain spinning icon) ----- */
         .fa-spinner.fa-spin,.fa-spin.fa-spinner{animation:none!important}
-        .fa-spinner.fa-spin::before{content:"";display:inline-block;width:1em;height:1em;box-sizing:border-box;border-radius:50%;border:.17em solid transparent;border-top-color:currentColor;border-right-color:currentColor;box-shadow:inset 0 0 0 .17em rgba(6,182,212,.16);vertical-align:-.14em;animation:mhxSpin .75s cubic-bezier(.5,.15,.5,.85) infinite;will-change:transform}
+        .fa-spinner.fa-spin::before{content:"";display:inline-block;width:1em;height:1em;box-sizing:border-box;border-radius:50%;border:.17em solid transparent;border-top-color:currentColor;border-right-color:currentColor;box-shadow:inset 0 0 0 .17em rgba(6,182,212,.16);vertical-align:-.14em;animation:nxgSpin .75s cubic-bezier(.5,.15,.5,.85) infinite;will-change:transform}
         .text-center>.fa-spinner.fa-spin{font-size:26px!important}
-        .mhx-pop .swal2-loader{box-shadow:0 0 0 8px rgba(6,182,212,.08),0 10px 30px rgba(6,182,212,.28);will-change:transform}
+        .nxg-pop .swal2-loader{box-shadow:0 0 0 8px rgba(6,182,212,.08),0 10px 30px rgba(6,182,212,.28);will-change:transform}
         .ids-sk{border-radius:24px;height:300px;margin-bottom:16px;background:linear-gradient(90deg,#122447 25%,#f6fdf9 50%,#122447 75%);background-size:200% 100%;animation:lbSk 1.3s linear infinite}
-        .animate-pulse{animation:mhxPulse 1.4s ease-in-out infinite}
-        @keyframes mhxPulse{50%{opacity:.55}}
+        .animate-pulse{animation:nxgPulse 1.4s ease-in-out infinite}
+        @keyframes nxgPulse{50%{opacity:.55}}
         @media (prefers-reduced-motion:reduce){.fa-spinner.fa-spin::before,.ids-sk{animation-duration:2s}}
     </style>
     <style id="nexora-theme">
@@ -498,9 +499,9 @@ html[data-nx-lang=bn] .nx-lang [data-l=bn],html[data-nx-lang=en] .nx-lang [data-
 .skiptranslate>iframe,.goog-te-banner-frame,.goog-te-balloon-frame,#goog-gt-tt,.goog-tooltip{display:none!important}
 body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:none!important}
 </style>
-<style id="mhx-theme"></style>
+<style id="nxg-theme"></style>
     <script>
-    /* ===== MHX Theme engine: colours set from Admin > Theme & Colors ===== */
+    /* ===== NEXORA Theme engine: colours set from Admin > Theme & Colors ===== */
     (function () {
         var SLOTS = {
             textMain:   { tx: 'body,.text-slate-900,.text-slate-800,.text-slate-700,.lb-nm,.tgp-title' },
@@ -511,7 +512,7 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
             bottomNav:  { bg: 'nav.fixed>div', bd: 'nav.fixed>div' },
             navText:    { tx: '.nav-item' },
             navActive:  { bg: '.nav-item.active-tab', tx: '.nav-item.active-tab' },
-            centerBtn:  { bg: '.mhx-bolt', bd: '.mhx-bolt', glow: 1 },
+            centerBtn:  { bg: '.nxg-bolt', bd: '.nxg-bolt', glow: 1 },
             card:       { bg: '.vip-card', bd: '.vip-card' },
             productCard:{ bg: '.product-card', bd: '.product-card' },
             productSel: { bg: '.product-card.selected', bd: '.product-card.selected' },
@@ -543,8 +544,8 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
             idListCard: { bg: '.ids-card', bd: '.ids-card' },
             idBuyBtn:   { bg: '.ids-buy:not(:disabled),.idc-btn', tx: '.ids-buy,.idc-btn', glow: 1 },
             profileAvatar: { bg: '.av-wrap .av-img' },
-            popupBtn:   { bg: '.mhx-btn-primary', tx: '.mhx-btn-primary', glow: 1 },
-            popupBg:    { bg: '.swal2-popup.mhx-pop:not(.swal2-toast)', bd: '.swal2-popup.mhx-pop:not(.swal2-toast)' },
+            popupBtn:   { bg: '.nxg-btn-primary', tx: '.nxg-btn-primary', glow: 1 },
+            popupBg:    { bg: '.swal2-popup.nxg-pop:not(.swal2-toast)', bd: '.swal2-popup.nxg-pop:not(.swal2-toast)' },
             profileMenu:{ bg: '#profile-menu', bd: '#profile-menu' }
         };
         function ok(v) { return typeof v === 'string' && v.length < 80 && !/[;{}<>\\]/.test(v); }
@@ -572,19 +573,19 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
             if (typeof t.css === 'string') out.push(t.css.replace(/[<]/g, ''));
             return out.join('\n');
         }
-        function paint(css) { var el = document.getElementById('mhx-theme'); if (el && el.textContent !== css) el.textContent = css; }
-        window.mhxApplyTheme = function (t) {
+        function paint(css) { var el = document.getElementById('nxg-theme'); if (el && el.textContent !== css) el.textContent = css; }
+        window.nxgApplyTheme = function (t) {
             var css = build(t); paint(css);
-            try { localStorage.setItem('mhxThemeCss', css); } catch (e) {}
+            try { localStorage.setItem('nxgThemeCss', css); } catch (e) {}
             try {
                 var c = t && t.header && t.header.c1, m = document.querySelector('meta[name=theme-color]');
                 if (m) m.setAttribute('content', ok(c) && c ? c : '#0891b2');
             } catch (e) {}
         };
-        try { var cached = localStorage.getItem('mhxThemeCss'); if (cached) paint(cached); } catch (e) {}
+        try { var cached = localStorage.getItem('nxgThemeCss'); if (cached) paint(cached); } catch (e) {}
         /* live preview from Admin (same origin only) */
         window.addEventListener('message', function (e) {
-            if (e.origin !== location.origin || !e.data || e.data.type !== 'mhx-theme-preview') return;
+            if (e.origin !== location.origin || !e.data || e.data.type !== 'nxg-theme-preview') return;
             paint(build(e.data.theme));
         });
     })();
@@ -660,7 +661,7 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
         <section id="home-sec" class="animate-fade-in pb-8">
             <div id="banner-container" class="mb-5 overflow-hidden shadow-lg h-40 bg-brand-100 relative rounded-2xl border border-white/60">
                 <div id="slider-wrapper" class="flex h-full w-full transition-transform duration-500 ease-out">
-                    <img src="https://placehold.co/600x300/059669/FFF?text=M+H+X+TopUp+VIP" class="w-full h-full object-cover flex-shrink-0">
+                    <img src="https://placehold.co/600x300/059669/FFF?text=NEXORA+GAMING+VIP" class="w-full h-full object-cover flex-shrink-0">
                 </div>
                 <div id="slider-dots" class="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-10"></div>
             </div>
@@ -680,7 +681,7 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
             </div>
 
             <!-- Quick Links -->
-            <div class="grid grid-cols-3 gap-2.5 mb-5">
+            <div id="quick-links" class="grid grid-cols-2 gap-2.5 mb-5">
                 <a id="home-whatsapp" href="#" target="_blank" class="vip-card py-3 px-2.5 flex items-center justify-between no-underline border border-white">
                     <div class="w-7 h-7 rounded-full flex items-center justify-center bg-emerald-50 flex-shrink-0"><i class="fab fa-whatsapp text-lg text-[#25D366]"></i></div>
                     <span class="text-[11px] font-bold text-slate-700 truncate">WhatsApp</span>
@@ -689,7 +690,7 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
                     <div class="w-7 h-7 rounded-full flex items-center justify-center bg-sky-50 flex-shrink-0"><i class="fab fa-telegram-plane text-lg text-[#0088cc]"></i></div>
                     <span class="text-[11px] font-bold text-slate-700 truncate">Telegram</span>
                 </a>
-                <a id="home-app-dl" href="#" target="_blank" class="vip-card py-3 px-2.5 flex items-center justify-between no-underline border border-white">
+                <a id="home-app-dl" data-feature="showAppDownload" href="#" target="_blank" class="hidden vip-card py-3 px-2.5 flex items-center justify-between no-underline border border-white">
                     <div class="w-7 h-7 rounded-full overflow-hidden shadow-sm flex-shrink-0"><img loading="lazy" decoding="async" src="https://i.ibb.co/WvrTGr5Y/google-play-store-logo-1273375-804.jpg" class="w-full h-full object-cover"></div>
                     <span class="text-[11px] font-bold text-slate-700 truncate">App Download</span>
                 </a>
@@ -717,8 +718,17 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
             </div>
 
 
-            <div class="grid grid-cols-2 gap-3 mb-5">
-                <div onclick="showSec('tcp')" class="cursor-pointer rounded-3xl p-3.5 text-white relative overflow-hidden shadow-lg shadow-brand-500/25 active:scale-[.98] transition" style="background:linear-gradient(135deg,#0e7490,#06b6d4 55%,#22d3ee)">
+            <div id="svc-grid" class="grid grid-cols-2 gap-3 mb-5">
+                <div onclick="showSec('guildglory')" class="cursor-pointer rounded-3xl p-3.5 text-white relative overflow-hidden shadow-lg shadow-brand-500/25 active:scale-[.98] transition" style="background:linear-gradient(135deg,#1d4ed8,#6366f1 55%,#22d3ee)">
+                    <div class="absolute -right-3 -top-3 text-white/10 text-7xl"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="relative">
+                        <div class="w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center text-xl mb-2"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div class="font-extrabold text-[15px] leading-tight" id="gg-home-title">Guild Glory</div>
+                        <div class="text-[10.5px] opacity-90 mt-0.5 leading-snug">Boost your guild with bots • from BDT <b id="gg-home-price">–</b></div>
+                        <div class="mt-2.5 bg-white text-brand-600 text-[11px] font-extrabold px-2.5 py-1.5 rounded-xl inline-flex items-center">Boost <i class="fa-solid fa-arrow-right ml-1"></i></div>
+                    </div>
+                </div>
+                <div data-feature="showTcp" onclick="showSec('tcp')" class="hidden cursor-pointer rounded-3xl p-3.5 text-white relative overflow-hidden shadow-lg shadow-brand-500/25 active:scale-[.98] transition" style="background:linear-gradient(135deg,#0e7490,#06b6d4 55%,#22d3ee)">
                     <div class="absolute -right-3 -top-3 text-white/10 text-7xl"><i class="fa-solid fa-satellite-dish"></i></div>
                     <div class="relative">
                         <div class="w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center text-xl mb-2"><i class="fa-solid fa-satellite-dish"></i></div>
@@ -727,7 +737,7 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
                         <div class="mt-2.5 bg-white text-brand-600 text-[11px] font-extrabold px-2.5 py-1.5 rounded-xl inline-flex items-center">Buy <i class="fa-solid fa-arrow-right ml-1"></i></div>
                     </div>
                 </div>
-                <div onclick="showSec('idsell')" class="cursor-pointer rounded-3xl p-3.5 text-white relative overflow-hidden shadow-lg shadow-brand-500/25 active:scale-[.98] transition" style="background:linear-gradient(135deg,#0f766e,#14b8a6 55%,#67e8f9)">
+                <div data-feature="showIdSell" onclick="showSec('idsell')" class="hidden cursor-pointer rounded-3xl p-3.5 text-white relative overflow-hidden shadow-lg shadow-brand-500/25 active:scale-[.98] transition" style="background:linear-gradient(135deg,#0f766e,#14b8a6 55%,#67e8f9)">
                     <div class="absolute -right-3 -top-3 text-white/10 text-7xl"><i class="fa-solid fa-id-card"></i></div>
                     <div class="relative">
                         <div class="w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center text-xl mb-2"><i class="fa-solid fa-id-card"></i></div>
@@ -818,6 +828,27 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
                 <div id="tcp-pk-grid" class="grid grid-cols-2 gap-2.5"><div class="col-span-2 text-center py-6 text-slate-400"><i class="fas fa-spinner fa-spin text-brand-600"></i></div></div>
                 <button id="tcp-btn" onclick="tcpBuy()" class="zp-btn w-full text-sm mt-4"><i class="fa-solid fa-satellite-dish mr-1.5"></i><span id="tcp-btn-txt">Buy password</span></button>
                 <p class="zp-sub mt-2.5 leading-relaxed"><i class="fa-solid fa-circle-info text-brand-500 mr-1"></i>After buying, open <b>Profile → My TCP Bot</b>. Your bot link and password are there. The timer starts when you log in for the first time.</p>
+            </div>
+        </section>
+
+        <!-- Guild Glory Section -->
+        <section id="guildglory-sec" class="hidden animate-fade-in pb-10">
+            <div class="vip-card p-3.5 flex items-center gap-3 mb-3 relative">
+                <button onclick="showSec('home')" class="text-slate-500 hover:text-brand-600 w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 absolute top-3.5 right-3.5"><i class="fas fa-times"></i></button>
+                <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-white text-2xl shadow-md" style="background:linear-gradient(135deg,#1d4ed8,#6366f1 55%,#22d3ee)"><i class="fa-solid fa-shield-halved"></i></div>
+                <div>
+                    <h3 class="font-bold text-slate-800 text-sm" id="gg-title">Guild Glory</h3>
+                    <p class="text-[11px] text-brand-600 font-semibold">Enter Guild ID • pick bots • done</p>
+                </div>
+            </div>
+            <div class="vip-card py-3 text-center mb-3"><div class="text-[10px] text-slate-500 font-semibold">Your balance</div><div class="text-base font-extrabold text-brand-600">BDT <span id="gg-balance">0</span></div></div>
+            <div class="vip-card p-3.5 mb-3">
+                <label class="text-[12px] font-extrabold text-slate-700 mb-1.5 block">Guild ID</label>
+                <input type="tel" inputmode="numeric" id="gg-guild" maxlength="20" placeholder="e.g. 3012345678" class="zp-input text-sm py-2.5 mb-3" oninput="this.value=this.value.replace(/\D/g,'')">
+                <div class="text-[12px] font-extrabold text-slate-700 mb-2">Choose a package</div>
+                <div id="gg-pk-grid" class="grid grid-cols-2 gap-2.5"><div class="col-span-2 text-center py-6 text-slate-400"><i class="fas fa-spinner fa-spin text-brand-600"></i></div></div>
+                <button id="gg-btn" onclick="ggBuy()" class="zp-btn w-full text-sm mt-4"><i class="fa-solid fa-shield-halved mr-1.5"></i><span>Send bots</span></button>
+                <p class="zp-sub mt-2.5 leading-relaxed" id="gg-note"><i class="fa-solid fa-circle-info text-brand-500 mr-1"></i>Double-check your Guild ID before paying. If the bots can't be delivered, your money is refunded automatically.</p>
             </div>
         </section>
 
@@ -1029,7 +1060,7 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
 
         <!-- Ads / Earn -->
         <section id="ads-sec" class="hidden animate-fade-in pb-28">
-            <button type="button" class="mhx-btn mhx-btn-primary" style="width:100%;margin-bottom:12px" onclick="wdOpen()"><i class="fa-solid fa-money-bill-transfer"></i> Withdraw Now</button>
+            <button type="button" class="nxg-btn nxg-btn-primary" style="width:100%;margin-bottom:12px" onclick="wdOpen()"><i class="fa-solid fa-money-bill-transfer"></i> Withdraw Now</button>
             <div class="lb-hero">
                 <span class="lb-chip"><i class="fa-solid fa-coins"></i> EARN MONEY</span>
                 <div class="lb-title" style="font-size:30px">Watch &amp; Earn</div>
@@ -1076,12 +1107,12 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
         <div class="w-full flex items-end justify-between px-4 pt-2 pb-3 bg-white/85 backdrop-blur-xl rounded-t-3xl border-t border-brand-50/80 shadow-xl">
             <button id="nav-home" onclick="showSec('home')" class="nav-item active-tab"><i class="fa-solid fa-house"></i><span>Home</span></button>
             <button id="nav-history" onclick="showSec('history')" class="nav-item"><i class="fa-solid fa-box"></i><span>Orders</span></button>
-            <button id="nav-ads" class="mhx-bolt" onclick="showSec('ads')" aria-label="Watch ads and earn money"><i class="fa-solid fa-coins"></i></button>
+            <button id="nav-ads" class="nxg-bolt" onclick="showSec('ads')" aria-label="Watch ads and earn money"><i class="fa-solid fa-coins"></i></button>
             <button id="nav-addmoney" onclick="showSec('addmoney')" class="nav-item"><i class="fa-solid fa-wallet"></i><span>Wallet</span></button>
             <button id="nav-account" onclick="showSec('account')" class="nav-item"><i class="fa-solid fa-user"></i><span>Profile</span></button>
         </div>
     </nav>
-    <button id="nav-leaders" type="button" onclick="showSec('leaders')" aria-label="Leaderboard"><i class="fa-solid fa-trophy"></i></button>
+    <button id="nav-leaders" data-feature="showLeaderboard" class="hidden" type="button" onclick="showSec('leaders')" aria-label="Leaderboard"><i class="fa-solid fa-trophy"></i></button>
     <a id="fab-support" href="#" target="_blank" rel="noopener"><i class="fa-solid fa-headset"></i></a>
 </div>
 
@@ -1118,7 +1149,7 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
         const sleep = ms => new Promise(r => setTimeout(r, ms));
         if (payRef) {
             window.history.replaceState({}, document.title, window.location.pathname);
-            mhxBusy('Verifying your payment…', 'Confirming with the gateway — this can take a few seconds.');
+            nxgBusy('Verifying your payment…', 'Confirming with the gateway — this can take a few seconds.');
             let started = false;
             auth.onAuthStateChanged(async (user) => {
                 if (!user || started) return;
@@ -1206,6 +1237,15 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
         });
     }
 
+    // ---- Feature switches (Admin -> Feature Controls). Hidden by default; the admin can switch each one back on. ----
+    function featOn(k) { return !!(generalSettings && generalSettings[k] === true); }
+    function applyFeatures() {
+        document.querySelectorAll('[data-feature]').forEach(el => el.classList.toggle('hidden', !featOn(el.dataset.feature)));
+        const ql = document.getElementById('quick-links');
+        if (ql) { ql.classList.toggle('grid-cols-3', featOn('showAppDownload')); ql.classList.toggle('grid-cols-2', !featOn('showAppDownload')); }
+        const sg = document.getElementById('svc-grid');
+        if (sg) { const vis = Array.from(sg.children).filter(c => !c.classList.contains('hidden')); Array.from(sg.children).forEach(c => c.classList.remove('col-span-2')); if (vis.length % 2 === 1) vis[vis.length - 1].classList.add('col-span-2'); }
+    }
     function loadGlobalSettings() {
         db.collection("settings").doc("general").onSnapshot((doc) => {
             if (doc.exists) {
@@ -1220,7 +1260,8 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
                 }
                 wireQuickLinks(generalSettings);
             }
-            try { if (window.mhxApplyTheme) mhxApplyTheme(doc.exists && doc.data().themeJson ? JSON.parse(doc.data().themeJson) : {}); } catch (e) {}
+            applyFeatures();
+            try { if (window.nxgApplyTheme) nxgApplyTheme(doc.exists && doc.data().themeJson ? JSON.parse(doc.data().themeJson) : {}); } catch (e) {}
         });
     }
 
@@ -1270,7 +1311,7 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
         provider.setCustomParameters({ prompt: 'select_account' });
         try {
             const result = await auth.signInWithPopup(provider);      // must be called straight from the click (no await before it)
-            mhxBusy('Signing you in…', 'Setting up your account.');
+            nxgBusy('Signing you in…', 'Setting up your account.');
             await googleAfter(result.user);
             Swal.close(); showSec('home');
         } catch (e) {
@@ -1290,7 +1331,7 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
     // finishes a Google login that used the redirect fallback (phones / strict browsers)
     auth.getRedirectResult().then((r) => {
         let wasRedirect = false; try { wasRedirect = sessionStorage.getItem('gRedirect') === '1'; sessionStorage.removeItem('gRedirect'); } catch (e) {}
-        if (r && r.user) { mhxBusy('Signing you in…', 'Setting up your account.'); return googleAfter(r.user).then(() => { Swal.close(); showSec('home'); }); }
+        if (r && r.user) { nxgBusy('Signing you in…', 'Setting up your account.'); return googleAfter(r.user).then(() => { Swal.close(); showSec('home'); }); }
         if (wasRedirect && !auth.currentUser) Swal.fire('লগইন সম্পূর্ণ হয়নি', 'Google থেকে ফিরে আসার পর লগইন সংরক্ষণ হয়নি। আপনার ব্রাউজার (Safari / Brave / Private mode) এই পদ্ধতি আটকে দিচ্ছে। Chrome-এ সাধারণ (non-private) ট্যাবে খুলে আবার চেষ্টা করুন।', 'warning');
     }).catch((e) => { if (e && e.code && e.code !== 'auth/no-auth-event') Swal.fire('Google login failed', googleErr(e), 'error'); });
 
@@ -1465,7 +1506,7 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
         if(!playerId && selectedGameType !== 'code') return Swal.fire('Heads up', 'Please enter the Player ID (UID)!', 'warning');
         if(!selectedProduct) return Swal.fire('Heads up', 'Please select a package!', 'warning');
         if (selectedPaymentMethod === 'instant') return startGateway(selectedProduct.price);
-        mhxBusy('Placing your order…', 'Securing your package & updating your wallet.');
+        nxgBusy('Placing your order…', 'Securing your package & updating your wallet.');
         try {
             const r = await api('/placeOrder', { gameId: selectedGameId, productId: selectedProduct.id, playerId: playerId, server: ffServer || '', promoCode: document.getElementById('order-promo').value.trim() });
             document.getElementById('order-promo').value=''; document.getElementById('order-promo-msg').innerText='';
@@ -1500,15 +1541,15 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
     try { const rp = new URLSearchParams(location.search).get('ref'); if (rp) { localStorage.setItem('pendingRef', rp.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 12)); } } catch (e) {}
     try { const pr = localStorage.getItem('pendingRef'), el = document.getElementById('reg-ref'); if (pr && el) el.value = pr; } catch (e) {}
     let myRef = null;
-    function mhxDevice() {   // anonymous device id (used by the server's anti-fraud check)
-        try { let d = localStorage.getItem('mhxDev'); if (!d) { d = (window.crypto && crypto.randomUUID ? crypto.randomUUID() : (Date.now().toString(36) + Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2))).replace(/-/g, ''); localStorage.setItem('mhxDev', d); } return d; } catch (e) { return ''; }
+    function nxgDevice() {   // anonymous device id (used by the server's anti-fraud check)
+        try { let d = localStorage.getItem('nxgDev'); if (!d) { d = (window.crypto && crypto.randomUUID ? crypto.randomUUID() : (Date.now().toString(36) + Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2))).replace(/-/g, ''); localStorage.setItem('nxgDev', d); } return d; } catch (e) { return ''; }
     }
     async function applyPendingRef() {
         let code = ''; try { code = (document.getElementById('reg-ref').value || localStorage.getItem('pendingRef') || ''); } catch (e) {}
         code = code.trim().toUpperCase(); if (!code) return '';
         try {
             currentUser = auth.currentUser || currentUser;
-            const rr = await api('/applyReferral', { code: code, device: mhxDevice() });
+            const rr = await api('/applyReferral', { code: code, device: nxgDevice() });
             return rr && rr.pending ? 'Referral code accepted ✅ — your friend’s bonus is added after a security check.' : 'Referral successful 🎉';
         } catch (e) { return 'Referral code: ' + e.message; }
         finally { try { localStorage.removeItem('pendingRef'); } catch (e) {} }
@@ -1516,7 +1557,7 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
     async function loadReferral() {
         if (!currentUser) return;
         try {
-            const r = await api('/getReferral', { device: mhxDevice() }); myRef = r;
+            const r = await api('/getReferral', { device: nxgDevice() }); myRef = r;
             document.getElementById('ref-code').innerText = r.code;
             document.getElementById('ref-count').innerText = r.count;
             document.getElementById('ref-earned').innerText = r.earned;
@@ -1537,7 +1578,7 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
         if (!uid) { Swal.fire('Heads up', 'Please enter the Player ID (UID) first!', 'warning'); return; }
         if (!/^\d{5,15}$/.test(uid)) { Swal.fire('Heads up', 'UID must contain numbers only', 'warning'); return; }
         if (!ffServer) { ffShake(); Swal.fire('Select a region', 'To check the UID, please select your game region (e.g. BD, PK, IND) from below first', 'warning'); return; }
-        ffOpenModal(`<div class="ffm-load"><div class="ffm-spin"></div><b class="mhx-lt">Checking your UID…</b><p>Fetching account details</p><div class="mhx-bar"><i></i></div></div>`, true);
+        ffOpenModal(`<div class="ffm-load"><div class="ffm-spin"></div><b class="nxg-lt">Checking your UID…</b><p>Fetching account details</p><div class="nxg-bar"><i></i></div></div>`, true);
         const ctl = new AbortController(), tm = setTimeout(() => ctl.abort(), 30000);
         const getJ = async (url, strict) => { const res = await fetch(url, { signal: ctl.signal }); let j = null; try { j = await res.json(); } catch (e) {} if (!j || (strict && !res.ok)) throw new Error('bad'); return j; };
         const q = encodeURIComponent(uid) + '&region=' + encodeURIComponent(ffServer) + '&server=' + encodeURIComponent(ffServer);
@@ -1662,12 +1703,15 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
     }
 
     function showSec(secId) {
-        if ((secId === 'history' || secId === 'account' || secId === 'addmoney' || secId === 'dailylike' || secId === 'autolike' || secId === 'tcp' || secId === 'api' || secId === 'idcode' || secId === 'ads') && !currentUser) {
+        if ((secId === 'history' || secId === 'account' || secId === 'addmoney' || secId === 'dailylike' || secId === 'autolike' || secId === 'tcp' || secId === 'guildglory' || secId === 'api' || secId === 'idcode' || secId === 'ads') && !currentUser) {
             showSec('auth');
             return;
         }
+        if (secId === 'leaders' && !featOn('showLeaderboard')) secId = 'home';
+        if (secId === 'tcp' && !featOn('showTcp')) secId = 'home';
+        if (secId === 'idsell' && !featOn('showIdSell')) secId = 'home';
         document.querySelectorAll('main section').forEach(s => s.classList.add('hidden'));
-        document.querySelectorAll('.nav-item,.mhx-bolt').forEach(n => n.classList.remove('active-tab'));
+        document.querySelectorAll('.nav-item,.nxg-bolt').forEach(n => n.classList.remove('active-tab'));
         document.getElementById(secId + '-sec').classList.remove('hidden');
         const navBtn = document.getElementById('nav-' + secId);
         if(navBtn) navBtn.classList.add('active-tab');
@@ -1677,6 +1721,7 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
         if(secId === 'dailylike') dlOpen();
         if(secId === 'autolike') alOpen();
         if(secId === 'tcp') tcpOpen();
+        if(secId === 'guildglory') ggOpen();
         if(secId === 'api') apiOpen();
         if(secId === 'idsell') idsOpen();
         if(secId === 'idcode') idcOpen();
@@ -1802,11 +1847,11 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
         if(!currentUser) { showSec('auth'); return; }
         const amount = forced ? parseInt(forced) : parseInt(document.getElementById('new-amount-input').value);
         if(!amount || amount < 10) { Swal.fire('Heads up', 'The minimum deposit is BDT 10', 'warning'); return; }
-        mhxBusy('Creating your payment link…', 'Securing your transaction with the payment gateway.');
+        nxgBusy('Creating your payment link…', 'Securing your transaction with the payment gateway.');
         try {
             const data = await api('/createPayment', { amount: amount, origin: window.location.origin, promoCode: depPromo ? depPromo.code : '' });
             if(!data.paymentUrl) throw new Error('Payment link not found');
-            await mhxDone('Your link is ready!', 'Taking you to the secure payment page…', 1200);
+            await nxgDone('Your link is ready!', 'Taking you to the secure payment page…', 1200);
             window.location.href = data.paymentUrl;
         } catch(err) { Swal.fire('Oops', err.message, 'error'); }
     }
@@ -1826,7 +1871,7 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
         const code = document.getElementById('profile-promo').value.trim();
         if (!currentUser) return showSec('auth');
         if (!code) return Swal.fire('Heads up', 'Please enter a promo code', 'warning');
-        mhxBusy('Checking your code…', 'Validating it with the server.');
+        nxgBusy('Checking your code…', 'Validating it with the server.');
         try {
             const r = await api('/redeemPromo', { code: code });
             document.getElementById('profile-promo').value = '';
@@ -2155,6 +2200,47 @@ function copySupportPin(btn) {
 })();
 
 
+// ================= GUILD GLORY =================
+let ggCfg = { enabled: true, packages: [], offMsg: '', title: 'Guild Glory', note: '' }, ggPkg = null, ggBusy = false, ggReqId = null;
+const ggPrice = p => (currentUser && userData && (userData.role === 'reseller' || userData.role === 'admin') && p.resellerPrice != null) ? p.resellerPrice : p.price;
+async function ggLoadCfg() {
+    try { const r = await fetch(BACKEND_URL + '/guildGloryInfo'); const j = await r.json(); if (r.ok && j.packages) ggCfg = { enabled: j.enabled !== false, packages: j.packages, offMsg: j.offMsg || '', title: j.title || 'Guild Glory', note: j.note || '' }; } catch (e) {}
+    const hp = document.getElementById('gg-home-price'); if (hp && ggCfg.packages.length) hp.innerText = Math.min.apply(null, ggCfg.packages.map(ggPrice));
+    ['gg-home-title', 'gg-title'].forEach(id => { const e = document.getElementById(id); if (e) e.innerText = ggCfg.title; });
+    const n = document.getElementById('gg-note'); if (n && ggCfg.note) n.innerText = ggCfg.note;
+    ggRenderPkgs();
+}
+function ggRenderPkgs() {
+    const box = document.getElementById('gg-pk-grid'); if (!box) return;
+    if (!ggCfg.packages.length) { box.innerHTML = '<div class="col-span-2 text-center py-6 text-slate-400 text-sm">No packages available right now</div>'; return; }
+    box.innerHTML = ggCfg.packages.map(p => `<div onclick="ggPick('${esc(p.id)}')" class="cursor-pointer rounded-2xl p-3 text-center border-2 ${ggPkg === p.id ? 'border-brand-600 bg-brand-50' : 'border-slate-200 bg-white'}"><div class="font-extrabold text-slate-800 text-sm">${esc(p.name)}</div>${p.desc ? '<div class="text-[10px] text-slate-500 mt-0.5">' + esc(p.desc) + '</div>' : ''}<div class="text-brand-600 font-extrabold text-base mt-0.5">BDT ${ggPrice(p)}</div></div>`).join('');
+}
+function ggPick(id) { ggPkg = id; ggRenderPkgs(); }
+function ggOpen() { const b = document.getElementById('gg-balance'); if (b) b.innerText = userBalance; ggLoadCfg(); }
+async function ggBuy() {
+    if (ggBusy) return;
+    if (!currentUser) { showSec('auth'); return; }
+    if (!ggCfg.enabled) { Swal.fire('Service paused', ggCfg.offMsg || 'Guild Glory is paused for a moment. Please try again later.', 'info'); return; }
+    const guild = (document.getElementById('gg-guild').value || '').replace(/\D/g, '');
+    if (guild.length < 5) { Swal.fire('Heads up', 'Please enter a valid Guild ID', 'warning'); return; }
+    const pkg = ggCfg.packages.find(p => p.id === ggPkg); if (!pkg) { Swal.fire('Heads up', 'Please choose a package', 'warning'); return; }
+    const price = ggPrice(pkg);
+    if (!(await checkBalance(price))) return;
+    const c = await Swal.fire({ title: 'Confirm', icon: 'question', showCancelButton: true, confirmButtonText: 'Pay BDT ' + price, cancelButtonText: 'Cancel',
+        html: `Guild ID: <b>${esc(guild)}</b><br>Package: <b>${esc(pkg.name)}</b><br>Price: <b>BDT ${price}</b>` });
+    if (!c.isConfirmed) return;
+    if (!ggReqId) ggReqId = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random()).replace(/[^A-Za-z0-9]/g, '').slice(0, 32);
+    ggBusy = true; const btn = document.getElementById('gg-btn'); btn.disabled = true; btn.style.opacity = '.6';
+    try {
+        const j = await api('/guildGloryBuy', { guildId: guild, packageId: pkg.id, reqId: ggReqId }); ggReqId = null;
+        if (j.ok) Swal.fire({ icon: 'success', title: 'Done! 🎉', html: `<b>${esc(pkg.name)}</b> sent to Guild <b>${esc(guild)}</b>.${j.orderNo ? '<br><span style="font-size:12px">Order: ' + esc(j.orderNo) + '</span>' : ''}` });
+        else Swal.fire({ icon: 'error', title: 'Not delivered', text: j.message || 'Please try again' });
+        if (typeof refreshUser === 'function') try { refreshUser(); } catch (e) {}
+    } catch (e) { Swal.fire('Couldn’t buy', e.message || 'Please try again', 'error'); }
+    finally { ggBusy = false; btn.disabled = false; btn.style.opacity = ''; }
+}
+window.addEventListener("load", () => { ggLoadCfg(); });
+
 // ================= TCP BOARD =================
 let tcpCfg = { enabled: true, packages: [], offMsg: '' }, tcpPkg = null, tcpBusy = false, tcpReqId = null;
 const tcpPrice = p => (currentUser && userData && (userData.role === 'reseller' || userData.role === 'admin') && p.resellerPrice != null) ? p.resellerPrice : p.price;
@@ -2203,7 +2289,7 @@ function tcpLeft(k, now) {
 }
 async function tcpMy() {
     if (!currentUser) { showSec('auth'); return; }
-    mhxBusy('Loading…', 'Fetching your TCP bots.');
+    nxgBusy('Loading…', 'Fetching your TCP bots.');
     let j; try { j = await api('/tcpMine', {}); } catch (e) { Swal.close(); Swal.fire('Error', e.message || 'Please try again', 'error'); return; }
     Swal.close();
     if (!j.keys.length) { const x = await Swal.fire({ icon: 'info', title: 'No TCP bot yet', text: 'You haven’t bought a TCP BOT password.', showCancelButton: true, confirmButtonText: 'See packages', cancelButtonText: 'Close' }); if (x.isConfirmed) showSec('tcp'); return; }
@@ -2218,9 +2304,9 @@ window.addEventListener('load', () => { tcpLoadCfg(); });
 const PROFILE_MENU = [
     { icon: 'fa-solid fa-headset', label: 'Support', run: () => { const a = document.getElementById('fab-support'); window.open(a ? a.href : NEXORA_CONFIG.SUPPORT_LINK, '_blank', 'noopener'); } },
     { icon: 'fa-solid fa-key', label: 'Get API', run: () => showSec('api') },
-    { icon: 'fa-solid fa-id-card', label: 'ID Code', run: () => showSec('idcode') },
+    { icon: 'fa-solid fa-id-card', label: 'ID Code', feat: 'showIdSell', run: () => showSec('idcode') },
     { icon: 'fa-solid fa-robot', label: 'Your Auto Like UID', run: () => alMy() },
-    { icon: 'fa-solid fa-satellite-dish', label: 'My TCP Bot', run: () => tcpMy() }
+    { icon: 'fa-solid fa-satellite-dish', label: 'My TCP Bot', feat: 'showTcp', run: () => tcpMy() }
 ];
 function closeProfileMenu() { const m = document.getElementById('profile-menu'); if (m) m.remove(); }
 function toggleProfileMenu(ev) {
@@ -2230,7 +2316,7 @@ function toggleProfileMenu(ev) {
     const m = document.createElement('div'); m.id = 'profile-menu';
     m.style.top = (r.bottom + 8) + 'px'; m.style.right = Math.max(12, window.innerWidth - r.right) + 'px';
     m.innerHTML = '<div class="pm-head"><b>' + esc(userData.name || 'User') + '</b><span>' + esc(userData.email || '') + '</span></div>' +
-        PROFILE_MENU.map((it, i) => '<button type="button" class="pm-item" data-i="' + i + '"><i class="' + it.icon + '"></i><span>' + esc(it.label) + '</span></button>').join('');
+        PROFILE_MENU.map((it, i) => (it.feat && !featOn(it.feat)) ? '' : '<button type="button" class="pm-item" data-i="' + i + '"><i class="' + it.icon + '"></i><span>' + esc(it.label) + '</span></button>').join('');
     m.addEventListener('click', e => { e.stopPropagation(); const b = e.target.closest('.pm-item'); if (!b) return; closeProfileMenu(); PROFILE_MENU[+b.dataset.i].run(); });
     document.body.appendChild(m);
 }
@@ -2356,7 +2442,7 @@ function lbRender(d) {
             '<div class="lb-mid"><div class="lb-nm">' + esc(r.name) + (r.mine ? '<span class="lb-you">YOU</span>' : '') + '</div><div class="lb-bar"><i style="width:' + w + '%"></i></div></div>' +
             '<div class="lb-amt">' + lbMoney(r.score) + '</div></div>';
     }
-    if (d.hasMore) h += '<div style="text-align:center;margin:14px 0 6px"><button class="mhx-btn mhx-btn-primary" id="lb-more" onclick="lbMore()">See more <i class="fa-solid fa-chevron-down" style="margin-left:6px"></i></button></div>';
+    if (d.hasMore) h += '<div style="text-align:center;margin:14px 0 6px"><button class="nxg-btn nxg-btn-primary" id="lb-more" onclick="lbMore()">See more <i class="fa-solid fa-chevron-down" style="margin-left:6px"></i></button></div>';
     box.innerHTML = h;
 }
 async function lbLoad(manual) {
@@ -2369,7 +2455,7 @@ async function lbLoad(manual) {
         const j = await r.json(); if (!r.ok || !j.ok) throw new Error(j.error || 'failed');
         lbData = j; lbAt = Date.now(); lbRender(j);
     } catch (e) {
-        if (!lbData) document.getElementById('lb-body').innerHTML = '<div class="lb-empty"><i class="fa-solid fa-wifi" style="font-size:30px;color:#67e8f9"></i><div style="margin:10px 0 14px">Couldn’t load the leaderboard.</div><button class="mhx-btn mhx-btn-primary" onclick="lbLoad(true)">Try again</button></div>';
+        if (!lbData) document.getElementById('lb-body').innerHTML = '<div class="lb-empty"><i class="fa-solid fa-wifi" style="font-size:30px;color:#67e8f9"></i><div style="margin:10px 0 14px">Couldn’t load the leaderboard.</div><button class="nxg-btn nxg-btn-primary" onclick="lbLoad(true)">Try again</button></div>';
         else if (manual) apiToast('error', 'Couldn’t refresh');
     } finally { clearTimeout(t); lbBusy = false; if (btn) setTimeout(() => btn.classList.remove('spin'), 400); }
 }
@@ -2390,39 +2476,39 @@ document.addEventListener('visibilitychange', () => { if (!document.hidden && lb
 (function () {   // user came back from a shortener:  /?ads=KEY  -> remember the key, tidy the address bar
     try {
         const p = new URLSearchParams(location.search), k = p.get('ads');
-        if (k) { localStorage.setItem('mhx_ads_key', k.replace(/[^A-Za-z0-9_-]/g, '').slice(0, 40)); p.delete('ads'); const q = p.toString(); history.replaceState(null, '', location.pathname + (q ? '?' + q : '') + location.hash); }
+        if (k) { localStorage.setItem('nxg_ads_key', k.replace(/[^A-Za-z0-9_-]/g, '').slice(0, 40)); p.delete('ads'); const q = p.toString(); history.replaceState(null, '', location.pathname + (q ? '?' + q : '') + location.hash); }
     } catch (e) {}
 })();
 let adsData = null, adsBusy = false, adsVis = null, adsBanDone = false, adsShowAll = false;
 function adsAfterAuth() {
-    let go = null; try { go = sessionStorage.getItem('mhx_go'); sessionStorage.removeItem('mhx_go'); } catch (e) {}
+    let go = null; try { go = sessionStorage.getItem('nxg_go'); sessionStorage.removeItem('nxg_go'); } catch (e) {}
     if (go && !/^(home|ads|auth)$/.test(go) && document.getElementById(go + '-sec')) showSec(go);
     adsPending();
 }
 async function adsPending() {
-    let k = null; try { k = localStorage.getItem('mhx_ads_key'); } catch (e) {}
+    let k = null; try { k = localStorage.getItem('nxg_ads_key'); } catch (e) {}
     if (!k || !currentUser || adsBusy) return;
-    adsBusy = true; try { localStorage.removeItem('mhx_ads_key'); } catch (e) {}
-    mhxBusy('Checking your step…', 'Please wait a moment…');
+    adsBusy = true; try { localStorage.removeItem('nxg_ads_key'); } catch (e) {}
+    nxgBusy('Checking your step…', 'Please wait a moment…');
     try {
         const j = await api('/adsComplete', { key: k });
         Swal.close();
         if (j.finished) adsShowAll = true;
         showSec('ads');
         if (j.finished) {
-            await Swal.fire({ icon: 'success', title: j.reward > 0 ? 'BDT ' + j.reward + ' added to your balance!' : 'All steps completed!', html: '<div class="mhx-sub">' + (j.reward > 0 ? 'Every step is done. The money is now in your main balance.' : 'Every step is done.') + '</div>', confirmButtonText: 'Awesome' });
+            await Swal.fire({ icon: 'success', title: j.reward > 0 ? 'BDT ' + j.reward + ' added to your balance!' : 'All steps completed!', html: '<div class="nxg-sub">' + (j.reward > 0 ? 'Every step is done. The money is now in your main balance.' : 'Every step is done.') + '</div>', confirmButtonText: 'Awesome' });
             adsShowAll = false; if (adsData) adsRender();
         } else apiToast('success', 'Step ' + j.done + ' of ' + j.total + ' completed ✓');
     } catch (e) { Swal.close(); showSec('ads'); Swal.fire('Oops', e.message, 'error'); }
     finally { adsBusy = false; }
 }
 // Ad network codes (loaded ONLY while the Ads page is open)
-const MHX_AD_SCRIPT = nxv(NEXORA_CONFIG.AD_SCRIPT_URL);
-const MHX_AD_BANNERS = (NEXORA_CONFIG.AD_BANNERS || []).map(nxv).filter(Boolean);
+const NXG_AD_SCRIPT = nxv(NEXORA_CONFIG.AD_SCRIPT_URL);
+const NXG_AD_BANNERS = (NEXORA_CONFIG.AD_BANNERS || []).map(nxv).filter(Boolean);
 function adsAdsense() {
     if (window.__gadsOn) return;
     window.__gadsOn = true;
-    const sc = document.createElement('script'); sc.async = true; sc.src = MHX_AD_SCRIPT; sc.setAttribute('data-cfasync', 'false');
+    const sc = document.createElement('script'); sc.async = true; sc.src = NXG_AD_SCRIPT; sc.setAttribute('data-cfasync', 'false');
     document.head.appendChild(sc);
 }
 function adsOpen() {
@@ -2435,7 +2521,7 @@ function adsClose(next) {
     if (adsVis) { document.removeEventListener('visibilitychange', adsVis); adsVis = null; }
     const bn = document.getElementById('ads-banners'); if (bn) bn.innerHTML = ''; adsBanDone = false;
     if (window.__gadsOn) {   // the ad script can't be unloaded -> reload so no ads ever show outside the Ads page
-        window.__gadsOn = false; try { sessionStorage.setItem('mhx_go', next || 'home'); } catch (e) {}
+        window.__gadsOn = false; try { sessionStorage.setItem('nxg_go', next || 'home'); } catch (e) {}
         location.reload();
     }
 }
@@ -2449,10 +2535,10 @@ async function adsLoad(quiet) {
         adsRender();
         if (adsData.enabled && adsData.codes) {
             adsAdsense();   // ad script starts only here: Ads page is open AND ads are switched on
-            if (!adsBanDone) { adsBanDone = true; adsBanners(MHX_AD_BANNERS); }
+            if (!adsBanDone) { adsBanDone = true; adsBanners(NXG_AD_BANNERS); }
         }
     } catch (e) {
-        if (!quiet || !adsData) box.innerHTML = '<div class="lb-empty"><i class="fa-solid fa-wifi" style="font-size:30px;color:#67e8f9"></i><div style="margin:10px 0 14px">' + esc(e.message) + '</div><button class="mhx-btn mhx-btn-primary" onclick="adsLoad(false)">Try again</button></div>';
+        if (!quiet || !adsData) box.innerHTML = '<div class="lb-empty"><i class="fa-solid fa-wifi" style="font-size:30px;color:#67e8f9"></i><div style="margin:10px 0 14px">' + esc(e.message) + '</div><button class="nxg-btn nxg-btn-primary" onclick="adsLoad(false)">Try again</button></div>';
     }
 }
 function adsRender() {
@@ -2483,11 +2569,11 @@ function wdPick(m) { wdMethod = m; document.querySelectorAll('.wd-m').forEach(b 
 async function wdOpen() {
     const bal = Number((userData && userData.balance) || 0);
     let inf; try { inf = await api('/withdrawInfo', {}); } catch (e) { return Swal.fire('Oops', e.message, 'error'); }
-    if (!inf.open) return Swal.fire({ icon: 'warning', title: 'Withdraw বন্ধ আছে', text: inf.message, customClass: { popup: 'mhx-pop' }, confirmButtonText: 'OK' });
-    if (bal < WD_MIN) return Swal.fire({ icon: 'error', title: 'Request Cancelled', text: 'মিনিমাম উইথড্র ৳' + WD_MIN + '। আপনার ব্যালেন্স ৳' + bal + ' — ' + WD_MIN + ' টাকার কম হলে উইথড্র রিকোয়েস্ট যাবে না।', customClass: { popup: 'mhx-pop' }, confirmButtonText: 'OK' });
+    if (!inf.open) return Swal.fire({ icon: 'warning', title: 'Withdraw বন্ধ আছে', text: inf.message, customClass: { popup: 'nxg-pop' }, confirmButtonText: 'OK' });
+    if (bal < WD_MIN) return Swal.fire({ icon: 'error', title: 'Request Cancelled', text: 'মিনিমাম উইথড্র ৳' + WD_MIN + '। আপনার ব্যালেন্স ৳' + bal + ' — ' + WD_MIN + ' টাকার কম হলে উইথড্র রিকোয়েস্ট যাবে না।', customClass: { popup: 'nxg-pop' }, confirmButtonText: 'OK' });
     wdMethod = '';
     const r = await Swal.fire({
-        title: 'Withdraw', customClass: { popup: 'mhx-pop' }, showCancelButton: true, confirmButtonText: 'Confirm', focusConfirm: false, showLoaderOnConfirm: true, allowOutsideClick: () => !Swal.isLoading(),
+        title: 'Withdraw', customClass: { popup: 'nxg-pop' }, showCancelButton: true, confirmButtonText: 'Confirm', focusConfirm: false, showLoaderOnConfirm: true, allowOutsideClick: () => !Swal.isLoading(),
         html: '<div style="font-size:13px;font-weight:700;color:#8fa8c8;margin-bottom:10px">Balance: BDT ' + bal + ' • Minimum: BDT ' + WD_MIN + '</div>' +
             '<div style="display:flex;gap:10px"><button type="button" class="wd-m" data-m="bKash" onclick="wdPick(\'bKash\')">bKash</button><button type="button" class="wd-m" data-m="Nagad" onclick="wdPick(\'Nagad\')">Nagad</button></div>' +
             '<input id="wd-amt" class="swal2-input" type="number" inputmode="numeric" min="' + WD_MIN + '" placeholder="Enter your amount">' +
@@ -2506,7 +2592,7 @@ async function wdOpen() {
     });
     if (!r.isConfirmed || !r.value) return;
     const v = r.value;
-    await Swal.fire({ icon: 'success', title: 'Request sent', customClass: { popup: 'mhx-pop' }, confirmButtonText: 'OK',
+    await Swal.fire({ icon: 'success', title: 'Request sent', customClass: { popup: 'nxg-pop' }, confirmButtonText: 'OK',
         html: '<div style="font-weight:700;color:#8fa8c8">BDT ' + v.amount + ' • ' + esc(v.method) + ' • ' + esc(v.number) + '</div><div style="margin:14px 0 6px;font-size:12px;font-weight:700;color:#8fa8c8">Your withdraw code (keep it):</div>' +
             '<div id="wd-code" style="font-size:22px;font-weight:900;letter-spacing:1px;color:#0891b2">' + esc(v.code) + '</div>' +
             '<button type="button" class="ads-go" style="margin-top:12px" onclick="navigator.clipboard&&navigator.clipboard.writeText(\'' + esc(v.code) + '\');this.textContent=\'Copied\'">Copy code</button>' });
@@ -2848,7 +2934,7 @@ async function alBuy() {
 // ---- profile menu: "Your Auto Like UID" ----
 async function alMy() {
     if (!currentUser) { showSec('auth'); return; }
-    mhxBusy('Checking your Auto Like…', 'Fetching your subscription details.');
+    nxgBusy('Checking your Auto Like…', 'Fetching your subscription details.');
     let j; try { j = await api('/autoLikeMine', {}); } catch (e) { Swal.fire('Oops', e.message, 'error'); return; }
     alMine = j.subscription; if (alCfg) alCfg.changeFee = j.changeFee;
     const m = j.subscription;
@@ -2886,7 +2972,7 @@ async function alChangeUid(m) {
         }
     });
     if (!x.isConfirmed) return;
-    mhxBusy('Updating your UID…', 'Auto Like will use the new UID from now on.');
+    nxgBusy('Updating your UID…', 'Auto Like will use the new UID from now on.');
     try {
         const r = await api('/autoLikeChangeUid', x.value);
         Swal.fire({ icon: 'success', title: 'UID changed', html: `Auto Like will now go to <b>${esc(r.uid)}</b> (${esc(r.region)}).` });
@@ -2895,7 +2981,7 @@ async function alChangeUid(m) {
 }
 </script>
 
-<div id="mhx-maint" class="hidden" role="alertdialog" aria-live="polite">
+<div id="nxg-maint" class="hidden" role="alertdialog" aria-live="polite">
     <div class="mt-card">
         <div class="mt-ic"><i class="fa-solid fa-screwdriver-wrench"></i></div>
         <h2 id="mt-title">Website Maintenance</h2>
@@ -2903,14 +2989,14 @@ async function alChangeUid(m) {
         <div class="mt-bar"><i></i></div>
     </div>
 </div>
-<div id="mhx-maint-admin" class="hidden"><i class="fa-solid fa-screwdriver-wrench mr-1"></i>Maintenance is ON — only admins can see the site</div>
+<div id="nxg-maint-admin" class="hidden"><i class="fa-solid fa-screwdriver-wrench mr-1"></i>Maintenance is ON — only admins can see the site</div>
 
 <script>
 /* ================= MAINTENANCE MODE (set from Admin > Maintenance) ================= */
-function mhxMaintCheck() {
+function nxgMaintCheck() {
     const g = (typeof generalSettings === 'object' && generalSettings) || {};
     const on = !!g.maintenance, isAdmin = !!(userData && userData.role === 'admin');
-    const ov = document.getElementById('mhx-maint'), pill = document.getElementById('mhx-maint-admin');
+    const ov = document.getElementById('nxg-maint'), pill = document.getElementById('nxg-maint-admin');
     if (!ov) return;
     const show = on && !isAdmin;
     if (show) {
@@ -2922,7 +3008,7 @@ function mhxMaintCheck() {
     pill.classList.toggle('hidden', !(on && isAdmin));
     document.documentElement.style.overflow = show ? 'hidden' : '';
 }
-setInterval(mhxMaintCheck, 1200); mhxMaintCheck();
+setInterval(nxgMaintCheck, 1200); nxgMaintCheck();
 
 /* ================= ID SELL ================= */
 let idsItems = [], idsLoading = false;
@@ -2943,7 +3029,7 @@ function idsChips(it) {
     return h;
 }
 function idsClosedInfo(it) {
-    Swal.fire({ icon: 'info', title: 'Closed', html: '<div class="mhx-sub" style="font-size:1rem;font-weight:700;color:#be123c">' + esc(it.closedMsg || 'This ID has already been sold.') + '</div>', confirmButtonText: 'OK' });
+    Swal.fire({ icon: 'info', title: 'Closed', html: '<div class="nxg-sub" style="font-size:1rem;font-weight:700;color:#be123c">' + esc(it.closedMsg || 'This ID has already been sold.') + '</div>', confirmButtonText: 'OK' });
 }
 function idsRender() {
     const box = document.getElementById('ids-list'); if (!box) return;
@@ -3019,12 +3105,12 @@ async function idsBuy(i) {
     if (it.closed) { idsClosedInfo(it); return; }
     if (!currentUser) { showSec('auth'); return; }
     const bal = Math.floor(Number(userData && userData.balance) || 0);
-    const r = await Swal.fire({ icon: 'question', title: 'Buy this ID?', html: '<div class="mhx-sub"><b>' + esc(it.title) + '</b><br>Price: <b>BDT ' + esc(it.price) + '</b><br>Your balance: BDT ' + bal + '</div>', showCancelButton: true, confirmButtonText: 'Buy for BDT ' + it.price, cancelButtonText: 'Cancel' });
+    const r = await Swal.fire({ icon: 'question', title: 'Buy this ID?', html: '<div class="nxg-sub"><b>' + esc(it.title) + '</b><br>Price: <b>BDT ' + esc(it.price) + '</b><br>Your balance: BDT ' + bal + '</div>', showCancelButton: true, confirmButtonText: 'Buy for BDT ' + it.price, cancelButtonText: 'Cancel' });
     if (!r.isConfirmed) return;
-    mhxBusy('Processing your order…', 'Please do not close this page.');
+    nxgBusy('Processing your order…', 'Please do not close this page.');
     try {
         const j = await api('/buyId', { listingId: it.id });
-        const x = await Swal.fire({ icon: 'success', title: 'Purchase complete!', html: '<div class="mhx-sub">Your ID code:</div><div class="api-keybox" style="margin-top:10px"><span id="ids-code-txt">' + esc(j.code) + '</span><button type="button" onclick="idsCopyCode(this)"><i class="fa-regular fa-copy"></i></button></div><div class="mhx-sub" style="margin-top:12px">Open <b>Profile menu › ID Code</b>, paste this code and tap <b>Get Your ID</b>.</div>', showCancelButton: true, confirmButtonText: 'Open ID Code', cancelButtonText: 'Close', allowOutsideClick: false });
+        const x = await Swal.fire({ icon: 'success', title: 'Purchase complete!', html: '<div class="nxg-sub">Your ID code:</div><div class="api-keybox" style="margin-top:10px"><span id="ids-code-txt">' + esc(j.code) + '</span><button type="button" onclick="idsCopyCode(this)"><i class="fa-regular fa-copy"></i></button></div><div class="nxg-sub" style="margin-top:12px">Open <b>Profile menu › ID Code</b>, paste this code and tap <b>Get Your ID</b>.</div>', showCancelButton: true, confirmButtonText: 'Open ID Code', cancelButtonText: 'Close', allowOutsideClick: false });
         idsOpen();
         if (x.isConfirmed) { showSec('idcode'); const inp = document.getElementById('idc-input'); if (inp) inp.value = j.code; }
     } catch (e) { Swal.fire({ icon: 'error', title: 'Couldn’t buy', text: e.message }); idsOpen(); }

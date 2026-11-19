@@ -166,6 +166,56 @@ window.NEXORA_CONFIG = {
         #main-content > div { -webkit-overflow-scrolling: touch; overscroll-behavior: contain; padding-bottom: 6rem !important; }
     </style>
 <style>body{background:radial-gradient(90% 42% at 10% -6%,rgba(34,211,238,.07),transparent 62%),radial-gradient(70% 38% at 100% 6%,rgba(59,130,246,.06),transparent 60%),#070d1f!important;background-attachment:fixed}</style>
+<style id="nxg-admin-skin">
+/* ===== NEXORA GAMING — modern admin skin (matches the website: cyan/blue brand, rounded glass cards) ===== */
+:root{--nx-1:#22d3ee;--nx-2:#3b82f6;--nx-grad:linear-gradient(135deg,#06b6d4,#3b82f6 60%,#6366f1);--nx-line:rgba(148,197,255,.14);--nx-card:rgba(15,27,56,.72)}
+body{letter-spacing:.005em}
+.card{background:var(--nx-card)!important;border:1px solid var(--nx-line);border-radius:20px!important;padding:24px;backdrop-filter:blur(10px);box-shadow:0 10px 30px -12px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.04)!important;transition:transform .2s,border-color .2s}
+.card:hover{border-color:rgba(34,211,238,.28)}
+.flat-input{background:rgba(7,13,31,.75)!important;border:1px solid var(--nx-line)!important;border-radius:12px!important;padding:11px 14px!important;font-size:.92rem}
+.flat-input:focus{border-color:var(--nx-1)!important;box-shadow:0 0 0 3px rgba(34,211,238,.15)}
+select.flat-input option{background:#0d1730}
+.flat-btn{background:var(--nx-grad)!important;border-radius:12px!important;box-shadow:0 8px 20px -8px rgba(34,211,238,.55);transition:transform .15s,filter .15s}
+.flat-btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.flat-btn:active{transform:scale(.98)}
+.flat-btn-danger{background:linear-gradient(135deg,#ef4444,#be123c)!important;box-shadow:0 8px 20px -8px rgba(239,68,68,.5)}
+.flat-btn-outline{background:transparent!important;box-shadow:none;border:1px solid var(--nx-1)!important;color:var(--nx-1)!important}
+.flat-btn-outline:hover{background:rgba(34,211,238,.12)!important}
+.flat-table-container{background:var(--nx-card)!important;border:1px solid var(--nx-line);border-radius:18px!important}
+.flat-table th{background:rgba(34,211,238,.07)!important;color:#7dd3fc!important;font-size:.72rem!important;padding:13px 16px!important}
+.flat-table td{padding:13px 16px!important;border-bottom:1px solid var(--nx-line)!important}
+.flat-table tr:hover td{background:rgba(34,211,238,.05)!important}
+#sidebar{background:linear-gradient(180deg,#0b1531,#08102a)!important;border-right:1px solid var(--nx-line)!important}
+#sidebar h1{background:var(--nx-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-size:1.45rem}
+#sidebar h1 span{-webkit-text-fill-color:#fff}
+#sidebar>div:first-child{padding:22px!important;border-bottom:1px solid var(--nx-line)!important}
+.nav-group{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5b7aa6;margin:16px 24px 4px}
+.nav-link{margin:2px 12px!important;border-radius:12px!important;padding:10px 12px!important;font-size:.88rem;color:#9fb4d3!important;position:relative}
+.nav-link i{width:2rem!important;height:2rem;display:inline-flex;align-items:center;justify-content:center;border-radius:10px;background:rgba(148,197,255,.07);margin-right:8px;font-size:.85rem;transition:all .2s}
+.nav-link:hover:not(.active){background:rgba(34,211,238,.08)!important;color:#e6f6ff!important}
+.nav-link:hover:not(.active) i{background:rgba(34,211,238,.16);color:var(--nx-1)}
+.nav-link.active{background:linear-gradient(90deg,rgba(34,211,238,.2),rgba(59,130,246,.1))!important;color:#fff!important;box-shadow:inset 3px 0 0 var(--nx-1)!important}
+.nav-link.active i{background:var(--nx-grad);color:#fff;box-shadow:0 6px 14px -4px rgba(34,211,238,.6)}
+#main-content>header{background:rgba(11,21,49,.78)!important;backdrop-filter:blur(14px);border-bottom:1px solid var(--nx-line)!important}
+#page-title{background:linear-gradient(90deg,#fff,#a5e9ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+#main-content>header .bg-orange-500.rounded-full{background:var(--nx-grad)!important;box-shadow:0 6px 16px -4px rgba(34,211,238,.6)}
+#login-modal{background:radial-gradient(80% 60% at 50% 0%,rgba(34,211,238,.18),transparent 60%),#070d1f!important}
+#login-modal .card{max-width:26rem;padding:36px 30px}
+#login-modal h2{background:var(--nx-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-size:1.7rem!important}
+.view-section{animation:nxIn .25s ease}
+@keyframes nxIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+#view-dashboard .card{position:relative;overflow:hidden}
+#view-dashboard .card:after{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;border-radius:50%;background:var(--nx-grad);opacity:.08}
+.ft-row{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--nx-line);border-radius:16px;background:rgba(7,13,31,.5);cursor:pointer}
+.ft-ic{width:40px;height:40px;border-radius:12px;background:var(--nx-grad);display:flex;align-items:center;justify-content:center;color:#fff}
+.ft-sw{appearance:none;-webkit-appearance:none;width:46px;height:26px;border-radius:99px;background:#1c3557;position:relative;cursor:pointer;transition:background .2s;flex-shrink:0}
+.ft-sw:after{content:"";position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .2s}
+.ft-sw:checked{background:linear-gradient(135deg,#06b6d4,#3b82f6)}
+.ft-sw:checked:after{transform:translateX(20px)}
+.pill{display:inline-block;padding:2px 10px;border-radius:99px;font-size:.7rem;font-weight:700;background:rgba(148,163,184,.15);color:#cbd5e1;text-transform:uppercase}
+.pill-ok{background:rgba(16,185,129,.15);color:#34d399}.pill-bad{background:rgba(239,68,68,.15);color:#f87171}
+::-webkit-scrollbar-thumb{background:linear-gradient(#22d3ee,#3b82f6)!important}
+</style>
 </head>
 <body class="flex h-screen overflow-hidden">
 
@@ -173,9 +223,13 @@ window.NEXORA_CONFIG = {
         <div class="spinner"></div>
     </div>
 
+    <div id="nxg-signin-chip" style="display:none;position:fixed;right:16px;bottom:16px;z-index:60;align-items:center;gap:10px;padding:10px 14px;border-radius:16px;background:#0d1730;border:1px solid rgba(34,211,238,.4);box-shadow:0 10px 30px rgba(0,0,0,.5)">
+        <span class="text-xs text-gray-300">Not signed in — data won't load</span>
+        <button onclick="loginAdmin()" class="flat-btn !py-1.5 !px-3 text-xs"><i class="fab fa-google mr-1"></i>Sign in</button>
+    </div>
     <div id="login-modal" class="fixed inset-0 bg-dark-bg z-50 flex items-center justify-center p-4">
         <div class="card w-full max-w-md border border-dark-border">
-            <h2 class="text-3xl font-bold text-orange-500 mb-8 text-center tracking-wider">MHX ADMIN</h2>
+            <h2 class="text-3xl font-bold text-orange-500 mb-8 text-center tracking-wider">NEXORA GAMING ADMIN</h2>
             <button onclick="loginAdmin()" class="flat-btn w-full text-lg flex items-center justify-center gap-3"><svg width="22" height="22" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17.5z"/><path fill="#FBBC05" d="M10.5 28.7A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.2.8-4.7l-7.9-6.1A24 24 0 0 0 0 24c0 3.9.9 7.5 2.6 10.8l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.9 2.3-8.4 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>Google দিয়ে লগইন</button>
         </div>
     </div>
@@ -190,6 +244,7 @@ window.NEXORA_CONFIG = {
             </button>
         </div>
         <nav class="flex-1 overflow-y-auto py-6">
+            <div class="nav-group">Overview</div>
             <a href="#" onclick="switchView('dashboard')" id="nav-dashboard" class="nav-link active flex items-center px-4 py-3">
                 <i class="fas fa-chart-line w-8 text-center"></i> Dashboard
             </a>
@@ -199,6 +254,7 @@ window.NEXORA_CONFIG = {
             <a href="#" onclick="switchView('theme');return false" id="nav-theme" class="nav-link flex items-center px-4 py-3">
                 <i class="fas fa-palette w-8 text-center"></i> Theme &amp; Colors
             </a>
+            <a href="#" onclick="switchView('features');return false" id="nav-features" class="nav-link flex items-center px-4 py-3"><i class="fas fa-toggle-on w-8 text-center"></i> Feature Controls</a>
             <a href="#" onclick="switchView('idsell');return false" id="nav-idsell" class="nav-link flex items-center px-4 py-3">
                 <i class="fas fa-id-card w-8 text-center"></i> ID Sell
             </a>
@@ -214,6 +270,7 @@ window.NEXORA_CONFIG = {
             <a href="#" onclick="switchView('antifraud');return false" id="nav-antifraud" class="nav-link flex items-center px-4 py-3">
                 <i class="fas fa-user-shield w-8 text-center"></i> Anti-Fraud <span id="af-nav-badge" class="ml-2 px-2 py-0.5 rounded-full text-xs font-bold hidden" style="background:#dc2626;color:#fff"></span>
             </a>
+            <div class="nav-group">Store</div>
             <a href="#" onclick="switchView('categories')" id="nav-categories" class="nav-link flex items-center px-4 py-3">
                 <i class="fas fa-tags w-8 text-center"></i> Categories
             </a>
@@ -239,11 +296,14 @@ window.NEXORA_CONFIG = {
             <a href="#" onclick="switchView('banners')" id="nav-banners" class="nav-link flex items-center px-4 py-3">
                 <i class="fas fa-image w-8 text-center"></i> Banners
             </a>
+            <div class="nav-group">Services</div>
             <a href="#" onclick="switchView('apikeys');return false" id="nav-apikeys" class="nav-link flex items-center px-4 py-3"><i class="fas fa-key w-8 text-center"></i> API Keys</a>
             <a href="#" onclick="switchView('dailylike');return false" id="nav-dailylike" class="nav-link flex items-center px-4 py-3"><i class="fas fa-fire w-8 text-center"></i> Daily Like Price</a>
             <a href="#" onclick="switchView('autolike');return false" id="nav-autolike" class="nav-link flex items-center px-4 py-3"><i class="fas fa-robot w-8 text-center"></i> Auto Like</a>
+            <a href="#" onclick="switchView('guildglory');return false" id="nav-guildglory" class="nav-link flex items-center px-4 py-3"><i class="fas fa-shield-halved w-8 text-center"></i> Guild Glory</a>
             <a href="#" onclick="switchView('tcp');return false" id="nav-tcp" class="nav-link flex items-center px-4 py-3"><i class="fas fa-satellite-dish w-8 text-center"></i> TCP BOT</a>
             <a href="#" onclick="switchView('ads');return false" id="nav-ads" class="nav-link flex items-center px-4 py-3"><i class="fas fa-gift w-8 text-center"></i> Ads / Earn</a>
+            <div class="nav-group">Marketing &amp; Tools</div>
             <a href="#" onclick="switchView('notices')" id="nav-notices" class="nav-link flex items-center px-4 py-3"><i class="fas fa-bullhorn w-8 text-center"></i> Notifications</a>
             <a href="#" onclick="switchView('promos')" id="nav-promos" class="nav-link flex items-center px-4 py-3"><i class="fas fa-ticket-alt w-8 text-center"></i> Promo Codes</a>
             <a href="#" onclick="openPayments();return false" class="nav-link flex items-center px-4 py-3"><i class="fas fa-receipt w-8 text-center"></i> Payments Log</a>
@@ -976,6 +1036,55 @@ window.NEXORA_CONFIG = {
                 <button onclick="adsSave()" class="px-6 py-3 rounded-lg bg-orange-500 text-white font-bold"><i class="fas fa-save mr-2"></i>Save সব সেটিংস</button>
             </div>
 
+            <div id="view-features" class="view-section hidden">
+                <div class="card max-w-3xl">
+                    <h3 class="text-xl font-bold text-orange-500 mb-1"><i class="fas fa-toggle-on mr-2"></i>Feature Controls</h3>
+                    <p class="text-xs text-gray-400 mb-5">ওয়েবসাইটের কোন অপশন দেখা যাবে তা এখান থেকে চালু/বন্ধ করুন। বন্ধ করলে ডাটা মুছে যায় না — আবার চালু করলেই ফিরে আসবে।</p>
+                    <div class="space-y-3" id="ft-list"></div>
+                    <button onclick="ftSave()" class="flat-btn mt-5"><i class="fas fa-save mr-2"></i>Save</button>
+                    <p class="text-xs text-gray-500 mt-3">Guild Glory চালু/বন্ধ করতে Guild Glory পেজ ব্যবহার করুন।</p>
+                </div>
+            </div>
+
+            <div id="view-guildglory" class="view-section hidden">
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 md:gap-8 mb-6">
+                    <div class="card">
+                        <h3 class="text-xl font-bold text-orange-500 mb-4 pb-3 border-b border-dark-border"><i class="fas fa-plug mr-2"></i>Guild Glory API</h3>
+                        <div class="space-y-4">
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" id="gg-enabled" class="w-5 h-5 accent-orange-500 rounded" checked><span class="text-sm font-bold text-white">Guild Glory বিক্রি চালু</span></label>
+                            <div><label class="block text-sm text-gray-400 mb-2">API URL <span class="text-gray-500">(চাইলে {guild_id} {bots} {key} ব্যবহার করুন)</span></label><input type="text" id="gg-api-url" class="flat-input" placeholder="https://example.com/api/guild?key={key}&guild={guild_id}&bots={bots}"></div>
+                            <div><label class="block text-sm text-gray-400 mb-2">API Key <span id="gg-key-hint" class="text-gray-500"></span></label><input type="password" id="gg-api-key" class="flat-input" autocomplete="new-password" placeholder="নতুন key বসাতে এখানে পেস্ট করুন (খালি = আগেরটাই থাকবে)"><label class="text-xs text-gray-400 flex items-center gap-2 mt-2"><input type="checkbox" id="gg-clear-key">Key মুছে ফেলুন</label></div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div><label class="block text-sm text-gray-400 mb-2">Method</label><select id="gg-method" class="flat-input"><option>GET</option><option>POST</option></select></div>
+                                <div><label class="block text-sm text-gray-400 mb-2">Key Header (ঐচ্ছিক)</label><input type="text" id="gg-keyheader" class="flat-input" placeholder="X-API-KEY"></div>
+                                <div><label class="block text-sm text-gray-400 mb-2">Guild ID param</label><input type="text" id="gg-p-guild" class="flat-input" placeholder="guild_id"></div>
+                                <div><label class="block text-sm text-gray-400 mb-2">Bots param</label><input type="text" id="gg-p-bots" class="flat-input" placeholder="bots"></div>
+                                <div><label class="block text-sm text-gray-400 mb-2">Key param</label><input type="text" id="gg-p-key" class="flat-input" placeholder="key"></div>
+                            </div>
+                            <p class="text-xs text-gray-500">URL-এ {guild_id}/{bots}/{key} না থাকলে উপরের param নামে অটো পাঠানো হবে। API key কখনো ইউজারের কাছে যায় না।</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 class="text-xl font-bold text-orange-500 mb-4 pb-3 border-b border-dark-border"><i class="fas fa-sliders-h mr-2"></i>Display &amp; Packages</h3>
+                        <div class="space-y-4">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div><label class="block text-sm text-gray-400 mb-2">নাম (হোমে দেখাবে)</label><input type="text" id="gg-title" class="flat-input" placeholder="Guild Glory"></div>
+                                <div><label class="block text-sm text-gray-400 mb-2">বন্ধ থাকলে মেসেজ</label><input type="text" id="gg-off" class="flat-input"></div>
+                            </div>
+                            <div><label class="block text-sm text-gray-400 mb-2">নোট (ইউজার পেজে নিচে দেখাবে, ঐচ্ছিক)</label><input type="text" id="gg-note" class="flat-input"></div>
+                        </div>
+                        <h4 class="text-lg font-bold text-orange-500 mt-6 mb-3">Packages (বট ও দাম)</h4>
+                        <div class="grid grid-cols-12 gap-2 text-[11px] text-gray-500 mb-1"><span class="col-span-3">নাম</span><span class="col-span-2">বট</span><span class="col-span-2">দাম ৳</span><span class="col-span-2">রিসেলার</span><span class="col-span-3">চালু</span></div>
+                        <div id="gg-pk-rows" class="space-y-2"></div>
+                        <div class="flex gap-3 mt-3"><button onclick="ggAddRow()" class="px-4 py-2 rounded-lg bg-dark-border text-white text-sm font-bold">+ Package</button><button onclick="ggSaveCfg()" class="flat-btn !py-2 text-sm">Save</button></div>
+                    </div>
+                </div>
+                <div class="card mb-6">
+                    <div class="flex items-center justify-between mb-4"><h3 class="text-xl font-bold text-orange-500"><i class="fas fa-list mr-2"></i>সাম্প্রতিক অর্ডার</h3><button onclick="ggLoadOrders()" class="px-3 py-1.5 rounded-lg bg-dark-border text-white text-xs font-bold">Refresh</button></div>
+                    <div class="flat-table-container"><table class="flat-table"><thead><tr><th>Guild ID</th><th>Package</th><th>User</th><th>Price</th><th>Status</th><th>API reply</th></tr></thead><tbody id="gg-orders"></tbody></table></div>
+                </div>
+            </div>
+
             <div id="view-tcp" class="view-section hidden">
                 <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 md:gap-8 mb-6">
                     <div class="card">
@@ -1102,10 +1211,14 @@ window.NEXORA_CONFIG = {
                 document.getElementById('main-content').classList.remove('hidden');
                 loadDashboardData();
             } else {
-                document.getElementById('login-modal').style.display = 'flex';
-                document.getElementById('sidebar').classList.add('hidden');
-                document.getElementById('main-content').classList.add('hidden');
+                // No full-screen login any more: the panel opens directly. Data only loads once a Google admin session exists,
+                // so a small "Sign in" chip is shown instead (the server/Firestore still require a real admin login).
+                document.getElementById('login-modal').style.display = 'none';
+                document.getElementById('sidebar').classList.remove('hidden');
+                document.getElementById('main-content').classList.remove('hidden');
+                const chip = document.getElementById('nxg-signin-chip'); if (chip) chip.style.display = 'flex';
             }
+            const chip2 = document.getElementById('nxg-signin-chip'); if (chip2 && user) chip2.style.display = 'none';
         });
 
         function loginAdmin() {
@@ -1167,7 +1280,9 @@ window.NEXORA_CONFIG = {
                 maintenance: "Website Maintenance",
                 referral: "Referral Settings",
                 withdraw: "Withdraw Requests",
-                antifraud: "Anti-Fraud & Auto-Ban"
+                antifraud: "Anti-Fraud & Auto-Ban",
+                features: "Feature Controls",
+                guildglory: "Guild Glory"
             };
             
             const pageTitleEl = document.getElementById('page-title');
@@ -1208,6 +1323,8 @@ window.NEXORA_CONFIG = {
             if(viewId === 'promos') loadPromos();
             if(viewId === 'autolike') loadAutoLike();
             if(viewId === 'tcp') tcpLoadAll();
+            if(viewId === 'guildglory') ggLoadAll();
+            if(viewId === 'features') ftLoad();
             if(viewId === 'ads') adsLoadAll();
         }
 
@@ -2047,7 +2164,7 @@ window.NEXORA_CONFIG = {
 </script>
 <script>
 // ===== API KEY MANAGEMENT (admin) =====
-const MHX_API_BACKEND = NEXORA_CONFIG.BACKEND_URL;
+const NXG_API_BACKEND = NEXORA_CONFIG.BACKEND_URL;
 let akData = { keys: [], logs: [], settings: {}, stats: {} };
 const akEsc = t => String(t == null ? '' : t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const akTime = iso => { const d = new Date(iso); return (!iso || isNaN(d)) ? '—' : d.toLocaleString(); };
@@ -2056,7 +2173,7 @@ async function akCall(action, body) {
     const user = auth.currentUser; if (!user) throw new Error('Login required');
     const tk = await user.getIdToken(), ctl = new AbortController(), t = setTimeout(() => ctl.abort(), 45000);
     try {
-        const r = await fetch(MHX_API_BACKEND + '/adminApiKeys', { method: 'POST', signal: ctl.signal, headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(Object.assign({ action }, body || {})) });
+        const r = await fetch(NXG_API_BACKEND + '/adminApiKeys', { method: 'POST', signal: ctl.signal, headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(Object.assign({ action }, body || {})) });
         let j = {}; try { j = await r.json(); } catch (e) {}
         if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
         return j;
@@ -2191,8 +2308,8 @@ const apkFmt = n => n >= 1048576 ? (n / 1048576).toFixed(1) + ' MB' : Math.round
 async function apkRefresh() {
     const box = document.getElementById('apk-status'); if (!box) return;
     try {
-        const r = await (await fetch(MHX_API_BACKEND + '/apkInfo')).json();
-        box.innerHTML = r.exists ? '<span style="color:#34d399"><i class="fas fa-check-circle mr-1"></i>Uploaded:</span> <b class="text-white">' + akEsc(r.name) + '</b> • ' + apkFmt(r.size) + ' • ' + new Date(r.updatedAt).toLocaleString() + '<br>Link: <span class="font-mono break-all">' + akEsc(MHX_API_BACKEND + '/download/app.apk') + '</span>' : 'কোনো APK আপলোড করা নেই।';
+        const r = await (await fetch(NXG_API_BACKEND + '/apkInfo')).json();
+        box.innerHTML = r.exists ? '<span style="color:#34d399"><i class="fas fa-check-circle mr-1"></i>Uploaded:</span> <b class="text-white">' + akEsc(r.name) + '</b> • ' + apkFmt(r.size) + ' • ' + new Date(r.updatedAt).toLocaleString() + '<br>Link: <span class="font-mono break-all">' + akEsc(NXG_API_BACKEND + '/download/app.apk') + '</span>' : 'কোনো APK আপলোড করা নেই।';
     } catch (e) { box.textContent = 'Status লোড করা যায়নি (' + e.message + ')'; }
 }
 async function apkUpload() {
@@ -2204,13 +2321,13 @@ async function apkUpload() {
     btn.disabled = true; wrap.classList.remove('hidden'); bar.style.width = '0%'; txt.textContent = 'Uploading...';
     const fd = new FormData(); fd.append('file', f); fd.append('name', f.name);
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', MHX_API_BACKEND + '/adminUploadApk'); xhr.setRequestHeader('Authorization', 'Bearer ' + tk);
+    xhr.open('POST', NXG_API_BACKEND + '/adminUploadApk'); xhr.setRequestHeader('Authorization', 'Bearer ' + tk);
     xhr.upload.onprogress = e => { if (e.lengthComputable) { const p = Math.round(e.loaded / e.total * 100); bar.style.width = p + '%'; txt.textContent = p + '% • ' + apkFmt(e.loaded) + ' / ' + apkFmt(e.total); } };
     xhr.onerror = () => { btn.disabled = false; Swal.fire('Error', 'আপলোড ব্যর্থ — সার্ভারে পৌঁছানো যায়নি (ফাইল বড় হলে হোস্টের আপলোড লিমিট হতে পারে)', 'error'); };
     xhr.onload = async () => {
         btn.disabled = false; let j = {}; try { j = JSON.parse(xhr.responseText); } catch (e) {}
         if (xhr.status < 200 || xhr.status >= 300) { Swal.fire('Error', j.error || ('HTTP ' + xhr.status), 'error'); return; }
-        const url = MHX_API_BACKEND + '/download/app.apk';
+        const url = NXG_API_BACKEND + '/download/app.apk';
         try { await db.collection('settings').doc('general').set({ appLink: url, apkName: j.name, apkSize: j.size, apkUpdatedAt: j.updatedAt }, { merge: true }); } catch (e) { Swal.fire('Warning', 'APK আপলোড হয়েছে কিন্তু লিংক সেভ হয়নি: ' + e.message, 'warning'); return; }
         const al = document.getElementById('set-applink'); if (al) al.value = url;
         inp.value = ''; txt.textContent = 'Done ✓'; apkRefresh();
@@ -2224,7 +2341,7 @@ async function apkRemove() {
     try {
         showLoading();
         const tk = await auth.currentUser.getIdToken();
-        const res = await fetch(MHX_API_BACKEND + '/adminDeleteApk', { method: 'POST', headers: { 'Authorization': 'Bearer ' + tk } }); const j = await res.json().catch(() => ({}));
+        const res = await fetch(NXG_API_BACKEND + '/adminDeleteApk', { method: 'POST', headers: { 'Authorization': 'Bearer ' + tk } }); const j = await res.json().catch(() => ({}));
         if (!res.ok) throw new Error(j.error || ('HTTP ' + res.status));
         const al = document.getElementById('set-applink');
         if (al && al.value.indexOf('/download/app.apk') !== -1) { al.value = ''; await db.collection('settings').doc('general').set({ appLink: '', apkName: '', apkSize: 0 }, { merge: true }); }
@@ -2289,7 +2406,7 @@ async function loadAutoLike() {
 async function adsCall(action, body) {
     const user = auth.currentUser; if (!user) throw new Error('Login required');
     const tk = await user.getIdToken();
-    const r = await fetch(MHX_API_BACKEND + '/adminAds', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(Object.assign({ action }, body || {})) });
+    const r = await fetch(NXG_API_BACKEND + '/adminAds', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(Object.assign({ action }, body || {})) });
     let j = {}; try { j = await r.json(); } catch (e) {}
     if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
     return j;
@@ -2361,10 +2478,81 @@ async function adsSave() {
 }
 
 // ================= TCP BOARD (admin) =================
+// ================= FEATURE CONTROLS =================
+const FT_LIST = [
+  ['showAppDownload', 'fa-download', 'App Download', 'হোমের Quick Links-এ App Download বাটন'],
+  ['showTcp', 'fa-satellite-dish', 'TCP BOT', 'হোম কার্ড + প্রোফাইল মেনুর "My TCP Bot"'],
+  ['showIdSell', 'fa-id-card', 'ID Sell', 'হোম কার্ড + প্রোফাইল মেনুর "ID Code"'],
+  ['showLeaderboard', 'fa-trophy', 'Leaderboard', 'ভাসমান Leaderboard বাটন']
+];
+async function ftLoad() {
+    let g = {}; try { const d = await db.collection('settings').doc('general').get(); g = d.exists ? d.data() : {}; } catch (e) { SA('Error', e.message, 'error'); }
+    document.getElementById('ft-list').innerHTML = FT_LIST.map(f => `<label class="ft-row"><span class="ft-ic"><i class="fas ${f[1]}"></i></span><span class="flex-1"><b class="text-white text-sm">${f[2]}</b><br><span class="text-xs text-gray-400">${f[3]}</span></span><input type="checkbox" class="ft-sw" data-k="${f[0]}" ${g[f[0]] === true ? 'checked' : ''}></label>`).join('');
+}
+async function ftSave() {
+    const o = {}; document.querySelectorAll('#ft-list .ft-sw').forEach(el => { o[el.dataset.k] = el.checked; });
+    try { showLoading(); await db.collection('settings').doc('general').set(o, { merge: true }); hideLoading(); Swal.fire({ icon: 'success', title: 'Saved', timer: 1200, showConfirmButton: false }); }
+    catch (e) { hideLoading(); SA('Error', e.message, 'error'); }
+}
+
+// ================= GUILD GLORY =================
+async function ggCall(action, body) {
+    const user = auth.currentUser; if (!user) throw new Error('Login required');
+    const tk = await user.getIdToken();
+    const r = await fetch(NXG_API_BACKEND + '/adminGuildGlory', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(Object.assign({ action }, body || {})) });
+    let j = {}; try { j = await r.json(); } catch (e) {}
+    if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
+    return j;
+}
+let ggPk = [];
+const ggEsc = t => String(t == null ? '' : t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+function ggRenderRows() {
+    document.getElementById('gg-pk-rows').innerHTML = ggPk.map((p, i) => `<div class="grid grid-cols-12 gap-2 items-center">
+        <input class="flat-input col-span-3" data-k="name" data-i="${i}" value="${ggEsc(p.name)}" placeholder="Name">
+        <input class="flat-input col-span-2" type="number" data-k="bots" data-i="${i}" value="${p.bots}" placeholder="Bots">
+        <input class="flat-input col-span-2" type="number" data-k="price" data-i="${i}" value="${p.price}" placeholder="Price">
+        <input class="flat-input col-span-2" type="number" data-k="resellerPrice" data-i="${i}" value="${p.resellerPrice == null ? '' : p.resellerPrice}" placeholder="Reseller">
+        <label class="col-span-2 text-xs text-white flex items-center gap-1"><input type="checkbox" data-k="active" data-i="${i}" ${p.active !== false ? 'checked' : ''}>On</label>
+        <button onclick="ggDelRow(${i})" class="col-span-1 text-red-400"><i class="fas fa-trash"></i></button></div>`).join('');
+}
+function ggReadRows() {
+    document.querySelectorAll('#gg-pk-rows [data-k]').forEach(el => { const p = ggPk[+el.dataset.i], k = el.dataset.k; if (!p) return;
+        if (k === 'active') p.active = el.checked; else if (k === 'name') p.name = el.value.trim(); else if (k === 'resellerPrice') p.resellerPrice = el.value === '' ? null : Math.round(+el.value); else p[k] = Math.round(+el.value); });
+    return ggPk;
+}
+function ggAddRow() { ggReadRows(); ggPk.push({ id: 'p' + Date.now().toString(36), name: '', bots: 4, price: 0, resellerPrice: null, active: true }); ggRenderRows(); }
+function ggDelRow(i) { ggReadRows(); ggPk.splice(i, 1); ggRenderRows(); }
+async function ggLoadAll() { await ggLoadCfg(); ggLoadOrders(); }
+async function ggLoadCfg() {
+    try {
+        const j = await ggCall('getConfig'); const $ = id => document.getElementById(id);
+        $('gg-enabled').checked = j.enabled !== false; $('gg-api-url').value = j.apiUrl || ''; $('gg-api-key').value = ''; $('gg-clear-key').checked = false;
+        $('gg-key-hint').innerText = j.hasKey ? '(সেট করা আছে ' + j.keyHint + ')' : '(এখনো সেট নেই)';
+        $('gg-method').value = j.apiMethod || 'GET'; $('gg-keyheader').value = j.keyHeader || ''; $('gg-p-guild').value = j.guildParam || ''; $('gg-p-bots').value = j.botsParam || ''; $('gg-p-key').value = j.keyParam || '';
+        $('gg-title').value = j.title || ''; $('gg-off').value = j.offMsg || ''; $('gg-note').value = j.note || '';
+        ggPk = j.packages; ggRenderRows();
+    } catch (e) { SA('Error', e.message, 'error'); }
+}
+async function ggSaveCfg() {
+    const rows = ggReadRows(); const $ = id => document.getElementById(id).value.trim();
+    try {
+        showLoading();
+        await ggCall('setConfig', { enabled: document.getElementById('gg-enabled').checked, apiUrl: $('gg-api-url'), apiKey: $('gg-api-key'), clearKey: document.getElementById('gg-clear-key').checked, apiMethod: $('gg-method'), keyHeader: $('gg-keyheader'),
+            guildParam: $('gg-p-guild'), botsParam: $('gg-p-bots'), keyParam: $('gg-p-key'), title: $('gg-title'), offMsg: $('gg-off'), note: $('gg-note'), packages: rows.map(p => Object.assign({}, p, { name: p.name || (p.bots + ' Bots') })) });
+        hideLoading(); Swal.fire({ icon: 'success', title: 'Saved', timer: 1200, showConfirmButton: false }); ggLoadCfg();
+    } catch (e) { hideLoading(); SA('Error', e.message, 'error'); }
+}
+async function ggLoadOrders() {
+    try {
+        const j = await ggCall('orders');
+        document.getElementById('gg-orders').innerHTML = j.orders.length ? j.orders.map(o => `<tr><td>${ggEsc(o.guildId)}</td><td>${ggEsc(o.package)}</td><td>${ggEsc(o.user)}</td><td>৳${o.price}</td><td><span class="pill ${o.status === 'success' ? 'pill-ok' : o.status === 'failed' ? 'pill-bad' : ''}">${ggEsc(o.status)}</span></td><td class="text-xs text-gray-400">${ggEsc(o.apiReply)}</td></tr>`).join('') : '<tr><td colspan="6" class="text-gray-500">কোনো অর্ডার নেই</td></tr>';
+    } catch (e) { document.getElementById('gg-orders').innerHTML = '<tr><td colspan="6" class="text-red-400">' + ggEsc(e.message) + '</td></tr>'; }
+}
+
 async function tcpCall(action, body) {
     const user = auth.currentUser; if (!user) throw new Error('Login required');
     const tk = await user.getIdToken();
-    const r = await fetch(MHX_API_BACKEND + '/adminTcp', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(Object.assign({ action }, body || {})) });
+    const r = await fetch(NXG_API_BACKEND + '/adminTcp', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(Object.assign({ action }, body || {})) });
     let j = {}; try { j = await r.json(); } catch (e) {}
     if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
     return j;
@@ -2496,7 +2684,7 @@ async function alSetStatus(id, status) {
 }
 async function alCall(body) {
     const tk = await auth.currentUser.getIdToken();
-    const r = await fetch(MHX_API_BACKEND + '/adminAutoLikeRun', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(body || {}) });
+    const r = await fetch(NXG_API_BACKEND + '/adminAutoLikeRun', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(body || {}) });
     const j = await r.json().catch(() => ({})); if (!r.ok) throw new Error(j.error || ('Server error ' + r.status)); return j;
 }
 async function alRunNow() {
@@ -2654,7 +2842,7 @@ async function alSendOne(id) {
         clearTimeout(timer);
         timer = setTimeout(function () {
             var f = document.getElementById('th-frame'); if (!f || !f.contentWindow) return;
-            try { f.contentWindow.postMessage({ type: 'mhx-theme-preview', theme: state }, new URL(f.src).origin); } catch (e) {}
+            try { f.contentWindow.postMessage({ type: 'nxg-theme-preview', theme: state }, new URL(f.src).origin); } catch (e) {}
         }, 120);
     }
     window.thPush = push;
@@ -2729,7 +2917,7 @@ async function alSendOne(id) {
     const E = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     async function call(body) {
         const tk = await auth.currentUser.getIdToken();
-        const r = await fetch(MHX_API_BACKEND + '/adminIdSell', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(body) });
+        const r = await fetch(NXG_API_BACKEND + '/adminIdSell', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(body) });
         const j = await r.json().catch(() => ({})); if (!r.ok) throw new Error(j.error || ('Error ' + r.status)); return j;
     }
     const $ = id => document.getElementById(id);
@@ -2838,7 +3026,7 @@ async function alSendOne(id) {
 async function tgNotify(body) {
     try {
         const user = auth.currentUser; if (!user) return; const tk = await user.getIdToken();
-        fetch(MHX_API_BACKEND + '/adminTgNotify', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(body) })
+        fetch(NXG_API_BACKEND + '/adminTgNotify', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(body) })
             .then(async r => { if (!r.ok) { let j = {}; try { j = await r.json(); } catch (e) {} console.warn('Telegram notify failed:', j.error || r.status); Swal.fire({ toast: true, position: 'top', icon: 'warning', title: 'Telegram notify failed: ' + (j.error || r.status), showConfirmButton: false, timer: 4000 }); } })
             .catch(e => console.warn('Telegram notify error', e));
     } catch (e) {}
@@ -2846,7 +3034,7 @@ async function tgNotify(body) {
 async function tgTest() {
     try {
         const user = auth.currentUser; const tk = await user.getIdToken();
-        const r = await fetch(MHX_API_BACKEND + '/adminTgTest', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: '{}' });
+        const r = await fetch(NXG_API_BACKEND + '/adminTgTest', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: '{}' });
         let j = {}; try { j = await r.json(); } catch (e) {}
         if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
         Swal.fire('Sent', 'চ্যানেলে টেস্ট মেসেজ গেছে ✅', 'success');
@@ -2859,7 +3047,7 @@ async function tgTest() {
 async function rfCall(body) {
     const user = auth.currentUser; if (!user) throw new Error('Login required');
     const tk = await user.getIdToken();
-    const r = await fetch(MHX_API_BACKEND + '/adminReferral', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(body || {}) });
+    const r = await fetch(NXG_API_BACKEND + '/adminReferral', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(body || {}) });
     let j = {}; try { j = await r.json(); } catch (e) {}
     if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
     return j;
@@ -2882,7 +3070,7 @@ async function wdCall(body) {
     const user = auth.currentUser; if (!user) throw new Error('Login required');
     const tk = await user.getIdToken(), ctl = new AbortController(), t = setTimeout(() => ctl.abort(), 45000);
     try {
-        const r = await fetch(MHX_API_BACKEND + '/adminWithdraw', { method: 'POST', signal: ctl.signal, headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(body || {}) });
+        const r = await fetch(NXG_API_BACKEND + '/adminWithdraw', { method: 'POST', signal: ctl.signal, headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(body || {}) });
         let j = {}; try { j = await r.json(); } catch (e) {}
         if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
         return j;
@@ -2952,7 +3140,7 @@ async function afCall(body) {
     const user = auth.currentUser; if (!user) throw new Error('Login required');
     const tk = await user.getIdToken(), ctl = new AbortController(), t = setTimeout(() => ctl.abort(), 45000);
     try {
-        const r = await fetch(MHX_API_BACKEND + '/adminAntiFraud', { method: 'POST', signal: ctl.signal, headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(body || {}) });
+        const r = await fetch(NXG_API_BACKEND + '/adminAntiFraud', { method: 'POST', signal: ctl.signal, headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(body || {}) });
         let j = {}; try { j = await r.json(); } catch (e) {}
         if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
         return j;
