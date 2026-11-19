@@ -25,17 +25,14 @@ window.NEXORA_CONFIG = {
   FF_INFO_API: "YOUR_PLAYER_INFO_API_URL",
   // ---- Telegram links ----
   TELEGRAM_CHANNEL_LINK: "YOUR_TELEGRAM_CHANNEL_LINK",
-  SUPPORT_LINK: "YOUR_TELEGRAM_SUPPORT_LINK",
-  // ---- Ads (optional) ----
-  AD_SCRIPT_URL: "YOUR_AD_SCRIPT_URL",
-  AD_BANNERS: ["YOUR_AD_BANNER_CODE_1", "YOUR_AD_BANNER_CODE_2"]
+  SUPPORT_LINK: "YOUR_TELEGRAM_SUPPORT_LINK"
 };
 window.nxv = function (v) { return (typeof v === 'string' && v.indexOf('YOUR_') === 0) ? '' : v; };
 </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#070d1f">
+    <meta name="theme-color" content="#000000">
     <link rel="icon" href="https://i.ibb.co.com/bgNjdXPq/1795073251544.jpg">
     <title>NEXORA GAMING</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -116,7 +113,7 @@ window.nxv = function (v) { return (typeof v === 'string' && v.indexOf('YOUR_') 
         @keyframes tgpFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
         @keyframes tgpRing{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.55);opacity:0}}
         .copied{background:#dcfce7!important;color:#16a34a!important;border-color:#bbf7d0!important}
-        /* ===== profile icon menu + Get API ===== */
+        /* ===== profile icon menu ===== */
         #profile-menu{position:fixed;z-index:9998;min-width:215px;background:#0d1b38;border:1px solid #1e3a5f;border-radius:20px;box-shadow:0 18px 44px rgba(8,145,178,.22);padding:8px;animation:pmIn .18s ease both;transform-origin:top right}
         @keyframes pmIn{from{opacity:0;transform:scale(.92) translateY(-6px)}to{opacity:1;transform:none}}
         #profile-menu .pm-head{padding:8px 12px 10px;border-bottom:1px solid #0f2744;margin-bottom:6px;display:flex;flex-direction:column;gap:2px}
@@ -125,15 +122,6 @@ window.nxv = function (v) { return (typeof v === 'string' && v.indexOf('YOUR_') 
         .pm-item{display:flex;align-items:center;gap:12px;width:100%;padding:11px 12px;border-radius:14px;font-weight:700;font-size:14px;color:#33443c;text-align:left;background:none;border:0;cursor:pointer}
         .pm-item i{width:20px;text-align:center;color:#06b6d4}
         .pm-item:hover,.pm-item:active{background:#0f2744;color:#0891b2}
-        .api-keybox{background:#e6f1ff;color:#fff;border-radius:14px;padding:12px 12px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;letter-spacing:.02em}
-        .api-keybox span{word-break:break-all;user-select:text;-webkit-user-select:text}
-        .api-keybox button{flex-shrink:0;width:32px;height:32px;border-radius:10px;background:rgba(255,255,255,.12);color:#fff;border:0;cursor:pointer}
-        .api-act{flex:1;padding:9px 6px;border-radius:12px;border:1px solid #1c3557;background:#0d1b38;font-weight:700;font-size:12px;color:#33443c;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px}
-        .api-act:disabled{opacity:.45}
-        .api-pill{display:inline-block;padding:3px 9px;border-radius:99px;font-size:10.5px;font-weight:800}
-        .api-tab{padding:7px 12px;border-radius:12px;font-size:12px;font-weight:800;background:#122447;color:#8fa8c8;border:0;cursor:pointer}
-        .api-tab.on{background:#0891b2;color:#fff}
-        .api-code{background:#e6f1ff;color:#1c3557;border-radius:14px;padding:12px;font-size:11.5px;line-height:1.55;overflow-x:auto;white-space:pre;font-family:ui-monospace,Menlo,Consolas,monospace;user-select:text;-webkit-user-select:text}
         /* ================= NEXORA PREMIUM POPUPS / TOASTS / LOADERS ================= */
         .swal2-container{font-family:'Sora','Hind Siliguri',sans-serif!important;padding:16px!important}
         .swal2-container.swal2-backdrop-show,.swal2-container.swal2-noanimation{background:radial-gradient(circle at 50% 28%,rgba(6,182,212,.38),rgba(2,30,22,.72) 72%)!important;backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
@@ -364,25 +352,6 @@ function authMsg(e) {
         #nav-leaders:active{transform:scale(.92)}
         #nav-leaders.active-tab{box-shadow:0 0 0 5px rgba(52,211,153,.35),0 10px 24px rgba(8,145,178,.45)}
 
-        /* ===== Ads / Earn ===== */
-        .ads-reward{display:inline-flex;align-items:center;gap:7px;margin-top:14px;padding:8px 15px;border-radius:99px;background:rgba(13,27,56,.95);color:#155e75;font-weight:800;font-size:13px}
-        .ads-bar{height:9px;border-radius:99px;background:rgba(255,255,255,.28);margin-top:16px;overflow:hidden}
-        .ads-bar i{display:block;height:100%;border-radius:99px;background:#0d1b38;transition:width .6s ease}
-        .ads-prog{margin-top:8px;font-size:12px;font-weight:800;opacity:.95}
-        .ads-step{display:flex;align-items:center;gap:12px;padding:14px;border-radius:22px;background:rgba(13,27,56,.92);border:1px solid #fff;box-shadow:0 8px 22px rgba(8,145,178,.07);margin-bottom:10px;transition:.25s}
-        .ads-step.cur{outline:2px solid #22d3ee;outline-offset:1px}
-        .ads-step.lock{opacity:.55}
-        .ads-ck{width:42px;height:42px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;background:#122447;color:#8fa8c8;border:2px solid #1c3557}
-        .ads-step.done .ads-ck{background:linear-gradient(135deg,#22d3ee,#0891b2);color:#fff;border-color:#fff;box-shadow:0 6px 14px rgba(8,145,178,.32);animation:adsPop .45s ease}
-        @keyframes adsPop{0%{transform:scale(.6)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
-        .ads-go{flex:none;padding:10px 20px;border-radius:16px;border:0;color:#fff;font-weight:800;font-size:13px;background:linear-gradient(135deg,#67e8f9,#06b6d4 55%,#0891b2);box-shadow:0 8px 18px rgba(8,145,178,.3)}
-        .ads-go:active{transform:scale(.95)}
-        .ads-slot{margin:0 auto 12px;overflow:hidden}
-        .wd-m{flex:1;padding:12px 8px;border-radius:16px;border:2px solid #1c3557;background:#070d1f;font-weight:800;font-size:14px;color:#e6f1ff;cursor:pointer;transition:.2s}
-        .wd-m.on{border-color:#06b6d4;background:#122447;box-shadow:0 0 0 4px rgba(6,182,212,.14)}
-        .wd-row{padding:13px 14px;border-radius:20px;background:rgba(13,27,56,.92);border:1px solid #fff;box-shadow:0 8px 22px rgba(8,145,178,.07);margin-bottom:10px}
-        .wd-b{display:inline-block;padding:3px 11px;border-radius:99px;font-size:11px;font-weight:800}
-
         /* ===== Profile edit ===== */
         .av-wrap{position:relative;width:88px;height:88px;margin:0 auto 12px}
         .av-wrap .av-img{width:100%;height:100%;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px;font-weight:800;background:linear-gradient(135deg,#22d3ee,#0891b2);box-shadow:0 10px 24px rgba(8,145,178,.3);border:3px solid #fff}
@@ -500,6 +469,15 @@ html[data-nx-lang=bn] .nx-lang [data-l=bn],html[data-nx-lang=en] .nx-lang [data-
 body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:none!important}
 </style>
 <style id="nxg-theme"></style>
+<style id="nx-black-bars">
+/* ===== Top header + bottom bar: pure black with a soft cyan glow ===== */
+header.sticky,header.sticky.backdrop-blur-xl{background:#000!important;background-color:#000!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border-bottom:1px solid rgba(34,211,238,.22)!important;box-shadow:0 6px 26px rgba(34,211,238,.10),0 1px 0 rgba(34,211,238,.12)!important}
+nav.fixed>div,nav.fixed>div.backdrop-blur-xl{background:#000!important;background-color:#000!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border-top:1px solid rgba(34,211,238,.22)!important;box-shadow:0 -6px 26px rgba(34,211,238,.10),0 -1px 0 rgba(34,211,238,.12)!important}
+body::before{background:#000!important}
+nav.fixed .nav-item{background:none!important;color:#8fa8c8}
+nav.fixed .nav-item.active-tab{color:#22d3ee!important;background:rgba(34,211,238,.10)!important;box-shadow:0 0 18px rgba(34,211,238,.14)}
+nav.fixed .nxg-bolt{border-color:#000!important}
+</style>
     <script>
     /* ===== NEXORA Theme engine: colours set from Admin > Theme & Colors ===== */
     (function () {
@@ -508,8 +486,6 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
             textMuted:  { tx: '.text-slate-600,.text-slate-500,.text-slate-400,.zp-sub' },
             brandText:  { tx: '.text-brand-500,.text-brand-600,.text-brand-700,.text-brand-900,.lb-amt' },
             pageBg:     { bg: 'html,body', fx: 'background-attachment:fixed !important;' },
-            header:     { bg: 'header.sticky', tx: '#header-site-name', bd: 'header.sticky' },
-            bottomNav:  { bg: 'nav.fixed>div', bd: 'nav.fixed>div' },
             navText:    { tx: '.nav-item' },
             navActive:  { bg: '.nav-item.active-tab', tx: '.nav-item.active-tab' },
             centerBtn:  { bg: '.nxg-bolt', bd: '.nxg-bolt', glow: 1 },
@@ -728,16 +704,7 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
                         <div class="mt-2.5 bg-white text-brand-600 text-[11px] font-extrabold px-2.5 py-1.5 rounded-xl inline-flex items-center">Boost <i class="fa-solid fa-arrow-right ml-1"></i></div>
                     </div>
                 </div>
-                <div data-feature="showTcp" onclick="showSec('tcp')" class="hidden cursor-pointer rounded-3xl p-3.5 text-white relative overflow-hidden shadow-lg shadow-brand-500/25 active:scale-[.98] transition" style="background:linear-gradient(135deg,#0e7490,#06b6d4 55%,#22d3ee)">
-                    <div class="absolute -right-3 -top-3 text-white/10 text-7xl"><i class="fa-solid fa-satellite-dish"></i></div>
-                    <div class="relative">
-                        <div class="w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center text-xl mb-2"><i class="fa-solid fa-satellite-dish"></i></div>
-                        <div class="font-extrabold text-[15px] leading-tight">TCP BOT</div>
-                        <div class="text-[10.5px] opacity-90 mt-0.5 leading-snug">Emote bot for your squad • from BDT <b id="tcp-home-price">–</b></div>
-                        <div class="mt-2.5 bg-white text-brand-600 text-[11px] font-extrabold px-2.5 py-1.5 rounded-xl inline-flex items-center">Buy <i class="fa-solid fa-arrow-right ml-1"></i></div>
-                    </div>
-                </div>
-                <div data-feature="showIdSell" onclick="showSec('idsell')" class="hidden cursor-pointer rounded-3xl p-3.5 text-white relative overflow-hidden shadow-lg shadow-brand-500/25 active:scale-[.98] transition" style="background:linear-gradient(135deg,#0f766e,#14b8a6 55%,#67e8f9)">
+                <div onclick="showSec('idsell')" class="cursor-pointer rounded-3xl p-3.5 text-white relative overflow-hidden shadow-lg shadow-brand-500/25 active:scale-[.98] transition" style="background:linear-gradient(135deg,#0f766e,#14b8a6 55%,#67e8f9)">
                     <div class="absolute -right-3 -top-3 text-white/10 text-7xl"><i class="fa-solid fa-id-card"></i></div>
                     <div class="relative">
                         <div class="w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center text-xl mb-2"><i class="fa-solid fa-id-card"></i></div>
@@ -811,25 +778,6 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
             <div id="dl-result"></div>
         </section>
 
-
-        <!-- TCP BOT Section -->
-        <section id="tcp-sec" class="hidden animate-fade-in pb-10">
-            <div class="vip-card p-3.5 flex items-center gap-3 mb-3 relative">
-                <button onclick="showSec('home')" class="text-slate-500 hover:text-brand-600 w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 absolute top-3.5 right-3.5"><i class="fas fa-times"></i></button>
-                <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-white text-2xl shadow-md" style="background:linear-gradient(135deg,#0e7490,#06b6d4 55%,#22d3ee)"><i class="fa-solid fa-satellite-dish"></i></div>
-                <div>
-                    <h3 class="font-bold text-slate-800 text-sm">TCP BOT</h3>
-                    <p class="text-[11px] text-brand-600 font-semibold">Buy a password • open your bot link • log in</p>
-                </div>
-            </div>
-            <div class="vip-card py-3 text-center mb-3"><div class="text-[10px] text-slate-500 font-semibold">Your balance</div><div class="text-base font-extrabold text-brand-600">BDT <span id="tcp-balance">0</span></div></div>
-            <div class="vip-card p-3.5 mb-3">
-                <div class="text-[12px] font-extrabold text-slate-700 mb-2">Choose a package</div>
-                <div id="tcp-pk-grid" class="grid grid-cols-2 gap-2.5"><div class="col-span-2 text-center py-6 text-slate-400"><i class="fas fa-spinner fa-spin text-brand-600"></i></div></div>
-                <button id="tcp-btn" onclick="tcpBuy()" class="zp-btn w-full text-sm mt-4"><i class="fa-solid fa-satellite-dish mr-1.5"></i><span id="tcp-btn-txt">Buy password</span></button>
-                <p class="zp-sub mt-2.5 leading-relaxed"><i class="fa-solid fa-circle-info text-brand-500 mr-1"></i>After buying, open <b>Profile → My TCP Bot</b>. Your bot link and password are there. The timer starts when you log in for the first time.</p>
-            </div>
-        </section>
 
         <!-- Guild Glory Section -->
         <section id="guildglory-sec" class="hidden animate-fade-in pb-10">
@@ -1052,39 +1000,17 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
             <div class="lb-hero">
                 <span class="lb-chip"><i class="fa-solid fa-trophy"></i> TOP DEPOSITORS</span>
                 <div class="lb-title">Leaderboard</div>
-                <div class="lb-sub">Ranked by total money added (deposits, ads, bonus). Spending never lowers your rank.</div>
+                <div class="lb-sub">Ranked by total money added (deposits and bonus). Spending never lowers your rank.</div>
                 <button type="button" class="lb-refresh" id="lb-refresh" onclick="lbLoad(true)" aria-label="Refresh"><i class="fa-solid fa-rotate"></i></button>
             </div>
             <div id="lb-body"></div>
         </section>
 
-        <!-- Ads / Earn -->
-        <section id="ads-sec" class="hidden animate-fade-in pb-28">
-            <button type="button" class="nxg-btn nxg-btn-primary" style="width:100%;margin-bottom:12px" onclick="wdOpen()"><i class="fa-solid fa-money-bill-transfer"></i> Withdraw Now</button>
-            <div class="lb-hero">
-                <span class="lb-chip"><i class="fa-solid fa-coins"></i> EARN MONEY</span>
-                <div class="lb-title" style="font-size:30px">Watch &amp; Earn</div>
-                <div class="lb-sub">Finish every step below, one by one, and real money is added to your main balance.</div>
-                <div class="ads-reward" id="ads-reward" style="display:none"><i class="fa-solid fa-coins"></i><span></span></div>
-                <div class="ads-bar"><i id="ads-bar-fill" style="width:0%"></i></div>
-                <div class="ads-prog" id="ads-prog"></div>
-            </div>
-            <div id="ads-body" class="mt-4"></div>
-            <div id="ads-banners" class="mt-3"></div>
-            <div id="wd-history" class="mt-5"></div>
-        </section>
-
-        <!-- Get API (resellers) -->
-        <section id="api-sec" class="hidden animate-fade-in pb-24">
-            <button onclick="showSec('home')" class="text-xs font-bold text-slate-500 mb-3 flex items-center gap-1.5"><i class="fas fa-arrow-left"></i> Go back</button>
-            <h2 class="text-3xl font-extrabold text-slate-900 leading-tight">Get <span class="text-brand-600">API</span></h2>
-            <p class="zp-sub mb-4 mt-1">Your personal Like API key for resellers. Use it on your own website or Telegram bot.</p>
-            <div id="api-body"><div class="text-center py-10"><i class="fas fa-spinner fa-spin text-brand-600 text-xl"></i></div></div>
-        </section>
         <section id="idsell-sec" class="hidden animate-fade-in pb-24">
             <button onclick="showSec('home')" class="text-xs font-bold text-slate-500 mb-3 flex items-center gap-1.5"><i class="fas fa-arrow-left"></i> Go back</button>
             <h2 class="text-3xl font-extrabold text-slate-900 leading-tight">ID <span class="text-brand-600">Sell</span></h2>
-            <p class="zp-sub mb-4 mt-1">Tap the video to watch the ID. After buying, you get a code — enter it in <b>Profile menu › ID Code</b> to get the login.</p>
+            <p class="zp-sub mb-4 mt-1">Tap the video to watch the ID. After buying, you get a code — enter it in <b>ID Code</b> to get the login.</p>
+            <button type="button" onclick="showSec('idcode')" class="zp-btn w-full text-sm mb-4"><i class="fa-solid fa-key mr-1.5"></i>I have an ID code</button>
             <div id="ids-list"></div>
         </section>
 
@@ -1104,11 +1030,9 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
 
     <!-- Navigation -->
     <nav class="fixed bottom-0 left-0 right-0 z-50">
-        <div class="w-full flex items-end justify-between px-4 pt-2 pb-3 bg-white/85 backdrop-blur-xl rounded-t-3xl border-t border-brand-50/80 shadow-xl">
+        <div class="w-full flex items-end justify-between px-4 pt-2 pb-3 rounded-t-3xl">
             <button id="nav-home" onclick="showSec('home')" class="nav-item active-tab"><i class="fa-solid fa-house"></i><span>Home</span></button>
-            <button id="nav-history" onclick="showSec('history')" class="nav-item"><i class="fa-solid fa-box"></i><span>Orders</span></button>
-            <button id="nav-ads" class="nxg-bolt" onclick="showSec('ads')" aria-label="Watch ads and earn money"><i class="fa-solid fa-coins"></i></button>
-            <button id="nav-addmoney" onclick="showSec('addmoney')" class="nav-item"><i class="fa-solid fa-wallet"></i><span>Wallet</span></button>
+            <button id="nav-addmoney" class="nxg-bolt" onclick="showSec('addmoney')" aria-label="Wallet"><i class="fa-solid fa-wallet"></i></button>
             <button id="nav-account" onclick="showSec('account')" class="nav-item"><i class="fa-solid fa-user"></i><span>Profile</span></button>
         </div>
     </nav>
@@ -1345,7 +1269,6 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
             document.getElementById('header-login-container').classList.add('hidden');
             document.getElementById('header-balance-container').classList.remove('hidden');
             loadUserData(user.uid);
-            adsAfterAuth();
         } else {
             currentUser = null;
             userData = {};
@@ -1562,7 +1485,7 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
             document.getElementById('ref-count').innerText = r.count;
             document.getElementById('ref-earned').innerText = r.earned;
             const holdTxt = r.holdMinutes ? (r.holdMinutes >= 60 ? Math.round(r.holdMinutes / 60) + ' hour(s)' : r.holdMinutes + ' minute(s)') : '';
-            document.getElementById('ref-info').innerText = `Share your code with a friend. When they create a new account you’ll get BDT ${r.bonus}` + (holdTxt ? ` (added after a security check, up to ${holdTxt})` : '') + `, plus ${r.percent}% commission on every deposit they make` + (r.adsPercent > 0 ? ` and ${r.adsPercent}% of the money they earn from Ads` : '') + `. Fake, bot or multiple accounts are banned automatically.` + (r.pending ? ` ${r.pending} referral(s) waiting for verification.` : '');
+            document.getElementById('ref-info').innerText = `Share your code with a friend. When they create a new account you’ll get BDT ${r.bonus}` + (holdTxt ? ` (added after a security check, up to ${holdTxt})` : '') + `, plus ${r.percent}% commission on every deposit they make` + `. Fake, bot or multiple accounts are banned automatically.` + (r.pending ? ` ${r.pending} referral(s) waiting for verification.` : '');
         } catch (e) { document.getElementById('ref-code').innerText = '------'; }
     }
     async function copyRef(kind) {
@@ -1703,13 +1626,11 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
     }
 
     function showSec(secId) {
-        if ((secId === 'history' || secId === 'account' || secId === 'addmoney' || secId === 'dailylike' || secId === 'autolike' || secId === 'tcp' || secId === 'guildglory' || secId === 'api' || secId === 'idcode' || secId === 'ads') && !currentUser) {
+        if ((secId === 'history' || secId === 'account' || secId === 'addmoney' || secId === 'dailylike' || secId === 'autolike' || secId === 'guildglory' || secId === 'idcode') && !currentUser) {
             showSec('auth');
             return;
         }
         if (secId === 'leaders' && !featOn('showLeaderboard')) secId = 'home';
-        if (secId === 'tcp' && !featOn('showTcp')) secId = 'home';
-        if (secId === 'idsell' && !featOn('showIdSell')) secId = 'home';
         document.querySelectorAll('main section').forEach(s => s.classList.add('hidden'));
         document.querySelectorAll('.nav-item,.nxg-bolt').forEach(n => n.classList.remove('active-tab'));
         document.getElementById(secId + '-sec').classList.remove('hidden');
@@ -1720,13 +1641,10 @@ body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:n
         if(secId === 'account') loadReferral();
         if(secId === 'dailylike') dlOpen();
         if(secId === 'autolike') alOpen();
-        if(secId === 'tcp') tcpOpen();
         if(secId === 'guildglory') ggOpen();
-        if(secId === 'api') apiOpen();
         if(secId === 'idsell') idsOpen();
         if(secId === 'idcode') idcOpen();
         if(secId === 'leaders') lbOpen(); else lbClose();
-        if(secId === 'ads') adsOpen(); else adsClose(secId);
         window.scrollTo({ top: 0, behavior: 'instant' });
     }
 
@@ -2241,72 +2159,10 @@ async function ggBuy() {
 }
 window.addEventListener("load", () => { ggLoadCfg(); });
 
-// ================= TCP BOARD =================
-let tcpCfg = { enabled: true, packages: [], offMsg: '' }, tcpPkg = null, tcpBusy = false, tcpReqId = null;
-const tcpPrice = p => (currentUser && userData && (userData.role === 'reseller' || userData.role === 'admin') && p.resellerPrice != null) ? p.resellerPrice : p.price;
-async function tcpLoadCfg() {
-    try { const r = await fetch(BACKEND_URL + '/tcpInfo'); const j = await r.json(); if (r.ok && j.packages) tcpCfg = { enabled: j.enabled !== false, packages: j.packages, offMsg: j.offMsg || '' }; } catch (e) {}
-    const hp = document.getElementById('tcp-home-price'); if (hp && tcpCfg.packages.length) hp.innerText = Math.min.apply(null, tcpCfg.packages.map(tcpPrice));
-    tcpRenderPkgs();
-}
-function tcpRenderPkgs() {
-    const box = document.getElementById('tcp-pk-grid'); if (!box) return;
-    if (!tcpCfg.packages.length) { box.innerHTML = '<div class="col-span-2 text-center py-6 text-slate-400 text-sm">No packages available right now</div>'; return; }
-    box.innerHTML = tcpCfg.packages.map(p => `<div onclick="tcpPick('${esc(p.id)}')" class="cursor-pointer rounded-2xl p-3 text-center border-2 ${tcpPkg === p.id ? 'border-brand-600 bg-brand-50' : 'border-slate-200 bg-white'}"><div class="font-extrabold text-slate-800 text-sm">${esc(p.name)}</div><div class="text-brand-600 font-extrabold text-base mt-0.5">BDT ${tcpPrice(p)}</div></div>`).join('');
-}
-function tcpPick(id) { tcpPkg = id; tcpRenderPkgs(); }
-function tcpOpen() {
-    const b = document.getElementById('tcp-balance');
-    if (b) b.innerText = userBalance;
-    tcpLoadCfg();
-}
-async function tcpBuy() {
-    if (tcpBusy) return;
-    if (!currentUser) { showSec('auth'); return; }
-    if (!tcpCfg.enabled) { Swal.fire('Service paused', tcpCfg.offMsg || 'TCP BOT is paused for a moment. Please try again later.', 'info'); return; }
-    const pkg = tcpCfg.packages.find(p => p.id === tcpPkg); if (!pkg) { Swal.fire('Heads up', 'Please choose a package', 'warning'); return; }
-    const price = tcpPrice(pkg);
-    if (!(await checkBalance(price))) return;
-    const shown = price;
-    const c = await Swal.fire({ title: 'Confirm', icon: 'question', showCancelButton: true, confirmButtonText: 'Pay BDT ' + shown, cancelButtonText: 'Cancel',
-        html: `Package: <b>${esc(pkg.name)}</b><br>Price: <b>BDT ${shown}</b><div style="font-size:11px;color:#8fa8c8;margin-top:8px">The timer starts at your first login on the TCP board.</div>` });
-    if (!c.isConfirmed) return;
-    if (!tcpReqId) tcpReqId = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random()).replace(/[^A-Za-z0-9]/g, '').slice(0, 32);
-    tcpBusy = true; const btn = document.getElementById('tcp-btn'); btn.disabled = true; btn.style.opacity = '.6';
-    try {
-        const j = await api('/tcpBuy', { packageId: pkg.id, reqId: tcpReqId }); tcpReqId = null;
-        await Swal.fire({ icon: 'success', title: 'Purchased! 🎉', html: `Your password:<br><b style="font-family:monospace;font-size:16px">${esc(j.key)}</b><br><div style="font-size:12px;margin-top:8px">Find it anytime in <b>Profile → My TCP Bot</b>.</div>` });
-        tcpMy();
-    } catch (e) { Swal.fire('Couldn’t buy', e.message || 'Please try again', 'error'); }
-    finally { tcpBusy = false; btn.disabled = false; btn.style.opacity = ''; }
-}
-function tcpLeft(k, now) {
-    if (k.state === 'unused') return k.days ? k.days + ' days (starts at first login)' : 'Unlimited';
-    if (k.state !== 'active') return k.state === 'expired' ? 'Expired' : 'Disabled';
-    if (!k.expiresMs) return 'Unlimited';
-    const ms = Math.max(0, k.expiresMs - now), d = Math.floor(ms / 864e5), h = Math.floor(ms % 864e5 / 36e5);
-    return d + 'd ' + h + 'h left';
-}
-async function tcpMy() {
-    if (!currentUser) { showSec('auth'); return; }
-    nxgBusy('Loading…', 'Fetching your TCP bots.');
-    let j; try { j = await api('/tcpMine', {}); } catch (e) { Swal.close(); Swal.fire('Error', e.message || 'Please try again', 'error'); return; }
-    Swal.close();
-    if (!j.keys.length) { const x = await Swal.fire({ icon: 'info', title: 'No TCP bot yet', text: 'You haven’t bought a TCP BOT password.', showCancelButton: true, confirmButtonText: 'See packages', cancelButtonText: 'Close' }); if (x.isConfirmed) showSec('tcp'); return; }
-    const url = j.tcpUrl ? `<a href="${esc(j.tcpUrl)}" target="_blank" rel="noopener" style="display:block;background:#0891b2;color:#fff;font-weight:800;border-radius:12px;padding:10px;margin-bottom:10px;text-decoration:none;word-break:break-all">🔗 Open TCP BOT</a>` : '<div style="color:#b45309;font-size:12px;margin-bottom:10px">The bot link isn’t ready yet. Contact ' + (nxv(NEXORA_CONFIG.SUPPORT_LINK) || '') + '</div>';
-    const rows = j.keys.map(k => `<div style="border:1px solid #1e3a5f;border-radius:12px;padding:8px;margin-bottom:8px;text-align:left"><div style="font-size:11px;color:#8fa8c8">${esc(k.label)} • ${esc(tcpLeft(k, j.now))}</div><div style="display:flex;gap:6px;align-items:center;margin-top:4px"><b style="font-family:monospace;font-size:13px;flex:1;word-break:break-all">${esc(k.key)}</b><button class="swal2-confirm swal2-styled" style="margin:0;padding:4px 10px;font-size:11px" onclick="navigator.clipboard&&navigator.clipboard.writeText('${esc(k.key)}');this.innerText='Copied'">Copy</button></div></div>`).join('');
-    Swal.fire({ title: 'My TCP Bot', html: url + rows + '<div style="font-size:11px;color:#8fa8c8">Contact: ' + (nxv(NEXORA_CONFIG.SUPPORT_LINK) || '') + '</div>', confirmButtonText: 'Close' });
-}
-window.addEventListener('load', () => { tcpLoadCfg(); });
-
 // ================= PROFILE ICON MENU =================
 // To add another button later, just add one more { icon, label, run } line to this list.
 const PROFILE_MENU = [
-    { icon: 'fa-solid fa-headset', label: 'Support', run: () => { const a = document.getElementById('fab-support'); window.open(a ? a.href : NEXORA_CONFIG.SUPPORT_LINK, '_blank', 'noopener'); } },
-    { icon: 'fa-solid fa-key', label: 'Get API', run: () => showSec('api') },
-    { icon: 'fa-solid fa-id-card', label: 'ID Code', feat: 'showIdSell', run: () => showSec('idcode') },
-    { icon: 'fa-solid fa-robot', label: 'Your Auto Like UID', run: () => alMy() },
-    { icon: 'fa-solid fa-satellite-dish', label: 'My TCP Bot', feat: 'showTcp', run: () => tcpMy() }
+    { icon: 'fa-solid fa-box', label: 'Orders', run: () => showSec('history') }
 ];
 function closeProfileMenu() { const m = document.getElementById('profile-menu'); if (m) m.remove(); }
 function toggleProfileMenu(ev) {
@@ -2471,174 +2327,7 @@ function lbOpen() {
 function lbClose() { clearInterval(lbTimer); lbTimer = null; }
 document.addEventListener('visibilitychange', () => { if (!document.hidden && lbTimer && Date.now() - lbAt > 8000) lbLoad(false); });
 
-// ================= ADS / EARN (shortener steps -> real money in the main balance) =================
-// Ads are NOT on the normal site. The ad codes only come from the server when this page is opened, and the page reloads clean when you leave it.
-(function () {   // user came back from a shortener:  /?ads=KEY  -> remember the key, tidy the address bar
-    try {
-        const p = new URLSearchParams(location.search), k = p.get('ads');
-        if (k) { localStorage.setItem('nxg_ads_key', k.replace(/[^A-Za-z0-9_-]/g, '').slice(0, 40)); p.delete('ads'); const q = p.toString(); history.replaceState(null, '', location.pathname + (q ? '?' + q : '') + location.hash); }
-    } catch (e) {}
-})();
-let adsData = null, adsBusy = false, adsVis = null, adsBanDone = false, adsShowAll = false;
-function adsAfterAuth() {
-    let go = null; try { go = sessionStorage.getItem('nxg_go'); sessionStorage.removeItem('nxg_go'); } catch (e) {}
-    if (go && !/^(home|ads|auth)$/.test(go) && document.getElementById(go + '-sec')) showSec(go);
-    adsPending();
-}
-async function adsPending() {
-    let k = null; try { k = localStorage.getItem('nxg_ads_key'); } catch (e) {}
-    if (!k || !currentUser || adsBusy) return;
-    adsBusy = true; try { localStorage.removeItem('nxg_ads_key'); } catch (e) {}
-    nxgBusy('Checking your step…', 'Please wait a moment…');
-    try {
-        const j = await api('/adsComplete', { key: k });
-        Swal.close();
-        if (j.finished) adsShowAll = true;
-        showSec('ads');
-        if (j.finished) {
-            await Swal.fire({ icon: 'success', title: j.reward > 0 ? 'BDT ' + j.reward + ' added to your balance!' : 'All steps completed!', html: '<div class="nxg-sub">' + (j.reward > 0 ? 'Every step is done. The money is now in your main balance.' : 'Every step is done.') + '</div>', confirmButtonText: 'Awesome' });
-            adsShowAll = false; if (adsData) adsRender();
-        } else apiToast('success', 'Step ' + j.done + ' of ' + j.total + ' completed ✓');
-    } catch (e) { Swal.close(); showSec('ads'); Swal.fire('Oops', e.message, 'error'); }
-    finally { adsBusy = false; }
-}
-// Ad network codes (loaded ONLY while the Ads page is open)
-const NXG_AD_SCRIPT = nxv(NEXORA_CONFIG.AD_SCRIPT_URL);
-const NXG_AD_BANNERS = (NEXORA_CONFIG.AD_BANNERS || []).map(nxv).filter(Boolean);
-function adsAdsense() {
-    if (window.__gadsOn) return;
-    window.__gadsOn = true;
-    const sc = document.createElement('script'); sc.async = true; sc.src = NXG_AD_SCRIPT; sc.setAttribute('data-cfasync', 'false');
-    document.head.appendChild(sc);
-}
-function adsOpen() {
-    adsLoad(false); wdLoad();
-    if (adsVis) document.removeEventListener('visibilitychange', adsVis);
-    adsVis = () => { if (!document.hidden && !adsBusy) adsLoad(true); };   // coming back from the shortener tab -> refresh the ticks
-    document.addEventListener('visibilitychange', adsVis);
-}
-function adsClose(next) {
-    if (adsVis) { document.removeEventListener('visibilitychange', adsVis); adsVis = null; }
-    const bn = document.getElementById('ads-banners'); if (bn) bn.innerHTML = ''; adsBanDone = false;
-    if (window.__gadsOn) {   // the ad script can't be unloaded -> reload so no ads ever show outside the Ads page
-        window.__gadsOn = false; try { sessionStorage.setItem('nxg_go', next || 'home'); } catch (e) {}
-        location.reload();
-    }
-}
-async function adsLoad(quiet) {
-    const box = document.getElementById('ads-body');
-    if (!quiet || !adsData) box.innerHTML = '<div class="lb-sk"></div><div class="lb-sk"></div><div class="lb-sk"></div>';
-    try {
-        adsData = await api('/adsStatus', {});
-        const sec = document.getElementById('ads-sec');
-        if (!sec || sec.classList.contains('hidden')) return;   // user already left -> never start ads
-        adsRender();
-        if (adsData.enabled && adsData.codes) {
-            adsAdsense();   // ad script starts only here: Ads page is open AND ads are switched on
-            if (!adsBanDone) { adsBanDone = true; adsBanners(NXG_AD_BANNERS); }
-        }
-    } catch (e) {
-        if (!quiet || !adsData) box.innerHTML = '<div class="lb-empty"><i class="fa-solid fa-wifi" style="font-size:30px;color:#67e8f9"></i><div style="margin:10px 0 14px">' + esc(e.message) + '</div><button class="nxg-btn nxg-btn-primary" onclick="adsLoad(false)">Try again</button></div>';
-    }
-}
-function adsRender() {
-    const d = adsData, box = document.getElementById('ads-body'); if (!d) return;
-    const rw = document.getElementById('ads-reward');
-    if (d.reward > 0 && d.enabled) { rw.style.display = ''; rw.querySelector('span').textContent = 'Reward: BDT ' + d.reward + ' in your balance'; } else rw.style.display = 'none';
-    const dn = adsShowAll ? d.total : d.done;
-    document.getElementById('ads-bar-fill').style.width = (d.total ? Math.round(dn / d.total * 100) : 0) + '%';
-    setTxt(document.getElementById('ads-prog'), d.enabled && d.total ? dn + ' / ' + d.total + ' steps completed' : '');
-    if (!d.enabled) { box.innerHTML = '<div class="lb-empty"><i class="fa-solid fa-gift" style="font-size:30px;color:#67e8f9"></i><div style="margin-top:10px">' + esc(d.offMsg || 'No earning tasks are available right now. Please check back later.') + '</div></div>'; return; }
-    const lim = !!(d.dailyLimit && d.roundsToday >= d.dailyLimit && !adsShowAll);
-    let h = '';
-    if (d.dailyLimit) h += '<div class="lb-me">Today: ' + d.roundsToday + ' / ' + d.dailyLimit + ' rounds completed</div>';
-    if (lim) h += '<div class="lb-me">You reached today’s limit. Come back tomorrow to earn more!</div>';
-    d.steps.forEach((s, i) => {
-        const done = adsShowAll || s.done, cur = !done && i === d.done && !lim, cls = done ? 'done' : cur ? 'cur' : 'lock';
-        h += '<div class="ads-step ' + cls + '"><div class="ads-ck">' + (done ? '<i class="fa-solid fa-check"></i>' : cur ? (i + 1) : '<i class="fa-solid fa-lock" style="font-size:14px"></i>') + '</div>' +
-            '<div class="lb-mid"><div class="lb-nm">' + esc(s.name) + '</div><div class="zp-sub" style="margin-top:3px">' + (done ? 'Completed' : cur ? 'Tap Start, finish the link, then come back' : 'Finish the previous step first') + '</div></div>' +
-            (done ? '<span class="lb-you" style="margin:0">DONE</span>' : cur ? '<button class="ads-go" onclick="adsStart(' + i + ')">Start</button>' : '') + '</div>';
-    });
-    if (d.warn) h += '<p class="zp-sub" style="text-align:center;margin:12px 8px">Please complete every step properly. Skipping through too quickly can get your account banned.</p>';
-    box.innerHTML = h;
-}
-
-// ================= WITHDRAW (balance -> bKash / Nagad) =================
-const WD_MIN = 200; let wdMethod = '';
-function wdPick(m) { wdMethod = m; document.querySelectorAll('.wd-m').forEach(b => b.classList.toggle('on', b.dataset.m === m)); }
-async function wdOpen() {
-    const bal = Number((userData && userData.balance) || 0);
-    let inf; try { inf = await api('/withdrawInfo', {}); } catch (e) { return Swal.fire('Oops', e.message, 'error'); }
-    if (!inf.open) return Swal.fire({ icon: 'warning', title: 'Withdraw বন্ধ আছে', text: inf.message, customClass: { popup: 'nxg-pop' }, confirmButtonText: 'OK' });
-    if (bal < WD_MIN) return Swal.fire({ icon: 'error', title: 'Request Cancelled', text: 'মিনিমাম উইথড্র ৳' + WD_MIN + '। আপনার ব্যালেন্স ৳' + bal + ' — ' + WD_MIN + ' টাকার কম হলে উইথড্র রিকোয়েস্ট যাবে না।', customClass: { popup: 'nxg-pop' }, confirmButtonText: 'OK' });
-    wdMethod = '';
-    const r = await Swal.fire({
-        title: 'Withdraw', customClass: { popup: 'nxg-pop' }, showCancelButton: true, confirmButtonText: 'Confirm', focusConfirm: false, showLoaderOnConfirm: true, allowOutsideClick: () => !Swal.isLoading(),
-        html: '<div style="font-size:13px;font-weight:700;color:#8fa8c8;margin-bottom:10px">Balance: BDT ' + bal + ' • Minimum: BDT ' + WD_MIN + '</div>' +
-            '<div style="display:flex;gap:10px"><button type="button" class="wd-m" data-m="bKash" onclick="wdPick(\'bKash\')">bKash</button><button type="button" class="wd-m" data-m="Nagad" onclick="wdPick(\'Nagad\')">Nagad</button></div>' +
-            '<input id="wd-amt" class="swal2-input" type="number" inputmode="numeric" min="' + WD_MIN + '" placeholder="Enter your amount">' +
-            '<input id="wd-num" class="swal2-input" type="tel" inputmode="numeric" maxlength="14" placeholder="Your number">' +
-            '<input id="wd-num2" class="swal2-input" type="tel" inputmode="numeric" maxlength="14" placeholder="Confirm your number">',
-        preConfirm: async () => {
-            const amt = Math.floor(Number(document.getElementById('wd-amt').value)), n1 = document.getElementById('wd-num').value.trim(), n2 = document.getElementById('wd-num2').value.trim();
-            if (!wdMethod) return Swal.showValidationMessage('Select bKash or Nagad');
-            if (!amt || amt < WD_MIN) return Swal.showValidationMessage('Cancelled: minimum withdraw is BDT ' + WD_MIN);
-            if (amt > bal) return Swal.showValidationMessage('You only have BDT ' + bal);
-            if (!/^(\+?88)?01[3-9]\d{8}$/.test(n1)) return Swal.showValidationMessage('Enter a valid number (01XXXXXXXXX)');
-            if (n1 !== n2) return Swal.showValidationMessage('The two numbers do not match');
-            try { return await api('/withdrawRequest', { method: wdMethod, amount: amt, number: n1, number2: n2 }); }
-            catch (e) { Swal.showValidationMessage(e.message); return false; }
-        }
-    });
-    if (!r.isConfirmed || !r.value) return;
-    const v = r.value;
-    await Swal.fire({ icon: 'success', title: 'Request sent', customClass: { popup: 'nxg-pop' }, confirmButtonText: 'OK',
-        html: '<div style="font-weight:700;color:#8fa8c8">BDT ' + v.amount + ' • ' + esc(v.method) + ' • ' + esc(v.number) + '</div><div style="margin:14px 0 6px;font-size:12px;font-weight:700;color:#8fa8c8">Your withdraw code (keep it):</div>' +
-            '<div id="wd-code" style="font-size:22px;font-weight:900;letter-spacing:1px;color:#0891b2">' + esc(v.code) + '</div>' +
-            '<button type="button" class="ads-go" style="margin-top:12px" onclick="navigator.clipboard&&navigator.clipboard.writeText(\'' + esc(v.code) + '\');this.textContent=\'Copied\'">Copy code</button>' });
-    wdLoad();
-}
-async function wdLoad() {
-    const box = document.getElementById('wd-history'); if (!box || !currentUser) return;
-    try {
-        const j = await api('/withdrawMine', {}); if (!j.items.length) { box.innerHTML = ''; return; }
-        const ST = { pending: ['#fef3c7', '#92400e', 'Pending'], success: ['#1e3a5f', '#155e75', 'Success'], cancelled: ['#fee2e2', '#991b1b', 'Cancelled'] };
-        box.innerHTML = '<div class="lb-nm" style="margin:0 4px 10px;font-size:16px">Withdraw History</div>' + j.items.map(x => {
-            const m = ST[x.status] || ST.pending, dt = x.ts ? new Date(x.ts).toLocaleString() : '';
-            return '<div class="wd-row"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b style="font-size:16px">BDT ' + x.amount + '</b><span class="wd-b" style="background:' + m[0] + ';color:' + m[1] + '">' + m[2] + '</span></div>' +
-                '<div class="zp-sub" style="margin-top:4px">' + esc(x.method) + ' • ' + esc(x.number) + '</div><div class="zp-sub">Code: ' + esc(x.code) + ' • ' + esc(dt) + '</div>' +
-                (x.status === 'cancelled' && x.reason ? '<div style="margin-top:6px;font-size:12px;font-weight:700;color:#991b1b">Reason: ' + esc(x.reason) + '</div>' : '') + '</div>';
-        }).join('');
-    } catch (e) { /* history is optional, ignore */ }
-}
-async function adsStart(i) {
-    if (adsBusy) return; adsBusy = true;
-    const w = window.open('', '_blank');   // opened right inside the tap so phone popup-blockers allow it
-    try {
-        const j = await api('/adsStart', { step: i });
-        if (w) { try { w.opener = null; } catch (e) {} w.location.href = j.url; apiToast('info', 'Finish the step, then come back here'); } else location.href = j.url;
-    } catch (e) { if (w) w.close(); Swal.fire('Oops', e.message, 'error'); }
-    finally { adsBusy = false; }
-}
-function adsBanners(list) {   // every banner lives in its own sandboxed iframe, so its code can't touch the site (and document.write works)
-    const box = document.getElementById('ads-banners'); if (!box) return; box.innerHTML = '';
-    (list || []).forEach(code => {
-        if (!String(code || '').trim()) return;
-        const mw = /['"]?width['"]?\s*:\s*(\d+)/i.exec(code), mh = /['"]?height['"]?\s*:\s*(\d+)/i.exec(code), w = mw ? +mw[1] : 300, h = mh ? +mh[1] : 250;
-        const wrap = document.createElement('div'); wrap.className = 'ads-slot';
-        const fr = document.createElement('iframe');
-        fr.setAttribute('sandbox', 'allow-scripts allow-popups allow-popups-to-escape-sandbox');
-        fr.setAttribute('scrolling', 'no'); fr.setAttribute('title', 'Advertisement');
-        fr.style.cssText = 'border:0;display:block;transform-origin:0 0;width:' + w + 'px;height:' + h + 'px';
-        fr.srcdoc = '<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;padding:0;background:transparent;overflow:hidden}</style></head><body>' + code + '</body></html>';
-        wrap.appendChild(fr); box.appendChild(wrap);
-        const sc = Math.min(1, Math.max(120, box.clientWidth - 4) / w);
-        fr.style.transform = 'scale(' + sc + ')'; wrap.style.width = Math.round(w * sc) + 'px'; wrap.style.height = Math.round(h * sc) + 'px';
-    });
-}
-
-// ================= GET API (reseller API keys) =================
-let apiInfo = null, apiBusy = false, apiDocIdx = 0, apiCfg = {};
+// ================= small helpers =================
 function copyText(t) {
     return new Promise(res => {
         const fb = () => {
@@ -2650,187 +2339,6 @@ function copyText(t) {
     });
 }
 function apiToast(icon, title) { Swal.fire({ toast: true, position: 'top', icon, title, showConfirmButton: false, timer: 1600 }); }
-async function apiCopy(t, msg) { const ok = await copyText(t); ok ? apiToast('success', msg || 'Copied') : Swal.fire('Oops', 'Couldn’t copy', 'error'); }
-function apiCopyUrl(k) { apiCopy(BACKEND_URL + '/api/v1/external/like?apikey=' + k + '&uid=UID_HERE&region=BD', 'URL copied'); }
-function apiFmtTime(iso) {
-    const d = new Date(iso); if (!iso || isNaN(d)) return '—';
-    return d.toLocaleString('en-GB', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit', hour12: true }).replace(/\bam\b/, 'AM').replace(/\bpm\b/, 'PM');
-}
-function apiAgo(iso) {
-    const t = new Date(iso).getTime(); if (!iso || isNaN(t)) return 'never';
-    const s = Math.max(0, (Date.now() - t) / 1000);
-    return s < 60 ? 'just now' : s < 3600 ? Math.floor(s / 60) + 'm ago' : s < 86400 ? Math.floor(s / 3600) + 'h ago' : Math.floor(s / 86400) + 'd ago';
-}
-function apiDay(iso) { const d = new Date(iso); return (!iso || isNaN(d)) ? '—' : d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }); }
-function apiPill(txt, bg, fg) { return '<span class="api-pill" style="background:' + bg + ';color:' + fg + '">' + esc(txt) + '</span>'; }
-function apiResultPill(r, kind) {
-    if (kind === 'info') return apiPill('Lookup', '#1e3a5f', '#0e7490');
-    if (r === 'success') return apiPill('Success', '#dcfce7', '#15803d');
-    if (r === 'already') return apiPill('Already liked', '#fef3c7', '#a16207');
-    if (r === 'failed') return apiPill('Failed', '#fee2e2', '#b91c1c');
-    return apiPill(r || '—', '#122447', '#44594f');
-}
-function apiDocs(key) {
-    const K = key || 'YOUR_API_KEY', B = BACKEND_URL;
-    return [
-        { t: 'cURL', c: `curl -G "${B}/api/v1/external/like" \\
-  --data-urlencode "apikey=${K}" \\
-  --data-urlencode "uid=1234567890" \\
-  --data-urlencode "region=BD"
-
-# key can also be sent as a header:
-# curl -H "X-API-KEY: ${K}" "${B}/api/v1/external/like?uid=1234567890&region=BD"
-
-# free player lookup:
-# curl "${B}/api/v1/external/user-info?apikey=${K}&uid=1234567890&region=BD"` },
-        { t: 'Python', c: `import requests
-
-API = "${B}/api/v1/external/like"
-KEY = "${K}"
-
-r = requests.get(API, params={
-    "apikey": KEY,
-    "uid": "1234567890",
-    "region": "BD",
-    # "request_id": "my-unique-id-123",  # optional: a retry with the same id is never charged twice
-}, timeout=100)
-
-data = r.json()
-if data.get("status") == "success":
-    print(data["player_name"], data["likes_given"], "likes sent")
-    print("Balance left:", data["remaining_balance"])
-else:
-    print(data.get("message_en") or data.get("message"))` },
-        { t: 'Telegram Bot', c: `# pip install python-telegram-bot requests
-import asyncio, requests
-from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
-
-BOT_TOKEN = "YOUR_BOT_TOKEN"
-API_URL = "${B}/api/v1/external/like"
-API_KEY = "${K}"
-
-async def like(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    if not context.args:
-        await update.message.reply_text("Usage: /like UID [REGION]")
-        return
-    uid = context.args[0]
-    region = context.args[1].upper() if len(context.args) > 1 else "BD"
-    await update.message.reply_text("Sending likes...")
-    try:
-        r = await asyncio.to_thread(requests.get, API_URL, params={"apikey": API_KEY, "uid": uid, "region": region}, timeout=100)
-        d = r.json()
-    except Exception as e:
-        await update.message.reply_text(f"Error: {e}")
-        return
-    if d.get("status") == "success":
-        text = f"✅ {d['player_name']} got {d['likes_given']} likes ({d['before_likes']} → {d['after_likes']})\\nBalance: BDT {d['remaining_balance']}"
-    else:
-        text = f"❌ {d.get('message_en') or d.get('message')}"
-    await update.message.reply_text(text)
-
-app = ApplicationBuilder().token(BOT_TOKEN).build()
-app.add_handler(CommandHandler("like", like))
-app.run_polling()` }
-    ];
-}
-function apiDocTab(i) {
-    apiDocIdx = i;
-    const key = apiInfo && apiInfo.keys && apiInfo.keys[0] ? apiInfo.keys[0].key : '';
-    const docs = apiDocs(key), pre = document.getElementById('api-doc-code'); if (!pre) return;
-    pre.textContent = docs[i].c;
-    document.querySelectorAll('#api-doc-tabs .api-tab').forEach((b, n) => b.classList.toggle('on', n === i));
-}
-function apiDocCopy() { apiCopy(apiDocs(apiInfo && apiInfo.keys && apiInfo.keys[0] ? apiInfo.keys[0].key : '')[apiDocIdx].c, 'Code copied'); }
-
-function apiRender(d) {
-    const keys = d.keys || [], active = keys.filter(k => k.status === 'active' && !k.adminDisabled).length;
-    let h = '<div class="vip-card p-4 mb-4 space-y-2.5">' +
-        '<div class="flex justify-between text-sm"><span class="text-slate-600">Wallet balance</span><b class="text-brand-600">BDT ' + esc(d.balance) + '</b></div>' +
-        '<div class="flex justify-between text-sm"><span class="text-slate-600">Active keys</span><b class="text-slate-800">' + active + ' / ' + keys.length + '</b></div>' +
-        '<div class="flex justify-between text-sm"><span class="text-slate-600">Price per delivered like</span><b class="text-rose-600">BDT ' + esc(d.price) + '</b></div></div>';
-    const apiThr = Number(d.apiMinDeposit != null ? d.apiMinDeposit : (apiCfg.apiMinDeposit != null ? apiCfg.apiMinDeposit : 100)) || 100;
-    const apiPaid = Number(d.paidDeposit != null ? d.paidDeposit : (typeof userData !== 'undefined' && userData && userData.paidDeposit != null ? userData.paidDeposit : (d.totalDeposit || 0))) || 0;
-    const apiOk = d.apiEligible != null ? !!d.apiEligible : apiPaid >= apiThr;
-    if (!apiOk) {
-        const left = Math.max(0, apiThr - apiPaid);
-        h += '<div class="vip-card p-5 mb-4 text-center"><div class="w-14 h-14 mx-auto rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center text-2xl mb-3"><i class="fas fa-lock"></i></div>' +
-            '<div class="font-extrabold text-slate-800 mb-1">Deposit BDT ' + apiThr + ' to unlock the API</div>' +
-            '<p class="zp-sub leading-relaxed">Just <b>BDT ' + left + '</b> more to deposit and the API unlocks. Only real deposits count — ad earnings, promo credits and any other free money in your balance don’t count.</p>' +
-            '<button onclick="showSec(\'addmoney\')" class="zp-btn w-full text-sm mt-3"><i class="fas fa-wallet mr-1.5"></i>Add money to wallet</button></div>';
-    } else if (!d.enabled) {
-        h += '<div class="vip-card p-4 mb-4 text-center zp-sub"><i class="fas fa-circle-pause text-amber-500 mr-1"></i>The API system is paused for the moment.</div>';
-    } else if (d.canCreate || (apiOk && !keys.length)) {
-        h += '<div class="vip-card p-4 mb-4"><div class="text-xs font-bold text-slate-600 mb-1.5">Your Telegram username</div>' +
-            '<div class="flex gap-2"><input id="api-name" class="zp-input text-sm py-2.5" placeholder="@yourusername" maxlength="33" autocapitalize="off" autocomplete="off" oninput="this.value=this.value.replace(/[^A-Za-z0-9_@]/g,\'\')">' +
-            '<button id="api-create-btn" onclick="apiCreate()" class="zp-btn px-4 text-sm whitespace-nowrap"><i class="fas fa-plus mr-1"></i>Create key</button></div>' +
-            '<p class="zp-sub mt-2">Each user can create one API key. If you delete it, you can create a new one anytime.</p></div>';
-    } else if (keys.length) {
-        h += '<div class="zp-sub text-center mb-3">You already have an API key. To create a new one, please delete the old one first.</div>';
-    }
-    if (keys.length) {
-        h += '<div class="text-sm font-extrabold text-slate-900 mb-2 mt-1">Your keys</div>';
-        keys.forEach(k => {
-            const st = k.adminDisabled ? apiPill('Disabled by admin', '#fee2e2', '#b91c1c') : k.status === 'active' ? apiPill('Active', '#dcfce7', '#15803d') : apiPill('Revoked', '#fef3c7', '#a16207');
-            const sp = k.source === 'admin' ? ' ' + apiPill('Special', '#1e3a5f', '#0e7490') : '';
-            h += '<div class="vip-card p-4 mb-3"><div class="flex items-center justify-between gap-2 mb-2.5"><b class="text-slate-800 text-sm truncate">' + (k.label ? '@' + esc(k.label) : 'API key') + '</b><span class="flex-shrink-0">' + st + sp + '</span></div>' +
-                '<div class="api-keybox"><span>' + esc(k.key) + '</span><button type="button" onclick="apiCopy(\'' + esc(k.key) + '\',\'API key copied\')" aria-label="Copy key"><i class="fa-regular fa-copy"></i></button></div>' +
-                '<div class="zp-sub mt-2.5">Created ' + apiDay(k.createdAt) + ' · ' + k.requests + ' requests · last used ' + apiAgo(k.lastUsedAt) + ' · BDT ' + esc(k.price) + '/like · ' + esc(k.rateLimit) + ' req/min' + (k.dailyLimit ? ' · ' + esc(k.dailyLimit) + ' likes/day' : '') + (k.expiresAt ? ' · expires ' + apiDay(k.expiresAt) : '') + '</div>' +
-                '<div class="flex gap-2 mt-3"><button class="api-act" onclick="apiCopyUrl(\'' + esc(k.key) + '\')"><i class="fa-regular fa-copy"></i>Copy URL</button>' +
-                (k.status === 'active' ? '<button class="api-act" style="color:#b45309" onclick="apiAct(\'' + esc(k.key) + '\',\'revoke\')"><i class="fa-solid fa-ban"></i>Revoke</button>'
-                    : '<button class="api-act" style="color:#15803d" ' + (k.adminDisabled ? 'disabled' : '') + ' onclick="apiAct(\'' + esc(k.key) + '\',\'restore\')"><i class="fa-solid fa-rotate-left"></i>Restore</button>') +
-                (k.source === 'user' && !k.adminDisabled ? '<button class="api-act" style="color:#dc2626" onclick="apiAct(\'' + esc(k.key) + '\',\'delete\')"><i class="fa-regular fa-trash-can"></i>Delete</button>' : '') + '</div></div>';
-        });
-    }
-    h += '<div class="text-sm font-extrabold text-slate-900 mb-2 mt-4">Recent API activity</div><div class="vip-card overflow-hidden mb-4">';
-    if (!(d.logs || []).length) h += '<div class="zp-sub text-center py-6">No API requests yet.</div>';
-    else {
-        h += '<div style="overflow-x:auto"><table class="w-full" style="font-size:11px;min-width:300px"><thead><tr style="background:#070d1f;color:#8fa8c8;font-weight:800;text-align:left"><th class="p-2.5">TIME</th><th class="p-2.5">UID</th><th class="p-2.5">LIKES</th><th class="p-2.5">RESULT</th></tr></thead><tbody>';
-        d.logs.forEach(l => { h += '<tr style="border-top:1px solid #122447"><td class="p-2.5 text-slate-600">' + apiFmtTime(l.createdAt) + '</td><td class="p-2.5 font-mono text-slate-700">' + esc(l.uid) + '</td><td class="p-2.5 text-slate-700">' + (l.kind === 'info' ? '—' : (l.likes ? l.likes : '0')) + '</td><td class="p-2.5">' + apiResultPill(l.result, l.kind) + '</td></tr>'; });
-        h += '</tbody></table></div>';
-    }
-    h += '</div>';
-    h += '<div class="vip-card p-4"><div class="text-sm font-extrabold text-slate-900 mb-1"><i class="fa-solid fa-book text-brand-600 mr-1.5"></i>How to use</div>' +
-        '<p class="zp-sub leading-relaxed mb-3">Endpoint: <b>GET/POST /api/v1/external/like</b> — Parameters: <b>apikey</b>, <b>uid</b>, <b>region</b> (default BD), optional <b>request_id</b>. You’re charged only when likes are delivered successfully: BDT ' + esc(d.price) + ' per like. <b>already</b> or <b>failed</b> means no charge.</p>' +
-        '<div id="api-doc-tabs" class="flex gap-1.5 mb-2.5">' + ['cURL', 'Python', 'Telegram Bot'].map((t, i) => '<button class="api-tab' + (i === apiDocIdx ? ' on' : '') + '" onclick="apiDocTab(' + i + ')">' + t + '</button>').join('') +
-        '<button class="api-tab" style="margin-left:auto" onclick="apiDocCopy()"><i class="fa-regular fa-copy"></i></button></div><pre id="api-doc-code" class="api-code"></pre>' +
-        '<div class="text-xs font-bold text-slate-700 mt-3 mb-1">Response (success)</div><pre class="api-code">{\n  "ok": true,\n  "status": "success",\n  "uid": "1234567890",\n  "region": "BD",\n  "player_name": "PlayerName",\n  "likes_given": 220,\n  "before_likes": 1000,\n  "after_likes": 1220,\n  "price_charged": ' + esc(d.price) + ',\n  "remaining_balance": ' + esc(Math.max(0, (d.balance || 0))) + '\n}</pre>' +
-        '<p class="zp-sub leading-relaxed mt-3"><b>status:</b> success · already · failed. <b>Error codes:</b> 401 invalid_api_key · 402 insufficient_balance · 403 key_disabled / deposit_required · 429 rate_limited. Free player info: <b>/api/v1/external/user-info</b>, balance: <b>/api/v1/external/balance</b>.</p></div>';
-    return h;
-}
-async function apiOpen(silent) {
-    const box = document.getElementById('api-body'); if (!box) return;
-    if (!silent && !apiInfo) box.innerHTML = '<div class="text-center py-10"><i class="fas fa-spinner fa-spin text-brand-600 text-xl"></i></div>';
-    try {
-        try { const g = await db.collection('settings').doc('general').get(); apiCfg = g.exists ? g.data() : {}; } catch (e) {}
-        apiInfo = await api('/apiKeyManage', { action: 'info' });
-        box.innerHTML = apiRender(apiInfo); apiDocTab(apiDocIdx);
-    } catch (e) {
-        box.innerHTML = '<div class="vip-card p-5 text-center"><div class="text-rose-600 font-bold text-sm mb-2">' + esc(e.message) + '</div><button class="zp-btn text-sm px-5" onclick="apiOpen()">Try again</button></div>';
-    }
-}
-async function apiCreate() {
-    if (apiBusy) return;
-    const name = (document.getElementById('api-name').value || '').trim().replace(/^@/, '');
-    if (!/^[A-Za-z0-9_]{3,32}$/.test(name)) { Swal.fire('Enter a username', 'Please enter your Telegram username (3–32 characters: English letters, numbers and _)', 'warning'); return; }
-    apiBusy = true; const b = document.getElementById('api-create-btn'); if (b) b.disabled = true;
-    try { await api('/apiKeyManage', { action: 'create', name }); apiToast('success', 'API key created'); }
-    catch (e) { Swal.fire('Oops', e.message, 'error'); }
-    finally { apiBusy = false; await apiOpen(true); }
-}
-async function apiAct(key, action) {
-    if (apiBusy) return;
-    if (action !== 'restore') {
-        const t = action === 'delete' ? { title: 'Delete this API key?', text: 'This key will stop working once deleted. You can create a new key later.', btn: 'Delete', col: '#dc2626' }
-                                       : { title: 'Revoke this API key?', text: 'The key will be turned off. You can restore it later if you like.', btn: 'Revoke', col: '#d97706' };
-        const r = await Swal.fire({ icon: 'warning', title: t.title, text: t.text, showCancelButton: true, confirmButtonText: t.btn, cancelButtonText: 'No', confirmButtonColor: t.col, reverseButtons: true });
-        if (!r.isConfirmed) return;
-    }
-    apiBusy = true;
-    try { await api('/apiKeyManage', { action, key }); apiToast('success', action === 'delete' ? 'Deleted' : action === 'revoke' ? 'Revoked' : 'Restored'); }
-    catch (e) { Swal.fire('Oops', e.message, 'error'); }
-    finally { apiBusy = false; await apiOpen(true); }
-}
 </script>
 <script>
 // ================= AUTO LIKE (subscription: daily like sent automatically) =================

@@ -264,9 +264,6 @@ select.flat-input option{background:#0d1730}
             <a href="#" onclick="switchView('referral');return false" id="nav-referral" class="nav-link flex items-center px-4 py-3">
                 <i class="fas fa-user-plus w-8 text-center"></i> Referral Settings
             </a>
-            <a href="#" onclick="switchView('withdraw');return false" id="nav-withdraw" class="nav-link flex items-center px-4 py-3">
-                <i class="fas fa-money-bill-transfer w-8 text-center"></i> Withdraw Requests <span id="wd-nav-badge" class="ml-2 px-2 py-0.5 rounded-full text-xs font-bold hidden" style="background:#dc2626;color:#fff"></span>
-            </a>
             <a href="#" onclick="switchView('antifraud');return false" id="nav-antifraud" class="nav-link flex items-center px-4 py-3">
                 <i class="fas fa-user-shield w-8 text-center"></i> Anti-Fraud <span id="af-nav-badge" class="ml-2 px-2 py-0.5 rounded-full text-xs font-bold hidden" style="background:#dc2626;color:#fff"></span>
             </a>
@@ -297,12 +294,9 @@ select.flat-input option{background:#0d1730}
                 <i class="fas fa-image w-8 text-center"></i> Banners
             </a>
             <div class="nav-group">Services</div>
-            <a href="#" onclick="switchView('apikeys');return false" id="nav-apikeys" class="nav-link flex items-center px-4 py-3"><i class="fas fa-key w-8 text-center"></i> API Keys</a>
             <a href="#" onclick="switchView('dailylike');return false" id="nav-dailylike" class="nav-link flex items-center px-4 py-3"><i class="fas fa-fire w-8 text-center"></i> Daily Like Price</a>
             <a href="#" onclick="switchView('autolike');return false" id="nav-autolike" class="nav-link flex items-center px-4 py-3"><i class="fas fa-robot w-8 text-center"></i> Auto Like</a>
             <a href="#" onclick="switchView('guildglory');return false" id="nav-guildglory" class="nav-link flex items-center px-4 py-3"><i class="fas fa-shield-halved w-8 text-center"></i> Guild Glory</a>
-            <a href="#" onclick="switchView('tcp');return false" id="nav-tcp" class="nav-link flex items-center px-4 py-3"><i class="fas fa-satellite-dish w-8 text-center"></i> TCP BOT</a>
-            <a href="#" onclick="switchView('ads');return false" id="nav-ads" class="nav-link flex items-center px-4 py-3"><i class="fas fa-gift w-8 text-center"></i> Ads / Earn</a>
             <div class="nav-group">Marketing &amp; Tools</div>
             <a href="#" onclick="switchView('notices')" id="nav-notices" class="nav-link flex items-center px-4 py-3"><i class="fas fa-bullhorn w-8 text-center"></i> Notifications</a>
             <a href="#" onclick="switchView('promos')" id="nav-promos" class="nav-link flex items-center px-4 py-3"><i class="fas fa-ticket-alt w-8 text-center"></i> Promo Codes</a>
@@ -581,33 +575,11 @@ select.flat-input option{background:#0d1730}
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div><label class="block text-xs text-gray-400 mb-1">প্রতি রেফারে বোনাস (৳)</label><input id="rf-bonus" type="number" min="0" class="flat-input"></div>
                         <div><label class="block text-xs text-gray-400 mb-1">ডিপোজিট কমিশন (%)</label><input id="rf-dep" type="number" min="0" max="100" step="0.1" class="flat-input"></div>
-                        <div><label class="block text-xs text-gray-400 mb-1">Ads আর্নিং কমিশন (%)</label><input id="rf-ads" type="number" min="0" max="100" step="0.1" class="flat-input"></div>
                     </div>
-                    <p class="text-xs text-gray-500 mt-3">Ads কমিশন: রেফার-হওয়া ইউজার অ্যাডস দেখে যত টাকা পাবে, তার এই % রেফারারের ব্যালেন্সে যাবে (ইউজারের টাকা কমবে না)। ০ দিলে বন্ধ।</p>
                     <div class="mt-4"><button class="flat-btn py-2 px-4" onclick="rfSave()"><i class="fas fa-save mr-1"></i> Save</button></div>
                 </div>
             </div>
 
-            <div id="view-withdraw" class="view-section hidden">
-                <div class="card mb-6">
-                    <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
-                        <h3 class="text-xl font-bold text-orange-500"><i class="fas fa-money-bill-transfer mr-2"></i>Withdraw Requests</h3>
-                        <span id="wd-stat" class="px-3 py-1 rounded-full text-xs font-bold" style="background:#78350f;color:#fcd34d">Pending: 0</span>
-                    </div>
-                    <div class="flex flex-wrap gap-2 mb-3">
-                        <input id="wd-q" class="flat-input" style="flex:1;min-width:200px" placeholder="Search: withdraw code (WD-XXXX-XXXX) / number / email" onkeydown="if(event.key==='Enter')wdLoad()">
-                        <button class="flat-btn py-2 px-4" onclick="wdLoad()"><i class="fas fa-search mr-1"></i> Search</button>
-                    </div>
-                    <div class="flex flex-wrap gap-2" id="wd-chips"></div>
-                </div>
-                <div class="card mb-6">
-                    <h3 class="text-lg font-bold text-white mb-1">Withdraw Warning Message</h3>
-                    <p class="text-xs text-gray-400 mb-3">শুধু প্রতি মাসের ১–৫ তারিখ (বাংলাদেশ সময়) উইথড্র চলে। অন্য তারিখে ইউজার Withdraw চাপলে এই মেসেজ দেখাবে। খালি রেখে Save দিলে ডিফল্ট মেসেজ ব্যবহার হবে।</p>
-                    <textarea id="wd-msg" rows="3" class="flat-input" style="width:100%" maxlength="500"></textarea>
-                    <div class="mt-3"><button class="flat-btn py-2 px-4" onclick="wdSaveMsg()"><i class="fas fa-save mr-1"></i> Save message</button></div>
-                </div>
-                <div id="wd-list"></div>
-            </div>
 
             <div id="view-antifraud" class="view-section hidden">
                 <div class="card mb-6">
@@ -923,118 +895,8 @@ select.flat-input option{background:#0d1730}
                 </div>
             </div>
 
-            <div id="view-apikeys" class="view-section hidden">
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6" id="ak-stats"></div>
-                <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 md:gap-8 mb-6 md:mb-8">
-                    <div class="card">
-                        <h3 class="text-xl font-bold text-orange-500 mb-6 pb-3 border-b border-dark-border"><i class="fas fa-sliders-h mr-2"></i>API System Settings</h3>
-                        <div class="space-y-5">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" id="ak-enabled" class="w-5 h-5 accent-orange-500 rounded" checked><span class="text-sm font-bold text-white">API system চালু (বন্ধ করলে সব key কাজ করা বন্ধ করবে)</span></label>
-                            <div><label class="block text-sm text-gray-400 mb-2 font-medium">Global API like price (৳) — খালি রাখলে রিসেলার/ডেইলি লাইক প্রাইস ব্যবহার হবে</label><input type="number" min="0" id="ak-gprice" class="flat-input" placeholder="যেমন: 5"></div>
-                            <div><label class="block text-sm text-gray-400 mb-2 font-medium">Default rate limit (requests / minute) — খালি রাখলে 30</label><input type="number" min="1" id="ak-grate" class="flat-input" placeholder="যেমন: 30"></div>
-                            <div><label class="block text-sm text-gray-400 mb-2 font-medium">API আনলক ডিপোজিট (৳) — শুধু আসল ডিপোজিট গণ্য (খালি = 100)</label><input type="number" min="0" id="ak-mindep" class="flat-input" placeholder="100"></div>
-                            <p class="text-xs text-gray-500 leading-relaxed">দাম কাটার নিয়ম: key এর Custom price → Global API price → রিসেলার প্রাইস। লাইক সফলভাবে গেলেই শুধু টাকা কাটে; already/failed হলে কাটা হয় না। শুধু Reseller/Admin রোলের ইউজার API ব্যবহার করতে পারে।</p>
-                        </div>
-                        <button onclick="akSaveSettings()" class="flat-btn mt-6 w-full">Save API Settings</button>
-                    </div>
-                    <div class="card" style="border:1px solid #22d3ee">
-                        <h3 class="text-xl font-bold text-orange-500 mb-6 pb-3 border-b border-dark-border"><i class="fas fa-magic mr-2"></i>Generate API Keys</h3>
-                        <div class="space-y-5">
-                            <div><label class="block text-sm text-gray-400 mb-2 font-medium">Holder — Support PIN / Email / UID (খালি রাখলে কারো নামে নয়, স্টকে থাকবে)</label><input type="text" id="ak-ident" class="flat-input" placeholder="যেমন: A1B2C3 অথবা user@gmail.com"></div>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div><label class="block text-sm text-gray-400 mb-2 font-medium">Label / Name</label><input type="text" id="ak-label" class="flat-input" maxlength="40" placeholder="যেমন: VIP Bot"></div>
-                                <div><label class="block text-sm text-gray-400 mb-2 font-medium">Quantity (1-50)</label><input type="number" id="ak-count" min="1" max="50" value="1" class="flat-input"></div>
-                                <div><label class="block text-sm text-gray-400 mb-2 font-medium">Custom price / like (৳)</label><input type="number" id="ak-price" min="0" class="flat-input" placeholder="খালি = ডিফল্ট"></div>
-                                <div><label class="block text-sm text-gray-400 mb-2 font-medium">Rate limit / min</label><input type="number" id="ak-rate" min="1" class="flat-input" placeholder="খালি = ডিফল্ট"></div>
-                            </div>
-                            <p class="text-xs text-gray-500 leading-relaxed">একই ইউজারের নামে একসাথে অনেকগুলো স্পেশাল key বানানো যায় (প্রতিটার আলাদা দাম/লিমিট সেট করা যায়)। Holder ছাড়া বানালে পরে "Assign" দিয়ে কাউকে দেওয়া যাবে।</p>
-                        </div>
-                        <button id="ak-gen-btn" onclick="akGenerate()" class="flat-btn mt-6 w-full"><i class="fas fa-key mr-2"></i>Generate</button>
-                    </div>
-                    <div class="card" style="border:1px solid #8b5cf6;grid-column:1/-1">
-                        <h3 class="text-xl font-bold text-orange-500 mb-6 pb-3 border-b border-dark-border"><i class="fas fa-wand-magic-sparkles mr-2"></i>Custom API Builder — নিজের মতো API key বানান</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div><label class="block text-sm text-gray-400 mb-2 font-medium">Key code (খালি = অটো)</label><input type="text" id="cb-key" class="flat-input font-mono" maxlength="64" placeholder="যেমন: VIP-MYKEY-001"></div>
-                            <div><label class="block text-sm text-gray-400 mb-2 font-medium">Holder — PIN / Email / UID</label><input type="text" id="cb-ident" class="flat-input" placeholder="খালি = স্টক"></div>
-                            <div><label class="block text-sm text-gray-400 mb-2 font-medium">Label / Name</label><input type="text" id="cb-label" class="flat-input" maxlength="40"></div>
-                            <div><label class="block text-sm text-gray-400 mb-2 font-medium">Price / like (৳)</label><input type="number" min="0" step="0.01" id="cb-price" class="flat-input" placeholder="খালি = ডিফল্ট"></div>
-                            <div><label class="block text-sm text-gray-400 mb-2 font-medium">Rate limit / min</label><input type="number" min="1" id="cb-rate" class="flat-input" placeholder="খালি = ডিফল্ট"></div>
-                            <div><label class="block text-sm text-gray-400 mb-2 font-medium">Daily limit (likes / day)</label><input type="number" min="0" id="cb-daily" class="flat-input" placeholder="খালি = unlimited"></div>
-                            <div><label class="block text-sm text-gray-400 mb-2 font-medium">Max total likes</label><input type="number" min="0" id="cb-max" class="flat-input" placeholder="খালি = unlimited"></div>
-                            <div><label class="block text-sm text-gray-400 mb-2 font-medium">Expiry date</label><input type="date" id="cb-exp" class="flat-input"></div>
-                            <div><label class="block text-sm text-gray-400 mb-2 font-medium">Note (শুধু অ্যাডমিন দেখবে)</label><input type="text" id="cb-note" class="flat-input" maxlength="120"></div>
-                        </div>
-                        <label class="flex items-center gap-2 mt-4 text-sm text-gray-300 cursor-pointer"><input type="checkbox" id="cb-free" class="w-4 h-4 accent-orange-500"> ব্যালেন্স না কেটে চলবে (Free key)</label>
-                        <button id="cb-btn" onclick="akBuildCustom()" class="flat-btn mt-5 w-full"><i class="fas fa-wand-magic-sparkles mr-2"></i>Create Custom API</button>
-                    </div>
-                </div>
-
-                <div class="flex flex-col md:flex-row md:items-center gap-3 mb-3">
-                    <h3 class="text-xl font-bold text-orange-500 flex-1">All API Keys</h3>
-                    <input type="text" id="ak-search" oninput="akRender()" placeholder="Search key / name / email / PIN" class="flat-input md:w-80">
-                    <button onclick="akLoad()" class="flat-btn flat-btn-outline whitespace-nowrap"><i class="fas fa-sync-alt mr-1"></i>Refresh</button>
-                </div>
-                <div class="flat-table-container mb-8">
-                    <table class="flat-table" style="min-width:1100px">
-                        <thead><tr><th>Key</th><th>Holder</th><th>Label</th><th>Price</th><th>Limit</th><th>Status</th><th>Usage</th><th>Last used</th><th class="text-center">Actions</th></tr></thead>
-                        <tbody id="ak-list"><tr><td colspan="9" class="text-center text-gray-400 py-6">Loading...</td></tr></tbody>
-                    </table>
-                </div>
-
-                <h3 class="text-xl font-bold text-orange-500 mb-3">Recent API activity (latest 100)</h3>
-                <div class="flat-table-container">
-                    <table class="flat-table" style="min-width:760px">
-                        <thead><tr><th>Time</th><th>Holder / Label</th><th>Player UID</th><th>Region</th><th>Result</th><th>Likes</th><th>Charged</th></tr></thead>
-                        <tbody id="ak-logs"></tbody>
-                    </table>
-                </div>
-            </div>
 
 
-            <div id="view-ads" class="view-section hidden">
-                <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 md:gap-8 mb-6">
-                    <div class="card">
-                        <h3 class="text-xl font-bold text-orange-500 mb-4 pb-3 border-b border-dark-border"><i class="fas fa-sliders-h mr-2"></i>Ads / Earn Settings</h3>
-                        <div class="space-y-4">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" id="ads-enabled" class="w-5 h-5 accent-orange-500 rounded"><span class="text-sm font-bold text-white">Ads Earn সিস্টেম চালু</span></label>
-                            <div><label class="block text-sm text-gray-400 mb-2">বন্ধ থাকলে ইউজারকে মেসেজ (ঐচ্ছিক)</label><input type="text" id="ads-off" class="flat-input"></div>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div><label class="block text-sm text-gray-400 mb-2">প্রতি ধাপের সর্বনিম্ন সময় (সেকেন্ড)</label><input type="number" min="0" id="ads-min" class="flat-input" placeholder="90"></div>
-                                <div><label class="block text-sm text-gray-400 mb-2">সব ধাপ শেষে রিওয়ার্ড (৳) — ইউজারের মেইন ব্যালেন্সে আসল টাকা হিসেবে যোগ হবে</label><input type="number" min="0" id="ads-reward" class="flat-input" placeholder="5"></div>
-                                <div><label class="block text-sm text-gray-400 mb-2">দিনে সর্বোচ্চ রাউন্ড (0 = আনলিমিটেড)</label><input type="number" min="0" id="ads-limit" class="flat-input" placeholder="0"></div>
-                                <div class="flex items-end pb-3"><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" id="ads-ban" class="w-5 h-5 accent-orange-500 rounded" checked><span class="text-sm font-bold text-white">সময়ের আগে শেষ করলে অটো ব্যান</span></label></div>
-                            </div>
-                            <div><label class="block text-sm text-gray-400 mb-2">Website URL (খালি রাখলে এই অ্যাডমিন পেজের ডোমেইন ধরা হবে)</label><input type="text" id="ads-site" class="flat-input" placeholder="https://yoursite.com/"></div>
-                        </div>
-                        <p class="text-xs text-gray-500 mt-3">রিওয়ার্ডের টাকা ইউজারের একমাত্র মেইন ব্যালেন্সে যোগ হয়। সময় পার না হলে (যেমন 90 সেকেন্ডের আগে) ধাপ শেষ করলে ব্যান অপশন চালু থাকলে অ্যাকাউন্ট সাথে সাথে ব্যান হবে।</p>
-                    </div>
-                    <div class="card">
-                        <h3 class="text-xl font-bold text-orange-500 mb-4 pb-3 border-b border-dark-border"><i class="fas fa-chart-simple mr-2"></i>Stats</h3>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="rounded-xl bg-dark-bg border border-dark-border p-4 text-center"><div id="ads-st-users" class="text-2xl font-extrabold text-white">-</div><div class="text-xs text-gray-400 mt-1">ইউজার (অন্তত একবার শুরু করেছে)</div></div>
-                            <div class="rounded-xl bg-dark-bg border border-dark-border p-4 text-center"><div id="ads-st-rounds" class="text-2xl font-extrabold text-white">-</div><div class="text-xs text-gray-400 mt-1">আজ সম্পূর্ণ হওয়া রাউন্ড</div></div>
-                        </div>
-                        <p class="text-xs text-gray-500 mt-4">ব্যান হওয়া ইউজারকে Users পেজ বা Anti-Fraud লগ থেকে আনব্যান করতে পারবেন।</p>
-                    </div>
-                </div>
-
-                <div class="card mb-6">
-                    <h3 class="text-xl font-bold text-orange-500 mb-2 pb-3 border-b border-dark-border"><i class="fas fa-list-ol mr-2"></i>ধাপ ও শর্টনার লিংক</h3>
-                    <p class="text-xs text-gray-400 mb-4 leading-relaxed">যতগুলো ধাপ রাখবেন, ইউজারকে ততগুলোই শেষ করতে হবে। প্রতিটি ধাপের জন্য: <b class="text-white">① Destination link</b> কপি করে আপনার শর্টনার সাইটে লম্বা লিংক হিসেবে বসিয়ে শর্টলিংক বানান, তারপর <b class="text-white">② সেই Short link</b> নিচের ঘরে বসান। শেষে Save চাপুন। (Key বদলালে পুরনো শর্টলিংক কাজ করবে না।)</p>
-                    <div id="ads-steps" class="space-y-3"></div>
-                    <button onclick="adsAddStep()" class="mt-4 px-4 py-2 rounded-lg bg-dark-border text-white text-sm font-bold">+ ধাপ যোগ করুন</button>
-                </div>
-
-                <div class="card mb-6">
-                    <h3 class="text-xl font-bold text-orange-500 mb-2 pb-3 border-b border-dark-border"><i class="fas fa-rectangle-ad mr-2"></i>Ad Codes (শুধু Ads পেজে দেখাবে)</h3>
-                    <p class="text-xs text-gray-400 mb-4">শুধু ব্যানার দেখাবে (পপআন্ডার/ক্লিকে-আসা অ্যাডস নেই)। ওয়েবসাইটের অন্য কোথাও আসবে না, শুধু ইউজার Ads বাটনে ঢুকলে লোড হবে।</p>
-                    <label class="block text-sm text-gray-400 mt-5 mb-2">ব্যানার কোড (সর্বোচ্চ ২টি, প্রতিটি আলাদা বক্সে, atOptions + script সহ)</label>
-                    <div id="ads-banners" class="space-y-3"></div>
-                    <button onclick="adsAddBanner()" class="mt-3 px-4 py-2 rounded-lg bg-dark-border text-white text-sm font-bold">+ ব্যানার যোগ করুন</button>
-                </div>
-
-                <button onclick="adsSave()" class="px-6 py-3 rounded-lg bg-orange-500 text-white font-bold"><i class="fas fa-save mr-2"></i>Save সব সেটিংস</button>
-            </div>
 
             <div id="view-features" class="view-section hidden">
                 <div class="card max-w-3xl">
@@ -1085,51 +947,6 @@ select.flat-input option{background:#0d1730}
                 </div>
             </div>
 
-            <div id="view-tcp" class="view-section hidden">
-                <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 md:gap-8 mb-6">
-                    <div class="card">
-                        <h3 class="text-xl font-bold text-orange-500 mb-4 pb-3 border-b border-dark-border"><i class="fas fa-sliders-h mr-2"></i>TCP Settings & Prices</h3>
-                        <div class="space-y-4">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" id="tcp-enabled" class="w-5 h-5 accent-orange-500 rounded" checked><span class="text-sm font-bold text-white">TCP BOT বিক্রি চালু</span></label>
-                            <div><label class="block text-sm text-gray-400 mb-2">TCP বোর্ডের পাবলিক URL (TCP সার্ভার চালু হলে নিজে থেকেই বসে যায়; চাইলে হাতে দিন)</label><input type="text" id="tcp-url" class="flat-input" placeholder="https://..."></div>
-                            <div><label class="block text-sm text-gray-400 mb-2">বন্ধ থাকলে ইউজারকে মেসেজ (ঐচ্ছিক)</label><input type="text" id="tcp-off" class="flat-input"></div>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div><label class="block text-sm text-gray-400 mb-2">Daily Like প্রাইস (৳)</label><input type="number" min="0" id="tcp-dl-price" class="flat-input"></div>
-                                <div><label class="block text-sm text-gray-400 mb-2">Daily Like রিসেলার প্রাইস (৳)</label><input type="number" min="0" id="tcp-dl-rprice" class="flat-input" placeholder="খালি = ডিফল্ট"></div>
-                            </div>
-                        </div>
-                        <h4 class="text-lg font-bold text-orange-500 mt-6 mb-3">Packages (দিন ও দাম)</h4>
-                        <div id="tcp-pk-rows" class="space-y-2"></div>
-                        <div class="flex gap-3 mt-3"><button onclick="tcpAddRow()" class="px-4 py-2 rounded-lg bg-dark-border text-white text-sm font-bold">+ Package</button><button onclick="tcpSaveCfg()" class="px-4 py-2 rounded-lg bg-orange-500 text-white text-sm font-bold">Save</button></div>
-                        <p class="text-xs text-gray-500 mt-2">Daily Like-এ কত লাইক যাবে সেটা লাইক সার্ভিসের API ঠিক করে; এখান থেকে শুধু দাম বদলায়।</p>
-                    </div>
-                    <div class="card">
-                        <h3 class="text-xl font-bold text-orange-500 mb-4 pb-3 border-b border-dark-border"><i class="fas fa-key mr-2"></i>পাসওয়ার্ড জেনারেট</h3>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div><label class="block text-sm text-gray-400 mb-2">দিন (0 = আনলিমিটেড)</label>
-                                <input type="number" min="0" id="tcp-g-days" class="flat-input" value="3" list="tcp-days-list"><datalist id="tcp-days-list"><option value="0"><option value="3"><option value="5"><option value="7"><option value="10"><option value="12"><option value="15"><option value="20"><option value="25"><option value="30"></datalist></div>
-                            <div><label class="block text-sm text-gray-400 mb-2">কতজন ব্যবহার করতে পারবে (0 = আনলিমিটেড)</label><input type="number" min="0" id="tcp-g-users" class="flat-input" value="1"></div>
-                            <div><label class="block text-sm text-gray-400 mb-2">কতগুলো বানাবেন</label><input type="number" min="1" max="100" id="tcp-g-count" class="flat-input" value="1"></div>
-                            <div><label class="block text-sm text-gray-400 mb-2">নিজের পাসওয়ার্ড (ঐচ্ছিক, 1টির জন্য)</label><input type="text" id="tcp-g-custom" class="flat-input" placeholder="VIP-NAME"></div>
-                        </div>
-                        <div class="mt-3"><label class="block text-sm text-gray-400 mb-2">লেবেল (ঐচ্ছিক)</label><input type="text" id="tcp-g-label" class="flat-input"></div>
-                        <button onclick="tcpGen()" class="mt-4 px-4 py-2 rounded-lg bg-orange-500 text-white text-sm font-bold">Generate</button>
-                        <pre id="tcp-g-out" class="mt-3 text-sm text-green-400 whitespace-pre-wrap"></pre>
-                    </div>
-                </div>
-                <div class="card mb-6">
-                    <div class="flex items-center justify-between mb-4"><h3 class="text-xl font-bold text-orange-500"><i class="fas fa-list mr-2"></i>সব পাসওয়ার্ড</h3><button onclick="tcpLoadKeys()" class="px-3 py-1.5 rounded-lg bg-dark-border text-white text-xs font-bold">Refresh</button></div>
-                    <div class="overflow-x-auto"><table class="w-full text-sm text-left"><thead class="text-gray-400"><tr><th class="py-2 pr-3">Password</th><th class="pr-3">Label</th><th class="pr-3">Status</th><th class="pr-3">Users</th><th class="pr-3">Ends</th><th></th></tr></thead><tbody id="tcp-keys" class="text-white"></tbody></table></div>
-                </div>
-                <div class="card mb-6">
-                    <h3 class="text-xl font-bold text-orange-500 mb-4 pb-3 border-b border-dark-border"><i class="fas fa-boxes-stacked mr-2"></i>Guest Account Stock (NEXORA TCP বাটনের জন্য)</h3>
-                    <p class="text-xs text-gray-400 mb-2">প্রতি লাইনে একটি: <code>UID PASSWORD</code> অথবা <code>UID PASSWORD JWT_TOKEN REGION</code>। যেটা আগে কেউ নেয়নি সেটাই পরের জনকে যায়।</p>
-                    <textarea id="tcp-acc-text" rows="5" class="flat-input" placeholder="1234567890 ABCDEF123456 BD"></textarea>
-                    <button onclick="tcpAccAdd()" class="mt-3 px-4 py-2 rounded-lg bg-orange-500 text-white text-sm font-bold">Add to stock</button>
-                    <div class="text-sm text-gray-300 mt-4" id="tcp-acc-sum"></div>
-                    <div class="overflow-x-auto mt-2"><table class="w-full text-sm text-left"><tbody id="tcp-accs" class="text-white"></tbody></table></div>
-                </div>
-            </div>
 
             <div id="view-autolike" class="view-section hidden">
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
@@ -1270,16 +1087,12 @@ select.flat-input option{background:#0d1730}
                 banners: "Slider Banners",
                 notices: "Broadcast Notifications",
                 promos: "Promo Codes",
-                apikeys: "API Key Management",
                 dailylike: "Daily Like Price Control",
                 autolike: "Auto Like Management",
-                tcp: "TCP BOT",
-                ads: "Ads / Earn System",
                 theme: "Theme & Colors",
                 idsell: "ID Sell",
                 maintenance: "Website Maintenance",
                 referral: "Referral Settings",
-                withdraw: "Withdraw Requests",
                 antifraud: "Anti-Fraud & Auto-Ban",
                 features: "Feature Controls",
                 guildglory: "Guild Glory"
@@ -1296,7 +1109,6 @@ select.flat-input option{background:#0d1730}
             if(viewId === 'idsell' && window.idsLoad) idsLoad();
             if(viewId === 'maintenance' && window.mtLoad) mtLoad();
             if(viewId === 'antifraud' && window.afLoad) afLoad();
-            if(viewId === 'withdraw' && window.wdLoad) wdLoad();
             if(viewId === 'referral' && window.rfLoad) rfLoad();
             if(viewId === 'settings') loadSettings();
             if(viewId === 'categories') loadCategories();
@@ -1322,10 +1134,8 @@ select.flat-input option{background:#0d1730}
             if(viewId === 'notices') loadNotices();
             if(viewId === 'promos') loadPromos();
             if(viewId === 'autolike') loadAutoLike();
-            if(viewId === 'tcp') tcpLoadAll();
             if(viewId === 'guildglory') ggLoadAll();
             if(viewId === 'features') ftLoad();
-            if(viewId === 'ads') adsLoadAll();
         }
 
         async function loadDashboardData() {
@@ -2163,146 +1973,7 @@ select.flat-input option{background:#0d1730}
     })();
 </script>
 <script>
-// ===== API KEY MANAGEMENT (admin) =====
 const NXG_API_BACKEND = NEXORA_CONFIG.BACKEND_URL;
-let akData = { keys: [], logs: [], settings: {}, stats: {} };
-const akEsc = t => String(t == null ? '' : t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const akTime = iso => { const d = new Date(iso); return (!iso || isNaN(d)) ? '—' : d.toLocaleString(); };
-const akBadge = (t, bg, fg) => '<span class="px-2 py-0.5 rounded-full text-xs font-bold" style="background:' + bg + ';color:' + fg + '">' + akEsc(t) + '</span>';
-async function akCall(action, body) {
-    const user = auth.currentUser; if (!user) throw new Error('Login required');
-    const tk = await user.getIdToken(), ctl = new AbortController(), t = setTimeout(() => ctl.abort(), 45000);
-    try {
-        const r = await fetch(NXG_API_BACKEND + '/adminApiKeys', { method: 'POST', signal: ctl.signal, headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(Object.assign({ action }, body || {})) });
-        let j = {}; try { j = await r.json(); } catch (e) {}
-        if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
-        return j;
-    } catch (e) {
-        if (e.name === 'AbortError') throw new Error('Server timeout, try again');
-        if (/Failed to fetch|NetworkError|Load failed/i.test(e.message)) throw new Error('Cannot reach the backend server');
-        throw e;
-    } finally { clearTimeout(t); }
-}
-function akCopy(text, msg) {
-    const done = () => Swal.fire({ toast: true, position: 'top', icon: 'success', title: msg || 'Copied', showConfirmButton: false, timer: 1200 });
-    const fb = () => { const ta = document.createElement('textarea'); ta.value = text; ta.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); done(); } catch (e) { Swal.fire('Error', 'Copy failed', 'error'); } ta.remove(); };
-    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(done).catch(fb); else fb();
-}
-async function akLoad() {
-    try {
-        akData = await akCall('list');
-        const s = akData.settings || {};
-        document.getElementById('ak-enabled').checked = s.apiEnabled !== false;
-        document.getElementById('ak-gprice').value = (s.apiLikePrice == null || s.apiLikePrice === '') ? '' : s.apiLikePrice;
-        document.getElementById('ak-grate').value = (s.apiRateLimit == null || s.apiRateLimit === '') ? '' : s.apiRateLimit;
-        document.getElementById('ak-mindep').value = (s.apiMinDeposit == null || s.apiMinDeposit === '') ? '' : s.apiMinDeposit;
-        akRender();
-    } catch (e) {
-        document.getElementById('ak-list').innerHTML = '<tr><td colspan="9" class="text-center py-6" style="color:#f87171">' + akEsc(e.message) + '</td></tr>';
-    }
-}
-function akRender() {
-    const st = akData.stats || {};
-    const card = (l, v, c) => '<div class="card text-center"><div class="text-xs text-gray-400 mb-1">' + l + '</div><div class="text-2xl font-extrabold" style="color:' + c + '">' + v + '</div></div>';
-    document.getElementById('ak-stats').innerHTML = card('Total keys', st.keys || 0, '#22d3ee') + card('Active keys', st.active || 0, '#34d399') + card('Total requests', st.requests || 0, '#60a5fa') + card('Total charged', '৳' + (st.spent || 0), '#f472b6');
-    const q = (document.getElementById('ak-search').value || '').toLowerCase().trim();
-    const rows = (akData.keys || []).filter(k => !q || [k.key, k.label, k.holder && k.holder.name, k.holder && k.holder.email, k.holder && k.holder.pin].some(x => String(x || '').toLowerCase().includes(q)));
-    document.getElementById('ak-list').innerHTML = rows.length ? rows.map(k => {
-        const h = k.holder;
-        const holder = h ? '<b class="text-white">' + akEsc(h.name || 'N/A') + '</b> ' + (h.role === 'admin' ? akBadge('Admin', '#e11d48', '#fff') : h.role === 'reseller' ? akBadge('Reseller', '#f59e0b', '#000') : akBadge(h.role === '?' ? 'missing' : 'User', '#475569', '#fff')) + (h.banned ? ' ' + akBadge('BANNED', '#7f1d1d', '#fff') : '') +
-            '<br><span class="text-xs text-gray-400">' + akEsc(h.email) + '<br>PIN: ' + akEsc(h.pin) + ' • ৳' + akEsc(h.balance) + '</span>' : '<span class="text-gray-500">— unassigned —</span>';
-        const status = !h ? akBadge('Unassigned', '#475569', '#fff') : k.adminDisabled ? akBadge('Disabled', '#7f1d1d', '#fff') : k.status === 'active' ? akBadge('Active', '#065f46', '#6ee7b7') : akBadge('Revoked', '#78350f', '#fcd34d');
-        const price = k.customPrice != null && k.customPrice !== '' ? '৳' + akEsc(k.customPrice) + ' <span class="text-xs text-orange-400">(custom)</span>' : (h ? '৳' + akEsc(k.price) : '<span class="text-gray-500">default</span>');
-        const kk = akEsc(k.key), btn = (ic, t, fn, cls) => '<button title="' + t + '" onclick="' + fn + '" class="flat-btn ' + (cls || 'flat-btn-outline') + ' text-xs py-2 px-2.5"><i class="fas ' + ic + '"></i></button>';
-        return '<tr><td><span class="font-mono text-xs break-all">' + kk + '</span> <button title="Copy" onclick="akCopy(\'' + kk + '\',\'Key copied\')" class="text-orange-400 ml-1"><i class="far fa-copy"></i></button><br><span class="text-xs text-gray-500">' + akTime(k.createdAt) + ' • ' + (k.source === 'admin' ? 'admin-made' : 'user-made') + '</span></td>' +
-            '<td>' + holder + '</td><td>' + akEsc(k.label || '—') + '</td><td>' + price + '</td><td>' + akEsc(k.rateLimit) + '/min</td><td>' + status + '</td>' +
-            '<td class="text-xs">' + akEsc(k.requests) + ' req<br>' + akEsc(k.likesGiven) + ' likes<br>৳' + akEsc(k.spent) + '</td><td class="text-xs text-gray-400">' + akTime(k.lastUsedAt) + '</td>' +
-            '<td><div class="flex flex-wrap gap-1.5 justify-center">' + btn('fa-pen', 'Edit price / limit / label', "akEdit('" + kk + "')") + (k.adminDisabled ? btn('fa-check', 'Enable', "akToggle('" + kk + "',false)") : btn('fa-ban', 'Disable', "akToggle('" + kk + "',true)")) +
-            (k.source === 'user' ? '' : btn('fa-user-plus', 'Assign to a user', "akAssign('" + kk + "')")) + btn('fa-sync-alt', 'Regenerate key', "akRegen('" + kk + "')") + btn('fa-trash', 'Delete', "akDelete('" + kk + "')", 'flat-btn-danger') + '</div></td></tr>';
-    }).join('') : '<tr><td colspan="9" class="text-center text-gray-400 py-6">No API keys found.</td></tr>';
-    const names = {}; (akData.keys || []).forEach(k => { if (k.holder && k.holder.userId) names[k.holder.userId] = k.holder.name || k.holder.email; });
-    const res = r => r === 'success' ? akBadge('Success', '#065f46', '#6ee7b7') : r === 'already' ? akBadge('Already', '#78350f', '#fcd34d') : r === 'failed' ? akBadge('Failed', '#7f1d1d', '#fca5a5') : akBadge(r || '—', '#1e3a8a', '#93c5fd');
-    document.getElementById('ak-logs').innerHTML = (akData.logs || []).length ? akData.logs.map(l => '<tr><td class="text-xs text-gray-400">' + akTime(l.createdAt) + '</td><td>' + akEsc(names[l.userId] || (l.userId || '').slice(0, 6)) + '<br><span class="text-xs text-gray-500">' + akEsc(l.label || '—') + '</span></td><td class="font-mono text-xs">' + akEsc(l.uid) + '</td><td>' + akEsc(l.region) + '</td><td>' + (l.kind === 'info' ? akBadge('Lookup', '#1e3a8a', '#93c5fd') : res(l.result)) + '</td><td>' + (l.kind === 'info' ? '—' : akEsc(l.likes)) + '</td><td>' + (l.price ? '৳' + akEsc(l.price) : '—') + '</td></tr>').join('') : '<tr><td colspan="7" class="text-center text-gray-400 py-6">No API activity yet.</td></tr>';
-}
-async function akSaveSettings() {
-    const en = document.getElementById('ak-enabled').checked, pr = document.getElementById('ak-gprice').value.trim(), rl = document.getElementById('ak-grate').value.trim(), md = document.getElementById('ak-mindep').value.trim();
-    if ((pr !== '' && !(+pr >= 0)) || (rl !== '' && !(+rl >= 1))) { Swal.fire('Error', 'Price ও rate limit এ সঠিক সংখ্যা দিন', 'error'); return; }
-    const FVd = firebase.firestore.FieldValue;
-    try {
-        showLoading();
-        await db.collection('settings').doc('general').set({ apiEnabled: en, apiLikePrice: pr === '' ? FVd.delete() : Math.round(+pr), apiRateLimit: rl === '' ? FVd.delete() : Math.round(+rl), apiMinDeposit: md === '' ? 100 : Math.max(0, Math.round(+md)) }, { merge: true });
-        hideLoading(); Swal.fire({ icon: 'success', title: 'Saved', timer: 1200, showConfirmButton: false }); akLoad();
-    } catch (e) { hideLoading(); Swal.fire('Error', e.message, 'error'); }
-}
-async function akGenerate() {
-    const num = id => document.getElementById(id).value.trim();
-    const count = parseInt(num('ak-count')) || 1;
-    if (count < 1 || count > 50) { Swal.fire('Error', 'Quantity 1 থেকে 50 এর মধ্যে দিন', 'error'); return; }
-    const btn = document.getElementById('ak-gen-btn'); btn.disabled = true;
-    try {
-        showLoading();
-        const r = await akCall('generate', { ident: num('ak-ident'), label: num('ak-label'), count, customPrice: num('ak-price'), rateLimit: num('ak-rate') });
-        hideLoading();
-        const who = r.holder ? 'Assigned to <b>' + akEsc(r.holder.name || r.holder.email) + '</b> (PIN ' + akEsc(r.holder.pin) + ')' : 'Unassigned (stock) keys';
-        const x = await Swal.fire({ title: r.keys.length + ' key(s) generated', width: 560, showCancelButton: true, confirmButtonText: 'Copy all', cancelButtonText: 'Close',
-            html: '<div style="text-align:left;font-size:13px">' + who + '<textarea readonly rows="8" class="swal2-textarea" style="width:100%;margin:10px 0 0;font-family:monospace;font-size:12px">' + akEsc(r.keys.join('\n')) + '</textarea></div>' });
-        if (x.isConfirmed) akCopy(r.keys.join('\n'), 'All keys copied');
-        akLoad();
-    } catch (e) { hideLoading(); Swal.fire('Error', e.message, 'error'); }
-    finally { btn.disabled = false; }
-}
-
-async function akBuildCustom() {
-    const v = id => document.getElementById(id).value.trim();
-    const code = v('cb-key');
-    if (code && !/^[A-Za-z0-9_\-]{8,64}$/.test(code)) { Swal.fire('Error', 'Key code এ শুধু English letter, number, - ও _ (৮-৬৪ অক্ষর) দিন', 'error'); return; }
-    const num = id => v(id) === '' ? '' : +v(id);
-    for (const id of ['cb-price', 'cb-rate', 'cb-daily', 'cb-max']) if (v(id) !== '' && !(+v(id) >= 0)) { Swal.fire('Error', 'সঠিক সংখ্যা দিন', 'error'); return; }
-    const btn = document.getElementById('cb-btn'); btn.disabled = true;
-    try {
-        showLoading();
-        const r = await akCall('generate', { ident: v('cb-ident'), label: v('cb-label'), count: 1, customKey: code, customPrice: num('cb-price'), rateLimit: num('cb-rate'),
-            dailyLimit: num('cb-daily'), maxLikes: num('cb-max'), expiresAt: v('cb-exp') ? new Date(v('cb-exp') + 'T23:59:59').toISOString() : '', note: v('cb-note'), free: document.getElementById('cb-free').checked });
-        hideLoading();
-        const x = await Swal.fire({ title: 'Custom API তৈরি হয়েছে', html: '<p class="font-mono" style="font-size:13px;word-break:break-all">' + akEsc(r.keys[0]) + '</p>', showCancelButton: true, confirmButtonText: 'Copy', cancelButtonText: 'Close' });
-        if (x.isConfirmed) akCopy(r.keys[0], 'Key copied');
-        akLoad();
-    } catch (e) { hideLoading(); Swal.fire('Error', e.message, 'error'); }
-    finally { btn.disabled = false; }
-}
-async function akEdit(key) {
-    const k = (akData.keys || []).find(x => x.key === key); if (!k) return;
-    const f = (i, l, v, ph) => '<label style="font-size:12px">' + l + '</label><input id="' + i + '" class="swal2-input" style="margin:4px 0 12px;width:100%" value="' + akEsc(v == null ? '' : v) + '" placeholder="' + (ph || '') + '">';
-    const r = await Swal.fire({ title: 'Edit API key', showCancelButton: true, confirmButtonText: 'Save',
-        html: '<div style="text-align:left;font-size:13px"><p class="font-mono" style="font-size:11px;word-break:break-all;margin-bottom:10px">' + akEsc(key) + '</p>' + f('e-label', 'Label / Name', k.label, '') + f('e-price', 'Custom price per delivered like (৳) — খালি = ডিফল্ট', k.customPrice, 'default') + f('e-rate', 'Rate limit (requests / minute) — খালি = ডিফল্ট', k.rateLimit, 'default') + f('e-daily', 'Daily limit (likes / day) — খালি = unlimited', k.dailyLimit, 'unlimited') + f('e-max', 'Max total likes — খালি = unlimited', k.maxLikes, 'unlimited') + f('e-exp', 'Expiry (YYYY-MM-DD) — খালি = কখনো না', k.expiresAt ? String(k.expiresAt).slice(0, 10) : '', 'none') + f('e-newkey', 'Key code বদলান (খালি = একই থাকবে)', '', 'NEW-KEY-CODE') + '</div>',
-        preConfirm: () => ({ label: document.getElementById('e-label').value.trim(), customPrice: document.getElementById('e-price').value.trim(), rateLimit: document.getElementById('e-rate').value.trim(), dailyLimit: document.getElementById('e-daily').value.trim(), maxLikes: document.getElementById('e-max').value.trim(), expiresAt: document.getElementById('e-exp').value.trim() ? new Date(document.getElementById('e-exp').value.trim() + 'T23:59:59').toISOString() : '', newKey: document.getElementById('e-newkey').value.trim() }) });
-    if (!r.isConfirmed) return;
-    try { showLoading(); await akCall('update', Object.assign({ key }, r.value)); hideLoading(); Swal.fire({ icon: 'success', title: 'Updated', timer: 1000, showConfirmButton: false }); akLoad(); }
-    catch (e) { hideLoading(); Swal.fire('Error', e.message, 'error'); }
-}
-async function akToggle(key, disable) {
-    const r = await Swal.fire({ icon: 'question', title: disable ? 'এই key বন্ধ করবেন?' : 'এই key চালু করবেন?', text: disable ? 'বন্ধ করলে ইউজার নিজে আর Restore/Delete করতে পারবে না।' : '', showCancelButton: true, confirmButtonText: disable ? 'Disable' : 'Enable' });
-    if (!r.isConfirmed) return;
-    try { showLoading(); await akCall('update', { key, adminDisabled: disable }); hideLoading(); akLoad(); } catch (e) { hideLoading(); Swal.fire('Error', e.message, 'error'); }
-}
-async function akAssign(key) {
-    const r = await Swal.fire({ title: 'Assign key', input: 'text', inputPlaceholder: 'Support PIN / Email / UID (খালি = unassign)', showCancelButton: true, confirmButtonText: 'Assign' });
-    if (!r.isConfirmed) return;
-    try { showLoading(); const j = await akCall('assign', { key, ident: r.value || '' }); hideLoading(); Swal.fire({ icon: 'success', title: j.holder ? 'Assigned to ' + (j.holder.name || j.holder.email) : 'Unassigned', timer: 1400, showConfirmButton: false }); akLoad(); }
-    catch (e) { hideLoading(); Swal.fire('Error', e.message, 'error'); }
-}
-async function akRegen(key) {
-    const r = await Swal.fire({ icon: 'warning', title: 'Key regenerate করবেন?', text: 'পুরনো key সাথে সাথে বন্ধ হয়ে যাবে, ইউজারকে নতুন key দিতে হবে।', showCancelButton: true, confirmButtonText: 'Regenerate', confirmButtonColor: '#d97706' });
-    if (!r.isConfirmed) return;
-    try { showLoading(); const j = await akCall('regenerate', { key }); hideLoading(); const x = await Swal.fire({ title: 'New key', html: '<p class="font-mono" style="font-size:13px;word-break:break-all">' + akEsc(j.key) + '</p>', showCancelButton: true, confirmButtonText: 'Copy', cancelButtonText: 'Close' }); if (x.isConfirmed) akCopy(j.key, 'Key copied'); akLoad(); }
-    catch (e) { hideLoading(); Swal.fire('Error', e.message, 'error'); }
-}
-async function akDelete(key) {
-    const r = await Swal.fire({ icon: 'warning', title: 'Key ডিলিট করবেন?', text: 'এটি স্থায়ীভাবে মুছে যাবে।', showCancelButton: true, confirmButtonText: 'Delete', confirmButtonColor: '#DC2626' });
-    if (!r.isConfirmed) return;
-    try { showLoading(); await akCall('delete', { key }); hideLoading(); akLoad(); } catch (e) { hideLoading(); Swal.fire('Error', e.message, 'error'); }
-}
-(function () { const _sv = switchView; switchView = function (v) { const r = _sv.apply(this, arguments); if (v === 'apikeys') akLoad(); return r; }; })();
 // ===== APK upload (admin) =====
 const apkFmt = n => n >= 1048576 ? (n / 1048576).toFixed(1) + ' MB' : Math.round(n / 1024) + ' KB';
 async function apkRefresh() {
@@ -2402,87 +2073,9 @@ async function loadAutoLike() {
     alLoadSubs();
 }
 
-// ================= ADS / EARN (admin) =================
-async function adsCall(action, body) {
-    const user = auth.currentUser; if (!user) throw new Error('Login required');
-    const tk = await user.getIdToken();
-    const r = await fetch(NXG_API_BACKEND + '/adminAds', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(Object.assign({ action }, body || {})) });
-    let j = {}; try { j = await r.json(); } catch (e) {}
-    if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
-    return j;
-}
-let adsSteps = [], adsBanList = [];
-const adsEsc = t => String(t == null ? '' : t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-function adsRandKey() { const a = new Uint8Array(9); crypto.getRandomValues(a); return btoa(String.fromCharCode.apply(null, a)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, ''); }
-function adsDest(key) {
-    let b = (document.getElementById('ads-site').value || '').trim() || new URL('./', location.href).href;
-    return b + (b.indexOf('?') >= 0 ? '&' : '?') + 'ads=' + key;
-}
-function adsRenderSteps() {
-    const box = document.getElementById('ads-steps');
-    if (!adsSteps.length) { box.innerHTML = '<div class="text-sm text-gray-500">এখনো কোনো ধাপ নেই। নিচের বাটন থেকে ধাপ যোগ করুন।</div>'; return; }
-    box.innerHTML = adsSteps.map((s, i) => `<div class="p-4 rounded-xl border border-dark-border bg-dark-bg space-y-3">
-        <div class="flex gap-2 items-center"><span class="text-orange-500 font-extrabold">#${i + 1}</span>
-            <input class="flat-input flex-1" data-ak="name" data-i="${i}" value="${adsEsc(s.name)}" placeholder="Step ${i + 1}">
-            <button onclick="adsRegen(${i})" class="px-3 py-2 rounded-lg bg-dark-border text-yellow-400 text-xs font-bold whitespace-nowrap" title="নতুন Key"><i class="fas fa-rotate"></i></button>
-            <button onclick="adsDelStep(${i})" class="px-3 py-2 rounded-lg bg-dark-border text-red-400 text-xs"><i class="fas fa-trash"></i></button></div>
-        <div><label class="block text-xs text-gray-400 mb-1">① Destination link — এটা শর্টনার সাইটে বসিয়ে শর্টলিংক বানান</label>
-            <div class="flex gap-2"><input readonly id="ads-dest-${i}" class="flat-input font-mono text-xs flex-1" value="${adsEsc(adsDest(s.key))}"><button onclick="adsCopyDest(${i})" class="px-3 py-2 rounded-lg bg-orange-500 text-white text-xs font-bold"><i class="fas fa-copy mr-1"></i>Copy</button></div></div>
-        <div><label class="block text-xs text-gray-400 mb-1">② তৈরি হওয়া Short link এখানে দিন</label>
-            <input class="flat-input" data-ak="url" data-i="${i}" value="${adsEsc(s.url)}" placeholder="https://shortener.com/abc123"></div></div>`).join('');
-}
-function adsReadSteps() { document.querySelectorAll('#ads-steps [data-ak]').forEach(el => { const s = adsSteps[+el.dataset.i]; if (s) s[el.dataset.ak] = el.value.trim(); }); return adsSteps; }
-function adsAddStep() { adsReadSteps(); if (adsSteps.length >= 12) return SA('Limit', 'সর্বোচ্চ 12টি ধাপ', 'warning'); adsSteps.push({ id: 's' + Date.now().toString(36), name: 'Step ' + (adsSteps.length + 1), url: '', key: adsRandKey() }); adsRenderSteps(); }
-function adsDelStep(i) { adsReadSteps(); adsSteps.splice(i, 1); adsRenderSteps(); }
-function adsRegen(i) { adsReadSteps(); if (!confirm('নতুন Key বানালে এই ধাপের পুরনো শর্টলিংক আর কাজ করবে না। নতুন Destination link দিয়ে আবার শর্টলিংক বানাতে হবে। করবেন?')) return; adsSteps[i].key = adsRandKey(); adsRenderSteps(); }
-function adsCopyDest(i) {
-    const el = document.getElementById('ads-dest-' + i); if (!el) return;
-    const done = () => Swal.fire({ toast: true, position: 'top', icon: 'success', title: 'Copied', showConfirmButton: false, timer: 1200 });
-    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(el.value).then(done).catch(() => { el.select(); document.execCommand('copy'); done(); });
-    else { el.select(); el.setSelectionRange(0, 99999); try { document.execCommand('copy'); } catch (e) {} done(); }
-}
-function adsRenderBanners() {
-    document.getElementById('ads-banners').innerHTML = adsBanList.map((c, i) => `<div class="flex gap-2 items-start"><textarea rows="5" class="flat-input font-mono text-xs flex-1" data-ab="${i}" spellcheck="false">${adsEsc(c)}</textarea><button onclick="adsDelBanner(${i})" class="px-3 py-2 rounded-lg bg-dark-border text-red-400 text-xs"><i class="fas fa-trash"></i></button></div>`).join('') || '<div class="text-sm text-gray-500">কোনো ব্যানার নেই।</div>';
-}
-function adsReadBanners() { document.querySelectorAll('#ads-banners [data-ab]').forEach(el => { adsBanList[+el.dataset.ab] = el.value; }); return adsBanList; }
-function adsAddBanner() { adsReadBanners(); if (adsBanList.length >= 2) return SA('Limit', 'সর্বোচ্চ ২টি ব্যানার', 'warning'); adsBanList.push(''); adsRenderBanners(); }
-function adsDelBanner(i) { adsReadBanners(); adsBanList.splice(i, 1); adsRenderBanners(); }
-async function adsLoadAll() {
-    try {
-        const j = await adsCall('getConfig');
-        document.getElementById('ads-enabled').checked = j.enabled === true;
-        document.getElementById('ads-off').value = j.offMsg || '';
-        document.getElementById('ads-min').value = j.minSeconds;
-        document.getElementById('ads-reward').value = (j.reward != null ? j.reward : j.bonus);
-        document.getElementById('ads-limit').value = j.dailyLimit;
-        document.getElementById('ads-ban').checked = j.banOnFast !== false;
-        document.getElementById('ads-site').value = j.siteUrl || '';
-        adsBanList = ((j.codes && j.codes.banners) || []).slice(0, 2);
-        adsSteps = (j.steps || []).slice();
-        adsRenderSteps(); adsRenderBanners();
-    } catch (e) { SA('Error', e.message, 'error'); }
-    try { const s = await adsCall('stats'); document.getElementById('ads-st-users').innerText = s.users; document.getElementById('ads-st-rounds').innerText = s.roundsToday; } catch (e) {}
-}
-async function adsSave() {
-    adsReadSteps(); adsReadBanners();
-    try {
-        showLoading();
-        const j = await adsCall('setConfig', {
-            enabled: document.getElementById('ads-enabled').checked, offMsg: document.getElementById('ads-off').value.trim(),
-            minSeconds: document.getElementById('ads-min').value, reward: document.getElementById('ads-reward').value, dailyLimit: document.getElementById('ads-limit').value,
-            banOnFast: document.getElementById('ads-ban').checked, siteUrl: document.getElementById('ads-site').value.trim(),
-            steps: adsSteps, codes: { pageScripts: '', banners: adsBanList.filter(x => String(x).trim()) } });
-        adsSteps = j.steps || adsSteps; adsRenderSteps(); adsBanList = adsBanList.filter(x => String(x).trim()); adsRenderBanners();
-        hideLoading(); Swal.fire({ icon: 'success', title: 'Saved', timer: 1200, showConfirmButton: false });
-    } catch (e) { hideLoading(); SA('Error', e.message, 'error'); }
-}
-
-// ================= TCP BOARD (admin) =================
 // ================= FEATURE CONTROLS =================
 const FT_LIST = [
   ['showAppDownload', 'fa-download', 'App Download', 'হোমের Quick Links-এ App Download বাটন'],
-  ['showTcp', 'fa-satellite-dish', 'TCP BOT', 'হোম কার্ড + প্রোফাইল মেনুর "My TCP Bot"'],
-  ['showIdSell', 'fa-id-card', 'ID Sell', 'হোম কার্ড + প্রোফাইল মেনুর "ID Code"'],
   ['showLeaderboard', 'fa-trophy', 'Leaderboard', 'ভাসমান Leaderboard বাটন']
 ];
 async function ftLoad() {
@@ -2548,93 +2141,6 @@ async function ggLoadOrders() {
         document.getElementById('gg-orders').innerHTML = j.orders.length ? j.orders.map(o => `<tr><td>${ggEsc(o.guildId)}</td><td>${ggEsc(o.package)}</td><td>${ggEsc(o.user)}</td><td>৳${o.price}</td><td><span class="pill ${o.status === 'success' ? 'pill-ok' : o.status === 'failed' ? 'pill-bad' : ''}">${ggEsc(o.status)}</span></td><td class="text-xs text-gray-400">${ggEsc(o.apiReply)}</td></tr>`).join('') : '<tr><td colspan="6" class="text-gray-500">কোনো অর্ডার নেই</td></tr>';
     } catch (e) { document.getElementById('gg-orders').innerHTML = '<tr><td colspan="6" class="text-red-400">' + ggEsc(e.message) + '</td></tr>'; }
 }
-
-async function tcpCall(action, body) {
-    const user = auth.currentUser; if (!user) throw new Error('Login required');
-    const tk = await user.getIdToken();
-    const r = await fetch(NXG_API_BACKEND + '/adminTcp', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(Object.assign({ action }, body || {})) });
-    let j = {}; try { j = await r.json(); } catch (e) {}
-    if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
-    return j;
-}
-const tcpEsc = t => String(t == null ? '' : t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-let tcpPk = [];
-const TCP_DEF = [3, 5, 7, 10, 12, 15, 20, 25, 30];
-function tcpRenderRows() {
-    document.getElementById('tcp-pk-rows').innerHTML = tcpPk.map((p, i) => `<div class="grid grid-cols-12 gap-2 items-center">
-        <input class="flat-input col-span-3" data-k="name" data-i="${i}" value="${tcpEsc(p.name)}" placeholder="Name">
-        <input class="flat-input col-span-2" type="number" data-k="days" data-i="${i}" value="${p.days}" placeholder="Days">
-        <input class="flat-input col-span-2" type="number" data-k="price" data-i="${i}" value="${p.price}" placeholder="Price">
-        <input class="flat-input col-span-2" type="number" data-k="resellerPrice" data-i="${i}" value="${p.resellerPrice == null ? '' : p.resellerPrice}" placeholder="Reseller">
-        <label class="col-span-2 text-xs text-white flex items-center gap-1"><input type="checkbox" data-k="active" data-i="${i}" ${p.active !== false ? 'checked' : ''}>On</label>
-        <button onclick="tcpDelRow(${i})" class="col-span-1 text-red-400"><i class="fas fa-trash"></i></button></div>`).join('');
-}
-function tcpReadRows() {
-    document.querySelectorAll('#tcp-pk-rows [data-k]').forEach(el => { const p = tcpPk[+el.dataset.i], k = el.dataset.k; if (!p) return;
-        if (k === 'active') p.active = el.checked; else if (k === 'name') p.name = el.value.trim(); else if (k === 'resellerPrice') p.resellerPrice = el.value === '' ? null : Math.round(+el.value); else p[k] = Math.round(+el.value); });
-    return tcpPk;
-}
-function tcpAddRow() { tcpReadRows(); tcpPk.push({ id: 'p' + Date.now().toString(36), name: '', days: 1, price: 0, resellerPrice: null, active: true }); tcpRenderRows(); }
-function tcpDelRow(i) { tcpReadRows(); tcpPk.splice(i, 1); tcpRenderRows(); }
-async function tcpLoadAll() { await tcpLoadCfg(); tcpLoadKeys(); tcpLoadAccs(); }
-async function tcpLoadCfg() {
-    try {
-        const j = await tcpCall('getConfig');
-        document.getElementById('tcp-enabled').checked = j.enabled !== false;
-        document.getElementById('tcp-url').value = j.tcpUrl || '';
-        document.getElementById('tcp-off').value = j.offMsg || '';
-        document.getElementById('tcp-dl-price').value = j.dailyLikePrice;
-        document.getElementById('tcp-dl-rprice').value = j.dailyLikeResellerPrice == null ? '' : j.dailyLikeResellerPrice;
-        tcpPk = j.packages.length ? j.packages : TCP_DEF.map(d => ({ id: 'd' + d, name: d + ' Days', days: d, price: 0, resellerPrice: null, active: true }));
-        tcpRenderRows();
-    } catch (e) { SA('Error', e.message, 'error'); }
-}
-async function tcpSaveCfg() {
-    const rows = tcpReadRows();
-    try {
-        showLoading();
-        await tcpCall('setConfig', { enabled: document.getElementById('tcp-enabled').checked, tcpUrl: document.getElementById('tcp-url').value.trim(), offMsg: document.getElementById('tcp-off').value.trim(),
-            dailyLikePrice: document.getElementById('tcp-dl-price').value, dailyLikeResellerPrice: document.getElementById('tcp-dl-rprice').value, packages: rows.map(p => Object.assign({}, p, { name: p.name || (p.days + ' Days') })) });
-        hideLoading(); Swal.fire({ icon: 'success', title: 'Saved', timer: 1200, showConfirmButton: false });
-    } catch (e) { hideLoading(); SA('Error', e.message, 'error'); }
-}
-async function tcpGen() {
-    try {
-        showLoading();
-        const j = await tcpCall('gen', { days: +document.getElementById('tcp-g-days').value || 0, maxUsers: +document.getElementById('tcp-g-users').value || 0, count: +document.getElementById('tcp-g-count').value || 1,
-            custom: document.getElementById('tcp-g-custom').value.trim(), label: document.getElementById('tcp-g-label').value.trim() });
-        hideLoading(); document.getElementById('tcp-g-out').innerText = j.keys.join('\n'); tcpLoadKeys();
-    } catch (e) { hideLoading(); SA('Error', e.message, 'error'); }
-}
-async function tcpLoadKeys() {
-    try {
-        const j = await tcpCall('list'), now = j.now, col = { active: '#22c55e', unused: '#eab308', expired: '#ef4444', revoked: '#ef4444' };
-        document.getElementById('tcp-keys').innerHTML = j.keys.map(k => `<tr class="border-t border-dark-border"><td class="py-2 pr-3 font-mono">${tcpEsc(k.key)}</td><td class="pr-3">${tcpEsc(k.label)}</td>
-            <td class="pr-3" style="color:${col[k.state]}">${k.state}</td><td class="pr-3">${k.users}/${k.maxUsers || '∞'}</td><td class="pr-3">${k.expiresMs ? new Date(k.expiresMs).toLocaleString() : (k.days ? 'after 1st login' : 'Unlimited')}</td>
-            <td class="whitespace-nowrap"><button class="text-orange-400 mr-2" onclick="tcpKeyAct('${tcpEsc(k.key)}','extend')">+days</button><button class="text-yellow-400 mr-2" onclick="tcpKeyAct('${tcpEsc(k.key)}','${k.state === 'revoked' ? 'unrevoke' : 'revoke'}')">${k.state === 'revoked' ? 'enable' : 'disable'}</button><button class="text-red-400" onclick="tcpKeyAct('${tcpEsc(k.key)}','delete')">delete</button></td></tr>`).join('') || '<tr><td class="py-3 text-gray-500">কোনো পাসওয়ার্ড নেই</td></tr>';
-    } catch (e) { SA('Error', e.message, 'error'); }
-}
-async function tcpKeyAct(key, act) {
-    try {
-        let days; if (act === 'extend') { const x = await Swal.fire({ title: 'কত দিন যোগ করবেন?', input: 'number', inputValue: 1, showCancelButton: true }); if (!x.isConfirmed) return; days = +x.value; }
-        if (act === 'delete') { const x = await Swal.fire({ title: 'ডিলিট করবেন?', icon: 'warning', showCancelButton: true }); if (!x.isConfirmed) return; }
-        await tcpCall(act, { key, days }); tcpLoadKeys();
-    } catch (e) { SA('Error', e.message, 'error'); }
-}
-async function tcpAccAdd() {
-    const t = document.getElementById('tcp-acc-text').value; if (!t.trim()) return;
-    try { showLoading(); const j = await tcpCall('accAdd', { text: t }); hideLoading(); document.getElementById('tcp-acc-text').value = ''; SA('Added', j.added + ' account(s) stock-এ যোগ হয়েছে', 'success'); tcpLoadAccs(); }
-    catch (e) { hideLoading(); SA('Error', e.message, 'error'); }
-}
-async function tcpLoadAccs() {
-    try {
-        const j = await tcpCall('accList'), free = j.accounts.filter(a => !a.used).length;
-        document.getElementById('tcp-acc-sum').innerText = 'Total ' + j.accounts.length + ' • Free ' + free + ' • Used ' + (j.accounts.length - free);
-        document.getElementById('tcp-accs').innerHTML = j.accounts.map(a => `<tr class="border-t border-dark-border"><td class="py-1 pr-3 font-mono">${tcpEsc(a.uid)}</td><td class="pr-3">${tcpEsc(a.region)}</td><td class="pr-3">${a.hasJwt ? 'JWT' : ''} ${a.hasPw ? 'PW' : ''}</td><td class="pr-3" style="color:${a.used ? '#ef4444' : '#22c55e'}">${a.used ? 'used' : 'free'}</td>
-            <td>${a.used ? `<button class="text-yellow-400 mr-2" onclick="tcpAccAct('${a.uid}','accReset')">reset</button>` : ''}<button class="text-red-400" onclick="tcpAccAct('${a.uid}','accDelete')">delete</button></td></tr>`).join('');
-    } catch (e) { SA('Error', e.message, 'error'); }
-}
-async function tcpAccAct(uid, act) { try { await tcpCall(act, { uid }); tcpLoadAccs(); } catch (e) { SA('Error', e.message, 'error'); } }
 
 async function alSave() {
     const rows = alReadRows(), hr = parseInt(document.getElementById('al-hour').value), mn = parseInt(document.getElementById('al-min').value), fee = parseInt(document.getElementById('al-fee').value);
@@ -2708,15 +2214,13 @@ async function alSendOne(id) {
         ['brandText','ব্র্যান্ড কালার লেখা (ব্যালেন্স, আইকন, লিংক)',{tx:'#059669'},'t']
       ]],
       ['📌 হেডার ও নিচের নেভিগেশন', [
-        ['header','হেডার (উপরের বার)',{c1:'#ffffff',c2:'',a:90,tx:'#10201a',bd:'#ecfdf5'}],
         ['balanceChip','হেডারের ব্যালেন্স বক্স',{c1:'#ecfdf5',c2:'',a:135,tx:'#059669',bd:'#d1fae5'},'tint'],
         ['avatar','হেডারের প্রোফাইল বাটন',{c1:'#34d399',c2:'#047857',a:135,tx:'#ffffff'},'g'],
         ['loginBtn','Login বাটন (হেডার)',{c1:'#059669',c2:'#047857',a:90,tx:'#ffffff'},'g'],
         ['bell','নোটিফিকেশন বেল',{c1:'#ecfdf5',c2:'',a:135,tx:'#059669',bd:'#d1fae5'},'tint'],
-        ['bottomNav','নিচের নেভিগেশন বার',{c1:'#ffffff',c2:'',a:90,bd:'#ecfdf5'}],
         ['navText','নেভিগেশন আইটেমের লেখা',{tx:'#5f7a6e'}],
         ['navActive','নেভিগেশনের সিলেক্টেড ট্যাব',{c1:'#effaf5',c2:'#dff5ea',a:180,tx:'#059669'},'tint'],
-        ['centerBtn','মাঝের গোল বাটন (Leaderboard)',{c1:'#6ee7b7',c2:'#059669',a:135,bd:'#ffffff'},'g'],
+        ['centerBtn','মাঝের গোল বাটন (Wallet)',{c1:'#6ee7b7',c2:'#059669',a:135,bd:'#ffffff'},'g'],
         ['fab','নিচের ডানের সাপোর্ট বাটন',{c1:'#6ee7b7',c2:'#059669',a:135,tx:'#ffffff'},'g']
       ]],
       ['📢 নোটিশ ও ব্যানার', [
@@ -3052,84 +2556,16 @@ async function rfCall(body) {
     if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
     return j;
 }
-function rfFill(j) { document.getElementById('rf-bonus').value = j.bonus; document.getElementById('rf-dep').value = j.depositPercent; document.getElementById('rf-ads').value = j.adsPercent; }
+function rfFill(j) { document.getElementById('rf-bonus').value = j.bonus; document.getElementById('rf-dep').value = j.depositPercent; }
 async function rfLoad() { try { rfFill(await rfCall({ action: 'getConfig' })); } catch (e) { Swal.fire('Error', e.message, 'error'); } }
 async function rfSave() {
     try {
-        const j = await rfCall({ action: 'setConfig', bonus: document.getElementById('rf-bonus').value, depositPercent: document.getElementById('rf-dep').value, adsPercent: document.getElementById('rf-ads').value });
+        const j = await rfCall({ action: 'setConfig', bonus: document.getElementById('rf-bonus').value, depositPercent: document.getElementById('rf-dep').value });
         rfFill(j); Swal.fire({ toast: true, position: 'top', icon: 'success', title: 'Saved', showConfirmButton: false, timer: 1200 });
     } catch (e) { Swal.fire('Error', e.message, 'error'); }
 }
 </script>
 
-<script>
-// ===== WITHDRAW REQUESTS (admin) =====
-let wdFilter = 'all';
-const wdE = t => String(t == null ? '' : t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-async function wdCall(body) {
-    const user = auth.currentUser; if (!user) throw new Error('Login required');
-    const tk = await user.getIdToken(), ctl = new AbortController(), t = setTimeout(() => ctl.abort(), 45000);
-    try {
-        const r = await fetch(NXG_API_BACKEND + '/adminWithdraw', { method: 'POST', signal: ctl.signal, headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + tk }, body: JSON.stringify(body || {}) });
-        let j = {}; try { j = await r.json(); } catch (e) {}
-        if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
-        return j;
-    } catch (e) { if (e.name === 'AbortError') throw new Error('Server timeout'); throw e; } finally { clearTimeout(t); }
-}
-function wdChips() {
-    const L = [['all', 'All'], ['pending', 'Pending'], ['success', 'Success'], ['cancelled', 'Cancelled']];
-    document.getElementById('wd-chips').innerHTML = L.map(([k, n]) => `<button class="px-4 py-2 rounded-full text-xs font-bold" style="${wdFilter === k ? 'background:#f97316;color:#fff' : 'background:#1f2430;color:#9ca3af'}" onclick="wdFilter='${k}';wdLoad()">${n}</button>`).join('');
-}
-function wdCopy(txt, btn) { navigator.clipboard.writeText(txt).then(() => { const o = btn.innerHTML; btn.innerHTML = 'Copied'; setTimeout(() => btn.innerHTML = o, 1200); }); }
-function wdCard(x) {
-    const m = { pending: ['#78350f', '#fcd34d', 'PENDING'], success: ['#14532d', '#86efac', 'SUCCESS'], cancelled: ['#7f1d1d', '#fca5a5', 'CANCELLED'] }[x.status] || ['#374151', '#d1d5db', x.status];
-    const dt = x.ts ? new Date(x.ts).toLocaleString() : '—';
-    const btn = (st, label, bg) => `<button class="flat-btn text-xs py-2 px-4 ${x.status === st ? 'opacity-40' : ''}" style="background:${bg}" ${x.status === st && st !== 'cancelled' ? 'disabled' : ''} onclick="wdSet('${x.code}','${st}')">${label}</button>`;
-    return `<div class="card mb-4">
-        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-            <div><span class="text-orange-400 font-bold">${wdE(x.code)}</span> <span class="text-xs text-gray-500 ml-2">${wdE(dt)}</span></div>
-            <span class="zp-b" style="background:${m[0]};color:${m[1]}">${m[2]}</span>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-            <div><div class="text-xs text-gray-400">Amount</div><div class="text-white text-2xl font-bold">৳${wdE(x.amount)}</div><div class="text-xs text-gray-300 mt-1">via <b>${wdE(x.method)}</b></div></div>
-            <div><div class="text-xs text-gray-400">Send to number</div>
-                <div class="flex items-center gap-2 flex-wrap"><b class="text-white text-lg tracking-wide">${wdE(x.number)}</b>
-                <button class="flat-btn flat-btn-outline text-xs py-1 px-3" onclick="wdCopy('${wdE(x.number)}',this)"><i class="fas fa-copy mr-1"></i>Copy</button></div></div>
-            <div><div class="text-xs text-gray-400">User</div><b class="text-white">${wdE(x.userName || 'N/A')}</b><br><span class="text-xs text-gray-400 break-all">${wdE(x.userEmail)}</span><br><span class="text-xs text-gray-500 break-all">${wdE(x.userId)}</span></div>
-            ${x.status === 'cancelled' && x.reason ? `<div><div class="text-xs text-gray-400">Cancel reason</div><span class="text-red-300">${wdE(x.reason)}</span></div>` : ''}
-        </div>
-        <div class="flex flex-wrap gap-2 mt-4">${btn('success', 'Confirm', '#16a34a')}${btn('cancelled', 'Cancel', '#7f1d1d')}${btn('pending', 'Pending', '#b45309')}</div>
-    </div>`;
-}
-async function wdSet(code, status) {
-    let reason = '';
-    if (status === 'cancelled') {
-        const r = await Swal.fire({ title: 'Cancel reason', input: 'text', inputPlaceholder: 'কেন ক্যান্সেল করছেন? (ইউজার দেখতে পাবে)', showCancelButton: true, confirmButtonText: 'Cancel request', inputValidator: v => !v.trim() && 'কারণ লিখুন' });
-        if (!r.isConfirmed) return; reason = r.value.trim();
-    } else {
-        const txt = status === 'success' ? 'আপনি কি ইউজারের নাম্বারে টাকা পাঠিয়েছেন? Success করবেন?' : 'Pending করবেন?';
-        const c = await Swal.fire({ title: 'Confirm', text: txt, icon: 'question', showCancelButton: true }); if (!c.isConfirmed) return;
-    }
-    try { await wdCall({ action: 'update', code, status, reason }); Swal.fire({ toast: true, position: 'top', icon: 'success', title: 'Updated', showConfirmButton: false, timer: 1200 }); wdLoad(); }
-    catch (e) { Swal.fire('Error', e.message, 'error'); }
-}
-async function wdSaveMsg() {
-    try { const r = await wdCall({ action: 'setConfig', message: document.getElementById('wd-msg').value }); document.getElementById('wd-msg').value = r.message; Swal.fire({ toast: true, position: 'top', icon: 'success', title: 'Saved', showConfirmButton: false, timer: 1200 }); }
-    catch (e) { Swal.fire('Error', e.message, 'error'); }
-}
-async function wdLoad() {
-    wdCall({ action: 'getConfig' }).then(r => { const el = document.getElementById('wd-msg'); if (el && document.activeElement !== el) el.value = r.message; }).catch(() => {});
-    wdChips(); const box = document.getElementById('wd-list'); box.innerHTML = '<div class="text-gray-400 text-sm p-4">Loading…</div>';
-    try {
-        const j = await wdCall({ action: 'list', q: document.getElementById('wd-q').value, filter: wdFilter });
-        if (j.stats) {
-            document.getElementById('wd-stat').textContent = 'Pending: ' + j.stats.pending + ' (৳' + j.stats.pendingAmount + ')';
-            const bd = document.getElementById('wd-nav-badge'); if (bd) { bd.textContent = j.stats.pending; bd.classList.toggle('hidden', !j.stats.pending); }
-        }
-        box.innerHTML = j.items.length ? j.items.map(wdCard).join('') : '<div class="card text-gray-400 text-sm">কোনো withdraw request পাওয়া যায়নি।</div>';
-    } catch (e) { box.innerHTML = '<div class="card text-red-400 text-sm">' + wdE(e.message) + '</div>'; }
-}
-</script>
 
 <script>
 // ===== ANTI-FRAUD (admin) =====
