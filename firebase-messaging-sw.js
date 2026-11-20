@@ -2,11 +2,11 @@
 importScripts('https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js');
 importScripts('https://www.gstatic.com/firebasejs/9.22.1/firebase-messaging-compat.js');
 firebase.initializeApp({
-  apiKey: "YOUR_FIREBASE_API_KEY",
-  authDomain: "YOUR_FIREBASE_AUTH_DOMAIN",
-  projectId: "YOUR_FIREBASE_PROJECT_ID",
-  storageBucket: "YOUR_FIREBASE_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_FIREBASE_MESSAGING_SENDER_ID",
-  appId: "YOUR_FIREBASE_APP_ID"
+  apiKey: "AIzaSyA0O1hYUfRCanbWg8zbc-BauERpts25LV0",
+  authDomain: "planning-with-ai-5e00e.firebaseapp.com",
+  projectId: "planning-with-ai-5e00e",
+  storageBucket: "planning-with-ai-5e00e.firebasestorage.app",
+  messagingSenderId: "954386841987",
+  appId: "1:954386841987:web:96610687f3f7fb1bb276b6"
 });
 firebase.messaging();
