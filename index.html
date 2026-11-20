@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="bn" translate="no">
 <head>
 <script>
 /* =====================================================================
@@ -1892,7 +1892,7 @@ async function dlLoadCfg() {
 }
 function dlRenderServers() {
     const box = document.getElementById('dl-servers'); if (!box) return;
-    box.innerHTML = DL_REGIONS.map(s => `<span class="ffs-chip ${dlRegion === s ? 'on' : ''}" onclick="dlPick('${s}')">${dlRegion === s ? '✓ ' : ''}${s}</span>`).join('');
+    box.innerHTML = DL_REGIONS.map(s => `<span translate="no" class="notranslate ffs-chip ${dlRegion === s ? 'on' : ''}" onclick="dlPick('${s}')">${dlRegion === s ? '✓ ' : ''}${s}</span>`).join('');
 }
 function dlPick(v) { dlRegion = v; try { localStorage.setItem('dlRegion', v); } catch (e) {} dlRenderServers(); const bx = document.getElementById('dl-servers'); if (bx) bx.classList.remove('ffs-bad'); }
 function dlOpen() { dlRenderServers(); dlUpdateInfo(); dlLoadCfg(); }
@@ -2350,7 +2350,7 @@ async function alLoadCfg() {
 function alRenderServers() {
     const box = document.getElementById('al-servers'); if (!box) return;
     const lock = alMine && alMine.status === 'active';
-    box.innerHTML = DL_REGIONS.map(s => `<span class="ffs-chip ${alRegion === s ? 'on' : ''}" ${lock ? 'style="opacity:' + (alRegion === s ? 1 : .35) + ';pointer-events:none"' : `onclick="alPickRegion('${s}')"`}>${alRegion === s ? '✓ ' : ''}${s}</span>`).join('');
+    box.innerHTML = DL_REGIONS.map(s => `<span translate="no" class="notranslate ffs-chip ${alRegion === s ? 'on' : ''}" ${lock ? 'style="opacity:' + (alRegion === s ? 1 : .35) + ';pointer-events:none"' : `onclick="alPickRegion('${s}')"`}>${alRegion === s ? '✓ ' : ''}${s}</span>`).join('');
 }
 function alPickRegion(v) { alRegion = v; try { localStorage.setItem('alRegion', v); } catch (e) {} alRenderServers(); const bx = document.getElementById('al-servers'); if (bx) bx.classList.remove('ffs-bad'); }
 function alPick(id) { alPkg = id; alRenderPkgs(); }
