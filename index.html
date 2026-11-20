@@ -1643,19 +1643,36 @@ nav.fixed .nxg-bolt{border-color:#000!important}
             });
     }
 
+    function timeAgo(ts) {
+        try {
+            const t = ts && ts.toDate ? ts.toDate().getTime() : null; if (!t) return 'just now';
+            const s = Math.max(0, Math.floor((Date.now() - t) / 1000));
+            if (s < 60) return 'just now'; if (s < 3600) return Math.floor(s / 60) + ' min ago';
+            if (s < 86400) return Math.floor(s / 3600) + ' hr ago'; return Math.floor(s / 86400) + ' day ago';
+        } catch (e) { return ''; }
+    }
     function loadRecentOrdersGlobal() {
         const container = document.getElementById('latest-orders-list');
-        db.collection('recentOrders').orderBy('date', 'desc').limit(5).onSnapshot((snapshot) => {
+        db.collection('recentOrders').orderBy('date', 'desc').limit(10).onSnapshot((snapshot) => {
             if (snapshot.empty) { container.innerHTML = '<div class="text-center text-slate-400 text-xs py-2">No recent orders yet</div>'; return; }
-            container.innerHTML = "";
+            let html = '';
             snapshot.forEach(doc => {
-                const data = doc.data();
-                container.innerHTML += `<div class="vip-card p-3 flex items-center justify-between">
-                    <span class="text-slate-700 font-bold text-xs">${esc(data.name || 'Customer')} - ${esc(data.productName)}</span>
-                    <span class="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-lg text-[10px] font-bold">BDT ${data.price}</span>
+                const d = doc.data();
+                const who = String(d.name || 'Cus***');
+                html += `<div class="vip-card p-3 flex items-center justify-between gap-2">
+                    <div class="flex items-center gap-2.5 min-w-0">
+                        <div class="w-9 h-9 shrink-0 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 text-white flex items-center justify-center font-bold text-sm">${esc(who.charAt(0).toUpperCase())}</div>
+                        <div class="min-w-0">
+                            <div class="text-slate-800 font-bold text-xs truncate">${esc(who)} <span class="text-slate-400 font-medium">ordered</span></div>
+                            <div class="text-slate-600 text-[11px] truncate">${d.gameName ? esc(d.gameName) + ' • ' : ''}${esc(d.productName || '')}</div>
+                            <div class="text-slate-400 text-[10px]">${timeAgo(d.date)}</div>
+                        </div>
+                    </div>
+                    <span class="shrink-0 bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-lg text-[10px] font-bold">BDT ${Number(d.price) || 0}</span>
                 </div>`;
             });
-        }, () => { container.innerHTML = ''; });
+            container.innerHTML = html;
+        }, (err) => { console.error('recentOrders', err); container.innerHTML = '<div class="text-center text-slate-400 text-xs py-2">Recent orders unavailable</div>'; });
     }
 
     // ---- Banner slider: auto-change every 7 seconds ----
