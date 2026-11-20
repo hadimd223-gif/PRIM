@@ -11,16 +11,16 @@ window.NEXORA_CONFIG = {
   LOGO_URL: "https://i.ibb.co.com/bgNjdXPq/1795073251544.jpg",
   // ---- Firebase (Firebase Console > Project settings > Your apps > Web app) ----
   FIREBASE: {
-    apiKey: "AIzaSyA0O1hYUfRCanbWg8zbc-BauERpts25LV0",
-    authDomain: "planning-with-ai-5e00e.firebaseapp.com",
-    projectId: "planning-with-ai-5e00e",
-    storageBucket: "planning-with-ai-5e00e.firebasestorage.app",
-    messagingSenderId: "954386841987",
-    appId: "1:954386841987:web:96610687f3f7fb1bb276b6"
+    apiKey: "AIzaSyAZJo4L8PazXvt3ClX7w-hVz1gjl69nBmk",
+    authDomain: "nexora-ceab5.firebaseapp.com",
+    projectId: "nexora-ceab5",
+    storageBucket: "nexora-ceab5.firebasestorage.app",
+    messagingSenderId: "140360835638",
+    appId: "1:140360835638:web:a737b9381f1609ce5eee97"
   }
   ,
   // ---- Your backend (main.py hosting URL, no trailing slash) ----
-  BACKEND_URL: "YOUR_BACKEND_URL",
+  BACKEND_URL: "YOUR_BACKEND_URL",   // <-- your Python (main.py) server URL, e.g. https://xxxx.onrender.com  (no trailing slash)
   // ---- Like API template. Placeholders {uid} {region} {key} {package} are filled by the server ----
   LIKE_API_URL: "https://9on3qmsyno.apps.bot-hosting.cloud/api/v1/external/like?region=BD&uid={uid}&userkey=MHX-API-VIP-NEXORA"
 };
@@ -36,7 +36,7 @@ window.NEXORA_CONFIG = {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>   <!-- real Firebase database -->
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
 
     <script>
@@ -1016,44 +1016,29 @@ select.flat-input option{background:#0d1730}
             backdrop.classList.toggle('hidden');
         }
 
+        // Login is a separate page (login.html). Not signed in / not an admin -> go there.
+        function goAdminLogin(sw) { location.replace('login.html?next=' + encodeURIComponent('admin.html') + (sw ? '&switch=1' : '')); }
         auth.onAuthStateChanged(async (user) => {
             hideLoading();
-            if (user) {
-                try {
-                    const me = (await db.collection('users').doc(user.uid).get()).data() || {};
-                    if (me.role !== 'admin') { await auth.signOut(); Swal.fire('Access denied', 'This account is not an admin. In Firebase Console > Firestore > users > your document, set role = admin.', 'error'); return; }
-                } catch (e) { await auth.signOut(); Swal.fire('Error', e.message, 'error'); return; }
-                document.getElementById('login-modal').style.display = 'none';
-                document.getElementById('sidebar').classList.remove('hidden');
-                document.getElementById('main-content').classList.remove('hidden');
-                loadDashboardData();
-            } else {
-                // No full-screen login any more: the panel opens directly. Data only loads once a Google admin session exists,
-                // so a small "Sign in" chip is shown instead (the server/Firestore still require a real admin login).
-                document.getElementById('login-modal').style.display = 'none';
-                document.getElementById('sidebar').classList.remove('hidden');
-                document.getElementById('main-content').classList.remove('hidden');
-                const chip = document.getElementById('nxg-signin-chip'); if (chip) chip.style.display = 'flex';
+            if (!user) { goAdminLogin(false); return; }
+            let me = {};
+            try { me = (await db.collection('users').doc(user.uid).get()).data() || {}; }
+            catch (e) { await Swal.fire('Error', e.message, 'error'); return; }
+            if (me.role !== 'admin') {
+                await Swal.fire('Access denied', 'This account is not an admin. In Firebase Console > Firestore > users > your document, set role = admin.', 'error');
+                await auth.signOut(); goAdminLogin(true); return;
             }
-            const chip2 = document.getElementById('nxg-signin-chip'); if (chip2 && user) chip2.style.display = 'none';
+            document.getElementById('login-modal').style.display = 'none';
+            document.getElementById('sidebar').classList.remove('hidden');
+            document.getElementById('main-content').classList.remove('hidden');
+            const chip = document.getElementById('nxg-signin-chip'); if (chip) chip.style.display = 'none';
+            loadDashboardData();
         });
 
-        function loginAdmin() {
-            const provider = new firebase.auth.GoogleAuthProvider();
-            provider.setCustomParameters({ prompt: 'select_account' });
-            showLoading();
-            auth.signInWithPopup(provider)
-                .then(() => hideLoading())
-                .catch(err => {
-                    if (err.code === 'auth/popup-blocked' || err.code === 'auth/operation-not-supported-in-this-environment') { auth.signInWithRedirect(provider); return; }
-                    hideLoading();
-                    if (err.code === 'auth/popup-closed-by-user' || err.code === 'auth/cancelled-popup-request') return;
-                    Swal.fire('Error', err.message, 'error');
-                });
-        }
+        function loginAdmin() { goAdminLogin(true); }
 
         function logoutAdmin() {
-            auth.signOut();
+            auth.signOut().then(() => goAdminLogin(true));
         }
 
         function switchView(viewId, param1 = null, param2 = null, param3 = null) {
@@ -1699,17 +1684,7 @@ select.flat-input option{background:#0d1730}
           didOpen:()=>{document.getElementById('u-role').value=u.role||'user'},preConfirm:()=>({role:document.getElementById('u-role').value,balance:+document.getElementById('u-bal').value})});
         if(e.isConfirmed){await q.docs[0].ref.update(e.value);const dl=(+e.value.balance||0)-(+u.balance||0);if(dl)tgNotify({kind:'balance',userId:q.docs[0].id,amount:dl});Swal.fire('Updated','','success')}
     }
-    const likeBusy=new Set();
-    db.collection('orders').where('type','==','like').where('status','==','pending').onSnapshot(async snap=>{
-        const g=(await db.collection('settings').doc('general').get()).data()||{};if(!g.likeAuto)return;
-        const k=(await db.collection('secrets').doc('api').get()).data()||{};if(!k.likeUrl)k.likeUrl=NEXORA_CONFIG.LIKE_API_URL;
-        for(const d of snap.docs){if(likeBusy.has(d.id))continue;likeBusy.add(d.id);const o=d.data();
-            try{await d.ref.update({status:'processing'});
-                const url=k.likeUrl.replace('{uid}',encodeURIComponent(o.playerId)).replace('{key}',encodeURIComponent(k.likeKey||'')).replace('{region}',encodeURIComponent(o.server||'BD')).replace('{package}',encodeURIComponent(o.productName));
-                const res=await fetch(url);if(!res.ok)throw new Error('HTTP '+res.status);
-                await d.ref.update({status:'success',apiResponse:(await res.text()).slice(0,300)});
-            }catch(err){await d.ref.update({status:'pending',apiError:String(err.message)})}}
-    });
+    // (Like orders are processed automatically by the Python server — nothing to run in this page.)
 
     // Logo upload from device: resized to 256px and saved as the logo with the "Save" button
     document.getElementById('logo-file').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const fr=new FileReader();

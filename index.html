@@ -11,16 +11,16 @@ window.NEXORA_CONFIG = {
   LOGO_URL: "https://i.ibb.co.com/bgNjdXPq/1795073251544.jpg",
   // ---- Firebase (Firebase Console > Project settings > Your apps > Web app) ----
   FIREBASE: {
-    apiKey: "AIzaSyA0O1hYUfRCanbWg8zbc-BauERpts25LV0",
-    authDomain: "planning-with-ai-5e00e.firebaseapp.com",
-    projectId: "planning-with-ai-5e00e",
-    storageBucket: "planning-with-ai-5e00e.firebasestorage.app",
-    messagingSenderId: "954386841987",
-    appId: "1:954386841987:web:96610687f3f7fb1bb276b6"
+    apiKey: "AIzaSyAZJo4L8PazXvt3ClX7w-hVz1gjl69nBmk",
+    authDomain: "nexora-ceab5.firebaseapp.com",
+    projectId: "nexora-ceab5",
+    storageBucket: "nexora-ceab5.firebasestorage.app",
+    messagingSenderId: "140360835638",
+    appId: "1:140360835638:web:a737b9381f1609ce5eee97"
   },
   PUSH_VAPID_KEY: "YOUR_FCM_VAPID_KEY",               // optional (push notifications)
   // ---- Your backend (main.py hosting URL, no trailing slash) ----
-  BACKEND_URL: "YOUR_BACKEND_URL",
+  BACKEND_URL: "YOUR_BACKEND_URL",   // <-- your Python (main.py) server URL, e.g. https://xxxx.onrender.com  (no trailing slash)
   // ---- Player info API (Free Fire name lookup) ----
   FF_INFO_API: "https://info-api-pink-seven.vercel.app/player-info",
   // ---- Telegram links ----
@@ -47,7 +47,7 @@ window.nxv = function (v) { return (typeof v === 'string' && v.indexOf('YOUR_') 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>   <!-- real Firebase database -->
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-messaging-compat.js"></script>
 
@@ -1195,12 +1195,10 @@ nav.fixed .nxg-bolt{border-color:#000!important}
         const ua = navigator.userAgent || '';
         return /FBAN|FBAV|Instagram|Messenger|Line\/|TikTok|musical_ly|Snapchat|; wv\)/i.test(ua) || (/(iPhone|iPad|iPod)/i.test(ua) && /AppleWebKit/i.test(ua) && !/Safari/i.test(ua));
     }
-    async function googleAfter(user) {
-        const ref = db.collection('users').doc(user.uid);
-        let snap = null;
-        try { snap = await ref.get(); } catch (e) { snap = null; }
-        if (snap && snap.exists) return null;
-        await ref.set({ name: user.displayName || (user.email || 'User').split('@')[0], email: user.email || '', balance: 0, lbScore: 0, totalDeposit: 0, role: 'user', createdAt: new Date(), photoURL: user.photoURL || '' });
+    async function googleAfter(user) {      // creates the account on the Python server the first time (never written from the browser)
+        currentUser = auth.currentUser || user;
+        const j = await api('/registerUser', {});
+        if (!j || !j.created) return null;
         return applyPendingRef();
     }
     function googleErr(e) {
@@ -1225,33 +1223,9 @@ nav.fixed .nxg-bolt{border-color:#000!important}
         try { sessionStorage.setItem('gRedirect', '1'); } catch (e) {}
         await auth.signInWithRedirect(provider);
     }
-    async function handleGoogleLogin() {
-        if (gBusy) return;
-        if (isInAppBrowser()) { openInBrowserHelp(); return; }
-        gBusy = true;
-        const t0 = Date.now();
-        const provider = new firebase.auth.GoogleAuthProvider();
-        provider.addScope('email'); provider.addScope('profile');
-        provider.setCustomParameters({ prompt: 'select_account' });
-        try {
-            const result = await auth.signInWithPopup(provider);      // must be called straight from the click (no await before it)
-            nxgBusy('Signing you in…', 'Setting up your account.');
-            await googleAfter(result.user);
-            Swal.close(); showSec('home');
-        } catch (e) {
-            const c = (e && e.code) || '';
-            if (c === 'auth/cancelled-popup-request') { /* a second click cancelled the first popup */ }
-            else if (c === 'auth/popup-closed-by-user') {
-                if (Date.now() - t0 < 3000) {   // closed almost instantly = the browser blocked it, not the user
-                    const x = await Swal.fire({ icon: 'warning', title: 'Google window বন্ধ হয়ে গেছে', text: 'আপনার ব্রাউজার Google পপ-আপ আটকে দিয়েছে মনে হচ্ছে। অন্য পদ্ধতিতে চেষ্টা করবেন?', showCancelButton: true, confirmButtonText: 'আবার চেষ্টা করুন', cancelButtonText: 'বাতিল' });
-                    if (x.isConfirmed) { gBusy = false; try { await googleRedirect(provider); } catch (e2) { Swal.fire('Google login failed', googleErr(e2), 'error'); } }
-                }
-            }
-            else if (c === 'auth/popup-blocked' || c === 'auth/operation-not-supported-in-this-environment' || c === 'auth/web-storage-unsupported') {
-                try { await googleRedirect(provider); return; } catch (e2) { Swal.fire('Google login failed', googleErr(e2), 'error'); }
-            } else { console.error('google login', e); Swal.fire('Google login failed', googleErr(e), 'error'); }
-        } finally { gBusy = false; }
-    }
+    // Login lives on its own page (login.html): Google sign-in there, then it sends the visitor back here.
+    function goLogin() { location.href = 'login.html?next=' + encodeURIComponent('index.html'); }
+    function handleGoogleLogin() { goLogin(); }
     // finishes a Google login that used the redirect fallback (phones / strict browsers)
     auth.getRedirectResult().then((r) => {
         let wasRedirect = false; try { wasRedirect = sessionStorage.getItem('gRedirect') === '1'; sessionStorage.removeItem('gRedirect'); } catch (e) {}
@@ -1259,7 +1233,7 @@ nav.fixed .nxg-bolt{border-color:#000!important}
         if (wasRedirect && !auth.currentUser) Swal.fire('লগইন সম্পূর্ণ হয়নি', 'Google থেকে ফিরে আসার পর লগইন সংরক্ষণ হয়নি। আপনার ব্রাউজার (Safari / Brave / Private mode) এই পদ্ধতি আটকে দিচ্ছে। Chrome-এ সাধারণ (non-private) ট্যাবে খুলে আবার চেষ্টা করুন।', 'warning');
     }).catch((e) => { if (e && e.code && e.code !== 'auth/no-auth-event') Swal.fire('Google login failed', googleErr(e), 'error'); });
 
-    function showAuthPage() { showSec('auth'); }
+    function showAuthPage() { goLogin(); }
     function handleLogout() { auth.signOut().then(() => { showSec('home'); }); }
 
     auth.onAuthStateChanged((user) => {
@@ -1626,6 +1600,7 @@ nav.fixed .nxg-bolt{border-color:#000!important}
     }
 
     function showSec(secId) {
+        if (secId === 'auth') { goLogin(); return; }
         if ((secId === 'history' || secId === 'account' || secId === 'addmoney' || secId === 'dailylike' || secId === 'autolike' || secId === 'guildglory' || secId === 'idcode') && !currentUser) {
             showSec('auth');
             return;

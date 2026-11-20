@@ -1,1 +1,14 @@
-{ "cleanUrls": false, "headers": [ { "source": "/(.*)", "headers": [ { "key": "X-Content-Type-Options", "value": "nosniff" } ] } ] }
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/admin", "destination": "/admin.html" },
+    { "source": "/login", "destination": "/login.html" }
+  ],
+  "headers": [
+    { "source": "/firebase-messaging-sw.js", "headers": [
+      { "key": "Service-Worker-Allowed", "value": "/" },
+      { "key": "Cache-Control", "value": "no-cache" } ] },
+    { "source": "/(.*)", "headers": [
+      { "key": "Cross-Origin-Opener-Policy", "value": "same-origin-allow-popups" } ] }
+  ]
+}

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<title>Login — NEXORA GAMING</title>
+<link rel="icon" href="https://i.ibb.co.com/bgNjdXPq/1795073251544.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#000;--card:#0a1224;--line:rgba(34,211,238,.22);--cy:#22d3ee;--tx:#e6f1ff;--mut:#8fa8c8}
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0}
+  body{background:radial-gradient(900px 500px at 50% -10%,rgba(34,211,238,.13),transparent 60%),var(--bg);color:var(--tx);font-family:'Sora','Hind Siliguri',system-ui,sans-serif;display:grid;place-items:center;padding:20px;padding-top:max(20px,env(safe-area-inset-top));padding-bottom:max(20px,env(safe-area-inset-bottom))}
+  .card{width:100%;max-width:400px;background:linear-gradient(180deg,#0c172e,var(--card));border:1px solid var(--line);border-radius:26px;padding:30px 24px 24px;box-shadow:0 0 50px rgba(34,211,238,.10),0 20px 60px rgba(0,0,0,.6);text-align:center}
+  .logo{width:78px;height:78px;border-radius:22px;object-fit:cover;border:2px solid var(--line);box-shadow:0 0 28px rgba(34,211,238,.25)}
+  h1{font-size:22px;margin:16px 0 4px;font-weight:800;letter-spacing:.3px}
+  h1 span{color:var(--cy)}
+  p.sub{margin:0 0 22px;color:var(--mut);font-size:13.5px;line-height:1.55}
+  .gbtn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;color:#1f2937;border:0;border-radius:16px;padding:14px 16px;font:700 15px 'Sora','Hind Siliguri',sans-serif;cursor:pointer;box-shadow:0 8px 24px rgba(34,211,238,.14);transition:transform .15s,box-shadow .15s}
+  .gbtn:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(34,211,238,.24)}
+  .gbtn:disabled{opacity:.6;cursor:default;transform:none}
+  .gbtn img{width:20px;height:20px}
+  label{display:block;text-align:left;font-size:12px;font-weight:700;color:var(--mut);margin:0 0 6px}
+  label small{font-weight:400;opacity:.8}
+  input{width:100%;background:#050b18;border:1px solid var(--line);color:var(--tx);border-radius:14px;padding:12px 14px;font:600 14px 'Sora',sans-serif;letter-spacing:1px;text-transform:uppercase;outline:none}
+  input:focus{border-color:var(--cy);box-shadow:0 0 0 3px rgba(34,211,238,.14)}
+  .ref{margin-bottom:16px}
+  .msg{margin-top:16px;font-size:13px;line-height:1.5;min-height:18px}
+  .msg.err{color:#fda4af}.msg.ok{color:#6ee7b7}.msg.info{color:var(--mut)}
+  .spin{display:inline-block;width:15px;height:15px;border:2px solid rgba(34,211,238,.3);border-top-color:var(--cy);border-radius:50%;animation:s .8s linear infinite;vertical-align:-2px;margin-right:8px}
+  @keyframes s{to{transform:rotate(360deg)}}
+  a{color:var(--cy);text-decoration:none}
+  .foot{margin-top:18px;font-size:12px;color:var(--mut)}
+  .tag{display:inline-block;margin-top:2px;font-size:11px;font-weight:700;color:#000;background:var(--cy);border-radius:999px;padding:2px 10px}
+  .hide{display:none!important}
+</style>
+</head>
+<body>
+<div class="card">
+  <img class="logo" id="logo" src="https://i.ibb.co.com/bgNjdXPq/1795073251544.jpg" alt="logo">
+  <h1>NEXORA <span>GAMING</span></h1>
+  <div class="tag hide" id="admin-tag">ADMIN PANEL</div>
+  <p class="sub" id="sub">Google অ্যাকাউন্ট দিয়ে লগইন করুন — কোনো পাসওয়ার্ড লাগবে না। নতুন হলে অ্যাকাউন্ট নিজে থেকেই তৈরি হয়ে যাবে।<br><span style="opacity:.8">Continue with Google — no password needed.</span></p>
+
+  <div id="form">
+    <div class="ref" id="ref-box">
+      <label for="ref">Referral code <small>(optional)</small></label>
+      <input id="ref" maxlength="12" placeholder="e.g. AB12CD" autocomplete="off">
+    </div>
+    <button class="gbtn" id="gbtn" type="button">
+      <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt=""> <span id="gtxt">Continue with Google</span>
+    </button>
+  </div>
+  <div class="msg info" id="msg"></div>
+  <div class="foot"><a id="back" href="index.html">← Back to website</a></div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script>
+/* Firebase is used ONLY for the Google sign-in. Everything else goes through the Python server. */
+var FIREBASE = {
+  apiKey: "AIzaSyAZJo4L8PazXvt3ClX7w-hVz1gjl69nBmk",
+  authDomain: "nexora-ceab5.firebaseapp.com",
+  projectId: "nexora-ceab5",
+  storageBucket: "nexora-ceab5.firebasestorage.app",
+  messagingSenderId: "140360835638",
+  appId: "1:140360835638:web:a737b9381f1609ce5eee97"
+};
+// Your Python (main.py) server URL, e.g. https://xxxx.onrender.com  (no trailing slash)
+var BACKEND_URL = "YOUR_BACKEND_URL".replace(/\/+$/, '');
+// Google "Web client ID" — makes the Google login run on YOUR site (Google's own account chooser opens from your page; no firebaseapp.com redirect page).
+// Get it: Firebase Console > Authentication > Sign-in method > Google > Web SDK configuration > "Web client ID"
+// Then Google Cloud Console > APIs & Services > Credentials > that client > Authorized JavaScript origins: add https://YOUR-SITE.vercel.app
+var GOOGLE_CLIENT_ID = "YOUR_GOOGLE_WEB_CLIENT_ID";
+
+firebase.initializeApp(FIREBASE);
+var auth = firebase.auth();
+var fdb = firebase.firestore();
+var $ = function (id) { return document.getElementById(id); };
+var params = new URLSearchParams(location.search);
+
+// where to go after login (only simple relative page names are accepted)
+function safeNext(v) {
+  v = String(v || '').trim();
+  if (!v || /^[a-z][a-z0-9+.-]*:/i.test(v) || v.indexOf('//') >= 0 || v.indexOf('\\') >= 0) return 'index.html';
+  return /^[A-Za-z0-9_\-\/.]+(\?[^#]*)?(#.*)?$/.test(v) ? v : 'index.html';
+}
+var NEXT = safeNext(params.get('next'));
+var WANT_ADMIN = /(^|\/)admin(\.html)?(\?|#|$)/i.test(NEXT);
+$('back').href = WANT_ADMIN ? 'index.html' : NEXT;
+if (WANT_ADMIN) { $('admin-tag').classList.remove('hide'); $('ref-box').classList.add('hide'); }
+
+// referral code from ?ref=CODE
+try {
+  var rp = params.get('ref');
+  if (rp) localStorage.setItem('pendingRef', rp.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 12));
+  var pr = localStorage.getItem('pendingRef'); if (pr) $('ref').value = pr;
+} catch (e) { }
+
+function say(t, kind, spin) { var m = $('msg'); m.className = 'msg ' + (kind || 'info'); m.innerHTML = (spin ? '<span class="spin"></span>' : '') + t; }
+function isInApp() {
+  var ua = navigator.userAgent || '';
+  return /FBAN|FBAV|Instagram|Messenger|Line\/|TikTok|musical_ly|Snapchat|; wv\)/i.test(ua) || (/(iPhone|iPad|iPod)/i.test(ua) && /AppleWebKit/i.test(ua) && !/Safari/i.test(ua));
+}
+function errText(e) {
+  var c = (e && e.code) || '';
+  if (c === 'auth/account-exists-with-different-credential') return 'এই ইমেইল দিয়ে অন্য পদ্ধতিতে অ্যাকাউন্ট আছে।';
+  if (c === 'auth/invalid-credential' || c === 'auth/invalid-oauth-client-id') return 'Google Client ID ভুল বা এই ডোমেইন Authorized JavaScript origins-এ নেই (Google Cloud Console → Credentials)।';
+  if (c === 'auth/unauthorized-domain') return 'এই ওয়েবসাইটের ডোমেইন Firebase-এ অনুমোদিত নয়। Firebase Console → Authentication → Settings → Authorized domains-এ যোগ করুন: ' + location.hostname;
+  if (c === 'auth/operation-not-allowed') return 'Google লগইন চালু করা নেই। Firebase Console → Authentication → Sign-in method → Google চালু করুন।';
+  if (c === 'auth/network-request-failed') return 'ইন্টারনেট সংযোগে সমস্যা, আবার চেষ্টা করুন।';
+  if (c === 'auth/user-disabled') return 'এই অ্যাকাউন্টটি বন্ধ করা আছে। সাপোর্টে যোগাযোগ করুন।';
+  if (c === 'auth/web-storage-unsupported') return 'ব্রাউজারে Cookie/Storage বন্ধ আছে। Chrome বা Safari-তে খুলুন।';
+  return ((e && e.message) || 'Login failed') + (c ? ' [' + c + ']' : '');
+}
+function device() {
+  try { var d = localStorage.getItem('nxgDev'); if (!d) { d = (crypto.randomUUID ? crypto.randomUUID() : (Date.now().toString(36) + Math.random().toString(36).slice(2))).replace(/-/g, ''); localStorage.setItem('nxgDev', d); } return d; } catch (e) { return ''; }
+}
+async function post(path, token, body) {
+  var r = await fetch(BACKEND_URL + path, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }, body: JSON.stringify(body || {}) });
+  var j = {}; try { j = await r.json(); } catch (e) { }
+  if (!r.ok) throw new Error(j.error || ('Server error ' + r.status));
+  return j;
+}
+
+var finishing = false;
+async function finish(user) {
+  if (finishing) return; finishing = true;
+  $('form').classList.add('hide');
+  say('অ্যাকাউন্ট ঠিক করা হচ্ছে…', 'info', true);
+  try {
+    var token = await user.getIdToken(true);
+    var j = await post('/registerUser', token);
+    if (j.banned) { await auth.signOut(); finishing = false; $('form').classList.remove('hide'); say('আপনার অ্যাকাউন্ট ব্যান করা আছে। সাপোর্টে যোগাযোগ করুন।', 'err'); return; }
+    if (WANT_ADMIN) {
+      var me = { data: ((await fdb.collection('users').doc(user.uid).get()).data()) || null };
+      if (!me.data || me.data.role !== 'admin') {
+        finishing = false; $('form').classList.remove('hide');
+        say('এই অ্যাকাউন্ট (' + (user.email || '') + ') অ্যাডমিন নয়। অ্যাডমিন অ্যাকাউন্ট দিয়ে লগইন করুন, অথবা <a href="index.html">ওয়েবসাইটে যান</a>।<br><small>Admin হতে: Firebase Console → Firestore → users → আপনার ডকুমেন্টে <b>role = admin</b> সেট করুন।</small>', 'err');
+        await auth.signOut(); return;
+      }
+    }
+    var code = ''; try { code = ($('ref').value || localStorage.getItem('pendingRef') || '').trim().toUpperCase(); } catch (e) { }
+    if (j.created && code && !WANT_ADMIN) { try { await post('/applyReferral', token, { code: code, device: device() }); } catch (e) { } }
+    try { localStorage.removeItem('pendingRef'); } catch (e) { }
+    say('লগইন সফল ✅', 'ok');
+    location.replace(NEXT);
+  } catch (e) {
+    finishing = false; $('form').classList.remove('hide');
+    say(errText(e), 'err');
+  }
+}
+
+var busy = false;
+function hasClientId() { return GOOGLE_CLIENT_ID && GOOGLE_CLIENT_ID.indexOf('YOUR_') !== 0; }
+// Our own Google login: Google's account chooser (opened from this site) gives an access token, Firebase turns it into the user session.
+function googleOwn() {
+  if (!(window.google && google.accounts && google.accounts.oauth2)) { say('Google লগইন স্ক্রিপ্ট লোড হয়নি। ইন্টারনেট ঠিক আছে কিনা দেখে পেজ রিফ্রেশ করুন।', 'err'); return false; }
+  busy = true; $('gbtn').disabled = true; say('', 'info');
+  var done = function () { busy = false; $('gbtn').disabled = false; };
+  try {
+    var tc = google.accounts.oauth2.initTokenClient({
+      client_id: GOOGLE_CLIENT_ID,
+      scope: 'openid email profile',
+      prompt: 'select_account',
+      callback: async function (resp) {
+        try {
+          if (!resp || resp.error || !resp.access_token) { if (resp && resp.error && resp.error !== 'access_denied') say('Google: ' + resp.error + (resp.error_description ? ' — ' + resp.error_description : ''), 'err'); done(); return; }
+          var cred = firebase.auth.GoogleAuthProvider.credential(null, resp.access_token);
+          var r = await auth.signInWithCredential(cred);
+          await finish(r.user);
+        } catch (e) { say(errText(e), 'err'); }
+        done();
+      },
+      error_callback: function (e) {
+        var t = e && e.type;
+        if (t === 'popup_closed') { /* user closed it */ }
+        else if (t === 'popup_failed_to_open') say('ব্রাউজার পপআপ ব্লক করেছে। পপআপ অনুমতি দিয়ে আবার চেষ্টা করুন।', 'err');
+        else say('Google লগইন ব্যর্থ' + (t ? ' [' + t + ']' : ''), 'err');
+        done();
+      }
+    });
+    tc.requestAccessToken();
+  } catch (e) { say(errText(e), 'err'); done(); }
+  return true;
+}
+async function google() {
+  if (busy) return;
+  if (isInApp()) { say('Google এই অ্যাপের ভেতরের ব্রাউজারে সাইন-ইন ব্লক করে। লিংকটি কপি করে <b>Chrome</b> বা <b>Safari</b>-তে খুলুন।', 'err'); try { navigator.clipboard.writeText(location.href); } catch (e) { } return; }
+  if (hasClientId()) { googleOwn(); return; }
+  // fallback (when GOOGLE_CLIENT_ID is not set yet): Firebase's own popup
+  busy = true; $('gbtn').disabled = true; say('', 'info');
+  var t0 = Date.now(), p = new firebase.auth.GoogleAuthProvider();
+  p.addScope('email'); p.addScope('profile'); p.setCustomParameters({ prompt: 'select_account' });
+  try {
+    var r = await auth.signInWithPopup(p);
+    await finish(r.user);
+  } catch (e) {
+    var c = (e && e.code) || '';
+    if (c === 'auth/cancelled-popup-request') { }
+    else if (c === 'auth/popup-closed-by-user' && Date.now() - t0 > 3000) { }
+    else if (c === 'auth/popup-blocked' || c === 'auth/operation-not-supported-in-this-environment' || c === 'auth/web-storage-unsupported' || c === 'auth/popup-closed-by-user') {
+      try { sessionStorage.setItem('gRedirect', '1'); } catch (x) { }
+      say('অন্য পদ্ধতিতে Google-এ নিয়ে যাওয়া হচ্ছে…', 'info', true);
+      try { await auth.signInWithRedirect(p); return; } catch (e2) { say(errText(e2), 'err'); }
+    } else say(errText(e), 'err');
+  } finally { busy = false; $('gbtn').disabled = false; }
+}
+$('gbtn').addEventListener('click', google);
+
+// came back from Google (redirect method) or already signed in on this browser
+auth.getRedirectResult().then(function (r) {
+  var was = false; try { was = sessionStorage.getItem('gRedirect') === '1'; sessionStorage.removeItem('gRedirect'); } catch (e) { }
+  if (r && r.user) return finish(r.user);
+  if (was && !auth.currentUser) say('Google থেকে ফিরে আসার পর লগইন সংরক্ষণ হয়নি। ব্রাউজারের (Safari/Brave/Private mode) সীমাবদ্ধতা — Chrome-এ সাধারণ ট্যাবে চেষ্টা করুন।', 'err');
+}).catch(function (e) { if (e && e.code && e.code !== 'auth/no-auth-event') say(errText(e), 'err'); });
+
+var first = true;
+auth.onAuthStateChanged(function (u) {
+  if (!first) return; first = false;
+  if (u && !finishing && params.get('switch') !== '1') finish(u);
+});
+</script>
+</body>
+</html>
