@@ -3,36 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#ffffff">
 <title>Login — NEXORA GAMING</title>
 <link rel="icon" href="https://i.ibb.co.com/bgNjdXPq/1795073251544.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#000;--card:#0a1224;--line:rgba(34,211,238,.22);--cy:#22d3ee;--tx:#e6f1ff;--mut:#8fa8c8}
+  :root{--bg:#fff7ef;--card:#ffffff;--line:#fde0c4;--cy:#ff7a00;--tx:#111827;--mut:#6b7280}
   *{box-sizing:border-box}
   html,body{height:100%;margin:0}
-  body{background:radial-gradient(900px 500px at 50% -10%,rgba(34,211,238,.13),transparent 60%),var(--bg);color:var(--tx);font-family:'Sora','Hind Siliguri',system-ui,sans-serif;display:grid;place-items:center;padding:20px;padding-top:max(20px,env(safe-area-inset-top));padding-bottom:max(20px,env(safe-area-inset-bottom))}
-  .card{width:100%;max-width:400px;background:linear-gradient(180deg,#0c172e,var(--card));border:1px solid var(--line);border-radius:26px;padding:30px 24px 24px;box-shadow:0 0 50px rgba(34,211,238,.10),0 20px 60px rgba(0,0,0,.6);text-align:center}
-  .logo{width:78px;height:78px;border-radius:22px;object-fit:cover;border:2px solid var(--line);box-shadow:0 0 28px rgba(34,211,238,.25)}
+  body{background:radial-gradient(900px 500px at 50% -10%,rgba(255,122,0,.14),transparent 60%),var(--bg);color:var(--tx);font-family:'Sora','Hind Siliguri',system-ui,sans-serif;display:grid;place-items:center;padding:20px;padding-top:max(20px,env(safe-area-inset-top));padding-bottom:max(20px,env(safe-area-inset-bottom))}
+  .card{width:100%;max-width:400px;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:30px 24px 24px;box-shadow:0 20px 60px rgba(255,122,0,.15);text-align:center}
+  .logo{width:78px;height:78px;border-radius:22px;object-fit:cover;border:2px solid var(--line);box-shadow:0 0 28px rgba(255,122,0,.25)}
   h1{font-size:22px;margin:16px 0 4px;font-weight:800;letter-spacing:.3px}
   h1 span{color:var(--cy)}
   p.sub{margin:0 0 22px;color:var(--mut);font-size:13.5px;line-height:1.55}
-  .gbtn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;color:#1f2937;border:0;border-radius:16px;padding:14px 16px;font:700 15px 'Sora','Hind Siliguri',sans-serif;cursor:pointer;box-shadow:0 8px 24px rgba(34,211,238,.14);transition:transform .15s,box-shadow .15s}
-  .gbtn:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(34,211,238,.24)}
+  .gbtn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;color:#1f2937;border:1px solid var(--line);border-radius:16px;padding:14px 16px;font:700 15px 'Sora','Hind Siliguri',sans-serif;cursor:pointer;box-shadow:0 8px 24px rgba(255,122,0,.14);transition:transform .15s,box-shadow .15s}
+  .gbtn:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(255,122,0,.24)}
   .gbtn:disabled{opacity:.6;cursor:default;transform:none}
   .gbtn img{width:20px;height:20px}
   label{display:block;text-align:left;font-size:12px;font-weight:700;color:var(--mut);margin:0 0 6px}
   label small{font-weight:400;opacity:.8}
-  input{width:100%;background:#050b18;border:1px solid var(--line);color:var(--tx);border-radius:14px;padding:12px 14px;font:600 14px 'Sora',sans-serif;letter-spacing:1px;text-transform:uppercase;outline:none}
-  input:focus{border-color:var(--cy);box-shadow:0 0 0 3px rgba(34,211,238,.14)}
+  input{width:100%;background:#fff;border:1px solid var(--line);color:var(--tx);border-radius:14px;padding:12px 14px;font:600 14px 'Sora',sans-serif;letter-spacing:1px;text-transform:uppercase;outline:none}
+  input:focus{border-color:var(--cy);box-shadow:0 0 0 3px rgba(255,122,0,.14)}
   .ref{margin-bottom:16px}
   .msg{margin-top:16px;font-size:13px;line-height:1.5;min-height:18px}
-  .msg.err{color:#fda4af}.msg.ok{color:#6ee7b7}.msg.info{color:var(--mut)}
-  .spin{display:inline-block;width:15px;height:15px;border:2px solid rgba(34,211,238,.3);border-top-color:var(--cy);border-radius:50%;animation:s .8s linear infinite;vertical-align:-2px;margin-right:8px}
+  .msg.err{color:#dc2626}.msg.ok{color:#16a34a}.msg.info{color:var(--mut)}
+  .spin{display:inline-block;width:15px;height:15px;border:2px solid rgba(255,122,0,.3);border-top-color:var(--cy);border-radius:50%;animation:s .8s linear infinite;vertical-align:-2px;margin-right:8px}
   @keyframes s{to{transform:rotate(360deg)}}
   a{color:var(--cy);text-decoration:none}
   .foot{margin-top:18px;font-size:12px;color:var(--mut)}
-  .tag{display:inline-block;margin-top:2px;font-size:11px;font-weight:700;color:#000;background:var(--cy);border-radius:999px;padding:2px 10px}
+  .tag{display:inline-block;margin-top:2px;font-size:11px;font-weight:700;color:#000;background:var(--cy);color:#fff;border-radius:999px;padding:2px 10px}
   .hide{display:none!important}
 </style>
 </head>
