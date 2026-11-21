@@ -290,6 +290,8 @@ select.flat-input option{background:#0d1730}
             <div class="nav-group">Services</div>
             <a href="#" onclick="switchView('dailylike');return false" id="nav-dailylike" class="nav-link flex items-center px-4 py-3"><i class="fas fa-fire w-8 text-center"></i> Daily Like Price</a>
             <a href="#" onclick="switchView('autolike');return false" id="nav-autolike" class="nav-link flex items-center px-4 py-3"><i class="fas fa-robot w-8 text-center"></i> Auto Like</a>
+            <a href="#" onclick="switchView('guildglory');return false" id="nav-guildglory" class="nav-link flex items-center px-4 py-3"><i class="fas fa-shield-halved w-8 text-center"></i> Guild Glory</a>
+            
             <div class="nav-group">Marketing &amp; Tools</div>
             <a href="#" onclick="switchView('notices')" id="nav-notices" class="nav-link flex items-center px-4 py-3"><i class="fas fa-bullhorn w-8 text-center"></i> Notifications</a>
             <a href="#" onclick="switchView('promos')" id="nav-promos" class="nav-link flex items-center px-4 py-3"><i class="fas fa-ticket-alt w-8 text-center"></i> Promo Codes</a>
@@ -666,6 +668,7 @@ select.flat-input option{background:#0d1730}
                             <option value="like">Like (UID + Region দিয়ে Send)</option>
                             <option value="autolike">Auto Like (প্যাকেজ, রোজ অটো)</option>
                             <option value="social">Social Media (WhatsApp / Telegram নম্বর)</option>
+                            <option value="guildglory">Guild Glory (Guild ID + বট সংখ্যা)</option>
                         </select>
                         <select id="srv-delivery" class="flat-input">
                             <option value="whatsapp">Delivery: WhatsApp এ অর্ডার যাবে</option>
@@ -1294,7 +1297,7 @@ select.flat-input option{background:#0d1730}
                 list.innerHTML = ''; SRV_CACHE = {};
                 snap.forEach(doc => {
                     const d = doc.data(); SRV_CACHE[doc.id] = d;
-                    const tl = {uid:'TOPUP', like:'LIKE', autolike:'AUTO LIKE', social:'SOCIAL', code:'CODE', 'auto-topup':'AUTO TOPUP'}[d.type] || String(d.type||'').toUpperCase();
+                    const tl = {uid:'TOPUP', like:'LIKE', autolike:'AUTO LIKE', guildglory:'GUILD GLORY', social:'SOCIAL', code:'CODE', 'auto-topup':'AUTO TOPUP'}[d.type] || String(d.type||'').toUpperCase();
                     const dl = d.type === 'uid' ? ' · ' + (d.delivery || 'wallet') : '';
                     const pk = (d.type === 'uid' || d.type === 'code' || d.type === 'auto-topup') ? `<button onclick="switchView('products', '${doc.id}', '${String(d.name).replace(/'/g,"")}', '${d.type}')" class="flat-btn text-xs py-2 px-3"><i class="fas fa-box md:mr-1"></i> <span class="hidden md:inline">Pkgs</span></button>` : '';
                     list.innerHTML += `<tr>
@@ -1336,7 +1339,7 @@ select.flat-input option{background:#0d1730}
         function editService(id) {
             const d = SRV_CACHE[id]; if (!d) return; SRV_EDIT = id;
             document.getElementById('srv-name').value = d.name || ''; document.getElementById('srv-image').value = d.image || '';
-            document.getElementById('srv-category').value = d.categoryId || ''; document.getElementById('srv-type').value = ['uid','like','autolike','social'].includes(d.type) ? d.type : 'uid';
+            document.getElementById('srv-category').value = d.categoryId || ''; document.getElementById('srv-type').value = ['uid','like','autolike','social','guildglory'].includes(d.type) ? d.type : 'uid';
             document.getElementById('srv-delivery').value = d.delivery || 'wallet'; document.getElementById('srv-slot').value = d.slot == null ? '' : d.slot;
             document.getElementById('srv-ctype').value = d.contactType || 'whatsapp'; document.getElementById('srv-contact').value = d.contact || '';
             document.getElementById('srv-region').checked = d.askRegion !== false; document.getElementById('srv-active').checked = d.active !== false;

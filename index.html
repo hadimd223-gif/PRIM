@@ -1346,6 +1346,7 @@ main{padding-bottom:110px!important}
         const t = sv.type || 'uid';
         if (t === 'like' || t === 'dailylike') return showSec('dailylike');
         if (t === 'autolike') return showSec('autolike');
+        if (t === 'guildglory') return showSec('guildglory');
         if (t === 'social') return nxOpenSocial(sv);
         openTopUpPage(id, sv.name, sv.image || '');
     }
