@@ -573,8 +573,8 @@ html[data-nx-lang=bn] .nx-lang [data-l=bn],html[data-nx-lang=en] .nx-lang [data-
 .nx-contact a i{flex:none;font-size:26px;width:34px;text-align:center}
 /* bottom nav */
 nav.fixed>div{background:var(--nav)!important;border-top:1px solid var(--line)!important;box-shadow:0 -4px 18px rgba(0,0,0,.06)!important;border-radius:0!important;padding:8px 6px calc(8px + env(safe-area-inset-bottom))!important;align-items:center!important}
-.nav-item{color:var(--muted)!important;background:none!important;box-shadow:none!important;border-radius:12px;font-size:12px;font-weight:600}
-.nav-item i{font-size:22px}
+.nav-item{color:var(--muted)!important;background:none!important;box-shadow:none!important;border-radius:12px;font-size:10.5px;font-weight:600;min-width:0;padding:6px 0!important}
+.nav-item i{font-size:19px}
 .nav-item.active-tab{color:var(--c1)!important;background:none!important}
 .nav-item.active-tab span{font-weight:800}
 /* floating support + install banner */
@@ -1006,7 +1006,9 @@ main{padding-bottom:110px!important}
             <button id="nav-home" onclick="showSec('home')" class="nav-item active-tab"><i class="fa-solid fa-house"></i><span>Home</span></button>
             <button id="nav-tutorial" onclick="showSec('tutorial')" class="nav-item"><i class="fa-regular fa-circle-play"></i><span>Tutorial</span></button>
             <button id="nav-catalog" onclick="showSec('catalog')" class="nav-item"><i class="fa-solid fa-table-cells-large"></i><span>TopUp</span></button>
-            <button id="nav-contact" onclick="showSec('contact')" class="nav-item"><i class="fa-solid fa-headset"></i><span>Contact Us</span></button>
+            <button id="nav-history" onclick="showSec('history')" class="nav-item"><i class="fa-solid fa-box"></i><span>Orders</span></button>
+            <button id="nav-account" onclick="showSec('account')" class="nav-item"><i class="fa-solid fa-user"></i><span>Profile</span></button>
+            <button id="nav-contact" onclick="showSec('contact')" class="nav-item"><i class="fa-solid fa-headset"></i><span>Contact</span></button>
         </div>
     </nav>
     <div id="nx-install"><div class="ico"><i class="fas fa-download"></i></div><div class="tx"><b>Install App</b><span>Install the app for better experience!</span></div><button class="go" onclick="nxInstall()">Install</button><button class="x" aria-label="Close" onclick="nxInstallHide()"><i class="fas fa-times"></i></button></div>
@@ -2211,9 +2213,7 @@ window.addEventListener("load", () => { ggLoadCfg(); });
 // ================= PROFILE ICON MENU =================
 // To add another button later, just add one more { icon, label, run } line to this list.
 const PROFILE_MENU = [
-    { icon: 'fa-solid fa-user', label: 'My Profile', run: () => showSec('account') },
     { icon: 'fa-solid fa-wallet', label: 'Add Money', run: () => showSec('addmoney') },
-    { icon: 'fa-solid fa-box', label: 'Orders', run: () => showSec('history') },
     { icon: 'fa-solid fa-robot', label: 'My Auto Like', run: () => showSec('autolike') },
     { icon: 'fa-solid fa-trophy', label: 'Leaderboard', feat: 'showLeaderboard', run: () => showSec('leaders') },
     { icon: 'fa-solid fa-right-from-bracket', label: 'Logout', run: () => handleLogout() }
