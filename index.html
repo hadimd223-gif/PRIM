@@ -759,18 +759,25 @@ main{padding-bottom:110px!important}
                 <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-white text-2xl shadow-md" style="background:linear-gradient(135deg,#1d4ed8,#6366f1 55%,var(--c2))"><i class="fa-solid fa-shield-halved"></i></div>
                 <div>
                     <h3 class="font-bold text-slate-800 text-sm" id="gg-title">Guild Glory</h3>
-                    <p class="text-[11px] text-brand-600 font-semibold">Enter Guild ID • pick bots • done</p>
+                    <p class="text-[11px] text-brand-600 font-semibold">Enter Clan ID • pick a region • bots start farming glory</p>
                 </div>
             </div>
             <div class="vip-card py-3 text-center mb-3"><div class="text-[10px] text-slate-500 font-semibold">Your balance</div><div class="text-base font-extrabold text-brand-600">BDT <span id="gg-balance">0</span></div></div>
             <div class="vip-card p-3.5 mb-3">
-                <label class="text-[12px] font-extrabold text-slate-700 mb-1.5 block">Guild ID</label>
+                <label class="text-[12px] font-extrabold text-slate-700 mb-1.5 block">Clan / Guild ID</label>
                 <input type="tel" inputmode="numeric" id="gg-guild" maxlength="20" placeholder="e.g. 3012345678" class="zp-input text-sm py-2.5 mb-3" oninput="this.value=this.value.replace(/\D/g,'')">
-                <div class="text-[12px] font-extrabold text-slate-700 mb-2">Choose a package</div>
+                <div class="text-[12px] font-extrabold text-slate-700 mb-2">Choose a region</div>
                 <div id="gg-pk-grid" class="grid grid-cols-2 gap-2.5"><div class="col-span-2 text-center py-6 text-slate-400"><i class="fas fa-spinner fa-spin text-brand-600"></i></div></div>
-                <button id="gg-btn" onclick="ggBuy()" class="zp-btn w-full text-sm mt-4"><i class="fa-solid fa-shield-halved mr-1.5"></i><span>Send bots</span></button>
-                <p class="zp-sub mt-2.5 leading-relaxed" id="gg-note"><i class="fa-solid fa-circle-info text-brand-500 mr-1"></i>Double-check your Guild ID before paying. If the bots can't be delivered, your money is refunded automatically.</p>
+                <label class="text-[12px] font-extrabold text-slate-700 mt-3 mb-1.5 block">Stop automatically at glory <span class="text-slate-400 font-semibold">(optional)</span></label>
+                <input type="tel" inputmode="numeric" id="gg-target" maxlength="9" placeholder="e.g. 5000 — leave empty to keep running" class="zp-input text-sm py-2.5" oninput="this.value=this.value.replace(/\D/g,'')">
+                <button id="gg-btn" onclick="ggBuy()" class="zp-btn w-full text-sm mt-4"><i class="fa-solid fa-shield-halved mr-1.5"></i><span>Start group</span></button>
+                <p class="zp-sub mt-2.5 leading-relaxed" id="gg-note"><i class="fa-solid fa-circle-info text-brand-500 mr-1"></i>Double-check your Clan ID before paying. If the group can't be started, your money is refunded automatically.</p>
             </div>
+            <div class="flex items-center justify-between mb-2 mt-4 px-1">
+                <div class="text-[13px] font-extrabold text-slate-800"><i class="fa-solid fa-layer-group text-brand-600 mr-1.5"></i>My groups</div>
+                <button onclick="ggLoadMine()" class="text-[11px] font-bold text-brand-600 bg-white border border-slate-200 rounded-full px-3 py-1"><i class="fa-solid fa-rotate mr-1"></i>Refresh</button>
+            </div>
+            <div id="gg-mine"><div class="vip-card text-center py-6 text-slate-400 text-sm">Your groups will appear here</div></div>
         </section>
 
         <!-- Auto Like Section -->
@@ -2171,44 +2178,97 @@ function copySupportPin(btn) {
 
 
 // ================= GUILD GLORY =================
-let ggCfg = { enabled: true, packages: [], offMsg: '', title: 'Guild Glory', note: '' }, ggPkg = null, ggBusy = false, ggReqId = null;
+let ggCfg = { enabled: true, regions: [], offMsg: '', title: 'Guild Glory', note: '' }, ggPkg = null, ggBusy = false, ggReqId = null, ggMineBusy = false;
 const ggPrice = p => (currentUser && userData && (userData.role === 'reseller' || userData.role === 'admin') && p.resellerPrice != null) ? p.resellerPrice : p.price;
 async function ggLoadCfg() {
-    try { const r = await fetch(BACKEND_URL + '/guildGloryInfo'); const j = await r.json(); if (r.ok && j.packages) ggCfg = { enabled: j.enabled !== false, packages: j.packages, offMsg: j.offMsg || '', title: j.title || 'Guild Glory', note: j.note || '' }; } catch (e) {}
-    const hp = document.getElementById('gg-home-price'); if (hp && ggCfg.packages.length) hp.innerText = Math.min.apply(null, ggCfg.packages.map(ggPrice));
+    try { const r = await fetch(BACKEND_URL + '/guildGloryInfo'); const j = await r.json(); if (r.ok && j.regions) ggCfg = { enabled: j.enabled !== false, regions: j.regions, offMsg: j.offMsg || '', title: j.title || 'Guild Glory', note: j.note || '' }; } catch (e) {}
+    const hp = document.getElementById('gg-home-price'); if (hp && ggCfg.regions.length) hp.innerText = Math.min.apply(null, ggCfg.regions.map(ggPrice));
     ['gg-home-title', 'gg-title'].forEach(id => { const e = document.getElementById(id); if (e) e.innerText = ggCfg.title; });
     const n = document.getElementById('gg-note'); if (n && ggCfg.note) n.innerText = ggCfg.note;
     ggRenderPkgs();
 }
 function ggRenderPkgs() {
     const box = document.getElementById('gg-pk-grid'); if (!box) return;
-    if (!ggCfg.packages.length) { box.innerHTML = '<div class="col-span-2 text-center py-6 text-slate-400 text-sm">No packages available right now</div>'; return; }
-    box.innerHTML = ggCfg.packages.map(p => `<div onclick="ggPick('${esc(p.id)}')" class="cursor-pointer rounded-2xl p-3 text-center border-2 ${ggPkg === p.id ? 'border-brand-600 bg-brand-50' : 'border-slate-200 bg-white'}"><div class="font-extrabold text-slate-800 text-sm">${esc(p.name)}</div>${p.desc ? '<div class="text-[10px] text-slate-500 mt-0.5">' + esc(p.desc) + '</div>' : ''}<div class="text-brand-600 font-extrabold text-base mt-0.5">BDT ${ggPrice(p)}</div></div>`).join('');
+    if (!ggCfg.regions.length) { box.innerHTML = '<div class="col-span-2 text-center py-6 text-slate-400 text-sm">No regions available right now</div>'; return; }
+    box.innerHTML = ggCfg.regions.map(p => `<div onclick="ggPick('${esc(p.id)}')" class="cursor-pointer rounded-2xl p-3 text-center border-2 ${ggPkg === p.id ? 'border-brand-600 bg-brand-50' : 'border-slate-200 bg-white'}"><div class="font-extrabold text-slate-800 text-sm">${esc(p.name)}</div><div class="text-[10px] font-bold mt-0.5 ${p.tier === 'premium' ? 'text-amber-600' : 'text-slate-500'}">${p.tier === 'premium' ? '★ Premium' : 'Basic'}</div>${p.desc ? '<div class="text-[10px] text-slate-500 mt-0.5">' + esc(p.desc) + '</div>' : ''}<div class="text-brand-600 font-extrabold text-base mt-0.5">BDT ${ggPrice(p)}</div></div>`).join('');
 }
 function ggPick(id) { ggPkg = id; ggRenderPkgs(); }
-function ggOpen() { const b = document.getElementById('gg-balance'); if (b) b.innerText = userBalance; ggLoadCfg(); }
+function ggOpen() { const b = document.getElementById('gg-balance'); if (b) b.innerText = userBalance; ggLoadCfg(); ggLoadMine(); }
 async function ggBuy() {
     if (ggBusy) return;
     if (!currentUser) { showSec('auth'); return; }
     if (!ggCfg.enabled) { Swal.fire('Service paused', ggCfg.offMsg || 'Guild Glory is paused for a moment. Please try again later.', 'info'); return; }
     const guild = (document.getElementById('gg-guild').value || '').replace(/\D/g, '');
-    if (guild.length < 5) { Swal.fire('Heads up', 'Please enter a valid Guild ID', 'warning'); return; }
-    const pkg = ggCfg.packages.find(p => p.id === ggPkg); if (!pkg) { Swal.fire('Heads up', 'Please choose a package', 'warning'); return; }
-    const price = ggPrice(pkg);
+    if (guild.length < 5) { Swal.fire('Heads up', 'Please enter a valid Clan ID', 'warning'); return; }
+    const pkg = ggCfg.regions.find(p => p.id === ggPkg); if (!pkg) { Swal.fire('Heads up', 'Please choose a region', 'warning'); return; }
+    const target = parseInt(document.getElementById('gg-target').value || '0', 10) || 0, price = ggPrice(pkg);
     if (!(await checkBalance(price))) return;
     const c = await Swal.fire({ title: 'Confirm', icon: 'question', showCancelButton: true, confirmButtonText: 'Pay BDT ' + price, cancelButtonText: 'Cancel',
-        html: `Guild ID: <b>${esc(guild)}</b><br>Package: <b>${esc(pkg.name)}</b><br>Price: <b>BDT ${price}</b>` });
+        html: `Clan ID: <b>${esc(guild)}</b><br>Region: <b>${esc(pkg.name)}</b> (${esc(pkg.tier)})<br>${target ? 'Stops at glory: <b>' + target + '</b><br>' : ''}Price: <b>BDT ${price}</b>` });
     if (!c.isConfirmed) return;
     if (!ggReqId) ggReqId = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random()).replace(/[^A-Za-z0-9]/g, '').slice(0, 32);
     ggBusy = true; const btn = document.getElementById('gg-btn'); btn.disabled = true; btn.style.opacity = '.6';
     try {
-        const j = await api('/guildGloryBuy', { guildId: guild, packageId: pkg.id, reqId: ggReqId }); ggReqId = null;
-        if (j.ok) Swal.fire({ icon: 'success', title: 'Done! 🎉', html: `<b>${esc(pkg.name)}</b> sent to Guild <b>${esc(guild)}</b>.${j.orderNo ? '<br><span style="font-size:12px">Order: ' + esc(j.orderNo) + '</span>' : ''}` });
-        else Swal.fire({ icon: 'error', title: 'Not delivered', text: j.message || 'Please try again' });
+        const j = await api('/guildGloryBuy', { clanId: guild, region: pkg.id, targetGlory: target, reqId: ggReqId }); ggReqId = null;
+        if (j.ok) { Swal.fire({ icon: 'success', title: 'Group started! 🎉', html: `<b>${esc(pkg.name)}</b> group is now running for Clan <b>${esc(guild)}</b>.` }); ggLoadMine(); }
+        else Swal.fire({ icon: 'error', title: 'Not started', text: j.message || 'Please try again' });
         if (typeof refreshUser === 'function') try { refreshUser(); } catch (e) {}
-    } catch (e) { Swal.fire('Couldn’t buy', e.message || 'Please try again', 'error'); }
+    } catch (e) { Swal.fire('Couldn’t start', e.message || 'Please try again', 'error'); }
     finally { ggBusy = false; btn.disabled = false; btn.style.opacity = ''; }
 }
+// ----- my groups -----
+const ggStatusStyle = s => s === 'running' ? 'background:#dcfce7;color:#15803d' : (s === 'stopped' ? 'background:#e2e8f0;color:#475569' : (s === 'deleted' || s === 'failed' ? 'background:#fee2e2;color:#b91c1c' : 'background:#fef3c7;color:#b45309'));
+async function ggLoadMine(quiet) {
+    const box = document.getElementById('gg-mine'); if (!box || !currentUser || ggMineBusy) return;
+    ggMineBusy = true; if (!quiet && !box.querySelector('[data-gid]')) box.innerHTML = '<div class="vip-card text-center py-6 text-slate-400"><i class="fas fa-spinner fa-spin text-brand-600"></i></div>';
+    try {
+        const j = await api('/guildGloryMine', {});
+        if (!j.groups.length) { box.innerHTML = '<div class="vip-card text-center py-6 text-slate-400 text-sm">No groups yet — start one above</div>'; return; }
+        box.innerHTML = (j.stale ? '<div class="text-[11px] text-amber-600 font-semibold mb-2 px-1">Live status is temporarily unavailable — showing the last saved data.</div>' : '') + j.groups.map(g => {
+            const run = g.status === 'running', tgt = g.target ? `<div class="text-[11px] text-slate-500 mt-1"><i class="fa-solid fa-bullseye mr-1"></i>Target ${g.target}${g.targetReached ? ' — reached ✅' : ''}</div>` : '';
+            const btn = (a, ic, lb, cls) => `<button onclick="ggAct('${esc(g.id)}','${a}')" class="${cls || 'bg-white text-slate-700 border border-slate-200'} rounded-xl py-2 text-[11px] font-extrabold"><i class="fa-solid ${ic} mr-1"></i>${lb}</button>`;
+            return `<div class="vip-card p-3.5 mb-2.5" data-gid="${esc(g.id)}">
+                <div class="flex items-start justify-between gap-2"><div><div class="text-[13px] font-extrabold text-slate-800">Clan ${esc(g.clanId)}</div><div class="text-[11px] text-slate-500 font-semibold">${esc(g.regionName)}${g.uptime ? ' • up ' + esc(g.uptime) : ''}</div></div>
+                <span class="text-[10px] font-extrabold uppercase rounded-full px-2.5 py-1" style="${ggStatusStyle(g.status)}">${esc(g.status)}</span></div>
+                <div class="grid grid-cols-2 gap-2 mt-2.5"><div class="bg-slate-50 rounded-xl py-2 text-center"><div class="text-[10px] text-slate-500 font-semibold">Glory farmed</div><div class="text-sm font-extrabold text-brand-600">${g.glory == null ? '—' : g.glory}</div></div>
+                <div class="bg-slate-50 rounded-xl py-2 text-center"><div class="text-[10px] text-slate-500 font-semibold">Bots running</div><div class="text-sm font-extrabold text-slate-800">${g.containers ? g.running + ' / ' + g.containers : '—'}</div></div></div>${tgt}
+                <div class="grid grid-cols-3 gap-1.5 mt-2.5">${btn('get-glory', 'fa-trophy', 'Glory')}${btn('get-clan-info', 'fa-circle-info', 'Clan info')}${btn('progress', 'fa-chart-line', 'Progress')}
+                ${btn('restart', 'fa-rotate', 'Restart')}${run ? btn('stop', 'fa-stop', 'Stop', 'bg-amber-50 text-amber-700 border border-amber-200') : '<span></span>'}${btn('delete', 'fa-trash', 'Delete', 'bg-rose-50 text-rose-700 border border-rose-200')}</div></div>`;
+        }).join('');
+    } catch (e) { if (!quiet) box.innerHTML = '<div class="vip-card text-center py-5 text-rose-500 text-sm">' + esc(e.message) + '</div>'; }
+    finally { ggMineBusy = false; }
+}
+const ggLabel = k => String(k).replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+function ggKV(o) {
+    const rows = Object.entries(o || {}).filter(([k, v]) => k !== 'success' && v != null && v !== '').map(([k, v]) => `<div style="display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid #eef2f7;font-size:13px"><span style="color:#64748b">${esc(ggLabel(k))}</span><b style="text-align:right;word-break:break-word">${esc(typeof v === 'object' ? JSON.stringify(v) : v)}</b></div>`);
+    return rows.length ? rows.join('') : '<span style="color:#64748b;font-size:13px">Done.</span>';
+}
+function ggChart(pts) {
+    if (pts.length < 2) return '';
+    const W = 280, H = 90, max = Math.max.apply(null, pts.map(p => p.glory)), min = Math.min.apply(null, pts.map(p => p.glory)), rg = Math.max(max - min, 1);
+    const xy = pts.map((p, i) => [8 + i * (W - 16) / (pts.length - 1), H - 8 - (p.glory - min) / rg * (H - 16)]);
+    return `<svg viewBox="0 0 ${W} ${H}" width="100%" style="margin:6px 0"><polyline fill="none" stroke="#6366f1" stroke-width="2.5" stroke-linejoin="round" points="${xy.map(a => a.join(',')).join(' ')}"/>${xy.map(a => `<circle cx="${a[0]}" cy="${a[1]}" r="3" fill="#6366f1"/>`).join('')}</svg>`;
+}
+async function ggAct(id, a) {
+    if (a === 'delete' || a === 'stop' || a === 'restart') {
+        const t = { delete: ['Delete this group?', 'This permanently removes the group and its glory history. It can’t be undone.', 'Delete'], stop: ['Stop this group?', 'The bots will stop farming. Your money is not refunded for a stopped group.', 'Stop'], restart: ['Restart this group?', 'The bots will be restarted.', 'Restart'] }[a];
+        const c = await Swal.fire({ icon: a === 'restart' ? 'question' : 'warning', title: t[0], text: t[1], showCancelButton: true, confirmButtonText: t[2], confirmButtonColor: a === 'delete' ? '#e11d48' : undefined });
+        if (!c.isConfirmed) return;
+    }
+    Swal.fire({ title: 'Please wait…', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+    try {
+        if (a === 'progress') {
+            const j = await api('/guildGloryProgress', { groupId: id });
+            Swal.fire({ title: 'Glory progress', html: `<div style="text-align:left"><div style="font-size:13px;color:#64748b">Clan <b>${esc(j.clanId || '')}</b> • total farmed <b style="color:#4f46e5">${j.glory}</b></div>${ggChart(j.snapshots)}${j.snapshots.slice(-8).reverse().map(s => `<div style="display:flex;justify-content:space-between;font-size:12px;padding:3px 0;border-bottom:1px solid #eef2f7"><span style="color:#64748b">${esc(String(s.t || '').replace('T', ' ').slice(0, 16))}</span><b>${s.glory}</b></div>`).join('') || '<span style="color:#64748b;font-size:13px">No snapshots yet — check again in a little while.</span>'}</div>` });
+            return;
+        }
+        const j = await api('/guildGloryAction', { groupId: id, action: a });
+        if (a === 'get-glory' || a === 'get-clan-info') Swal.fire({ title: a === 'get-glory' ? 'Glory' : 'Clan info', html: `<div style="text-align:left">${ggKV(j.result)}</div>` });
+        else { Swal.fire({ icon: 'success', title: { restart: 'Restarted', stop: 'Stopped', delete: 'Deleted' }[a], timer: 1400, showConfirmButton: false }); }
+        ggLoadMine(true);
+    } catch (e) { Swal.fire('Couldn’t do that', e.message || 'Please try again', 'error'); }
+}
+setInterval(() => { const s = document.getElementById('guildglory-sec'); if (!document.hidden && s && !s.classList.contains('hidden') && currentUser) ggLoadMine(true); }, 30000);
 window.addEventListener("load", () => { ggLoadCfg(); });
 
 // ================= PROFILE ICON MENU =================

@@ -668,7 +668,7 @@ select.flat-input option{background:#0d1730}
                             <option value="like">Like (UID + Region দিয়ে Send)</option>
                             <option value="autolike">Auto Like (প্যাকেজ, রোজ অটো)</option>
                             <option value="social">Social Media (WhatsApp / Telegram নম্বর)</option>
-                            <option value="guildglory">Guild Glory (Guild ID + বট সংখ্যা)</option>
+                            <option value="guildglory">Guild Glory (Clan ID + Region)</option>
                         </select>
                         <select id="srv-delivery" class="flat-input">
                             <option value="whatsapp">Delivery: WhatsApp এ অর্ডার যাবে</option>
@@ -911,44 +911,115 @@ select.flat-input option{background:#0d1730}
             </div>
 
             <div id="view-guildglory" class="view-section hidden">
-                <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 md:gap-8 mb-6">
-                    <div class="card">
-                        <h3 class="text-xl font-bold text-orange-500 mb-4 pb-3 border-b border-dark-border"><i class="fas fa-plug mr-2"></i>Guild Glory API</h3>
-                        <div class="space-y-4">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" id="gg-enabled" class="w-5 h-5 accent-orange-500 rounded" checked><span class="text-sm font-bold text-white">Guild Glory বিক্রি চালু</span></label>
-                            <div><label class="block text-sm text-gray-400 mb-2">API URL <span class="text-gray-500">(চাইলে {guild_id} {bots} {key} ব্যবহার করুন)</span></label><input type="text" id="gg-api-url" class="flat-input" placeholder="https://example.com/api/guild?key={key}&guild={guild_id}&bots={bots}"></div>
-                            <div><label class="block text-sm text-gray-400 mb-2">API Key <span id="gg-key-hint" class="text-gray-500"></span></label><input type="password" id="gg-api-key" class="flat-input" autocomplete="new-password" placeholder="নতুন key বসাতে এখানে পেস্ট করুন (খালি = আগেরটাই থাকবে)"><label class="text-xs text-gray-400 flex items-center gap-2 mt-2"><input type="checkbox" id="gg-clear-key">Key মুছে ফেলুন</label></div>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div><label class="block text-sm text-gray-400 mb-2">Method</label><select id="gg-method" class="flat-input"><option>GET</option><option>POST</option></select></div>
-                                <div><label class="block text-sm text-gray-400 mb-2">Key Header (ঐচ্ছিক)</label><input type="text" id="gg-keyheader" class="flat-input" placeholder="X-API-KEY"></div>
-                                <div><label class="block text-sm text-gray-400 mb-2">Guild ID param</label><input type="text" id="gg-p-guild" class="flat-input" placeholder="guild_id"></div>
-                                <div><label class="block text-sm text-gray-400 mb-2">Bots param</label><input type="text" id="gg-p-bots" class="flat-input" placeholder="bots"></div>
-                                <div><label class="block text-sm text-gray-400 mb-2">Key param</label><input type="text" id="gg-p-key" class="flat-input" placeholder="key"></div>
-                            </div>
-                            <p class="text-xs text-gray-500">URL-এ {guild_id}/{bots}/{key} না থাকলে উপরের param নামে অটো পাঠানো হবে। API key কখনো ইউজারের কাছে যায় না।</p>
-                        </div>
+                <div class="flex flex-wrap gap-2 mb-6" id="gg-tabs">
+                    <button data-t="account" onclick="ggTab('account')" class="gg-tab px-4 py-2 rounded-lg text-sm font-bold"><i class="fas fa-wallet mr-1"></i>Account</button>
+                    <button data-t="settings" onclick="ggTab('settings')" class="gg-tab px-4 py-2 rounded-lg text-sm font-bold"><i class="fas fa-sliders-h mr-1"></i>Settings &amp; Prices</button>
+                    <button data-t="groups" onclick="ggTab('groups')" class="gg-tab px-4 py-2 rounded-lg text-sm font-bold"><i class="fas fa-layer-group mr-1"></i>Groups</button>
+                    <button data-t="orders" onclick="ggTab('orders')" class="gg-tab px-4 py-2 rounded-lg text-sm font-bold"><i class="fas fa-list mr-1"></i>Orders</button>
+                    <button data-t="coupons" onclick="ggTab('coupons')" class="gg-tab px-4 py-2 rounded-lg text-sm font-bold"><i class="fas fa-ticket-alt mr-1"></i>Coupons</button>
+                    <button data-t="txns" onclick="ggTab('txns')" class="gg-tab px-4 py-2 rounded-lg text-sm font-bold"><i class="fas fa-receipt mr-1"></i>Transactions</button>
+                    <button data-t="logs" onclick="ggTab('logs')" class="gg-tab px-4 py-2 rounded-lg text-sm font-bold"><i class="fas fa-clipboard-list mr-1"></i>Logs</button>
+                </div>
+                <style>.gg-tab{background:#27272a;color:#d1d5db}.gg-tab.on{background:#22d3ee;color:#0b0b0c}</style>
+
+                <!-- Account -->
+                <div class="gg-panel" id="ggp-account">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="card text-center"><div class="text-xs text-gray-400">ffglory.pro account</div><div class="text-xl font-extrabold text-white mt-1" id="gga-user">—</div></div>
+                        <div class="card text-center"><div class="text-xs text-gray-400">Basic credits</div><div class="text-3xl font-extrabold text-orange-500" id="gga-basic">—</div><div class="text-[11px] text-gray-500" id="gga-basic-usd"></div></div>
+                        <div class="card text-center"><div class="text-xs text-gray-400">Premium credits</div><div class="text-3xl font-extrabold text-orange-500" id="gga-premium">—</div><div class="text-[11px] text-gray-500" id="gga-premium-usd"></div></div>
                     </div>
-                    <div class="card">
-                        <h3 class="text-xl font-bold text-orange-500 mb-4 pb-3 border-b border-dark-border"><i class="fas fa-sliders-h mr-2"></i>Display &amp; Packages</h3>
-                        <div class="space-y-4">
-                            <div class="grid grid-cols-2 gap-4">
-                                <div><label class="block text-sm text-gray-400 mb-2">নাম (হোমে দেখাবে)</label><input type="text" id="gg-title" class="flat-input" placeholder="Guild Glory"></div>
-                                <div><label class="block text-sm text-gray-400 mb-2">বন্ধ থাকলে মেসেজ</label><input type="text" id="gg-off" class="flat-input"></div>
-                            </div>
-                            <div><label class="block text-sm text-gray-400 mb-2">নোট (ইউজার পেজে নিচে দেখাবে, ঐচ্ছিক)</label><input type="text" id="gg-note" class="flat-input"></div>
-                        </div>
-                        <h4 class="text-lg font-bold text-orange-500 mt-6 mb-3">Packages (বট ও দাম)</h4>
-                        <div class="grid grid-cols-12 gap-2 text-[11px] text-gray-500 mb-1"><span class="col-span-3">নাম</span><span class="col-span-2">বট</span><span class="col-span-2">দাম ৳</span><span class="col-span-2">রিসেলার</span><span class="col-span-3">চালু</span></div>
-                        <div id="gg-pk-rows" class="space-y-2"></div>
-                        <div class="flex gap-3 mt-3"><button onclick="ggAddRow()" class="px-4 py-2 rounded-lg bg-dark-border text-white text-sm font-bold">+ Package</button><button onclick="ggSaveCfg()" class="flat-btn !py-2 text-sm">Save</button></div>
+                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                        <div class="card"><div class="flex items-center justify-between mb-4"><h3 class="text-xl font-bold text-orange-500"><i class="fas fa-globe mr-2"></i>Regions at ffglory.pro</h3><button onclick="ggLoadAccount()" class="px-3 py-1.5 rounded-lg bg-dark-border text-white text-xs font-bold">Refresh</button></div>
+                            <div class="flat-table-container"><table class="flat-table"><thead><tr><th>ID</th><th>Region</th><th>Tier</th><th>Enabled</th></tr></thead><tbody id="gga-regions"></tbody></table></div></div>
+                        <div class="card"><h3 class="text-xl font-bold text-orange-500 mb-4"><i class="fas fa-user-plus mr-2"></i>Create ffglory account</h3>
+                            <div class="space-y-3"><input type="text" id="gga-su-user" class="flat-input" placeholder="username" autocomplete="off"><input type="text" id="gga-su-pass" class="flat-input" placeholder="password (min 6)" autocomplete="off">
+                            <button onclick="ggSignup()" class="flat-btn !py-2 text-sm">Create</button></div>
+                            <p class="text-xs text-gray-500 mt-3">Creates a separate customer account at ffglory.pro (uses the master key). Normal website customers don't need this.</p></div>
                     </div>
                 </div>
-                <div class="card mb-6">
+
+                <!-- Settings -->
+                <div class="gg-panel hidden" id="ggp-settings">
+                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 md:gap-8 mb-6">
+                        <div class="card">
+                            <h3 class="text-xl font-bold text-orange-500 mb-4 pb-3 border-b border-dark-border"><i class="fas fa-plug mr-2"></i>ffglory.pro API</h3>
+                            <div class="space-y-4">
+                                <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" id="gg-enabled" class="w-5 h-5 accent-orange-500 rounded" checked><span class="text-sm font-bold text-white">Guild Glory বিক্রি চালু</span></label>
+                                <div><label class="block text-sm text-gray-400 mb-2">API Base URL</label><input type="text" id="gg-api-base" class="flat-input" placeholder="https://ffglory.pro"></div>
+                                <div><label class="block text-sm text-gray-400 mb-2">API Key (ak_…) <span id="gg-key-hint" class="text-gray-500"></span></label><input type="password" id="gg-api-key" class="flat-input" autocomplete="new-password" placeholder="নতুন key বসাতে এখানে পেস্ট করুন (খালি = আগেরটাই থাকবে)"><label class="text-xs text-gray-400 flex items-center gap-2 mt-2"><input type="checkbox" id="gg-clear-key">Key মুছে ফেলুন</label></div>
+                                <div><label class="block text-sm text-gray-400 mb-2">Master Key (x-api-key) <span id="gg-master-hint" class="text-gray-500"></span></label><input type="password" id="gg-master-key" class="flat-input" autocomplete="new-password" placeholder="খালি = আগেরটাই থাকবে"><label class="text-xs text-gray-400 flex items-center gap-2 mt-2"><input type="checkbox" id="gg-clear-master">Master key মুছে ফেলুন</label></div>
+                                <p class="text-xs text-gray-500">Key গুলো শুধু সার্ভারে থাকে, ইউজারের ব্রাউজারে কখনো যায় না। এখানে খালি রাখলে main.py এর CONFIG-এর মান ব্যবহার হবে।</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3 class="text-xl font-bold text-orange-500 mb-4 pb-3 border-b border-dark-border"><i class="fas fa-desktop mr-2"></i>Display</h3>
+                            <div class="space-y-4">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div><label class="block text-sm text-gray-400 mb-2">নাম (হোমে দেখাবে)</label><input type="text" id="gg-title" class="flat-input" placeholder="Guild Glory"></div>
+                                    <div><label class="block text-sm text-gray-400 mb-2">বন্ধ থাকলে মেসেজ</label><input type="text" id="gg-off" class="flat-input"></div>
+                                </div>
+                                <div><label class="block text-sm text-gray-400 mb-2">নোট (ইউজার পেজে নিচে দেখাবে, ঐচ্ছিক)</label><input type="text" id="gg-note" class="flat-input"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-6">
+                        <h3 class="text-xl font-bold text-orange-500 mb-1"><i class="fas fa-tags mr-2"></i>Regions &amp; Prices</h3>
+                        <p class="text-xs text-gray-500 mb-4">ffglory.pro-র রিজিওনগুলো অটো আসে। যেটা বিক্রি করতে চান সেটা "চালু" করে দাম দিন। প্রতিটি গ্রুপ লঞ্চে ১ ক্রেডিট (Basic/Premium — রিজিওনের টিয়ার অনুযায়ী) খরচ ধরে দাম ঠিক করুন।</p>
+                        <div class="grid grid-cols-12 gap-2 text-[11px] text-gray-500 mb-1"><span class="col-span-3">রিজিওন</span><span class="col-span-2">ইউজারকে যে নাম দেখাবে</span><span class="col-span-2">দাম ৳</span><span class="col-span-2">রিসেলার ৳</span><span class="col-span-3">চালু</span></div>
+                        <div id="gg-reg-rows" class="space-y-2"></div>
+                        <div class="mt-4"><button onclick="ggSaveCfg()" class="flat-btn !py-2 text-sm">Save</button></div>
+                    </div>
+                </div>
+
+                <!-- Groups -->
+                <div class="gg-panel hidden" id="ggp-groups"><div class="card">
+                    <div class="flex items-center justify-between mb-4"><h3 class="text-xl font-bold text-orange-500"><i class="fas fa-layer-group mr-2"></i>সব গ্রুপ (ffglory অ্যাকাউন্টে)</h3><button onclick="ggLoadGroups()" class="px-3 py-1.5 rounded-lg bg-dark-border text-white text-xs font-bold">Refresh</button></div>
+                    <div class="flat-table-container"><table class="flat-table"><thead><tr><th>Clan</th><th>Region</th><th>Status</th><th>Bots</th><th>Uptime</th><th>Glory</th><th>Owner</th><th>Actions</th></tr></thead><tbody id="gg-groups"></tbody></table></div>
+                </div></div>
+
+                <!-- Orders -->
+                <div class="gg-panel hidden" id="ggp-orders"><div class="card">
                     <div class="flex items-center justify-between mb-4"><h3 class="text-xl font-bold text-orange-500"><i class="fas fa-list mr-2"></i>সাম্প্রতিক অর্ডার</h3><button onclick="ggLoadOrders()" class="px-3 py-1.5 rounded-lg bg-dark-border text-white text-xs font-bold">Refresh</button></div>
-                    <div class="flat-table-container"><table class="flat-table"><thead><tr><th>Guild ID</th><th>Package</th><th>User</th><th>Price</th><th>Status</th><th>API reply</th></tr></thead><tbody id="gg-orders"></tbody></table></div>
+                    <div class="flat-table-container"><table class="flat-table"><thead><tr><th>Clan ID</th><th>Region</th><th>User</th><th>Price</th><th>Target</th><th>Status</th><th>API reply</th></tr></thead><tbody id="gg-orders"></tbody></table></div>
+                </div></div>
+
+                <!-- Coupons -->
+                <div class="gg-panel hidden" id="ggp-coupons">
+                    <div class="card mb-6"><h3 class="text-xl font-bold text-orange-500 mb-4"><i class="fas fa-plus-circle mr-2"></i>Create credit coupons</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 items-end">
+                            <div><label class="block text-sm text-gray-400 mb-2">Basic credits</label><input type="number" min="0" id="ggc-basic" class="flat-input" value="1"></div>
+                            <div><label class="block text-sm text-gray-400 mb-2">Premium credits</label><input type="number" min="0" id="ggc-premium" class="flat-input" value="0"></div>
+                            <div><label class="block text-sm text-gray-400 mb-2">How many (1-50)</label><input type="number" min="1" max="50" id="ggc-count" class="flat-input" value="1"></div>
+                            <button onclick="ggCreateCoupons()" class="flat-btn !py-2 text-sm">Create</button>
+                        </div>
+                        <div id="ggc-new" class="hidden mt-4"><div class="text-xs text-gray-400 mb-2">নতুন কুপন (কপি করে রাখুন):</div><textarea id="ggc-new-box" class="flat-input" rows="4" readonly></textarea></div>
+                        <p class="text-xs text-gray-500 mt-3">কুপন বানালে আপনার ffglory ব্যালেন্স থেকে ক্রেডিট কেটে কুপনে যায়; Cancel করলে ফেরত আসে।</p>
+                    </div>
+                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                        <div class="card"><div class="flex items-center justify-between mb-4"><h3 class="text-lg font-bold text-orange-500">My coupons</h3><button onclick="ggLoadCoupons()" class="px-3 py-1.5 rounded-lg bg-dark-border text-white text-xs font-bold">Refresh</button></div>
+                            <div class="flat-table-container"><table class="flat-table"><thead><tr><th>Code</th><th>Basic</th><th>Premium</th><th>Status</th><th></th></tr></thead><tbody id="ggc-mine"></tbody></table></div></div>
+                        <div class="card"><h3 class="text-lg font-bold text-orange-500 mb-4">Redeemed coupons</h3>
+                            <div class="flat-table-container"><table class="flat-table"><thead><tr><th>Code</th><th>From</th><th>Basic</th><th>Premium</th><th>Status</th></tr></thead><tbody id="ggc-redeemed"></tbody></table></div></div>
+                    </div>
+                </div>
+
+                <!-- Transactions -->
+                <div class="gg-panel hidden" id="ggp-txns"><div class="card">
+                    <div class="flex items-center justify-between mb-4"><h3 class="text-xl font-bold text-orange-500"><i class="fas fa-receipt mr-2"></i>ffglory ক্রেডিট ট্রানজেকশন</h3><button onclick="ggLoadTxns()" class="px-3 py-1.5 rounded-lg bg-dark-border text-white text-xs font-bold">Refresh</button></div>
+                    <div class="flat-table-container"><table class="flat-table"><thead><tr><th>ID</th><th>Order</th><th>Basic</th><th>Premium</th><th>Status</th><th>Date</th><th></th></tr></thead><tbody id="gg-txns"></tbody></table></div>
+                </div></div>
+
+                <!-- Logs -->
+                <div class="gg-panel hidden" id="ggp-logs">
+                    <div class="flex justify-end mb-3"><button onclick="ggLoadLogs()" class="px-3 py-1.5 rounded-lg bg-dark-border text-white text-xs font-bold">Refresh all</button></div>
+                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 mb-6">
+                        <div class="card"><h3 class="text-lg font-bold text-orange-500 mb-4"><i class="fas fa-bell mr-2"></i>Notifications</h3><div id="gg-notifs" class="space-y-2 text-sm"></div></div>
+                        <div class="card"><h3 class="text-lg font-bold text-orange-500 mb-4"><i class="fas fa-clock-rotate-left mr-2"></i>Activity log</h3><div class="flat-table-container"><table class="flat-table"><thead><tr><th>Time</th><th>Action</th><th>Group</th><th>Details</th></tr></thead><tbody id="gg-activity"></tbody></table></div></div>
+                    </div>
+                    <div class="card"><h3 class="text-lg font-bold text-orange-500 mb-4"><i class="fas fa-box-archive mr-2"></i>Group history (glory farmed)</h3><div class="flat-table-container"><table class="flat-table"><thead><tr><th>Group</th><th>Clan</th><th>Region</th><th>Status</th><th>Glory farmed</th><th>Bots</th><th>Launched</th><th></th></tr></thead><tbody id="gg-history"></tbody></table></div></div>
                 </div>
             </div>
-
 
             <div id="view-autolike" class="view-section hidden">
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
@@ -2143,49 +2214,150 @@ async function ggCall(action, body) {
     if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status));
     return j;
 }
-let ggPk = [];
 const ggEsc = t => String(t == null ? '' : t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const ggPill = s => { s = String(s || ''); const ok = ['success', 'running', 'approved', 'active', 'completed', 'redeemed'].includes(s.toLowerCase()), bad = ['failed', 'cancelled', 'canceled', 'deleted', 'rejected'].includes(s.toLowerCase()); return `<span class="pill ${ok ? 'pill-ok' : bad ? 'pill-bad' : ''}">${ggEsc(s || '—')}</span>`; };
+const ggFail = (id, cols, e) => { const el = document.getElementById(id); if (el) el.innerHTML = `<tr><td colspan="${cols}" class="text-red-400">${ggEsc(e.message)}</td></tr>`; };
+const ggEmpty = (cols, t) => `<tr><td colspan="${cols}" class="text-gray-500">${t || 'কিছু নেই'}</td></tr>`;
+const ggDate = v => ggEsc(String(v || '').replace('T', ' ').replace(/\..*$/, '').replace('Z', ''));
+let ggReg = [], ggCur = 'account';
+function ggTab(t) {
+    ggCur = t;
+    document.querySelectorAll('.gg-panel').forEach(p => p.classList.toggle('hidden', p.id !== 'ggp-' + t));
+    document.querySelectorAll('#gg-tabs .gg-tab').forEach(b => b.classList.toggle('on', b.dataset.t === t));
+    ({ account: ggLoadAccount, settings: ggLoadCfg, groups: ggLoadGroups, orders: ggLoadOrders, coupons: ggLoadCoupons, txns: ggLoadTxns, logs: ggLoadLogs })[t]();
+}
+function ggLoadAll() { ggTab(ggCur); }
+async function ggLoadAccount() {
+    try {
+        const j = await ggCall('account'), $ = id => document.getElementById(id);
+        $('gga-user').innerText = j.username || '—'; $('gga-basic').innerText = j.basic; $('gga-premium').innerText = j.premium;
+        $('gga-basic-usd').innerText = j.basicUsd != null ? '$' + j.basicUsd + ' / credit' : ''; $('gga-premium-usd').innerText = j.premiumUsd != null ? '$' + j.premiumUsd + ' / credit' : '';
+        $('gga-regions').innerHTML = j.regions.length ? j.regions.map(r => `<tr><td>${ggEsc(r.id)}</td><td>${ggEsc(r.region_name)}</td><td>${ggEsc(r.tier)}</td><td>${ggPill(r.enabled ? 'active' : 'off')}</td></tr>`).join('') : ggEmpty(4);
+    } catch (e) { document.getElementById('gga-user').innerText = '⚠ ' + e.message; }
+}
+async function ggSignup() {
+    const u = document.getElementById('gga-su-user').value.trim(), p = document.getElementById('gga-su-pass').value;
+    if (!u || !p) return Swal.fire('Username আর password দিন', '', 'warning');
+    try { showLoading(); const j = await ggCall('signup', { username: u, password: p }); hideLoading(); Swal.fire({ icon: 'success', title: 'Account created', text: JSON.stringify(j.result).slice(0, 200) }); document.getElementById('gga-su-pass').value = ''; }
+    catch (e) { hideLoading(); Swal.fire('Failed', e.message, 'error'); }
+}
+// ---- settings ----
 function ggRenderRows() {
-    document.getElementById('gg-pk-rows').innerHTML = ggPk.map((p, i) => `<div class="grid grid-cols-12 gap-2 items-center">
-        <input class="flat-input col-span-3" data-k="name" data-i="${i}" value="${ggEsc(p.name)}" placeholder="Name">
-        <input class="flat-input col-span-2" type="number" data-k="bots" data-i="${i}" value="${p.bots}" placeholder="Bots">
-        <input class="flat-input col-span-2" type="number" data-k="price" data-i="${i}" value="${p.price}" placeholder="Price">
-        <input class="flat-input col-span-2" type="number" data-k="resellerPrice" data-i="${i}" value="${p.resellerPrice == null ? '' : p.resellerPrice}" placeholder="Reseller">
-        <label class="col-span-2 text-xs text-white flex items-center gap-1"><input type="checkbox" data-k="active" data-i="${i}" ${p.active !== false ? 'checked' : ''}>On</label>
-        <button onclick="ggDelRow(${i})" class="col-span-1 text-red-400"><i class="fas fa-trash"></i></button></div>`).join('');
+    document.getElementById('gg-reg-rows').innerHTML = ggReg.length ? ggReg.map((p, i) => `<div class="grid grid-cols-12 gap-2 items-center">
+        <div class="col-span-3 text-sm text-white">${ggEsc(p.apiName)} <span class="text-gray-500">(${ggEsc(p.region)})</span><br><span class="text-[11px] ${p.tier === 'premium' ? 'text-amber-400' : 'text-gray-400'}">${ggEsc(p.tier)}${p.apiEnabled ? '' : ' • ffglory এ বন্ধ'}</span></div>
+        <input class="flat-input col-span-2" data-k="name" data-i="${i}" value="${ggEsc(p.name)}" placeholder="${ggEsc(p.apiName)}">
+        <input class="flat-input col-span-2" type="number" min="0" data-k="price" data-i="${i}" value="${p.price}">
+        <input class="flat-input col-span-2" type="number" min="0" data-k="resellerPrice" data-i="${i}" value="${p.resellerPrice == null ? '' : p.resellerPrice}" placeholder="—">
+        <label class="col-span-3 flex items-center gap-2 text-sm text-gray-300"><input type="checkbox" class="w-5 h-5 accent-orange-500" data-k="active" data-i="${i}" ${p.active ? 'checked' : ''}>চালু</label></div>`).join('') : '<div class="text-gray-500 text-sm">কোনো রিজিওন পাওয়া যায়নি — API key সেট করে Save দিন, তারপর রিফ্রেশ করুন।</div>';
 }
 function ggReadRows() {
-    document.querySelectorAll('#gg-pk-rows [data-k]').forEach(el => { const p = ggPk[+el.dataset.i], k = el.dataset.k; if (!p) return;
-        if (k === 'active') p.active = el.checked; else if (k === 'name') p.name = el.value.trim(); else if (k === 'resellerPrice') p.resellerPrice = el.value === '' ? null : Math.round(+el.value); else p[k] = Math.round(+el.value); });
-    return ggPk;
+    document.querySelectorAll('#gg-reg-rows [data-k]').forEach(el => { const p = ggReg[+el.dataset.i], k = el.dataset.k; if (!p) return;
+        if (k === 'active') p.active = el.checked; else if (k === 'name') p.name = el.value.trim(); else p[k] = el.value === '' ? (k === 'resellerPrice' ? null : 0) : Number(el.value); });
+    return ggReg;
 }
-function ggAddRow() { ggReadRows(); ggPk.push({ id: 'p' + Date.now().toString(36), name: '', bots: 4, price: 0, resellerPrice: null, active: true }); ggRenderRows(); }
-function ggDelRow(i) { ggReadRows(); ggPk.splice(i, 1); ggRenderRows(); }
-async function ggLoadAll() { await ggLoadCfg(); ggLoadOrders(); }
 async function ggLoadCfg() {
     try {
-        const j = await ggCall('getConfig'); const $ = id => document.getElementById(id);
-        $('gg-enabled').checked = j.enabled !== false; $('gg-api-url').value = j.apiUrl || ''; $('gg-api-key').value = ''; $('gg-clear-key').checked = false;
-        $('gg-key-hint').innerText = j.hasKey ? '(সেট করা আছে ' + j.keyHint + ')' : '(এখনো সেট নেই)';
-        $('gg-method').value = j.apiMethod || 'GET'; $('gg-keyheader').value = j.keyHeader || ''; $('gg-p-guild').value = j.guildParam || ''; $('gg-p-bots').value = j.botsParam || ''; $('gg-p-key').value = j.keyParam || '';
+        const j = await ggCall('getConfig'), $ = id => document.getElementById(id);
+        $('gg-enabled').checked = j.enabled !== false; $('gg-api-base').value = j.apiBase || ''; $('gg-api-key').value = ''; $('gg-clear-key').checked = false; $('gg-master-key').value = ''; $('gg-clear-master').checked = false;
+        $('gg-key-hint').innerText = j.hasKey ? '(সেট করা আছে ' + j.keyHint + ')' : '(এখনো সেট নেই)'; $('gg-master-hint').innerText = j.hasMaster ? '(সেট করা আছে ' + j.masterHint + ')' : '(এখনো সেট নেই)';
         $('gg-title').value = j.title || ''; $('gg-off').value = j.offMsg || ''; $('gg-note').value = j.note || '';
-        ggPk = j.packages; ggRenderRows();
-    } catch (e) { SA('Error', e.message, 'error'); }
+        ggReg = j.regions; ggRenderRows();
+    } catch (e) { Swal.fire('Error', e.message, 'error'); }
 }
 async function ggSaveCfg() {
-    const rows = ggReadRows(); const $ = id => document.getElementById(id).value.trim();
+    const rows = ggReadRows(), $ = id => document.getElementById(id).value.trim();
     try {
         showLoading();
-        await ggCall('setConfig', { enabled: document.getElementById('gg-enabled').checked, apiUrl: $('gg-api-url'), apiKey: $('gg-api-key'), clearKey: document.getElementById('gg-clear-key').checked, apiMethod: $('gg-method'), keyHeader: $('gg-keyheader'),
-            guildParam: $('gg-p-guild'), botsParam: $('gg-p-bots'), keyParam: $('gg-p-key'), title: $('gg-title'), offMsg: $('gg-off'), note: $('gg-note'), packages: rows.map(p => Object.assign({}, p, { name: p.name || (p.bots + ' Bots') })) });
+        await ggCall('setConfig', { enabled: document.getElementById('gg-enabled').checked, apiBase: $('gg-api-base'), apiKey: $('gg-api-key'), clearKey: document.getElementById('gg-clear-key').checked,
+            masterKey: $('gg-master-key'), clearMaster: document.getElementById('gg-clear-master').checked, title: $('gg-title'), offMsg: $('gg-off'), note: $('gg-note'), regions: rows });
         hideLoading(); Swal.fire({ icon: 'success', title: 'Saved', timer: 1200, showConfirmButton: false }); ggLoadCfg();
-    } catch (e) { hideLoading(); SA('Error', e.message, 'error'); }
+    } catch (e) { hideLoading(); Swal.fire('Error', e.message, 'error'); }
 }
+// ---- groups ----
+async function ggLoadGroups() {
+    const tb = document.getElementById('gg-groups'); tb.innerHTML = ggEmpty(8, 'লোড হচ্ছে…');
+    try {
+        const j = await ggCall('groups');
+        const b = (g, op, lb, cls) => `<button onclick="ggGroupOp('${ggEsc(g.groupId)}','${op}')" class="px-2 py-1 rounded text-xs font-bold ${cls || 'bg-dark-border text-white'}">${lb}</button>`;
+        tb.innerHTML = j.groups.length ? j.groups.map(g => `<tr><td>${ggEsc(g.clanId)}<div class="text-[10px] text-gray-500">${ggEsc(String(g.groupId).slice(0, 10))}</div></td><td>${ggEsc(g.region)}</td><td>${ggPill(g.status)}</td><td>${ggEsc(g.running)}/${ggEsc(g.containers)}</td><td>${ggEsc(g.uptime)}</td>
+            <td>${g.glory == null ? '—' : ggEsc(g.glory)}${g.target ? '<div class="text-[10px] text-gray-500">target ' + ggEsc(g.target) + '</div>' : ''}</td><td>${ggEsc(g.user || '—')}</td>
+            <td class="whitespace-nowrap space-x-1">${b(g, 'get-glory', 'Glory')}${b(g, 'get-clan-info', 'Info')}${b(g, 'progress', 'Progress')}${b(g, 'restart', 'Restart')}${b(g, 'stop', 'Stop', 'bg-yellow-700 text-white')}${b(g, 'delete', 'Delete', 'bg-red-700 text-white')}</td></tr>`).join('') : ggEmpty(8, 'কোনো গ্রুপ নেই');
+    } catch (e) { ggFail('gg-groups', 8, e); }
+}
+async function ggGroupOp(id, op) {
+    if (['delete', 'stop', 'restart'].includes(op)) { const c = await Swal.fire({ icon: 'warning', title: op.toUpperCase() + '?', text: 'Group ' + id, showCancelButton: true, confirmButtonText: 'Yes' }); if (!c.isConfirmed) return; }
+    try {
+        showLoading();
+        if (op === 'progress') {
+            const j = await ggCall('progress', { groupId: id }); hideLoading();
+            return Swal.fire({ title: 'Glory progress', width: 560, html: `<div style="text-align:left;font-size:13px">Clan ${ggEsc(j.clanId)} • total ${j.glory}<br>${j.snapshots.map(s => `<div style="display:flex;justify-content:space-between;border-bottom:1px solid #444;padding:3px 0"><span>${ggDate(s.t)}</span><b>${s.glory}</b><span>${s.hours}h</span></div>`).join('') || 'No snapshots'}</div>` });
+        }
+        const j = await ggCall('groupAction', { groupId: id, op }); hideLoading();
+        if (op === 'get-glory' || op === 'get-clan-info') Swal.fire({ title: op, width: 560, html: `<pre style="text-align:left;white-space:pre-wrap;font-size:12px">${ggEsc(JSON.stringify(j.result, null, 2))}</pre>` });
+        else { Swal.fire({ icon: 'success', title: 'Done', timer: 1200, showConfirmButton: false }); ggLoadGroups(); }
+    } catch (e) { hideLoading(); Swal.fire('Failed', e.message, 'error'); }
+}
+// ---- orders ----
 async function ggLoadOrders() {
+    const tb = document.getElementById('gg-orders'); tb.innerHTML = ggEmpty(7, 'লোড হচ্ছে…');
     try {
         const j = await ggCall('orders');
-        document.getElementById('gg-orders').innerHTML = j.orders.length ? j.orders.map(o => `<tr><td>${ggEsc(o.guildId)}</td><td>${ggEsc(o.package)}</td><td>${ggEsc(o.user)}</td><td>৳${o.price}</td><td><span class="pill ${o.status === 'success' ? 'pill-ok' : o.status === 'failed' ? 'pill-bad' : ''}">${ggEsc(o.status)}</span></td><td class="text-xs text-gray-400">${ggEsc(o.apiReply)}</td></tr>`).join('') : '<tr><td colspan="6" class="text-gray-500">কোনো অর্ডার নেই</td></tr>';
-    } catch (e) { document.getElementById('gg-orders').innerHTML = '<tr><td colspan="6" class="text-red-400">' + ggEsc(e.message) + '</td></tr>'; }
+        tb.innerHTML = j.orders.length ? j.orders.map(o => `<tr><td>${ggEsc(o.guildId)}</td><td>${ggEsc(o.package)}</td><td>${ggEsc(o.user)}</td><td>৳${o.price}</td><td>${o.target ? ggEsc(o.target) : '—'}</td><td>${ggPill(o.status)}</td><td class="text-xs text-gray-400">${ggEsc(o.apiReply)}</td></tr>`).join('') : ggEmpty(7, 'কোনো অর্ডার নেই');
+    } catch (e) { ggFail('gg-orders', 7, e); }
+}
+// ---- coupons ----
+async function ggCreateCoupons() {
+    const n = id => parseInt(document.getElementById(id).value || '0', 10) || 0;
+    try {
+        showLoading(); const j = await ggCall('createCoupon', { basic: n('ggc-basic'), premium: n('ggc-premium'), count: n('ggc-count') || 1 }); hideLoading();
+        if (j.codes.length) { document.getElementById('ggc-new').classList.remove('hidden'); document.getElementById('ggc-new-box').value = j.codes.join('\n'); }
+        if (j.error) Swal.fire('কিছু কুপন বানানো যায়নি', j.codes.length + 'টি তৈরি হয়েছে। Error: ' + j.error, 'warning'); else Swal.fire({ icon: 'success', title: j.codes.length + ' coupon(s) created', timer: 1400, showConfirmButton: false });
+        ggLoadCoupons();
+    } catch (e) { hideLoading(); Swal.fire('Failed', e.message, 'error'); }
+}
+async function ggLoadCoupons() {
+    try {
+        const j = await ggCall('coupons');
+        document.getElementById('ggc-mine').innerHTML = j.coupons.length ? j.coupons.map(c => `<tr><td class="font-mono text-xs">${ggEsc(c.code)}</td><td>${ggEsc(c.basic_credits)}</td><td>${ggEsc(c.premium_credits)}</td><td>${ggPill(c.status)}</td><td>${String(c.status).toLowerCase() === 'active' ? `<button onclick="ggCancelCoupon('${ggEsc(c.code)}')" class="px-2 py-1 rounded text-xs font-bold bg-red-700 text-white">Cancel</button>` : ''}</td></tr>`).join('') : ggEmpty(5);
+    } catch (e) { ggFail('ggc-mine', 5, e); }
+    try {
+        const j = await ggCall('redeemedCoupons');
+        document.getElementById('ggc-redeemed').innerHTML = j.coupons.length ? j.coupons.map(c => `<tr><td class="font-mono text-xs">${ggEsc(c.code)}</td><td>${ggEsc(c.created_by)}</td><td>${ggEsc(c.basic_credits)}</td><td>${ggEsc(c.premium_credits)}</td><td>${ggPill(c.status)}</td></tr>`).join('') : ggEmpty(5);
+    } catch (e) { ggFail('ggc-redeemed', 5, e); }
+}
+async function ggCancelCoupon(code) {
+    const c = await Swal.fire({ icon: 'warning', title: 'Cancel coupon?', text: code + ' — ক্রেডিট আপনার ব্যালেন্সে ফেরত আসবে', showCancelButton: true }); if (!c.isConfirmed) return;
+    try { showLoading(); const j = await ggCall('cancelCoupon', { code }); hideLoading(); Swal.fire({ icon: 'success', title: 'Refunded', text: (j.refundedBasic || 0) + ' basic, ' + (j.refundedPremium || 0) + ' premium', timer: 1800 }); ggLoadCoupons(); }
+    catch (e) { hideLoading(); Swal.fire('Failed', e.message, 'error'); }
+}
+// ---- transactions ----
+async function ggLoadTxns() {
+    const tb = document.getElementById('gg-txns'); tb.innerHTML = ggEmpty(7, 'লোড হচ্ছে…');
+    try {
+        const j = await ggCall('transactions');
+        tb.innerHTML = j.transactions.length ? j.transactions.map(t => `<tr><td class="font-mono text-xs">${ggEsc(String(t.id).slice(0, 12))}</td><td class="text-xs">${ggEsc(t.order_id)}</td><td>${ggEsc(t.basic_credits)}</td><td>${ggEsc(t.premium_credits)}</td><td>${ggPill(t.status)}</td><td class="text-xs">${ggDate(t.created_at)}</td>
+            <td>${['pending', 'approved'].includes(String(t.status).toLowerCase()) ? `<button onclick="ggCancelTxn('${ggEsc(t.id)}')" class="px-2 py-1 rounded text-xs font-bold bg-red-700 text-white">Cancel</button>` : ''}</td></tr>`).join('') : ggEmpty(7);
+    } catch (e) { ggFail('gg-txns', 7, e); }
+}
+async function ggCancelTxn(id) {
+    const c = await Swal.fire({ icon: 'warning', title: 'Cancel transaction?', text: id, showCancelButton: true }); if (!c.isConfirmed) return;
+    try { showLoading(); const j = await ggCall('cancelTransaction', { transactionId: id }); hideLoading(); Swal.fire({ icon: 'success', title: j.message || 'Cancelled', timer: 1800 }); ggLoadTxns(); }
+    catch (e) { hideLoading(); Swal.fire('Failed', e.message, 'error'); }
+}
+// ---- logs ----
+async function ggLoadLogs() {
+    try {
+        const j = await ggCall('notifications');
+        document.getElementById('gg-notifs').innerHTML = j.items.length ? j.items.map(n => `<div class="p-3 rounded-lg bg-dark-border"><div class="font-bold text-white">${ggEsc(n.title)} <span class="text-[10px] text-gray-500 font-normal">${ggEsc(n.type || '')}</span></div><div class="text-gray-300 text-xs">${ggEsc(n.message)}</div></div>`).join('') : '<div class="text-gray-500">কোনো নোটিফিকেশন নেই</div>';
+    } catch (e) { document.getElementById('gg-notifs').innerHTML = '<div class="text-red-400">' + ggEsc(e.message) + '</div>'; }
+    try {
+        const j = await ggCall('activityLog');
+        document.getElementById('gg-activity').innerHTML = j.items.length ? j.items.slice(0, 100).map(l => `<tr><td class="text-xs">${ggDate(l.timestamp)}</td><td>${ggEsc(l.action)}</td><td class="text-xs">${ggEsc(String(l.group_id || '-').slice(0, 10))}</td><td class="text-xs text-gray-400">${ggEsc(l.details || '')}</td></tr>`).join('') : ggEmpty(4);
+    } catch (e) { ggFail('gg-activity', 4, e); }
+    try {
+        const j = await ggCall('history');
+        document.getElementById('gg-history').innerHTML = j.history.length ? j.history.map(h => `<tr><td class="font-mono text-xs">${ggEsc(String(h.group_id).slice(0, 10))}</td><td>${ggEsc(h.clan_id)}</td><td>${ggEsc(h.region)}</td><td>${ggPill(h.status)}</td><td>${ggEsc(h.glory_farmed || 0)}</td><td>${ggEsc(h.bot_count)}</td><td class="text-xs">${ggDate(h.launched_at)}</td><td><button onclick="ggGroupOp('${ggEsc(h.group_id)}','progress')" class="px-2 py-1 rounded text-xs font-bold bg-dark-border text-white">Progress</button></td></tr>`).join('') : ggEmpty(8);
+    } catch (e) { ggFail('gg-history', 8, e); }
 }
 
 async function alSave() {
