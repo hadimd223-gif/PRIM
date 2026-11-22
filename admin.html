@@ -255,6 +255,9 @@ select.flat-input option{background:#0d1730}
                 <i class="fas fa-palette w-8 text-center"></i> Theme &amp; Colors
             </a>
             <a href="#" onclick="switchView('features');return false" id="nav-features" class="nav-link flex items-center px-4 py-3"><i class="fas fa-toggle-on w-8 text-center"></i> Feature Controls</a>
+            <a href="#" onclick="switchView('idsell');return false" id="nav-idsell" class="nav-link flex items-center px-4 py-3">
+                <i class="fas fa-id-card w-8 text-center"></i> ID Sell
+            </a>
             <a href="#" onclick="switchView('maintenance');return false" id="nav-maintenance" class="nav-link flex items-center px-4 py-3">
                 <i class="fas fa-screwdriver-wrench w-8 text-center"></i> Maintenance
             </a>
@@ -281,6 +284,9 @@ select.flat-input option{background:#0d1730}
                 <i class="fas fa-users w-8 text-center"></i> Users
             </a>
             <a href="#" onclick="openPaySettings();return false" class="nav-link flex items-center px-4 py-3"><i class="fas fa-percent w-8 text-center"></i> Reseller &amp; Pay Settings</a>
+            <a href="#" onclick="switchView('unpin')" id="nav-unpin" class="nav-link flex items-center px-4 py-3">
+                <i class="fas fa-key w-8 text-center"></i> Unpin Code
+            </a>
             <a href="#" onclick="switchView('tutorials')" id="nav-tutorials" class="nav-link flex items-center px-4 py-3">
                 <i class="fas fa-video w-8 text-center"></i> Tutorials
             </a>
@@ -291,7 +297,6 @@ select.flat-input option{background:#0d1730}
             <a href="#" onclick="switchView('dailylike');return false" id="nav-dailylike" class="nav-link flex items-center px-4 py-3"><i class="fas fa-fire w-8 text-center"></i> Daily Like Price</a>
             <a href="#" onclick="switchView('autolike');return false" id="nav-autolike" class="nav-link flex items-center px-4 py-3"><i class="fas fa-robot w-8 text-center"></i> Auto Like</a>
             <a href="#" onclick="switchView('guildglory');return false" id="nav-guildglory" class="nav-link flex items-center px-4 py-3"><i class="fas fa-shield-halved w-8 text-center"></i> Guild Glory</a>
-            
             <div class="nav-group">Marketing &amp; Tools</div>
             <a href="#" onclick="switchView('notices')" id="nav-notices" class="nav-link flex items-center px-4 py-3"><i class="fas fa-bullhorn w-8 text-center"></i> Notifications</a>
             <a href="#" onclick="switchView('promos')" id="nav-promos" class="nav-link flex items-center px-4 py-3"><i class="fas fa-ticket-alt w-8 text-center"></i> Promo Codes</a>
@@ -431,9 +436,6 @@ select.flat-input option{background:#0d1730}
                             <div><label class="block text-sm text-gray-400 mb-2 font-medium">Telegram Link</label><input type="text" id="set-telegram" class="flat-input"></div>
                             <div><label class="block text-sm text-gray-400 mb-2 font-medium">Facebook Link</label><input type="text" id="set-facebook" class="flat-input"></div>
                             <div><label class="block text-sm text-gray-400 mb-2 font-medium">YouTube Link</label><input type="text" id="set-youtube" class="flat-input"></div>
-                            <div><label class="block text-sm text-gray-400 mb-2 font-medium">Group Link (Join Group বাটন)</label><input type="text" id="set-group" class="flat-input"></div>
-                            <div><label class="block text-sm text-gray-400 mb-2 font-medium">Messenger Link (Contact Us)</label><input type="text" id="set-messenger" class="flat-input"></div>
-                            <div><label class="block text-sm text-gray-400 mb-2 font-medium">Phone Number (Contact Us)</label><input type="text" id="set-phone" class="flat-input"></div>
                         </div>
                         <button onclick="saveSettings('social')" class="flat-btn mt-6 w-full">Save Social Links</button>
                     </div>
@@ -496,21 +498,48 @@ select.flat-input option{background:#0d1730}
 
             <div id="view-theme" class="view-section hidden">
                 <div class="grid grid-cols-1 xl:grid-cols-[1fr_380px] gap-6">
-                    <div class="card">
-                        <h3 class="text-xl font-bold text-orange-500 mb-1"><i class="fas fa-palette mr-2"></i>ওয়েবসাইটের কালার</h3>
-                        <p class="text-xs text-gray-400 mb-4">কালার বদলে Save চাপলে পুরো সাইটে (হেডার, বাটন, কার্ড, নেভ, ব্যাকগ্রাউন্ড) সবার জন্য বদলে যাবে।</p>
-                        <div class="flex flex-wrap gap-2 mb-5" id="th2-presets"></div>
-                        <div id="th2-fields" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
-                        <div class="flex flex-wrap gap-2 mt-6">
-                            <button onclick="th2Save()" class="flat-btn"><i class="fas fa-save mr-2"></i>Save (সবার জন্য চালু)</button>
-                            <button onclick="th2Reset()" class="flat-btn flat-btn-outline"><i class="fas fa-undo mr-2"></i>ডিফল্ট কমলা-সাদা</button>
+                    <div>
+                        <div class="card mb-6">
+                            <h3 class="text-xl font-bold text-orange-500 mb-1"><i class="fas fa-palette mr-2"></i>ওয়েবসাইটের কালার কাস্টমাইজ</h3>
+                            <p class="text-xs text-gray-400 mb-4">প্রতিটি বাটন, কার্ড, হেডার, নেভিগেশন, নোটিশ বার ইত্যাদির কালার নিজের ইচ্ছামতো বদলান। প্রতিটি জায়গায় <b>কালার ১</b> ও <b>কালার ২</b> দিলে দুই সাইডে দুই কালারের গ্রেডিয়েন্ট হবে (যেমন এক সাইড হালকা সাদা, আরেক সাইড গোলাপি)। শুধু একটা কালার দিলে সলিড কালার হবে। ডানের প্রিভিউতে সাথে সাথে দেখতে পাবেন; ঠিক লাগলে <b>Save</b> চাপুন।</p>
+                            <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-3 items-end">
+                                <div>
+                                    <label class="block text-xs text-gray-400 mb-1">⚡ কুইক কালার (পুরো সাইট একবারে)</label>
+                                    <div class="flex items-center gap-2">
+                                        <input type="color" id="th-brand" value="#ec4899" class="th-pick">
+                                        <button onclick="thApplyBrand()" class="flat-btn" style="padding:10px 16px"><i class="fas fa-magic mr-2"></i>সব বাটন/ব্যানারে লাগান</button>
+                                    </div>
+                                </div>
+                                <p class="text-[11px] text-gray-500">একটা কালার বাছাই করলে সব গ্রেডিয়েন্ট বাটন, ব্যানার, সিলেক্টেড কার্ড ও ব্র্যান্ড টেক্সট ওই কালারে বদলে যাবে। এরপর যেকোনো জায়গা আলাদাভাবে ঠিক করতে পারবেন।</p>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <button onclick="thSave()" class="flat-btn"><i class="fas fa-save mr-2"></i>Save (সবার জন্য চালু করুন)</button>
+                                <button onclick="thResetAll()" class="flat-btn" style="background:#3f3f46"><i class="fas fa-undo mr-2"></i>সব আগের মতো করুন</button>
+                            </div>
+                        </div>
+                        <div id="th-groups"></div>
+                        <div class="card mb-24">
+                            <h3 class="text-lg font-bold text-orange-500 mb-1"><i class="fas fa-code mr-2"></i>Advanced: নিজের CSS (ঐচ্ছিক)</h3>
+                            <p class="text-xs text-gray-400 mb-3">উপরের তালিকায় নেই এমন কিছু বদলাতে চাইলে এখানে CSS লিখুন। যেমন: <code>.vip-card{border-radius:30px}</code></p>
+                            <textarea id="th-css" class="flat-input h-28" style="font-family:monospace;font-size:12px" placeholder="/* custom css */" oninput="thSetCss(this.value)"></textarea>
                         </div>
                     </div>
-                    <div class="xl:sticky xl:top-4 self-start card">
-                        <div class="flex items-center justify-between mb-3"><h3 class="text-lg font-bold text-orange-500"><i class="fas fa-mobile-screen mr-2"></i>লাইভ প্রিভিউ</h3><button onclick="th2Frame()" class="text-xs text-gray-400"><i class="fas fa-rotate mr-1"></i>Reload</button></div>
-                        <input id="th2-url" class="flat-input mb-3" style="padding:8px 12px;font-size:12px" placeholder="সাইটের লিংক">
-                        <div style="border:6px solid #1c3557;border-radius:28px;overflow:hidden;background:#fff"><iframe id="th2-frame" title="preview" style="width:100%;height:560px;border:0;display:block" onload="th2Push()"></iframe></div>
+                    <div class="xl:sticky xl:top-4 self-start">
+                        <div class="card">
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="text-lg font-bold text-orange-500"><i class="fas fa-mobile-screen mr-2"></i>লাইভ প্রিভিউ</h3>
+                                <button onclick="thReloadPreview()" class="text-xs text-gray-400 hover:text-orange-500"><i class="fas fa-rotate mr-1"></i>Reload</button>
+                            </div>
+                            <input id="th-url" class="flat-input mb-3" style="padding:8px 12px;font-size:12px" placeholder="আপনার সাইটের লিংক">
+                            <div style="border:6px solid #1c3557;border-radius:28px;overflow:hidden;background:#fff">
+                                <iframe id="th-frame" title="preview" style="width:100%;height:600px;border:0;display:block" onload="thPush()"></iframe>
+                            </div>
+                            <p class="text-[11px] text-gray-500 mt-2">প্রিভিউ না এলে উপরের লিংকে সাইটের ঠিকানা দিয়ে Reload চাপুন (অ্যাডমিন ও সাইট একই ডোমেইনে থাকতে হবে)।</p>
+                        </div>
                     </div>
+                </div>
+                <div style="position:fixed;right:18px;bottom:18px;z-index:40">
+                    <button onclick="thSave()" class="flat-btn shadow-2xl"><i class="fas fa-save mr-2"></i>Save Colors</button>
                 </div>
             </div>
 
@@ -654,55 +683,25 @@ select.flat-input option{background:#0d1730}
 
             <div id="view-services" class="view-section hidden">
                 <div class="card mb-6 md:mb-8">
-                    <h3 class="text-xl font-bold text-orange-500 mb-1" id="srv-form-title">Add New Service</h3>
-                    <p class="text-xs text-gray-400 mb-5">ক্যাটাগরি বেছে সার্ভিসের নাম, ছবি আর ধরন দিন। ওয়েবসাইটে ক্যাটাগরির নিচে কার্ড হয়ে দেখাবে।</p>
+                    <h3 class="text-xl font-bold text-orange-500 mb-6">Add New Service/Game</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
                         <input type="text" id="srv-name" placeholder="Service Name" class="flat-input">
-                        <select id="srv-category" class="flat-input"><option value="">Select Category</option></select>
-                        <div>
-                            <input type="text" id="srv-image" placeholder="Image URL (বা নিচে ফোন থেকে আপলোড)" class="flat-input mb-2">
-                            <input type="file" id="srv-image-file" accept="image/*" class="text-xs text-gray-400" onchange="srvPickImage(this)">
-                        </div>
-                        <select id="srv-type" class="flat-input" onchange="srvTypeUi()">
-                            <option value="uid">Game Top-up (প্যাকেজ + UID)</option>
-                            <option value="like">Like (UID + Region দিয়ে Send)</option>
-                            <option value="autolike">Auto Like (প্যাকেজ, রোজ অটো)</option>
-                            <option value="social">Social Media (WhatsApp / Telegram নম্বর)</option>
-                            <option value="guildglory">Guild Glory (Guild ID + বট সংখ্যা)</option>
+                        <input type="text" id="srv-image" placeholder="Image URL" class="flat-input">
+                        <select id="srv-category" class="flat-input">
+                            <option value="">Select Category</option>
                         </select>
-                        <select id="srv-delivery" class="flat-input">
-                            <option value="whatsapp">Delivery: WhatsApp এ অর্ডার যাবে</option>
-                            <option value="api">Delivery: API (অটো ডায়মন্ড)</option>
-                            <option value="wallet">Delivery: Wallet order (ম্যানুয়াল)</option>
+                        <select id="srv-type" class="flat-input">
+                            <option value="uid">UID TopUp (Manual)</option>
+                            <option value="code">Voucher Code (Auto Delivery)</option>
+                            <option value="auto-topup">Auto TopUp (API Delivery)</option><option value="like">Like Service (API)</option>
                         </select>
-                        <input type="number" id="srv-slot" placeholder="Sort (ছোট নম্বর আগে)" class="flat-input">
-                        <div id="srv-contact-box" class="grid grid-cols-1 md:grid-cols-2 gap-3 md:col-span-2">
-                            <select id="srv-ctype" class="flat-input"><option value="whatsapp">WhatsApp</option><option value="telegram">Telegram</option></select>
-                            <input type="text" id="srv-contact" placeholder="WhatsApp নম্বর (8801...) বা Telegram username/লিংক" class="flat-input">
-                        </div>
-                        <label class="flex items-center gap-2 text-sm text-gray-300 md:col-span-2"><input type="checkbox" id="srv-region" checked> Region/Server জিজ্ঞেস করুন (Free Fire ইত্যাদি)</label>
-                        <label class="flex items-center gap-2 text-sm text-gray-300 md:col-span-2"><input type="checkbox" id="srv-active" checked> সাইটে দেখান (Active)</label>
                     </div>
-                    <textarea id="srv-rules" placeholder="Rules/Instructions (One per line)" class="flat-input h-20 mb-5"></textarea>
-                    <div class="flex gap-3"><button onclick="addService()" class="flat-btn flex-1" id="srv-save-btn">Add Service</button><button onclick="srvReset()" class="flat-btn flat-btn-outline">Clear</button></div>
-                </div>
-                <div class="card mb-6 md:mb-8" style="border:1px solid #22d3ee">
-                    <h3 class="text-lg font-bold text-orange-500 mb-1"><i class="fas fa-bolt mr-2"></i>Top-up API (অটো ডায়মন্ড)</h3>
-                    <p class="text-xs text-gray-400 mb-4">URL এ <code>{uid}</code> <code>{region}</code> <code>{package}</code> <code>{key}</code> <code>{order}</code> ব্যবহার করা যাবে। প্যাকেজের "API code" ফাঁকা থাকলে প্যাকেজের নাম যাবে। কী শুধু সার্ভার দেখে, ওয়েবসাইট নয়।</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <input id="tp-url" class="flat-input md:col-span-2" placeholder="https://provider.com/api/topup?uid={uid}&package={package}&key={key}">
-                        <select id="tp-method" class="flat-input"><option>GET</option><option>POST</option></select>
-                        <input id="tp-key" class="flat-input" placeholder="API Key">
-                        <input id="tp-header" class="flat-input" placeholder="Key header নাম (ঐচ্ছিক, যেমন X-API-KEY)">
-                        <input id="tp-ok" class="flat-input" placeholder="সফল শব্দ (ঐচ্ছিক): success,ok,completed">
-                        <textarea id="tp-body" class="flat-input md:col-span-2 h-16" placeholder='POST হলে JSON (ঐচ্ছিক): {"uid":"{uid}","package":"{package}","key":"{key}"}'></textarea>
-                        <label class="flex items-center gap-2 text-sm text-gray-300 md:col-span-2"><input type="checkbox" id="tp-trust"> উত্তরে success লেখা না থাকলেও HTTP 200 হলে সফল ধরুন</label>
-                    </div>
-                    <button onclick="tpSave()" class="flat-btn mt-4 w-full">Save Top-up API</button>
+                    <textarea id="srv-rules" placeholder="Rules/Instructions (One per line)" class="flat-input h-24 mb-5"></textarea>
+                    <button onclick="addService()" class="flat-btn w-full">Add Service</button>
                 </div>
                 <div class="flat-table-container">
                     <table class="flat-table">
-                        <thead><tr><th class="w-20 text-center">Image</th><th>Name</th><th>Type</th><th class="w-48 text-center">Actions</th></tr></thead>
+                        <thead><tr><th class="w-20 text-center">Image</th><th>Name</th><th>Type</th><th class="w-40 text-center">Actions</th></tr></thead>
                         <tbody id="srv-list"></tbody>
                     </table>
                 </div>
@@ -716,7 +715,6 @@ select.flat-input option{background:#0d1730}
                         <input type="text" id="prod-name" placeholder="Package Name (e.g. any item name)" class="flat-input flex-1">
                         <input type="number" id="prod-price" placeholder="Price (৳)" class="flat-input w-full md:w-40">
                         <input type="number" id="prod-rprice" placeholder="Reseller Price (৳)" class="flat-input w-full md:w-48">
-                        <input type="text" id="prod-apicode" placeholder="API code (ঐচ্ছিক)" class="flat-input w-full md:w-48">
                         <button onclick="addProduct()" class="flat-btn whitespace-nowrap">Add Package</button>
                     </div>
                 </div>
@@ -943,6 +941,31 @@ select.flat-input option{background:#0d1730}
                         <div class="flex gap-3 mt-3"><button onclick="ggAddRow()" class="px-4 py-2 rounded-lg bg-dark-border text-white text-sm font-bold">+ Package</button><button onclick="ggSaveCfg()" class="flat-btn !py-2 text-sm">Save</button></div>
                     </div>
                 </div>
+                <div class="card mb-6" id="gp-card">
+                    <div class="flex items-center justify-between mb-4 flex-wrap gap-2"><h3 class="text-xl font-bold text-orange-500"><i class="fas fa-satellite-dish mr-2"></i>ffglory.pro কন্ট্রোল</h3>
+                        <div class="flex gap-2"><button onclick="gpLoad()" class="px-4 py-2 rounded-lg bg-dark-border text-white text-sm font-bold"><i class="fas fa-sync mr-1"></i>Refresh</button></div></div>
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                        <div class="card text-center"><div class="text-xs text-gray-400">Basic credits</div><div class="text-3xl font-extrabold text-orange-500" id="gp-basic">-</div></div>
+                        <div class="card text-center"><div class="text-xs text-gray-400">Premium credits</div><div class="text-3xl font-extrabold text-white" id="gp-premium">-</div></div>
+                        <div class="card text-center"><div class="text-xs text-gray-400">Basic $/credit</div><div class="text-3xl font-extrabold text-white" id="gp-pb">-</div></div>
+                        <div class="card text-center"><div class="text-xs text-gray-400">Premium $/credit</div><div class="text-3xl font-extrabold text-white" id="gp-pp">-</div></div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-3 mb-4 items-end">
+                        <div><label class="block text-sm text-gray-400 mb-2">Guild ID</label><input type="text" id="gp-clan" class="flat-input" inputmode="numeric" placeholder="123456789"></div>
+                        <div><label class="block text-sm text-gray-400 mb-2">Region</label><select id="gp-region" class="flat-input"></select></div>
+                        <div><button onclick="gpLaunch()" class="w-full px-4 py-3 rounded-lg bg-orange-500 text-white text-sm font-bold"><i class="fas fa-rocket mr-1"></i>Launch group</button></div>
+                    </div>
+                    <div class="flat-table-container"><table class="flat-table"><thead><tr><th>Group</th><th>Guild</th><th>Region</th><th>Status</th><th>Bots</th><th>Uptime</th><th>Actions</th></tr></thead><tbody id="gp-rows"><tr><td colspan="7" class="text-center text-gray-500">Loading…</td></tr></tbody></table></div>
+                    <div class="flex gap-2 flex-wrap mt-4">
+                        <button onclick="gpInfo('history')" class="px-3 py-2 rounded-lg bg-dark-border text-white text-xs font-bold">History</button>
+                        <button onclick="gpInfo('transactions')" class="px-3 py-2 rounded-lg bg-dark-border text-white text-xs font-bold">Transactions</button>
+                        <button onclick="gpInfo('notifications')" class="px-3 py-2 rounded-lg bg-dark-border text-white text-xs font-bold">Notifications</button>
+                        <button onclick="gpInfo('activity')" class="px-3 py-2 rounded-lg bg-dark-border text-white text-xs font-bold">Activity log</button>
+                        <button onclick="gpInfo('coupons')" class="px-3 py-2 rounded-lg bg-dark-border text-white text-xs font-bold">Coupons</button>
+                        <button onclick="gpCoupon()" class="px-3 py-2 rounded-lg bg-dark-border text-white text-xs font-bold">+ Create coupon</button>
+                    </div>
+                    <pre id="gp-out" class="mt-4 text-xs text-gray-300 bg-black/30 rounded-lg p-3 overflow-auto max-h-80 hidden"></pre>
+                </div>
                 <div class="card mb-6">
                     <div class="flex items-center justify-between mb-4"><h3 class="text-xl font-bold text-orange-500"><i class="fas fa-list mr-2"></i>সাম্প্রতিক অর্ডার</h3><button onclick="ggLoadOrders()" class="px-3 py-1.5 rounded-lg bg-dark-border text-white text-xs font-bold">Refresh</button></div>
                     <div class="flat-table-container"><table class="flat-table"><thead><tr><th>Guild ID</th><th>Package</th><th>User</th><th>Price</th><th>Status</th><th>API reply</th></tr></thead><tbody id="gg-orders"></tbody></table></div>
@@ -1092,7 +1115,6 @@ select.flat-input option{background:#0d1730}
             if(pageDescEl) pageDescEl.innerText = `Manage your ${titles[viewId] ? titles[viewId].toLowerCase() : 'platform'}`;
 
             if(viewId === 'dashboard') loadDashboardData();
-            if(viewId === 'services') { tpLoad(); srvTypeUi(); }
             if(viewId === 'theme' && window.thInit) thInit();
             if(viewId === 'idsell' && window.idsLoad) idsLoad();
             if(viewId === 'maintenance' && window.mtLoad) mtLoad();
@@ -1122,7 +1144,7 @@ select.flat-input option{background:#0d1730}
             if(viewId === 'notices') loadNotices();
             if(viewId === 'promos') loadPromos();
             if(viewId === 'autolike') loadAutoLike();
-            if(viewId === 'guildglory') ggLoadAll();
+            if(viewId === 'guildglory') { ggLoadAll(); gpLoad(); }
             if(viewId === 'features') ftLoad();
         }
 
@@ -1160,9 +1182,6 @@ select.flat-input option{background:#0d1730}
                     if(document.getElementById('set-telegram')) document.getElementById('set-telegram').value = d.telegram || '';
                     if(document.getElementById('set-facebook')) document.getElementById('set-facebook').value = d.facebook || '';
                     if(document.getElementById('set-youtube')) document.getElementById('set-youtube').value = d.youtube || '';
-                    if(document.getElementById('set-group')) document.getElementById('set-group').value = d.groupLink || '';
-                    if(document.getElementById('set-messenger')) document.getElementById('set-messenger').value = d.messenger || '';
-                    if(document.getElementById('set-phone')) document.getElementById('set-phone').value = d.phone || '';
                     if(document.getElementById('set-promo-img')) document.getElementById('set-promo-img').value = d.promoImageUrl || '';
                     if(document.getElementById('set-promo-link')) document.getElementById('set-promo-link').value = d.promoImageLink || '';
                     if(document.getElementById('set-autopay')) document.getElementById('set-autopay').checked = d.autoPayEnabled || false;
@@ -1211,10 +1230,7 @@ select.flat-input option{background:#0d1730}
                     whatsapp: document.getElementById('set-whatsapp').value,
                     telegram: document.getElementById('set-telegram').value,
                     facebook: document.getElementById('set-facebook').value,
-                    youtube: document.getElementById('set-youtube').value,
-                    groupLink: document.getElementById('set-group').value.trim(),
-                    messenger: document.getElementById('set-messenger').value.trim(),
-                    phone: document.getElementById('set-phone').value.trim()
+                    youtube: document.getElementById('set-youtube').value
                 }, {merge: true});
             } else if (type === 'tgpopup') {
                 p1 = db.collection('settings').doc('general').set({
@@ -1262,11 +1278,11 @@ select.flat-input option{background:#0d1730}
                 if(list) list.innerHTML = '';
                 if(drop) drop.innerHTML = '<option value="">Select Category</option>';
                 snap.forEach(doc => {
-                    const d = doc.data(); CAT_NAMES[doc.id] = d.name;
+                    const d = doc.data();
                     if(list) {
                         list.innerHTML += `<tr>
                             <td><span class="font-medium text-white">${d.name}</span></td><td>${d.slot}</td>
-                            <td class="text-center"><button onclick="editCategory('${doc.id}')" class="flat-btn flat-btn-outline text-xs py-2 px-3 mr-1"><i class="fas fa-pen"></i></button><button onclick="deleteDoc('categories', '${doc.id}')" class="flat-btn flat-btn-danger text-xs py-2 px-3"><i class="fas fa-trash"></i></button></td>
+                            <td class="text-center"><button onclick="deleteDoc('categories', '${doc.id}')" class="flat-btn flat-btn-danger text-xs py-2 px-3"><i class="fas fa-trash"></i></button></td>
                         </tr>`;
                     }
                     if(drop) drop.innerHTML += `<option value="${doc.id}">${d.name}</option>`;
@@ -1289,103 +1305,42 @@ select.flat-input option{background:#0d1730}
             });
         }
 
-        let SRV_CACHE = {}, SRV_EDIT = null, CAT_NAMES = {};
         function loadServices() {
             db.collection('services').onSnapshot(snap => {
                 const list = document.getElementById('srv-list');
                 if(!list) return;
-                list.innerHTML = ''; SRV_CACHE = {};
+                list.innerHTML = '';
                 snap.forEach(doc => {
-                    const d = doc.data(); SRV_CACHE[doc.id] = d;
-                    const tl = {uid:'TOPUP', like:'LIKE', autolike:'AUTO LIKE', guildglory:'GUILD GLORY', social:'SOCIAL', code:'CODE', 'auto-topup':'AUTO TOPUP'}[d.type] || String(d.type||'').toUpperCase();
-                    const dl = d.type === 'uid' ? ' · ' + (d.delivery || 'wallet') : '';
-                    const pk = (d.type === 'uid' || d.type === 'code' || d.type === 'auto-topup') ? `<button onclick="switchView('products', '${doc.id}', '${String(d.name).replace(/'/g,"")}', '${d.type}')" class="flat-btn text-xs py-2 px-3"><i class="fas fa-box md:mr-1"></i> <span class="hidden md:inline">Pkgs</span></button>` : '';
+                    const d = doc.data();
                     list.innerHTML += `<tr>
-                        <td class="text-center"><img src="${d.image||''}" class="h-12 w-12 object-cover rounded-lg border border-dark-border mx-auto"></td>
-                        <td><span class="font-medium text-white">${d.name}</span>${d.active === false ? ' <span class="text-xs text-red-400">(hidden)</span>' : ''}<div class="text-xs text-gray-500">${CAT_NAMES[d.categoryId] || ''}</div></td><td><span class="px-2 py-1 bg-dark-bg rounded text-xs font-semibold uppercase text-orange-500 border border-orange-500/30">${tl}${dl}</span></td>
-                        <td class="text-center space-x-1 whitespace-nowrap">
-                            ${pk}
-                            <button onclick="editService('${doc.id}')" class="flat-btn flat-btn-outline text-xs py-2 px-3"><i class="fas fa-pen"></i></button>
+                        <td class="text-center"><img src="${d.image}" class="h-12 w-12 object-cover rounded-lg border border-dark-border mx-auto"></td>
+                        <td><span class="font-medium text-white">${d.name}</span></td><td><span class="px-2 py-1 bg-dark-bg rounded text-xs font-semibold uppercase text-orange-500 border border-orange-500/30">${d.type}</span></td>
+                        <td class="text-center space-x-2 whitespace-nowrap">
+                            <button onclick="switchView('products', '${doc.id}', '${d.name}', '${d.type}')" class="flat-btn text-xs py-2 px-3"><i class="fas fa-box md:mr-1"></i> <span class="hidden md:inline">Pkgs</span></button>
                             <button onclick="deleteDoc('services', '${doc.id}')" class="flat-btn flat-btn-danger text-xs py-2 px-3"><i class="fas fa-trash"></i></button>
                         </td>
                     </tr>`;
                 });
             });
         }
-        function srvTypeUi() {
-            const t = document.getElementById('srv-type').value;
-            const q = (id, on) => { const e = document.getElementById(id); if (e) e.style.display = on ? '' : 'none'; };
-            q('srv-delivery', t === 'uid'); q('srv-contact-box', t === 'social' || t === 'uid'); q('srv-region', true);
-            document.getElementById('srv-region').parentElement.style.display = t === 'uid' ? '' : 'none';
-        }
-        function srvPickImage(inp) {
-            const f = inp.files && inp.files[0]; if (!f) return;
-            const r = new FileReader();
-            r.onload = () => { const im = new Image(); im.onload = () => {
-                const m = 480, k = Math.min(1, m / Math.max(im.width, im.height)), c = document.createElement('canvas');
-                c.width = Math.round(im.width * k); c.height = Math.round(im.height * k); c.getContext('2d').drawImage(im, 0, 0, c.width, c.height);
-                document.getElementById('srv-image').value = c.toDataURL('image/jpeg', 0.82);
-            }; im.src = r.result; };
-            r.readAsDataURL(f);
-        }
-        function srvReset() {
-            SRV_EDIT = null;
-            ['srv-name','srv-image','srv-slot','srv-contact','srv-rules'].forEach(i => document.getElementById(i).value = '');
-            document.getElementById('srv-image-file').value = '';
-            document.getElementById('srv-active').checked = true; document.getElementById('srv-region').checked = true;
-            document.getElementById('srv-form-title').innerText = 'Add New Service'; document.getElementById('srv-save-btn').innerText = 'Add Service';
-            srvTypeUi();
-        }
-        function editService(id) {
-            const d = SRV_CACHE[id]; if (!d) return; SRV_EDIT = id;
-            document.getElementById('srv-name').value = d.name || ''; document.getElementById('srv-image').value = d.image || '';
-            document.getElementById('srv-category').value = d.categoryId || ''; document.getElementById('srv-type').value = ['uid','like','autolike','social','guildglory'].includes(d.type) ? d.type : 'uid';
-            document.getElementById('srv-delivery').value = d.delivery || 'wallet'; document.getElementById('srv-slot').value = d.slot == null ? '' : d.slot;
-            document.getElementById('srv-ctype').value = d.contactType || 'whatsapp'; document.getElementById('srv-contact').value = d.contact || '';
-            document.getElementById('srv-region').checked = d.askRegion !== false; document.getElementById('srv-active').checked = d.active !== false;
-            document.getElementById('srv-rules').value = d.rules || '';
-            document.getElementById('srv-form-title').innerText = 'Edit: ' + (d.name || ''); document.getElementById('srv-save-btn').innerText = 'Save Changes';
-            srvTypeUi(); window.scrollTo({top: 0, behavior: 'smooth'}); document.querySelector('main').scrollTo && document.querySelector('main').scrollTo({top: 0, behavior: 'smooth'});
-        }
+
         function addService() {
-            const name = document.getElementById('srv-name').value.trim();
+            const name = document.getElementById('srv-name').value;
+            const image = document.getElementById('srv-image').value;
             const catId = document.getElementById('srv-category').value;
             const type = document.getElementById('srv-type').value;
+            const rules = document.getElementById('srv-rules').value;
             if(!name || !catId) return Swal.fire('Error', 'নাম দিন এবং একটি Category সিলেক্ট করুন (Category না থাকলে আগে Categories মেনু থেকে বানান)', 'error');
-            const data = {
-                name, image: document.getElementById('srv-image').value.trim(), categoryId: catId, type,
-                rules: document.getElementById('srv-rules').value, slot: parseInt(document.getElementById('srv-slot').value || 0),
-                active: document.getElementById('srv-active').checked,
-                delivery: type === 'uid' ? document.getElementById('srv-delivery').value : 'none',
-                askRegion: type === 'uid' ? document.getElementById('srv-region').checked : false,
-                contactType: document.getElementById('srv-ctype').value, contact: document.getElementById('srv-contact').value.trim()
-            };
-            if (data.image.length > 700000) return Swal.fire('Error', 'ছবিটি অনেক বড়, ছোট ছবি দিন', 'error');
             showLoading();
-            const op = SRV_EDIT ? db.collection('services').doc(SRV_EDIT).set(data, {merge: true}) : db.collection('services').add(data);
-            op.then(() => { hideLoading(); srvReset(); Swal.fire({toast:true, position:'top', icon:'success', title:'Saved', showConfirmButton:false, timer:1400}); })
-              .catch(err => { hideLoading(); Swal.fire('Error', err.message, 'error'); });
-        }
-        function editCategory(id) {
-            db.collection('categories').doc(id).get().then(doc => {
-                const d = doc.data() || {};
-                Swal.fire({title: 'Edit Category', html: `<input id="ec-n" class="swal2-input" placeholder="Name" value="${String(d.name||'').replace(/"/g,'&quot;')}"><input id="ec-s" type="number" class="swal2-input" placeholder="Sort" value="${d.slot||0}">`, showCancelButton: true,
-                    preConfirm: () => ({name: document.getElementById('ec-n').value.trim(), slot: parseInt(document.getElementById('ec-s').value || 0)})
-                }).then(r => { if (r.isConfirmed && r.value.name) db.collection('categories').doc(id).set(r.value, {merge: true}); });
+            db.collection('services').add({name, image, categoryId: catId, type, rules}).then(() => {
+                hideLoading();
+                document.getElementById('srv-name').value = '';
+                document.getElementById('srv-image').value = '';
+                document.getElementById('srv-rules').value = '';
+            }).catch(err => {
+                hideLoading();
+                Swal.fire('Error', err.message, 'error');
             });
-        }
-        async function tpLoad() {
-            try { const d = (await db.collection('secrets').doc('topupapi').get()).data() || {};
-                const v = (i, x) => { const e = document.getElementById(i); if (e) e.value = x || ''; };
-                v('tp-url', d.url); v('tp-method', d.method || 'GET'); v('tp-key', d.key); v('tp-header', d.headerName); v('tp-ok', d.okValues); v('tp-body', d.body);
-                const t = document.getElementById('tp-trust'); if (t) t.checked = !!d.trustHttp;
-            } catch (e) {}
-        }
-        function tpSave() {
-            const g = i => document.getElementById(i).value.trim();
-            showLoading();
-            db.collection('secrets').doc('topupapi').set({url: g('tp-url'), method: g('tp-method'), key: g('tp-key'), headerName: g('tp-header'), okValues: g('tp-ok'), body: g('tp-body'), trustHttp: document.getElementById('tp-trust').checked}, {merge: true})
-              .then(() => { hideLoading(); Swal.fire('Saved', 'Top-up API সেভ হয়েছে', 'success'); }).catch(err => { hideLoading(); Swal.fire('Error', err.message, 'error'); });
         }
 
         function loadProducts() {
@@ -1418,15 +1373,14 @@ select.flat-input option{background:#0d1730}
             
             const data = {name, price};
             const rp=parseInt(document.getElementById('prod-rprice').value); if(rp) data.resellerPrice=rp;
-            const ac=(document.getElementById('prod-apicode').value||'').trim(); if(ac) data.apiPackage=ac;
-            if(currentServiceType === 'code') {
+            if(currentServiceType === 'code' || currentServiceType === 'auto-topup') {
                 data.stockCount = 0;
             }
             showLoading();
             db.collection('services').doc(currentServiceId).collection('products').add(data).then(() => {
                 hideLoading();
                 document.getElementById('prod-name').value = '';
-                document.getElementById('prod-price').value = ''; document.getElementById('prod-rprice').value = ''; document.getElementById('prod-apicode').value = '';
+                document.getElementById('prod-price').value = ''; document.getElementById('prod-rprice').value = '';
             }).catch(err => {
                 hideLoading();
                 Swal.fire('Error', err.message, 'error');
@@ -2144,6 +2098,37 @@ async function ggCall(action, body) {
     return j;
 }
 let ggPk = [];
+// ---- ffglory.pro control (all calls go through the server; the API keys never reach the browser) ----
+const gpShow = d => { const o = document.getElementById('gp-out'); o.classList.remove('hidden'); o.textContent = typeof d === 'string' ? d : JSON.stringify(d, null, 2); };
+async function gpLoad() {
+    try {
+        const [bal, pr, gr] = await Promise.all([ggCall('proBalance'), ggCall('proPricing'), ggCall('proGroups')]);
+        const b = bal.data || {}, m = bal.me || {};
+        document.getElementById('gp-basic').textContent = b.basic_credits != null ? b.basic_credits : (m.basic_credits != null ? m.basic_credits : '-');
+        document.getElementById('gp-premium').textContent = b.premium_credits != null ? b.premium_credits : (m.premium_credits != null ? m.premium_credits : '-');
+        const p = pr.pricing || {}; document.getElementById('gp-pb').textContent = p.basic_credit_usd != null ? '$' + p.basic_credit_usd : '-'; document.getElementById('gp-pp').textContent = p.premium_credit_usd != null ? '$' + p.premium_credit_usd : '-';
+        const sel = document.getElementById('gp-region'), keep = sel.value;
+        sel.innerHTML = (pr.regions || []).map(r => `<option value="${ggEsc(r.id)}">${ggEsc(r.name)} (${ggEsc(r.tier)})</option>`).join(''); if (keep) sel.value = keep;
+        const rows = Array.isArray(gr.data) ? gr.data : [];
+        document.getElementById('gp-rows').innerHTML = rows.length ? rows.map(g => `<tr><td>${ggEsc(String(g.group_id).slice(0, 8))}</td><td>${ggEsc(g.clan_id)}</td><td>${ggEsc(g.region)}</td><td>${ggEsc(g.status)}</td><td>${ggEsc(g.running_count)}/${ggEsc(g.container_count)}</td><td>${ggEsc(g.uptime || '')}</td>
+            <td class="whitespace-nowrap">${['get-glory', 'get-clan-info', 'restart', 'stop', 'delete'].map(a => `<button onclick="gpAct('${ggEsc(g.group_id)}','${a}')" class="px-2 py-1 mr-1 rounded bg-dark-border text-white text-[11px] font-bold ${a === 'delete' ? 'text-red-400' : ''}">${a}</button>`).join('')}<button onclick="gpProg('${ggEsc(g.group_id)}')" class="px-2 py-1 rounded bg-dark-border text-white text-[11px] font-bold">graph</button></td></tr>`).join('') : '<tr><td colspan="7" class="text-center text-gray-500">No groups running</td></tr>';
+    } catch (e) { document.getElementById('gp-rows').innerHTML = `<tr><td colspan="7" class="text-center text-red-400">${ggEsc(e.message)}</td></tr>`; }
+}
+async function gpLaunch() {
+    const clan = (document.getElementById('gp-clan').value || '').replace(/\D/g, ''); if (clan.length < 5) return alert('সঠিক Guild ID দিন');
+    try { const j = await ggCall('proLaunch', { clanId: clan, region: document.getElementById('gp-region').value }); gpShow(j.data); gpLoad(); } catch (e) { alert(e.message); }
+}
+async function gpAct(id, a) {
+    if (a === 'delete' && !confirm('Group permanently delete করবেন?')) return;
+    try { const j = await ggCall('proGroupAction', { groupId: id, groupAction: a }); gpShow(j.data); if (a !== 'get-glory' && a !== 'get-clan-info') gpLoad(); } catch (e) { alert(e.message); }
+}
+async function gpProg(id) { try { gpShow((await ggCall('proInfo', { what: 'progress', groupId: id })).data); } catch (e) { alert(e.message); } }
+async function gpInfo(w) { try { gpShow((await ggCall('proInfo', { what: w })).data); } catch (e) { alert(e.message); } }
+async function gpCoupon() {
+    const bsc = parseInt(prompt('Basic credits?', '1') || '0', 10) || 0, pre = parseInt(prompt('Premium credits?', '0') || '0', 10) || 0;
+    if (bsc + pre <= 0) return;
+    try { gpShow((await ggCall('proCoupon', { basic: bsc, premium: pre })).data); gpLoad(); } catch (e) { alert(e.message); }
+}
 const ggEsc = t => String(t == null ? '' : t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 function ggRenderRows() {
     document.getElementById('gg-pk-rows').innerHTML = ggPk.map((p, i) => `<div class="grid grid-cols-12 gap-2 items-center">
@@ -2692,29 +2677,6 @@ async function afLoad() {
     } catch (e) { document.getElementById('af-list').innerHTML = '<tr><td colspan="6" class="text-red-400 text-center py-6">' + afE(e.message) + '</td></tr>'; }
 }
 window.afLoad = afLoad;
-</script>
-<script>
-(function(){
-  var DEF={c1:'#ff7a00',c2:'#ff9a3c',bg:'#f3f6ff',card:'#ffffff',ink:'#111827',muted:'#6b7280',line:'#fde0c4',card2:'#fff4e8',head:'#ffffff',nav:'#ffffff'};
-  var LBL={c1:'প্রধান রঙ (বাটন/অ্যাকসেন্ট)',c2:'দ্বিতীয় রঙ (গ্রেডিয়েন্ট)',bg:'পেজ ব্যাকগ্রাউন্ড',card:'কার্ডের ব্যাকগ্রাউন্ড',card2:'হালকা ব্যাকগ্রাউন্ড',ink:'লেখার রঙ',muted:'হালকা লেখা',line:'বর্ডার',head:'হেডার ব্যাকগ্রাউন্ড',nav:'নিচের নেভ ব্যাকগ্রাউন্ড'};
-  var PRE={'কমলা (ডিফল্ট)':DEF,'নীল':{c1:'#2563eb',c2:'#60a5fa',bg:'#eef4ff',card:'#ffffff',ink:'#0f172a',muted:'#64748b',line:'#dbe7ff',card2:'#eff6ff',head:'#ffffff',nav:'#ffffff'},'সবুজ':{c1:'#16a34a',c2:'#4ade80',bg:'#f0fdf4',card:'#ffffff',ink:'#0f172a',muted:'#64748b',line:'#d1fae5',card2:'#ecfdf5',head:'#ffffff',nav:'#ffffff'},'পিংক':{c1:'#ec4899',c2:'#f472b6',bg:'#fff1f7',card:'#ffffff',ink:'#1f1020',muted:'#6b7280',line:'#fbcfe8',card2:'#fdf2f8',head:'#ffffff',nav:'#ffffff'},'ডার্ক':{c1:'#22d3ee',c2:'#3b82f6',bg:'#070d1f',card:'#0d1b38',ink:'#e6f1ff',muted:'#8fa8c8',line:'#1c3557',card2:'#0f2744',head:'#0a1428',nav:'#0a1428'}};
-  var st={};
-  function draw(){
-    document.getElementById('th2-fields').innerHTML=Object.keys(DEF).map(function(k){return '<label class="flex items-center justify-between gap-3 text-sm text-gray-300 p-3 rounded-xl" style="background:rgba(255,255,255,.04)"><span>'+LBL[k]+'</span><input type="color" data-k="'+k+'" value="'+st[k]+'" style="width:48px;height:34px;border:0;background:none"></label>'}).join('');
-    document.querySelectorAll('#th2-fields input').forEach(function(i){i.oninput=function(){st[i.dataset.k]=i.value;th2Push()}});
-  }
-  window.th2Push=function(){var f=document.getElementById('th2-frame');try{f.contentWindow.postMessage({type:'nxg-theme-preview',theme:st},location.origin)}catch(e){}};
-  window.th2Frame=function(){var u=document.getElementById('th2-url').value.trim()||location.origin+'/index.html';document.getElementById('th2-frame').src=u};
-  window.th2Reset=function(){st=Object.assign({},DEF);draw();th2Push()};
-  window.th2Save=function(){showLoading();db.collection('settings').doc('general').set({siteThemeJson:JSON.stringify(st)},{merge:true}).then(function(){hideLoading();Swal.fire('Saved','কালার সবার জন্য চালু হয়েছে','success')}).catch(function(e){hideLoading();Swal.fire('Error',e.message,'error')})};
-  window.thInit=async function(){
-    var d={};try{d=(await db.collection('settings').doc('general').get()).data()||{}}catch(e){}
-    try{st=Object.assign({},DEF,d.siteThemeJson?JSON.parse(d.siteThemeJson):{})}catch(e){st=Object.assign({},DEF)}
-    var pr=document.getElementById('th2-presets');pr.innerHTML='';
-    Object.keys(PRE).forEach(function(n){var b=document.createElement('button');b.className='flat-btn flat-btn-outline text-xs py-2 px-4';b.textContent=n;b.onclick=function(){st=Object.assign({},PRE[n]);draw();th2Push()};pr.appendChild(b)});
-    draw();document.getElementById('th2-url').value=location.origin+'/index.html';th2Frame();
-  };
-})();
 </script>
 </body>
 </html>
